@@ -4,7 +4,7 @@
 (function (document) {
 	var
 	head = document.head = document.getElementsByTagName('head')[0] || document.documentElement,
-	elements = 'article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output picture progress section summary time video x'.split(' '),
+	elements = 'article aside bdi data datalist details figcaption figure footer header hgroup nav output picture progress section summary time x'.split(' '),
 	elementsLength = elements.length,
 	elementsIndex = 0,
 	element;
@@ -15,9 +15,6 @@
 
 	element.innerHTML = 'x<style>' +
 		'article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}' +
-		'audio[controls],canvas,video{display:inline-block}' +
-		'[hidden],audio{display:none}' +
-		'mark{background:#FF0;color:#000}' +
 	'</style>';
 
 	return head.insertBefore(element.lastChild, head.firstChild);
@@ -48,7 +45,6 @@
 		for (var cite = this, newNodeList = new NodeList; cite = cite.parentElement;) {
 			if (cite.matchesSelector(selector)) ArrayPrototype.push.call(newNodeList, cite);
 		}
-
 		return newNodeList;
 	};
 
@@ -96,10 +92,8 @@ function updateNumber(e) {
 
 	if (!isNaN(value) && (e.keyCode == 38 || e.keyCode == 40 || e.wheelDeltaY)) {
 		e.preventDefault();
-
 		value += e.keyCode == 38 ? 1 : e.keyCode == 40 ? -1 : Math.round(e.wheelDelta * 0.025);
 		value = Math.max(value, 0);
-
 		activeElement.innerHTML = wasPrice ? parsePrice(value) : value;
 	}
 
@@ -145,13 +139,11 @@ function updateInvoice() {
 	cells[2].innerHTML = total-cells[1].innerHTML;
 
 	// update prefix formatting
-	// ========================
 
 	var prefix = document.querySelector('#prefix').innerHTML;
 	for (a = document.querySelectorAll('[data-prefix]'), i = 0; a[i]; ++i) a[i].innerHTML = prefix;
 
 	// update price formatting
-	// =======================
 
 }
 
@@ -160,20 +152,16 @@ function updateInvoice() {
 
 function onContentLoad() {
 	updateInvoice();
-
 	var image = document.querySelector('img');
 
 	function onClick(e) {
 		var element = e.target.querySelector('[contenteditable]'), row;
-
 		element && e.target != document.documentElement && e.target != document.body && element.focus();
-
 		if (e.target.matchesSelector('.add')) {
 			document.querySelector('table.inventory tbody').appendChild(generateTableRow());
 		}
 		else if (e.target.className == 'cut') {
 			row = e.target.ancestorQuerySelector('tr');
-
 			row.parentNode.removeChild(row);
 		}
 
@@ -182,40 +170,43 @@ function onContentLoad() {
 
 	function onEnterCancel(e) {
 		e.preventDefault();
-
 		image.classList.add('hover');
 	}
 
 	function onLeaveCancel(e) {
 		e.preventDefault();
-
 		image.classList.remove('hover');
 	}
 
 	if (window.addEventListener) {
 		document.addEventListener('click', onClick);
-
 		document.addEventListener('mousewheel', updateNumber);
 		document.addEventListener('keydown', updateNumber);
-
 		document.addEventListener('keydown', updateInvoice);
 		document.addEventListener('keyup', updateInvoice);
-
 	}
 }
 
 window.addEventListener && document.addEventListener('DOMContentLoaded', onContentLoad);
+
 $(function() {
-jQuery('.save').click(function() {
-	var txt,cells="";
-	for (var a = document.querySelectorAll('table.inventory tbody tr'), i = 0; a[i]; ++i) {
-		cells = a[i].querySelectorAll('td span');
-		if(jQuery(cells[0]).html()!=""){
-			txt += "<product>\n<item>"+jQuery(cells[0]).html()+"</item>\n<rate>"+jQuery(cells[1]).html();
-			txt += "</rate>\n<quantity>"+jQuery(cells[2]).html()+"</quantity>\n</product>\n";
+	jQuery('.save').click(function() {
+		var txt='<?xml version="1.0" encoding="UTF-8"?>';
+		for (var a = document.querySelectorAll('table.inventory tbody tr'), i = 0; a[i]; ++i) {
+			cells = a[i].querySelectorAll('td span');
+			if(jQuery(cells[0]).html()!=""){
+				txt += "<product>\n<item>"+jQuery(cells[0]).html()+"</item>\n<rate>"+jQuery(cells[1]).html();
+				txt += "</rate>\n<quantity>"+jQuery(cells[2]).html()+"</quantity>\n</product>\n";
+			}
 		}
-	}
-	console.log(txt);
-});
-$.get("save.php", { 'mode': 'save_invoice','content': txt} );
+		jQuery.get("save.php", {
+			'mode'		: 'save_invoice',
+			'invoice_number':jQuery('.invoice_n').html(),
+			'content'	:txt,
+			'note'		:jQuery('.invoice_note').html(),
+			'date'		:jQuery('.invoice_date').html(),
+			'tax'		:jQuery('#value_tax').html(),
+			'address'	:jQuery('address').html()
+		});
+	});
 });

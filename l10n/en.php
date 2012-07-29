@@ -16,5 +16,6 @@ $l10n['NOTE']="Additional Notes";
 $l10n['TAX']="Tax";
 $l10n['TAXED_IMPORT'] = "Taxed Import";
 $l10n['ORIGINAL_IMPORT'] = "Original Import";
+$l10n['RECEPTION'] = "Recipient";
 
 ?>

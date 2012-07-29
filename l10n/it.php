@@ -16,5 +16,6 @@ $l10n['NOTE']="Note Aggiuntive";
 $l10n['TAX']="IVA";
 $l10n['TAXED_IMPORT'] = "Importo Tassato";
 $l10n['ORIGINAL_IMPORT'] = "Importo Senz'IVA";
+$l10n['RECEPTION'] = "Destinatario";
 
 ?>
