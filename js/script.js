@@ -191,7 +191,7 @@ window.addEventListener && document.addEventListener('DOMContentLoaded', onConte
 
 $(function() {
 	jQuery('.save').click(function() {
-		var txt='<?xml version="1.0" encoding="UTF-8"?>';
+		var txt='<?xml version="1.0" encoding="UTF-8"?>'+"\n";
 		for (var a = document.querySelectorAll('table.inventory tbody tr'), i = 0; a[i]; ++i) {
 			cells = a[i].querySelectorAll('td span');
 			if(jQuery(cells[0]).html()!=""){

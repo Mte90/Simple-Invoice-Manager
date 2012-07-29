@@ -19,14 +19,14 @@
 			<span><img alt="" src="logo.png"></span>
 		</header>
 		<article>
-			<h1>Recipient</h1>
+			<h1><? echo $l10n['RECIPIENT'] ?></h1>
 			<address contenteditable>
 				<p>Some Company<br>c/o Some Guy</p>
 			</address>
 			<table class="meta">
 				<tr>
 					<th><span><? echo $l10n['INVOICE'] ?></span></th>
-					<td><span contenteditable class="invoice_n">101138</span></td>
+					<td><span contenteditable class="invoice_n">1</span></td>
 				</tr>
 				<tr>
 					<th><span><? echo $l10n['DATE'] ?></span></th>
