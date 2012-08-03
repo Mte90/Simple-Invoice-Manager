@@ -1,22 +1,3 @@
-/* reset */
-
-*
-{
-	border: 0;
-	box-sizing: content-box;
-	color: inherit;
-	font-family: inherit;
-	font-size: inherit;
-	font-style: inherit;
-	font-weight: inherit;
-	line-height: inherit;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	text-decoration: none;
-	vertical-align: top;
-}
-
 /* content editable */
 
 *[contenteditable] { border-radius: 0.25em; min-width: 1em; outline: 0; }
@@ -29,11 +10,11 @@ span[contenteditable] { display: inline-block; }
 
 /* heading */
 
-h1 { font: bold 100% sans-serif; letter-spacing: 0.5em; text-align: center; text-transform: uppercase; }
+h1 { font: bold 18px sans-serif; letter-spacing: 0.5em; text-align: center; text-transform: uppercase; }
 
 /* table */
 
-table { font-size: 75%; table-layout: fixed; width: 100%; }
+table { table-layout: fixed; width: 100%; }
 table { border-collapse: separate; border-spacing: 2px; }
 th, td { border-width: 1px; padding: 0.5em; position: relative; text-align: left; }
 th, td { border-radius: 0.25em; border-style: solid; }
@@ -43,19 +24,17 @@ th:first-child{width:70%}
 
 /* page */
 
-html { font: 16px/1 'Open Sans', sans-serif; overflow: auto; padding: 0.5in; }
-html { background: #999; cursor: default; }
+html { font: 16px/1 'Open Sans', sans-serif; overflow: auto; padding: 0.5in; background: #999; cursor: default; }
 
-body { box-sizing: border-box; height: 11in; margin: 0 auto; overflow: hidden; padding: 0.5in; width: 8.5in; }
-body { background: #FFF; border-radius: 1px; box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5); }
+body { box-sizing: border-box; height: 11in; margin: 0 auto; overflow: hidden; padding: 0.5in; width: 8.5in;line-height: 12px; background: #FFF; border-radius: 1px; box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5); }
 
 /* header */
 
-header { margin: 0 0 3em; }
+header { margin: 0 0 2em; }
 header:after { clear: both; content: ""; display: table; }
 
 header h1 { background: #000; border-radius: 0.25em; color: #FFF; margin: 0 0 1em; padding: 0.5em 0; }
-header address { float: left; font-size: 75%; font-style: normal; line-height: 1.25; margin: 0 1em 1em 0; }
+header address { float: left; font-size: 14px; font-style: normal; line-height: 1.25; margin: 0 1em 1em 0; }
 header address p { margin: 0 0 0.25em; }
 header span, header img { display: block; float: right; }
 header span { margin: 0 0 1em 1em; max-height: 25%; max-width: 60%; position: relative; }
@@ -68,7 +47,7 @@ article, article address, table.meta, table.inventory { margin: 0 0 3em; }
 article:after { clear: both; content: ""; display: table; }
 article h1 { clip: rect(0 0 0 0); position: absolute; }
 
-article address { float: left; font-size: 125%; font-weight: bold; }
+article address { float: left; font-size: 18px; font-weight: bold; }
 
 /* table meta & balance */
 

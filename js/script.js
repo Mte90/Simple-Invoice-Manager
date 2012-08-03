@@ -198,14 +198,17 @@ $(function() {
 				txt += "</rate>\n<quantity>"+jQuery(cells[2]).html()+"</quantity>\n</product>\n";
 			}
 		}
-		jQuery.get("save.php", {
-			'mode'		: 'save_invoice',
-			'invoice_number':jQuery('.invoice_n').html(),
-			'content'	:txt,
-			'note'		:jQuery('.invoice_note').html(),
-			'date'		:jQuery('.invoice_date').html(),
-			'tax'		:jQuery('#value_tax').html(),
-			'address'	:jQuery('address').html()
+		jQuery('#save_inv_modal').modal();
+		jQuery('#save_inv_okay').click(function() {
+			jQuery.get("save.php", {
+				'mode'		: 'save_invoice',
+				'invoice_number':jQuery('.invoice_n').html(),
+				'content'	:txt,
+				'note'		:jQuery('.invoice_note').html(),
+				'date'		:jQuery('.invoice_date').html(),
+				'tax'		:jQuery('#value_tax').html(),
+				'address'	:jQuery('address').html()
+			}).success(function() {jQuery('#save_inv_modal').modal('hide')});
 		});
 	});
 });

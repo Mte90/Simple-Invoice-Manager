@@ -4,9 +4,11 @@
 	<head>
 		<meta charset="utf-8">
 		<title><? echo $l10n['TITLE']; ?></title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="license" href="http://www.opensource.org/licenses/mit-license/">
 		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script src="js/script.js"></script>
 	</head>
 	<body>
@@ -107,6 +109,19 @@
 		</aside>
 		<div class="toolbar">
 			<img src="icons/childish_Floppy-Disk.png" class="save" />
+		</div>
+		    <div class="modal fade hide" id="save_inv_modal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<h3>Save Invoice</h3>
+			</div>
+			<div class="modal-body">
+				<p>You are sure to save the invoice?</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Close</a>
+				<a href="#" class="btn btn-primary" id="save_inv_okay">Save changes</a>
+			</div>
 		</div>
 	</body>
 </html>
