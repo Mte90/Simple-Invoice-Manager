@@ -108,7 +108,7 @@
 			</div>
 		</aside>
 		<div class="toolbar">
-			<img src="icons/childish_Floppy-Disk.png" class="save" />
+			<img src="icons/save.png" class="save" />
 		</div>
 		    <div class="modal fade hide" id="save_inv_modal">
 			<div class="modal-header">
