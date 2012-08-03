@@ -30,7 +30,7 @@
 				</tr>
 				<tr>
 					<th><span><? echo $l10n['DATE'] ?></span></th>
-					<td><span contenteditable class="invoice_date">January 1, 2012</span></td>
+					<td><span contenteditable class="invoice_date"><? echo date($config['date_format']); ?></span></td>
 				</tr>
 				<tr>
 					<th><span><? echo $l10n['AMOUNT_DUE'] ?></span></th>
