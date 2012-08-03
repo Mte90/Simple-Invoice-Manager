@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<th><span><? echo $l10n['AMOUNT_DUE'] ?></span></th>
-					<td><span id="prefix" contenteditable><? echo $config['prefix']; ?></span><span id="total">600.00</span></td>
+					<td><span id="prefix"><? echo $config['prefix']; ?></span><span id="total">600.00</span></td>
 				</tr>
 			</table>
 			<table class="inventory">
