@@ -6,5 +6,6 @@
 	$config['date_format']	=	'd/m/Y';
 	$config['number_ticket']=	true;
 
+	include('./lib/function.php');
 	include('./l10n/'.$config['language'].'.php');
 ?>

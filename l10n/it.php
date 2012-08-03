@@ -23,5 +23,6 @@ $l10n['CLOSE'] = "Chiudi";
 $l10n['REJECT'] = "Annulla";
 $l10n['SAVE'] = "Salva";
 $l10n['NUMBER_TICKET'] = "N. Scontrino";
+$l10n['LIST_CLIENTS'] = "Lista dei Clienti";
 
 ?>

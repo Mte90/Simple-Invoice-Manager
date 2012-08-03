@@ -194,8 +194,8 @@ $(function() {
 		for (var a = document.querySelectorAll('table.inventory tbody tr'), i = 0; a[i]; ++i) {
 			cells = a[i].querySelectorAll('td span');
 			if(jQuery(cells[0]).html()!=""){
-				txt += "<product>\n<item>"+jQuery(cells[0]).html()+"</item>\n<rate>"+jQuery(cells[1]).html();
-				txt += "</rate>\n<quantity>"+jQuery(cells[2]).html()+"</quantity>\n</product>\n";
+				txt += "<product>\n\t<item>"+jQuery(cells[0]).html()+"</item>\n\t<rate>"+jQuery(cells[1]).html();
+				txt += "</rate>\n\t<quantity>"+jQuery(cells[2]).html()+"</quantity>\n</product>\n";
 			}
 		}
 		jQuery('#save_inv_modal').modal();
@@ -203,11 +203,12 @@ $(function() {
 			jQuery.get("save.php", {
 				'mode'		: 'save_invoice',
 				'invoice_number':jQuery('.invoice_n').html(),
+				'invoice_ticket':jQuery('.invoice_ticket').html(),
 				'content'	:txt,
 				'note'		:jQuery('.invoice_note').html(),
 				'date'		:jQuery('.invoice_date').html(),
 				'tax'		:jQuery('#value_tax').html(),
-				   'address'	:jQuery('.client_info').html()
+				'address'	:jQuery('.client_info').html()
 			}).success(function() {jQuery('#save_inv_modal').modal('hide')});
 		});
 	});
