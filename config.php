@@ -5,6 +5,10 @@
 	$config['prefix']	=	'€ ';
 	$config['date_format']	=	'd/m/Y';
 	$config['number_ticket']=	true;
+	$config['invoice_info']	=	'<p>Jonathan Neal</p>
+					<p>101 E. Chapman Ave<br>Orange, CA 92866</p>
+					<p>(800) 555-1234</p>';
+	$config['invoice_logo'] =	true;
 
 	include('./lib/function.php');
 	include('./l10n/'.$config['language'].'.php');

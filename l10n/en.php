@@ -23,6 +23,7 @@ $l10n['CLOSE'] = "Close";
 $l10n['REJECT'] = "Reject";
 $l10n['SAVE'] = "Save";
 $l10n['NUMBER_TICKET'] = "N. Ticket";
-$l10n['LIST_CLIENTS'] = "List of Client";
+$l10n['LIST_CLIENTS'] = "List of Clients";
+$l10n['LIST_LOGOS'] = "List of Logos";
 
 ?>

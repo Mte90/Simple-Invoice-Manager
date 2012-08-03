@@ -14,11 +14,15 @@
 	<body>
 		<header>
 			<address>
-				<p>Jonathan Neal</p>
-				<p>101 E. Chapman Ave<br>Orange, CA 92866</p>
-				<p>(800) 555-1234</p>
+				<? echo $config['invoice_info']; ?>
 			</address>
-			<span><img alt="" src="logo.png"></span>
+			<span>
+			<? if($config['invoice_logo']){ ?>
+			<div class="toolbar_logo">
+				<img src="icons/folder_search.png" class="logos_search" />
+			</div>
+			<? } ?>
+			<img alt="" src="logos/logo_default.png" id="logo"></span>
 		</header>
 		<article>
 			<h1><? echo $l10n['RECIPIENT'] ?></h1>
