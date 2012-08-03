@@ -22,6 +22,10 @@
 		</header>
 		<article>
 			<h1><? echo $l10n['RECIPIENT'] ?></h1>
+			<div class="toolbar_clients">
+				<img src="icons/address_book_search.png" class="clients_search" />
+				<img src="icons/address_book_add.png" class="clients_add" />
+			</div>
 			<address contenteditable>
 				<p>Some Company<br>c/o Some Guy</p>
 			</address>
@@ -38,6 +42,12 @@
 					<th><span><? echo $l10n['AMOUNT_DUE'] ?></span></th>
 					<td><span id="prefix"><? echo $config['prefix']; ?></span><span id="total">600.00</span></td>
 				</tr>
+				<? if($config['number_ticket']){ ?>
+				<tr>
+					<th><span><? echo $l10n['NUMBER_TICKET'] ?></span></th>
+					<td><span contenteditable></span></td>
+				</tr>
+				<? } ?>
 			</table>
 			<table class="inventory">
 				<thead>

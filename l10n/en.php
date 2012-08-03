@@ -22,5 +22,6 @@ $l10n['SURE_SAVE_INVOICE'] = "You are sure to save the invoice?";
 $l10n['CLOSE'] = "Close";
 $l10n['REJECT'] = "Reject";
 $l10n['SAVE'] = "Save";
+$l10n['NUMBER_TICKET'] = "N. Ticket";
 
 ?>

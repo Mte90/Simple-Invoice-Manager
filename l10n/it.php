@@ -22,5 +22,6 @@ $l10n['SURE_SAVE_INVOICE'] = "Sei sicuro di voler salvare la fattura?";
 $l10n['CLOSE'] = "Chiudi";
 $l10n['REJECT'] = "Annulla";
 $l10n['SAVE'] = "Salva";
+$l10n['NUMBER_TICKET'] = "N. Scontrino";
 
 ?>
