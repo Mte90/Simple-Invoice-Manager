@@ -17,5 +17,10 @@ $l10n['TAX']="IVA";
 $l10n['TAXED_IMPORT'] = "Importo Tassato";
 $l10n['ORIGINAL_IMPORT'] = "Importo Senz'IVA";
 $l10n['RECEPTION'] = "Destinatario";
+$l10n['SAVE_INVOICE'] = "Slava la fattura";
+$l10n['SURE_SAVE_INVOICE'] = "Sei sicuro di voler salvare la fattura?";
+$l10n['CLOSE'] = "Chiudi";
+$l10n['REJECT'] = "Annulla";
+$l10n['SAVE'] = "Salva";
 
 ?>

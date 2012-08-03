@@ -17,5 +17,10 @@ $l10n['TAX']="Tax";
 $l10n['TAXED_IMPORT'] = "Taxed Import";
 $l10n['ORIGINAL_IMPORT'] = "Original Import";
 $l10n['RECEPTION'] = "Recipient";
+$l10n['SAVE_INVOICE'] = "Save Invoice";
+$l10n['SURE_SAVE_INVOICE'] = "You are sure to save the invoice?";
+$l10n['CLOSE'] = "Close";
+$l10n['REJECT'] = "Reject";
+$l10n['SAVE'] = "Save";
 
 ?>
