@@ -26,7 +26,7 @@
 				<img src="icons/address_book_search.png" class="clients_search" />
 				<img src="icons/address_book_add.png" class="clients_add" />
 			</div>
-			<address contenteditable>
+			<address class="client_info">
 				<p>Some Company<br>c/o Some Guy</p>
 			</address>
 			<table class="meta">
@@ -45,7 +45,7 @@
 				<? if($config['number_ticket']){ ?>
 				<tr>
 					<th><span><? echo $l10n['NUMBER_TICKET'] ?></span></th>
-					<td><span contenteditable></span></td>
+					<td><span contenteditable class="invoice_ticket"></span></td>
 				</tr>
 				<? } ?>
 			</table>
@@ -64,12 +64,6 @@
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable>150.00</span></td>
 						<td><span contenteditable>4</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span>600.00</span></td>
-					</tr>
-					<tr>
-						<td><a class="cut">-</a><span contenteditable></span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable></span></td>
-						<td><span contenteditable>0</span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
@@ -120,7 +114,7 @@
 		<div class="toolbar">
 			<img src="icons/save.png" class="save" />
 		</div>
-		    <div class="modal fade hide" id="save_inv_modal">
+		<div class="modal fade hide" id="save_inv_modal">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">×</button>
 				<h3><? echo $l10n['SAVE_INVOICE']; ?></h3>

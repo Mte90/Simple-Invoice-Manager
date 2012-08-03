@@ -207,8 +207,13 @@ $(function() {
 				'note'		:jQuery('.invoice_note').html(),
 				'date'		:jQuery('.invoice_date').html(),
 				'tax'		:jQuery('#value_tax').html(),
-				'address'	:jQuery('address').html()
+				   'address'	:jQuery('.client_info').html()
 			}).success(function() {jQuery('#save_inv_modal').modal('hide')});
 		});
+	});
+	jQuery('.clients_search').click(function() {
+		jQuery('body').append('<div id="clients_modal_list" class="modal fade hide"/>');
+		jQuery('#clients_modal_list').load('list_clients.php');
+		jQuery('#clients_modal_list').modal();
 	});
 });
