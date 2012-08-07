@@ -188,16 +188,19 @@ function onContentLoad() {
 
 window.addEventListener && document.addEventListener('DOMContentLoaded', onContentLoad);
 
+//Invoice Code
+
 $(function() {
+	var xml_start='<?xml version="1.0" encoding="UTF-8"?>'+"\n";
 	jQuery('.save').click(function() {
-		var txt='<?xml version="1.0" encoding="UTF-8"?>'+"\n";
-		for (var a = document.querySelectorAll('table.inventory tbody tr'), i = 0; a[i]; ++i) {
-			cells = a[i].querySelectorAll('td span');
+		var txt = xml_start;
+		jQuery('table.inventory tbody tr').each(function(key, value) {
+			cells = jQuery(this).find('td span');
 			if(jQuery(cells[0]).html()!=""){
 				txt += "<product>\n\t<item>"+jQuery(cells[0]).html()+"</item>\n\t<rate>"+jQuery(cells[1]).html();
 				txt += "</rate>\n\t<quantity>"+jQuery(cells[2]).html()+"</quantity>\n</product>\n";
 			}
-		}
+		});
 		jQuery('#save_inv_modal').modal();
 		jQuery('#save_inv_okay').click(function() {
 			jQuery.get("save.php", {
