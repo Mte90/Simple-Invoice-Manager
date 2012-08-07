@@ -216,21 +216,21 @@ $(function() {
 			}).success(function() {jQuery('#save_inv_modal').modal('hide');});
 		});
 	});
-	//On save Invoice
-	jQuery('.save_client_okay').click(function() {
+	//On save ClientS
+	jQuery(document).on('click','#save_client_okay',function() {
 		var txt = xml_start;
 			jQuery.get("save_clients.php", {
 				'mode'		:'new_client',
-				'name'		:jQuery('.client_add_name').html(),
-				'vat'		:jQuery('.client_add_vat').html(),
-				'address'	:jQuery('.client_add_address').html(),
-				'zipcode'	:jQuery('.client_add_zipcode').html(),
-				'city'		:jQuery('.client_add_city').html(),
-				'region'	:jQuery('.client_add_region').html(),
-				'phone'		:jQuery('.client_add_phone').html(),
-				'email'		:jQuery('.client_add_email').html()
+				'name'		:jQuery('#client_add_name').val(),
+				'vat'		:jQuery('#client_add_vat').val(),
+				'address'	:jQuery('#client_add_address').val(),
+				'zipcode'	:jQuery('#client_add_zipcode').val(),
+				'city'		:jQuery('#client_add_city').val(),
+				'region'	:jQuery('#client_add_region').val(),
+				'phone'		:jQuery('#client_add_phone').val(),
+				'email'		:jQuery('#client_add_email').val()
 			}).success(function() {
-				jQuery('#client_add_form').each(function(){this.reset();});
+				//jQuery('#client_add_form').each(function(){this.reset();});
 				jQuery('#client_modal_add').modal('hide');
 			});
 	});
