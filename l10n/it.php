@@ -9,7 +9,7 @@ $l10n['AMOUNT_DUE']="Importo Totale";
 $l10n['ITEM']="Oggetto";
 $l10n['DESCRIPTION']="Descrizione";
 $l10n['RATE']="Prezzo";
-$l10n['QUANTITY']="Quantità";
+$l10n['QUANTITY']="Quantit&agrave;";
 $l10n['PRICE']="Prezzo";
 $l10n['TOTAL']="Totale";
 $l10n['NOTE']="Note Aggiuntive";
@@ -24,6 +24,17 @@ $l10n['REJECT'] = "Annulla";
 $l10n['SAVE'] = "Salva";
 $l10n['NUMBER_TICKET'] = "N. Scontrino";
 $l10n['LIST_CLIENTS'] = "Lista dei Clienti";
+$l10n['ADD_CLIENTS'] = "Aggiungi nuovo Cliente";
 $l10n['LIST_LOGOS'] = "Lista dei Loghi";
+
+// Clienti
+$l10n['NAME'] = "Nome";
+$l10n['VAT'] = "P. IVA o Cod. Fisc.";
+$l10n['ADDRESS'] = "Indirizzo";
+$l10n['ZIP_CODE'] = "CAP";
+$l10n['CITY'] = "Citt&agrave;";
+$l10n['REGION'] = "Provincia";
+$l10n['PHONE_FAX'] = "Tel/Fax";
+$l10n['EMAIL'] = "Email";
 
 ?>

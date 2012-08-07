@@ -28,7 +28,7 @@
 			<h1><? echo $l10n['RECIPIENT'] ?></h1>
 			<div class="toolbar_clients">
 				<img src="icons/address_book_search.png" class="clients_search" />
-				<img src="icons/address_book_add.png" class="clients_add" />
+				<img src="icons/address_book_add.png" class="client_add" />
 			</div>
 			<address class="client_info">
 				<p>Some Company<br>c/o Some Guy</p>

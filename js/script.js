@@ -217,6 +217,11 @@ $(function() {
 		jQuery('#clients_modal_list').load('list_clients.php');
 		jQuery('#clients_modal_list').modal();
 	});
+	jQuery('.client_add').click(function() {
+		jQuery('body').append('<div id="client_modal_add" class="modal fade hide"/>');
+		jQuery('#client_modal_add').load('new_client.php');
+		jQuery('#client_modal_add').modal();
+	});
 	jQuery('.logos_search').click(function() {
 		jQuery('body').append('<div id="logos_modal_list" class="modal fade hide"/>');
 		jQuery('#logos_modal_list').load('list_logos.php');

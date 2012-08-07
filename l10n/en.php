@@ -24,6 +24,17 @@ $l10n['REJECT'] = "Reject";
 $l10n['SAVE'] = "Save";
 $l10n['NUMBER_TICKET'] = "N. Ticket";
 $l10n['LIST_CLIENTS'] = "List of Clients";
+$l10n['ADD_CLIENTS'] = "Add new Client";
 $l10n['LIST_LOGOS'] = "List of Logos";
+
+// Clienti
+$l10n['NAME'] = "Name";
+$l10n['VAT'] = "VAT";
+$l10n['ADDRESS'] = "Address";
+$l10n['ZIP_CODE'] = "Zip Code";
+$l10n['CITY'] = "City";
+$l10n['REGION'] = "Region";
+$l10n['PHONE_FAX'] = "Phone/Fax";
+$l10n['EMAIL'] = "Email";
 
 ?>
