@@ -192,6 +192,7 @@ window.addEventListener && document.addEventListener('DOMContentLoaded', onConte
 
 $(function() {
 	var xml_start='<?xml version="1.0" encoding="UTF-8"?>'+"\n";
+	//On save Invoice
 	jQuery('.save').click(function() {
 		var txt = xml_start;
 		jQuery('table.inventory tbody tr').each(function(key, value) {
@@ -204,7 +205,7 @@ $(function() {
 		jQuery('#save_inv_modal').modal();
 		jQuery('#save_inv_okay').click(function() {
 			jQuery.get("save.php", {
-				'mode'		: 'save_invoice',
+				'mode'		:'save_invoice',
 				'invoice_number':jQuery('.invoice_n').html(),
 				'invoice_ticket':jQuery('.invoice_ticket').html(),
 				'content'	:txt,
@@ -212,8 +213,26 @@ $(function() {
 				'date'		:jQuery('.invoice_date').html(),
 				'tax'		:jQuery('#value_tax').html(),
 				'address'	:jQuery('.client_info').html()
-			}).success(function() {jQuery('#save_inv_modal').modal('hide')});
+			}).success(function() {jQuery('#save_inv_modal').modal('hide');});
 		});
+	});
+	//On save Invoice
+	jQuery('.save_client_okay').click(function() {
+		var txt = xml_start;
+			jQuery.get("save_clients.php", {
+				'mode'		:'new_client',
+				'name'		:jQuery('.client_add_name').html(),
+				'vat'		:jQuery('.client_add_vat').html(),
+				'address'	:jQuery('.client_add_address').html(),
+				'zipcode'	:jQuery('.client_add_zipcode').html(),
+				'city'		:jQuery('.client_add_city').html(),
+				'region'	:jQuery('.client_add_region').html(),
+				'phone'		:jQuery('.client_add_phone').html(),
+				'email'		:jQuery('.client_add_email').html()
+			}).success(function() {
+				jQuery('#client_add_form').each(function(){this.reset();});
+				jQuery('#client_modal_add').modal('hide');
+			});
 	});
 	jQuery('.clients_search').click(function() {
 		jQuery('body').append('<div id="clients_modal_list" class="modal fade hide"/>');
@@ -224,6 +243,7 @@ $(function() {
 		jQuery('body').append('<div id="client_modal_add" class="modal fade hide"/>');
 		jQuery('#client_modal_add').load('new_client.php');
 		jQuery('#client_modal_add').modal();
+		jQuery('#client_add_name').focus();
 	});
 	jQuery('.logos_search').click(function() {
 		jQuery('body').append('<div id="logos_modal_list" class="modal fade hide"/>');
