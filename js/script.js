@@ -219,7 +219,7 @@ $(function() {
 	//On save Clients
 	jQuery(document).on('click','#save_client_okay',function() {
 		var txt = xml_start;
-			jQuery.get('save_clients.php', {
+			jQuery.get('save.php', {
 				'mode'		:'new_client',
 				'name'		:jQuery('#client_add_name').val(),
 				'vat'		:jQuery('#client_add_vat').val(),
