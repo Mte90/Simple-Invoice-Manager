@@ -6,18 +6,18 @@
 				<h3><? echo $l10n['LIST_CLIENTS']; ?></h3>
 			</div>
 			<div class="modal-body">
-				<p>	<? echo '<table class="table-bordered"><tbody>';
-						if ($handle = opendir('./clients/')) {
-								while (false !== ($entry = readdir($handle))) {
-									if ($entry != "." && $entry != ".." && $entry != "index.php") {
-									echo "<tr><td>$entry</td></tr>\n";
-									}
+				<? echo "<table class=\"table table-bordered\">\n<tbody>\n";
+					if ($handle = opendir('./clients/')) {
+							while (false !== ($entry = readdir($handle))) {
+								if ($entry != "." && $entry != ".." && $entry != "index.php") {
+									$client_info = read_client_info('./clients/'.$entry);
+								echo "<tr><td>".$client_info['name']."</td></tr>\n";
 								}
-							closedir($handle);
-						}
-						echo '</tbody></table>';
-
-					?></p>
+							}
+						closedir($handle);
+					}
+					echo "</tbody>\n</table>";
+				?>
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>

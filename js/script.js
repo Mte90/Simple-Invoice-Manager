@@ -216,7 +216,7 @@ $(function() {
 			}).success(function() {jQuery('#save_inv_modal').modal('hide');});
 		});
 	});
-	//On save ClientS
+	//On save Clients
 	jQuery(document).on('click','#save_client_okay',function() {
 		var txt = xml_start;
 			jQuery.get("save_clients.php", {

@@ -19,4 +19,16 @@
 		}
 		return $last_file;
 	}
+
+	function read_client_info($path) {
+		$xml = simplexml_load_file($path);
+		$client['name']		= $xml->name;
+		$client['vat']		= $xml->vat;
+		$client['address']	= $xml->address;
+		$client['zipcode']	= $xml->zipcode;
+		$client['city']		= $xml->city;
+		$client['phone']	= $xml->phone;
+		$client['email']	= $xml->email;
+		return $client;
+	}
 ?>

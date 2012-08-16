@@ -134,3 +134,9 @@ tr:hover .cut { opacity: 1; }
 @page { margin: 0;size: auto;
 
 }
+.pointer {
+	cursor: pointer;
+}
+.table-bordered {
+	border-spacing: 0;
+}

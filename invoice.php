@@ -19,7 +19,7 @@
 			<span>
 			<? if($config['invoice_logo']){ ?>
 			<div class="toolbar_logo">
-				<img src="icons/folder_search.png" class="logos_search" />
+				<img src="icons/folder_search.png" class="logos_search pointer" />
 			</div>
 			<? } ?>
 			<img alt="" src="logos/logo_default.png" id="logo"></span>
@@ -27,8 +27,8 @@
 		<article>
 			<h1><? echo $l10n['RECIPIENT'] ?></h1>
 			<div class="toolbar_clients">
-				<img src="icons/address_book_search.png" class="clients_search" />
-				<img src="icons/address_book_add.png" class="client_add" />
+				<img src="icons/address_book_search.png" class="clients_search pointer" />
+				<img src="icons/address_book_add.png" class="client_add pointer" />
 			</div>
 			<address class="client_info">
 				<p>Some Company<br>c/o Some Guy</p>
@@ -116,7 +116,7 @@
 			</div>
 		</aside>
 		<div class="toolbar">
-			<img src="icons/save.png" class="save" />
+			<img src="icons/save.png" class="save pointer" alt="" />
 		</div>
 		<div class="modal fade hide" id="save_inv_modal">
 			<div class="modal-header">
