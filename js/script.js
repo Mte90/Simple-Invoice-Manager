@@ -236,18 +236,30 @@ $(function() {
 	});
 	jQuery('.clients_search').click(function() {
 		jQuery('body').append('<div id="clients_modal_list" class="modal fade hide"/>');
-		jQuery('#clients_modal_list').load('list_clients.php');
+		jQuery.get('list.php', {
+			'mode'		:'clients_list'
+		}).success(function(data) {
+			jQuery('#clients_modal_list').html(data);
+		});
 		jQuery('#clients_modal_list').modal();
 	});
 	jQuery('.client_add').click(function() {
 		jQuery('body').append('<div id="client_modal_add" class="modal fade hide"/>');
-		jQuery('#client_modal_add').load('new_client.php');
+		jQuery.get('list.php', {
+			'mode'		:'clients_new'
+		}).success(function(data) {
+			jQuery('#client_modal_add').html(data);
+		});
 		jQuery('#client_modal_add').modal();
 		jQuery('#client_add_name').focus();
 	});
 	jQuery('.logos_search').click(function() {
 		jQuery('body').append('<div id="logos_modal_list" class="modal fade hide"/>');
-		jQuery('#logos_modal_list').load('list_logos.php');
+		jQuery.get('list.php', {
+			'mode'		:'logo_list'
+		}).success(function(data) {
+			jQuery('#logos_modal_list').html(data);
+		});
 		jQuery('#logos_modal_list').modal();
 	});
 	jQuery(document).on('click','.logos-list td',function(e){

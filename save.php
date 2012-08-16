@@ -1,7 +1,7 @@
 <?
 	include('./config.php');
 
-	if($_GET['mode']='save_invoice') {
+	if($_GET['mode']=='save_invoice') {
 		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n\t";
 		$content .= '<invoice>'."\n\t\t";
 		$content .= '<number>'.clean($_GET['invoice_number']).'</number>'."\n\t\t";
@@ -15,7 +15,7 @@
 		$content .= "\n\t".$_GET['content'];
 
 		file_put_contents('./invoice/'.clean($_GET['invoice_number']).'.xml',$content);
-	}elseif($_GET['mode']='new_client') {
+	}elseif($_GET['mode']=='new_client') {
 		$number_clients = get_last_file('./clients');
 		$number_clients++;
 		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
