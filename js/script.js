@@ -191,20 +191,19 @@ window.addEventListener && document.addEventListener('DOMContentLoaded', onConte
 //Invoice Code
 
 $(function() {
-	var xml_start='<?xml version="1.0" encoding="UTF-8"?>'+"\n";
 	//On save Invoice
-	jQuery('.save').click(function() {
-		var txt = xml_start;
+	jQuery(document).on('click','.save',function() {
+		var txt = '';
 		jQuery('table.inventory tbody tr').each(function(key, value) {
 			cells = jQuery(this).find('td span');
 			if(jQuery(cells[0]).html()!=""){
-				txt += "<product>\n\t<item>"+jQuery(cells[0]).html()+"</item>\n\t<rate>"+jQuery(cells[1]).html();
-				txt += "</rate>\n\t<quantity>"+jQuery(cells[2]).html()+"</quantity>\n</product>\n";
+				txt += "<product>\n\t\t<item>"+jQuery(cells[0]).html()+"</item>\n\t\t<rate>"+jQuery(cells[2]).html();
+				txt += "</rate>\n\t\t<quantity>"+jQuery(cells[3]).html()+"</quantity>\n\t</product>\n\t";
 			}
 		});
 		jQuery('#save_inv_modal').modal();
 		jQuery('#save_inv_okay').click(function() {
-			jQuery.get("save.php", {
+			jQuery.get('save.php', {
 				'mode'		:'save_invoice',
 				'invoice_number':jQuery('.invoice_n').html(),
 				'invoice_ticket':jQuery('.invoice_ticket').html(),
@@ -212,7 +211,7 @@ $(function() {
 				'note'		:jQuery('.invoice_note').html(),
 				'date'		:jQuery('.invoice_date').html(),
 				'tax'		:jQuery('#value_tax').html(),
-				'address'	:jQuery('.client_info').html()
+				'client_number'	:jQuery('body').data('client')
 			}).success(function() {jQuery('#save_inv_modal').modal('hide');});
 		});
 	});
@@ -258,7 +257,7 @@ $(function() {
 			jQuery('.client_info').html(data);
 			jQuery('#clients_modal_list').modal('hide');
 		});
-		//jQuery('.client_info').html(choose_client.html()+choose_client.data('vat')+choose_client.data('address')+choose_client.data('zipcode')+choose_client.data('city')+choose_client.data('phone')+choose_client.data('email'));
+		jQuery('body').data('client',jQuery('.clients-list td').data('id'));
 		e.stopPropagation();
 	});
 });

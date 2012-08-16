@@ -112,7 +112,7 @@
 		<aside>
 			<h1><span><? echo $l10n['NOTE'] ?></span></h1>
 			<div contenteditable class="invoice_note">
-				<p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
+				A finance charge of 1.5% will be made on unpaid balances after 30 days.
 			</div>
 		</aside>
 		<div class="toolbar">
