@@ -249,6 +249,11 @@ $(function() {
 		jQuery('#logos_modal_list').load('list_logos.php');
 		jQuery('#logos_modal_list').modal();
 	});
+	jQuery(document).on('click','.logos-list td',function(e){
+		jQuery('#logo').attr('src','logos/'+jQuery(this).data('logo'));
+		jQuery('#logos_modal_list').modal('hide');
+		e.stopPropagation();
+	});
 	jQuery(document).on('click','.clients-list td',function(e){
 		var choose_client = jQuery(this);
 		jQuery.get('client_info.php', {
