@@ -11,7 +11,7 @@
 							while (false !== ($entry = readdir($handle))) {
 								if ($entry != "." && $entry != ".." && $entry != "index.php") {
 									$client_info = read_client_info('./clients/'.$entry);
-									echo "<tr><td data-vat='".$client_info['vat']."' data-address='".$client_info['address']."' data-zipcode='".$client_info['zipcode']."' data-city='".$client_info['city']."' data-phone='".$client_info['phone']."' data-email='".$client_info['email']."'>".$client_info['name']."</td></tr>\n";
+									echo "<tr><td data-id='".$entry."'>".$client_info['name']."</td></tr>\n";
 								}
 							}
 						closedir($handle);

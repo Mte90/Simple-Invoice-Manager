@@ -219,7 +219,7 @@ $(function() {
 	//On save Clients
 	jQuery(document).on('click','#save_client_okay',function() {
 		var txt = xml_start;
-			jQuery.get("save_clients.php", {
+			jQuery.get('save_clients.php', {
 				'mode'		:'new_client',
 				'name'		:jQuery('#client_add_name').val(),
 				'vat'		:jQuery('#client_add_vat').val(),
@@ -249,5 +249,16 @@ $(function() {
 		jQuery('body').append('<div id="logos_modal_list" class="modal fade hide"/>');
 		jQuery('#logos_modal_list').load('list_logos.php');
 		jQuery('#logos_modal_list').modal();
+	});
+	jQuery(document).on('click','.clients-list td',function(e){
+		var choose_client = jQuery(this);
+		jQuery.get('client_info.php', {
+			'file':		jQuery('.clients-list td').data('id')
+		}).success(function(data) {
+			jQuery('.client_info').html(data);
+			jQuery('#clients_modal_list').modal('hide');
+		});
+		//jQuery('.client_info').html(choose_client.html()+choose_client.data('vat')+choose_client.data('address')+choose_client.data('zipcode')+choose_client.data('city')+choose_client.data('phone')+choose_client.data('email'));
+		e.stopPropagation();
 	});
 });

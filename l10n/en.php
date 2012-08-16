@@ -36,5 +36,6 @@ $l10n['CITY'] = "City";
 $l10n['REGION'] = "Region";
 $l10n['PHONE_FAX'] = "Phone/Fax";
 $l10n['EMAIL'] = "Email";
+$l10n['CHOOSE_CLIENT'] = "Choose the client";
 
 ?>

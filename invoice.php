@@ -31,7 +31,7 @@
 				<img src="icons/address_book_add.png" class="client_add pointer" />
 			</div>
 			<address class="client_info">
-				<p>Some Company<br>c/o Some Guy</p>
+				<b><? echo $l10n['CHOOSE_CLIENT'] ?></b>
 			</address>
 			<table class="meta">
 				<tr>

@@ -27,6 +27,7 @@
 		$client['address']	= $xml->address;
 		$client['zipcode']	= $xml->zipcode;
 		$client['city']		= $xml->city;
+		$client['region']	= $xml->region;
 		$client['phone']	= $xml->phone;
 		$client['email']	= $xml->email;
 		return $client;
