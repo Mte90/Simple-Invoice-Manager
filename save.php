@@ -16,7 +16,6 @@
 
 		file_put_contents('./invoice/'.clean($_GET['invoice_number']).'.xml',$content);
 	}elseif($_GET['mode']='new_client') {
-
 		$number_clients = get_last_file('./clients');
 		$number_clients++;
 		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
