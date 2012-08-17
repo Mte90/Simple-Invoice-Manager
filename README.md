@@ -1,7 +1,7 @@
 Invoice-Manager
 ===============
 
-A Web App for Invoice with PHP, jQuery and Bootstrap.
+A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 
 Based on GUI http://www.jonathantneal.com/examples/invoice/
 
