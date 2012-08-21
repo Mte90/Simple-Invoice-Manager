@@ -218,7 +218,6 @@ $(function() {
 	});
 	//On save Clients
 	jQuery(document).on('click','#save_client_okay',function() {
-		var txt = xml_start;
 			jQuery.get('save.php', {
 				'mode'		:'new_client',
 				'name'		:jQuery('#client_add_name').val(),
@@ -263,6 +262,7 @@ $(function() {
 		jQuery('#logos_modal_list').modal();
 	});
 	jQuery(document).on('click','.logos-list td',function(e){
+		console.log(jQuery(this).data('logo'));
 		jQuery('#logo').attr('src','logos/'+jQuery(this).data('logo'));
 		jQuery('#logos_modal_list').modal('hide');
 		e.stopPropagation();
