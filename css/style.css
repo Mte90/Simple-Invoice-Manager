@@ -46,8 +46,8 @@ header input { cursor: pointer; -ms-filter:"progid:DXImageTransform.Microsoft.Al
 article, article address, table.meta, table.inventory { margin: 0 0 3em; }
 article:after { clear: both; content: ""; display: table; }
 article h1 { clip: rect(0 0 0 0); position: absolute; }
-address table { width:520px; line-height: 12px;}
-address table th { width:170px; }
+address table { width:450px; line-height: 12px;font-style: normal;}
+address table th { width:70px; }
 
 article address { float: left;}
 

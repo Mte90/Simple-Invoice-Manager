@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="license" href="http://www.opensource.org/licenses/mit-license/">
-		<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script src="js/script.js"></script>
 	</head>
@@ -118,9 +118,9 @@
 		<div class="toolbar">
 			<img src="icons/save.png" class="save pointer" alt="" />
 		</div>
-		<div class="modal fade hide" id="save_inv_modal">
+		<div class="modal hide" id="save_inv_modal" role="dialog">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">×</button>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				<h3><? echo $l10n['SAVE_INVOICE']; ?></h3>
 			</div>
 			<div class="modal-body">

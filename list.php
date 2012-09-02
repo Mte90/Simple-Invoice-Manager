@@ -4,7 +4,7 @@
 	if($_GET['mode']=='logo_list') {
 ?>
 	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">×</button>
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 		<h3><? echo $l10n['LIST_LOGOS']; ?></h3>
 	</div>
 	<div class="modal-body">
@@ -29,7 +29,7 @@
 
 ?>
 	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">×</button>
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 		<h3><? echo $l10n['LIST_CLIENTS']; ?></h3>
 	</div>
 	<div class="modal-body">
@@ -56,7 +56,7 @@
 ?>
 
 	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">×</button>
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 		<h3><? echo $l10n['ADD_CLIENTS']; ?></h3>
 	</div>
 	<div class="modal-body">

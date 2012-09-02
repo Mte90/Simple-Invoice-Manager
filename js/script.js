@@ -201,7 +201,7 @@ $(function() {
 				txt += "</rate>\n\t\t<quantity>"+jQuery(cells[3]).html()+"</quantity>\n\t</product>\n\t";
 			}
 		});
-		jQuery('#save_inv_modal').modal();
+		jQuery('#save_inv_modal').modal('show');
 		jQuery('#save_inv_okay').click(function() {
 			jQuery.get('save.php', {
 				'mode'		:'save_invoice',
@@ -234,32 +234,32 @@ $(function() {
 			});
 	});
 	jQuery('.clients_search').click(function() {
-		jQuery('body').append('<div id="clients_modal_list" class="modal fade hide"/>');
+		jQuery('body').append('<div id="clients_modal_list" class="modal hide" role="dialog"/>');
 		jQuery.get('list.php', {
 			'mode'		:'clients_list'
 		}).success(function(data) {
 			jQuery('#clients_modal_list').html(data);
 		});
-		jQuery('#clients_modal_list').modal();
+		jQuery('#clients_modal_list').modal('show');
 	});
 	jQuery('.client_add').click(function() {
-		jQuery('body').append('<div id="client_modal_add" class="modal fade hide"/>');
+		jQuery('body').append('<div id="client_modal_add" class="modal hide" role="dialog"/>');
 		jQuery.get('list.php', {
 			'mode'		:'clients_new'
 		}).success(function(data) {
 			jQuery('#client_modal_add').html(data);
 		});
-		jQuery('#client_modal_add').modal();
+		jQuery('#client_modal_add').modal('show');
 		jQuery('#client_add_name').focus();
 	});
 	jQuery('.logos_search').click(function() {
-		jQuery('body').append('<div id="logos_modal_list" class="modal fade hide"/>');
+		jQuery('body').append('<div id="logos_modal_list" class="modal hide" role="dialog"/>');
 		jQuery.get('list.php', {
 			'mode'		:'logo_list'
 		}).success(function(data) {
 			jQuery('#logos_modal_list').html(data);
 		});
-		jQuery('#logos_modal_list').modal();
+		jQuery('#logos_modal_list').modal('show');
 	});
 	jQuery(document).on('click','.logos-list td',function(e){
 		console.log(jQuery(this).data('logo'));
