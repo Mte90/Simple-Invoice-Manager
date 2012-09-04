@@ -8,7 +8,7 @@
 		<h3><? echo $l10n['LIST_LOGOS']; ?></h3>
 	</div>
 	<div class="modal-body">
-		<? echo "<table class=\"logos-list table table-bordered\">\n<tbody>\n";
+		<? echo "<table class=\"logos-list table table-bordered table-hover\">\n<tbody>\n";
 			if ($handle = opendir('./logos/')) {
 				while (false !== ($entry = readdir($handle))) {
 					if ($entry != "." && $entry != ".." && $entry != "index.php") {
@@ -33,7 +33,7 @@
 		<h3><? echo $l10n['LIST_CLIENTS']; ?></h3>
 	</div>
 	<div class="modal-body">
-		<? echo "<table class=\"clients-list table table-bordered\">\n<tbody>\n";
+		<? echo "<table class=\"clients-list table table-bordered table-hover\">\n<tbody>\n";
 			if ($handle = opendir('./clients/')) {
 				while (false !== ($entry = readdir($handle))) {
 					if ($entry != "." && $entry != ".." && $entry != "index.php") {

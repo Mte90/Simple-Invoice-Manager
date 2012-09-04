@@ -133,12 +133,12 @@ tr:hover .cut { opacity: 1; }
 	.add, .cut { display: none; }
 }
 
-@page { margin: 0;size: auto;
+@page { margin: 0;size: auto;}
 
-}
-.pointer {
+.pointer,.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
 	cursor: pointer;
 }
 .table-bordered {
 	border-spacing: 0;
+	border:none;
 }
