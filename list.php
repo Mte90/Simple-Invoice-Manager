@@ -8,17 +8,16 @@
 		<h3><? echo $l10n['LIST_LOGOS']; ?></h3>
 	</div>
 	<div class="modal-body">
-		<? echo "<table class=\"logos-list table table-bordered table-hover\">\n<tbody>\n";
-			if ($handle = opendir('./logos/')) {
-				while (false !== ($entry = readdir($handle))) {
-					if ($entry != "." && $entry != ".." && $entry != "index.php") {
-						echo "<tr><td data-logo='$entry'><img src='logos/$entry' /></td></tr>\n";
-						}
+		<table class="logos-list table table-bordered table-hover">
+			<tbody>
+				<?
+					$logo = logo_list();
+					foreach ($logo as $key) {
+						echo '<tr><td data-logo="'.$key.'"><img src="logos/'.$key.'" /></td></tr>'."\n";
 					}
-					closedir($handle);
-				}
-				echo "</tbody>\n</table>";
-		?>
+				?>
+			</tbody>
+		</table>
 	</div>
 	<div class="modal-footer">
 		<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
@@ -33,18 +32,16 @@
 		<h3><? echo $l10n['LIST_CLIENTS']; ?></h3>
 	</div>
 	<div class="modal-body">
-		<? echo "<table class=\"clients-list table table-bordered table-hover\">\n<tbody>\n";
-			if ($handle = opendir('./clients/')) {
-				while (false !== ($entry = readdir($handle))) {
-					if ($entry != "." && $entry != ".." && $entry != "index.php") {
-						$client_info = read_client_info('./clients/'.$entry);
-						echo "<tr><td data-id='".$entry."'>".$client_info['name']."</td></tr>\n";
+		<table class="clients-list table table-bordered table-hover">
+			<tbody>
+				<?
+					$client = client_list();
+					foreach ($client as $key) {
+						echo '<tr><td data-id="'.$key[1].'">'.$key[0]['name'].'</td></tr>'."\n";
 					}
-				}
-				closedir($handle);
-			}
-			echo "</tbody>\n</table>";
-		?>
+				?>
+			</tbody>
+		</table>
 	</div>
 	<div class="modal-footer">
 		<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>

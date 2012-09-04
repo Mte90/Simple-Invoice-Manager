@@ -36,7 +36,12 @@
 			<table class="meta">
 				<tr>
 					<th><span><? echo $l10n['INVOICE'] ?></span></th>
-					<td><span contenteditable class="invoice_n">1</span></td>
+					<td><span contenteditable class="invoice_n">
+					<?
+					$number_invoice = get_last_element('invoice');
+					$number_invoice++;
+					echo $number_invoice;
+					?></span></td>
 				</tr>
 				<tr>
 					<th><span><? echo $l10n['DATE'] ?></span></th>

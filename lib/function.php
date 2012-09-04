@@ -4,7 +4,13 @@
 		return $string;
 	}
 
-	function get_last_file($folder,$ext=false){
+	/* Get last element invoice or client */
+	function get_last_element($folder,$ext=false){
+		if($folder == "client") {
+			$folder = './clients';
+		} elseif($folder == "invoice") {
+			$folder = './invoice';
+		}
 		$files = scandir($folder, 1);
 		$files = array_diff($files, array("index.php",'..','.'));
 		$files = array_values($files);
@@ -20,6 +26,7 @@
 		return $last_file;
 	}
 
+	/* Get client info */
 	function read_client_info($path) {
 		$xml = simplexml_load_file($path);
 		$client['name']		= $xml->name;
@@ -31,5 +38,33 @@
 		$client['phone']	= $xml->phone;
 		$client['email']	= $xml->email;
 		return $client;
+	}
+
+	/* Get array of client */
+	function client_list() {
+		$client_list = Array();
+		if ($handle = opendir('./clients/')) {
+			while (false !== ($entry = readdir($handle))) {
+				if ($entry != "." && $entry != ".." && $entry != "index.php") {
+					$client_list[] = array(read_client_info('./clients/'.$entry),$entry);
+				}
+			}
+			closedir($handle);
+		}
+		return $client_list;
+	}
+
+	/* Get array of logo */
+	function logo_list() {
+		$logo_list = Array();
+		if ($handle = opendir('./logos/')) {
+			while (false !== ($entry = readdir($handle))) {
+				if ($entry != "." && $entry != ".." && $entry != "index.php") {
+					$logo_list[] = $entry;
+				}
+			}
+			closedir($handle);
+		}
+		return $logo_list;
 	}
 ?>
