@@ -138,5 +138,18 @@
 				<a href="#" class="btn btn-primary" id="save_inv_okay"><? echo $l10n['SAVE']; ?></a>
 			</div>
 		</div>
+		<div class="modal hide" id="save_draft_modal" role="dialog">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3><? echo $l10n['SAVE_DRAFT']; ?></h3>
+			</div>
+			<div class="modal-body">
+				<p><? echo $l10n['SURE_SAVE_INVOICE']; ?></p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
+				<a href="#" class="btn btn-primary" id="save_draft_okay"><? echo $l10n['SAVE']; ?></a>
+			</div>
+		</div>
 	</body>
 </html>
