@@ -9,7 +9,7 @@
 		if($folder == "client") {
 			$folder = './clients';
 		} elseif($folder == "invoice") {
-			$folder = './invoice';
+			$folder = './invoice/'.date('Y');
 		}
 		$files = scandir($folder, 1);
 		$files = array_diff($files, array("index.php",'..','.'));

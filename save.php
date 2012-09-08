@@ -13,8 +13,10 @@
 		$content .= '<logo>'.clean($_GET['logo']).'</logo>'."\n\t";
 		$content .= '</invoice>';
 		$content .= "\n\t".$_GET['content'];
-
-		file_put_contents('./invoice/'.clean($_GET['invoice_number']).'.xml',$content);
+		if (!file_exists('./invoice/'.date('Y'))) {
+			mkdir('./invoice/'.date('Y'));
+		}
+		file_put_contents('./invoice/'.date('Y').'/'.clean($_GET['invoice_number']).'.xml',$content);
 	} elseif($_GET['mode']=='new_client') {
 		$number_clients = get_last_element('client');
 		$number_clients++;

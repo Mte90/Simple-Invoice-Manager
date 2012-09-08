@@ -211,7 +211,7 @@ $(function() {
 				'note'		:jQuery('.invoice_note').html(),
 				'date'		:jQuery('.invoice_date').html(),
 				'tax'		:jQuery('#value_tax').html(),
-				'client_number'	:jQuery('body').data('client'),
+				'client_number'	:jQuery('body').data('client').replace('.xml',''),
 				'logo'		:jQuery('#logo').attr('src')
 			}).success(function() {jQuery('#save_inv_modal').modal('hide');});
 		});
