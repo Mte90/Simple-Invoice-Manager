@@ -31,7 +31,7 @@
 
 	/* Get client info */
 	function read_client_info($path) {
-		$xml = simplexml_load_file($path);
+		$xml = simplexml_load_file('./clients/'.$path .'.xml');
 		$client['name']		= $xml->name;
 		$client['vat']		= $xml->vat;
 		$client['address']	= $xml->address;
@@ -49,7 +49,8 @@
 		if ($handle = opendir('./clients/')) {
 			while (false !== ($entry = readdir($handle))) {
 				if ($entry != "." && $entry != ".." && $entry != "index.php") {
-					$client_list[] = array(read_client_info('./clients/'.$entry),str_replace('.xml','',$entry));
+					$entry = str_replace('.xml','',$entry);
+					$client_list[] = array(read_client_info($entry),$entry);
 				}
 			}
 			closedir($handle);
@@ -72,9 +73,12 @@
 	}
 
 	/* Get Array of Invoice */
-	/* TODO: divided for year */
-	function get_invoice(){
-		$folder = './invoice/'.date('Y');
+	function get_invoice($year='last'){
+		if ($year=='last') {
+			$folder = './invoice/'.date('Y');
+		}else{
+			$folder = './invoice/'.$year;
+		}
 		$files = scandir($folder, 1);
 		$files = array_diff($files, array("index.php",'..','.'));
 		$files = array_values($files);
@@ -86,6 +90,6 @@
 	/* TODO: return the invoice data not only the client data of the invoice */
 	function extract_invoice($file) {
 		$xml = simplexml_load_file('./invoice/'.date('Y').'/'.$file.'.xml');
-		return read_client_info('./clients/'.$xml->client .'.xml');
+		return read_client_info($xml->client);
 	}
 ?>
