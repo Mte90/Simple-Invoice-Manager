@@ -211,9 +211,34 @@ $(function() {
 				'note'		:jQuery('.invoice_note').html(),
 				'date'		:jQuery('.invoice_date').html(),
 				'tax'		:jQuery('#value_tax').html(),
-				'client_number'	:jQuery('body').data('client').replace('.xml',''),
+				'client_number'	:jQuery('body').data('client'),
 				'logo'		:jQuery('#logo').attr('src')
 			}).success(function() {jQuery('#save_inv_modal').modal('hide');});
+		});
+	});
+	//On save Draft Invoice
+	jQuery(document).on('click','.draft',function() {
+		var txt = '';
+		jQuery('table.inventory tbody tr').each(function(key, value) {
+			cells = jQuery(this).find('td span');
+			if(jQuery(cells[0]).html()!=""){
+				txt += "<product>\n\t\t<item>"+jQuery(cells[0]).html()+"</item>\n\t\t<rate>"+jQuery(cells[2]).html();
+				txt += "</rate>\n\t\t<quantity>"+jQuery(cells[3]).html()+"</quantity>\n\t</product>\n\t";
+			}
+		});
+		jQuery('#save_draft_modal').modal('show');
+		jQuery('#save_draft_okay').click(function() {
+			jQuery.get('save.php', {
+				'mode'		:'save_draft_invoice',
+				'invoice_number':jQuery('.invoice_n').html(),
+				'invoice_ticket':jQuery('.invoice_ticket').html(),
+				'content'	:txt,
+				'note'		:jQuery('.invoice_note').html(),
+				'date'		:jQuery('.invoice_date').html(),
+				'tax'		:jQuery('#value_tax').html(),
+				'client_number'	:jQuery('body').data('client'),
+				'logo'		:jQuery('#logo').attr('src')
+			}).success(function() {jQuery('#save_draft_modal').modal('hide');});
 		});
 	});
 	//On save Clients

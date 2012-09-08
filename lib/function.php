@@ -10,18 +10,22 @@
 			$folder = './clients';
 		} elseif($folder == "invoice") {
 			$folder = './invoice/'.date('Y');
+		} elseif($folder == "draft") {
+			$folder = './invoice/draft';
 		}
 		$files = scandir($folder, 1);
 		$files = array_diff($files, array("index.php",'..','.'));
 		$files = array_values($files);
-		if(empty($last_file)){
-			$last_file[0] = '1.xml';
-		}
-		if($ext==false){
-			$last_file = pathinfo($files[0]);
-			$last_file = $last_file['filename'];
-		} else {
-			$last_file = $files[0];
+		print_r($files);
+		if(empty($files)){
+			$last_file = '1';
+		}else {
+			if($ext==false){
+				$last_file = pathinfo($files[0]);
+				$last_file = $last_file['filename'];
+			} else {
+				$last_file = $files[0];
+			}
 		}
 		return $last_file;
 	}
@@ -46,7 +50,7 @@
 		if ($handle = opendir('./clients/')) {
 			while (false !== ($entry = readdir($handle))) {
 				if ($entry != "." && $entry != ".." && $entry != "index.php") {
-					$client_list[] = array(read_client_info('./clients/'.$entry),$entry);
+					$client_list[] = array(read_client_info('./clients/'.$entry),str_replace('.xml','',$entry));
 				}
 			}
 			closedir($handle);

@@ -1,7 +1,7 @@
  <?
 	include('./config.php');
 
-	$client_info = read_client_info('./clients/'.$_GET['file']);
+	$client_info = read_client_info('./clients/'.$_GET['file'].'.xml');
 
 	echo '<table><tr>';
 	echo '<th>'.$l10n['NAME'].'</th><td colspan="4">'.$client_info['name'].'</td></tr>';
