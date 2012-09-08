@@ -92,14 +92,13 @@
 	}
 
 	/* Return Invoice data */
-	/* TODO: return the invoice data not only the client data of the invoice */
 	function extract_invoice($file,$year='last') {
 		if ($year=='last') {
 			$folder = './invoice/'.date('Y');
 		}else{
 			$folder = './invoice/'.$year;
 		}
-		$xml = simplexml_load_file($folder.'/'.$file.'.xml');
-		return read_client_info($xml->client);
+		$xml = xml2array($folder.'/'.$file.'.xml');
+		return $xml;
 	}
 ?>

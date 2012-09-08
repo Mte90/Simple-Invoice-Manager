@@ -123,7 +123,8 @@
 		<div class="toolbar">
 			<img src="icons/save.png" class="save pointer" alt="" /><br>
 			<img src="icons/page_blank_add.png" class="new pointer" alt="" /><br>
-			<img src="icons/comment.png" class="draft pointer" alt="" />
+			<img src="icons/comment.png" class="draft pointer" alt="" /><br>
+			<img src="icons/search.png" class="search pointer" alt="" />
 		</div>
 		<div class="modal hide" id="save_inv_modal" role="dialog">
 			<div class="modal-header">
@@ -151,7 +152,7 @@
 				<a href="#" class="btn btn-primary" id="save_draft_okay"><? echo $l10n['SAVE']; ?></a>
 			</div>
 		</div>
-		<div class="modal" id="list_invoice" role="dialog">
+		<div class="modal hide" id="list_invoice" role="dialog">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				<h3><? echo $l10n['LIST_INVOICE']; ?></h3>
@@ -163,7 +164,8 @@
 					$invoice = get_invoice();
 					foreach ($invoice as $key) {
 						$inv_info = extract_invoice($key);
-						echo '<tr><td data-id="'.$key.'">'.$key.' - '.$inv_info['name'].'</td></tr>'."\n";
+						$client_info = read_client_info($inv_info['client']);
+						echo '<tr><td data-id="'.$key.'">'.$key.' - '.$inv_info['date'].' - '.$client_info['name'].'</td></tr>'."\n";
 					}
 				?>
 					</tbody>
