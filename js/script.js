@@ -306,4 +306,13 @@ $(function() {
 	jQuery(document).on('click','.new',function() {
 		location.reload();
 	});
+	jQuery(document).on('click','.search',function() {
+		jQuery('body').append('<div id="invoice_modal_list" class="modal hide" role="dialog"/>');
+		jQuery.get('list.php', {
+			'mode'		:'invoice_list'
+		}).success(function(data) {
+			jQuery('#invoice_modal_list').html(data);
+		});
+		jQuery('#invoice_modal_list').modal('show');
+	});
 });
