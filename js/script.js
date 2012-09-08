@@ -287,7 +287,6 @@ $(function() {
 		jQuery('#logos_modal_list').modal('show');
 	});
 	jQuery(document).on('click','.logos-list td',function(e){
-		console.log(jQuery(this).data('logo'));
 		jQuery('#logo').attr('src','logos/'+jQuery(this).data('logo'));
 		jQuery('#logos_modal_list').modal('hide');
 		e.stopPropagation();
@@ -314,5 +313,14 @@ $(function() {
 			jQuery('#invoice_modal_list').html(data);
 		});
 		jQuery('#invoice_modal_list').modal('show');
+	});
+	jQuery(document).on('click','.invoice-list td',function(e){
+		jQuery.get('invoice_data.php', {
+			'number':		jQuery('.invoice-list td').data('id')
+		}).success(function(data) {
+			/* TODO: parse json data */
+			jQuery('#invoice_modal_list').modal('hide');
+		});
+		e.stopPropagation();
 	});
 });
