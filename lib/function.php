@@ -4,6 +4,10 @@
 		return $string;
 	}
 
+	function xml2array($file){
+		return json_decode(json_encode((array) simplexml_load_file($file)), 1);
+	}
+
 	/* Get last element invoice or client */
 	function get_last_element($folder,$ext=false){
 		if($folder == "client") {
@@ -31,7 +35,7 @@
 
 	/* Get client info */
 	function read_client_info($path) {
-		$xml = simplexml_load_file('./clients/'.$path .'.xml');
+		/*$xml = simplexml_load_file('./clients/'.$path .'.xml');
 		$client['name']		= $xml->name;
 		$client['vat']		= $xml->vat;
 		$client['address']	= $xml->address;
@@ -39,7 +43,8 @@
 		$client['city']		= $xml->city;
 		$client['region']	= $xml->region;
 		$client['phone']	= $xml->phone;
-		$client['email']	= $xml->email;
+		$client['email']	= $xml->email;*/
+		$client = xml2array('./clients/'.$path .'.xml');
 		return $client;
 	}
 
@@ -88,8 +93,13 @@
 
 	/* Return Invoice data */
 	/* TODO: return the invoice data not only the client data of the invoice */
-	function extract_invoice($file) {
-		$xml = simplexml_load_file('./invoice/'.date('Y').'/'.$file.'.xml');
+	function extract_invoice($file,$year='last') {
+		if ($year=='last') {
+			$folder = './invoice/'.date('Y');
+		}else{
+			$folder = './invoice/'.$year;
+		}
+		$xml = simplexml_load_file($folder.'/'.$file.'.xml');
 		return read_client_info($xml->client);
 	}
 ?>
