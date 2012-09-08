@@ -10,9 +10,9 @@
 		$content .= '<date>'.clean($_GET['date']).'</date>'."\n\t\t";
 		$content .= '<tax>'.clean($_GET['tax']).'</tax>'."\n\t\t";
 		$content .= '<client>'.clean($_GET['client_number']).'</client>'."\n\t\t";
-		$content .= '<logo>'.clean($_GET['logo']).'</logo>'."\n\t";
-		$content .= '</invoice>';
+		$content .= '<logo>'.clean($_GET['logo']).'</logo>'."\n";
 		$content .= "\n\t".$_GET['content'];
+		$content .= '</invoice>';
 		if (!file_exists('./invoice/'.date('Y'))) {
 			mkdir('./invoice/'.date('Y'));
 			file_put_contents('./invoice.index.php','');
@@ -27,9 +27,9 @@
 		$content .= '<date>'.clean($_GET['date']).'</date>'."\n\t\t";
 		$content .= '<tax>'.clean($_GET['tax']).'</tax>'."\n\t\t";
 		$content .= '<client>'.clean($_GET['client_number']).'</client>'."\n\t\t";
-		$content .= '<logo>'.clean($_GET['logo']).'</logo>'."\n\t";
-		$content .= '</invoice>';
+		$content .= '<logo>'.clean($_GET['logo']).'</logo>'."\n";
 		$content .= "\n\t".$_GET['content'];
+		$content .= '</invoice>';
 		file_put_contents('./invoice/draft/'.get_last_element('draft').'.xml',$content);
 	} elseif($_GET['mode']=='new_client') {
 		$number_clients = get_last_element('client');

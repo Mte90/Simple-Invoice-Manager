@@ -26,6 +26,10 @@ $l10n['NUMBER_TICKET'] = "N. Ticket";
 $l10n['LIST_CLIENTS'] = "List of Clients";
 $l10n['ADD_CLIENTS'] = "Add new Client";
 $l10n['LIST_LOGOS'] = "List of Logos";
+$l10n['SAVE_DRAFT'] = "Save Draft";
+$l10n['LIST_INVOICE'] = "Invoice List";
+$l10n['LIST_DRAFT'] = "Draft List";
+$l10n['OPEN'] = "Open";
 
 // Clienti
 $l10n['NAME'] = "Name";

@@ -11,7 +11,7 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script src="js/script.js"></script>
 	</head>
-	<body>
+	<body class="modal-open">
 		<header>
 			<address>
 				<? echo $config['invoice_info']; ?>
@@ -149,6 +149,29 @@
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
 				<a href="#" class="btn btn-primary" id="save_draft_okay"><? echo $l10n['SAVE']; ?></a>
+			</div>
+		</div>
+		<div class="modal" id="list_invoice" role="dialog">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3><? echo $l10n['LIST_INVOICE']; ?></h3>
+			</div>
+			<div class="modal-body">
+				<table class="invoice-list table table-bordered table-hover">
+					<tbody>
+				<?
+					$invoice = get_invoice();
+					foreach ($invoice as $key) {
+						$inv_info = extract_invoice($key);
+						echo '<tr><td data-id="'.$key.'">'.$key.' - '.$inv_info['name'].'</td></tr>'."\n";
+					}
+				?>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
+				<a href="#" class="btn btn-primary" id="open_invoice"><? echo $l10n['OPEN']; ?></a>
 			</div>
 		</div>
 	</body>

@@ -70,4 +70,22 @@
 		}
 		return $logo_list;
 	}
+
+	/* Get Array of Invoice */
+	/* TODO: divided for year */
+	function get_invoice(){
+		$folder = './invoice/'.date('Y');
+		$files = scandir($folder, 1);
+		$files = array_diff($files, array("index.php",'..','.'));
+		$files = array_values($files);
+		$files = str_replace('.xml','',$files);
+		return $files;
+	}
+
+	/* Return Invoice data */
+	/* TODO: return the invoice data not only the client data of the invoice */
+	function extract_invoice($file) {
+		$xml = simplexml_load_file('./invoice/'.date('Y').'/'.$file.'.xml');
+		return read_client_info('./clients/'.$xml->client .'.xml');
+	}
 ?>
