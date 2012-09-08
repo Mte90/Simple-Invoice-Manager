@@ -21,7 +21,7 @@
 		$files = array_diff($files, array("index.php",'..','.'));
 		$files = array_values($files);
 		if(empty($files)){
-			$last_file = '1';
+			$last_file = '0';
 		}else {
 			if($ext==false){
 				$last_file = pathinfo($files[0]);
@@ -35,15 +35,6 @@
 
 	/* Get client info */
 	function read_client_info($path) {
-		/*$xml = simplexml_load_file('./clients/'.$path .'.xml');
-		$client['name']		= $xml->name;
-		$client['vat']		= $xml->vat;
-		$client['address']	= $xml->address;
-		$client['zipcode']	= $xml->zipcode;
-		$client['city']		= $xml->city;
-		$client['region']	= $xml->region;
-		$client['phone']	= $xml->phone;
-		$client['email']	= $xml->email;*/
 		$client = xml2array('./clients/'.$path .'.xml');
 		return $client;
 	}
