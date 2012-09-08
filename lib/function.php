@@ -16,7 +16,6 @@
 		$files = scandir($folder, 1);
 		$files = array_diff($files, array("index.php",'..','.'));
 		$files = array_values($files);
-		print_r($files);
 		if(empty($files)){
 			$last_file = '1';
 		}else {
