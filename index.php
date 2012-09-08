@@ -121,7 +121,8 @@
 			</div>
 		</aside>
 		<div class="toolbar">
-			<img src="icons/save.png" class="save pointer" alt="" />
+			<img src="icons/save.png" class="save pointer" alt="" /><br>
+			<img src="icons/page_blank_add.png" class="new pointer" alt="" />
 		</div>
 		<div class="modal hide" id="save_inv_modal" role="dialog">
 			<div class="modal-header">

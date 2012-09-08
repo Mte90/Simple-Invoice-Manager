@@ -278,4 +278,7 @@ $(function() {
 		jQuery('body').data('client',jQuery('.clients-list td').data('id'));
 		e.stopPropagation();
 	});
+	jQuery(document).on('click','.new',function() {
+		location.reload();
+	});
 });
