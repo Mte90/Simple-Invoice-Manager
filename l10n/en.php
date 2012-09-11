@@ -30,6 +30,11 @@ $l10n['SAVE_DRAFT'] = "Save Draft";
 $l10n['LIST_INVOICE'] = "Invoice List";
 $l10n['LIST_DRAFT'] = "Draft List";
 $l10n['OPEN'] = "Open";
+$l10n['SEARCH'] = "Search";
+$l10n['NEW_INVOICE'] = "New Invoice";
+$l10n['CHOOSE_LOGO'] = "Choose Logo";
+$l10n['CHOOSE_CLIENT'] = "Choose Client";
+$l10n['NEW_CLIENT'] = "New Client";
 
 // Clienti
 $l10n['NAME'] = "Name";

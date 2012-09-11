@@ -17,7 +17,7 @@ $l10n['TAX']="IVA";
 $l10n['TAXED_IMPORT'] = "Importo Tassato";
 $l10n['ORIGINAL_IMPORT'] = "Importo Senz'IVA";
 $l10n['RECEPTION'] = "Destinatario";
-$l10n['SAVE_INVOICE'] = "Slava la fattura";
+$l10n['SAVE_INVOICE'] = "Salva la fattura";
 $l10n['SURE_SAVE_INVOICE'] = "Sei sicuro di voler salvare la fattura?";
 $l10n['CLOSE'] = "Chiudi";
 $l10n['REJECT'] = "Annulla";
@@ -30,6 +30,11 @@ $l10n['SAVE_DRAFT'] = "Salva Bozza";
 $l10n['LIST_INVOICE'] = "Lista Fatture";
 $l10n['LIST_DRAFT'] = "Lista Bozze";
 $l10n['OPEN'] = "Apri";
+$l10n['SEARCH'] = "Cerca";
+$l10n['NEW_INVOICE'] = "Nuova Fattura";
+$l10n['CHOOSE_LOGO'] = "Scegli Logo";
+$l10n['CHOOSE_CLIENT'] = "Scegli Cliente";
+$l10n['NEW_CLIENT'] = "Nuova Cliente";
 
 // Clienti
 $l10n['NAME'] = "Nome";

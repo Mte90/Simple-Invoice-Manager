@@ -19,7 +19,7 @@
 			<span>
 			<? if($config['invoice_logo']){ ?>
 			<div class="toolbar_logo">
-				<img src="icons/folder_search.png" class="logos_search pointer" />
+				<img src="icons/folder_search.png" class="logos_search pointer" title="<? echo $l10n['CHOOSE_LOGO']; ?>" />
 			</div>
 			<? } ?>
 			<img alt="" src="logos/logo_default.png" id="logo"></span>
@@ -27,8 +27,8 @@
 		<article>
 			<h1><? echo $l10n['RECIPIENT'] ?></h1>
 			<div class="toolbar_clients">
-				<img src="icons/address_book_search.png" class="clients_search pointer" />
-				<img src="icons/address_book_add.png" class="client_add pointer" />
+				<img src="icons/address_book_search.png" class="clients_search pointer" title="<? echo $l10n['CHOOSE_CLIENT']; ?>" />
+				<img src="icons/address_book_add.png" class="client_add pointer" title="<? echo $l10n['NEW_CLIENT']; ?>" />
 			</div>
 			<address class="client_info">
 				<b><? echo $l10n['CHOOSE_CLIENT'] ?></b>
@@ -121,10 +121,10 @@
 			</div>
 		</aside>
 		<div class="toolbar">
-			<img src="icons/save.png" class="save pointer" alt="" /><br>
-			<img src="icons/comment.png" class="draft pointer" alt="" /><br>
-			<img src="icons/page_blank_add.png" class="new pointer" alt="" /><br>
-			<img src="icons/search.png" class="search pointer" alt="" />
+			<img src="icons/save.png" class="save pointer" alt="" title="<? echo $l10n['SAVE_INVOICE']; ?>" /><br>
+			<img src="icons/comment.png" class="draft pointer" alt="" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
+			<img src="icons/page_blank_add.png" class="new pointer" alt="" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
+			<img src="icons/search.png" class="search pointer" alt="" title="<? echo $l10n['NEW_INVOICE']; ?>" />
 		</div>
 		<div class="modal hide" id="save_inv_modal" role="dialog">
 			<div class="modal-header">
