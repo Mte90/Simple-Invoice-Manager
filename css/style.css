@@ -130,7 +130,7 @@ tr:hover .cut { opacity: 1; }
 	html { background: none; padding: 0; }
 	body { box-shadow: none; margin: 0; }
 	span:empty,.toolbar { display: none; }
-	.add, .cut { display: none; }
+	.add, .cut,.toolbar_logo,.toolbar_clients,.toolbar { display: none; }
 }
 
 @page { margin: 0;size: auto;}

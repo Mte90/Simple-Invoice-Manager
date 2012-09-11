@@ -311,6 +311,7 @@ $(function() {
 			'mode'		:'invoice_list'
 		}).success(function(data) {
 			jQuery('#invoice_modal_list').html(data);
+			jQuery('.tabs-invoice').tabs('show');
 		});
 		jQuery('#invoice_modal_list').modal('show');
 	});
@@ -333,11 +334,19 @@ $(function() {
 		jQuery('#logo').attr('src',json.logo);
 
 		list_product = jQuery('table.inventory tbody tr');
+		if (list_product.length<json.product.length) {
+			for (i=list_product.length; i<json.product.length; i++) {
+				document.querySelector('table.inventory tbody').appendChild(generateTableRow());
+			}
+			list_product = jQuery('table.inventory tbody tr');
+		}
+
 		$.each(json.product, function(i){
 			cells = jQuery(list_product[i]).find('td span');
 			jQuery(cells[0]).html(json.product[i].item);
 			jQuery(cells[2]).html(json.product[i].rate);
 			jQuery(cells[3]).html(json.product[i].quantity);
+
 		});
 
 		jQuery.get('client_info.php', {
@@ -345,5 +354,8 @@ $(function() {
 		}).success(function(data) {
 			jQuery('.client_info').html(data);
 		});
+
+		updateNumber();
+		updateInvoice();
 	}
 });
