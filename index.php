@@ -115,6 +115,10 @@
 			</table>
 		</article>
 		<aside>
+			<div class="toolbar_notes">
+				<img src="icons/web_layout_search.png" class="notes_search pointer" title="<? echo $l10n['CHOOSE_NOTES']; ?>" />
+				<img src="icons/web_layout_error_add.png" class="notes_add pointer" title="<? echo $l10n['NEW_NOTE']; ?>" />
+			</div>
 			<h1><span><? echo $l10n['NOTE'] ?></span></h1>
 			<div contenteditable class="invoice_note">
 				A finance charge of 1.5% will be made on unpaid balances after 30 days.
