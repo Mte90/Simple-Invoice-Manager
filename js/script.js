@@ -316,8 +316,19 @@ $(function() {
 		jQuery('#invoice_modal_list').modal('show');
 	});
 	jQuery(document).on('click','.invoice-list td',function(e){
+		choosen = this;
 		jQuery.getJSON('invoice_data.php', {
-			'number':		jQuery('.invoice-list td').data('id')
+			'number':		jQuery(choosen).data('id')
+		}).success(function(data) {
+			init_invoice(data);
+			jQuery('#invoice_modal_list').modal('hide');
+		});
+		e.stopPropagation();
+	});
+	jQuery(document).on('click','.draft-list td',function(e){
+		choosen = this;
+		jQuery.getJSON('invoice_data.php', {
+			'number':		jQuery(choosen).data('id')
 		}).success(function(data) {
 			init_invoice(data);
 			jQuery('#invoice_modal_list').modal('hide');

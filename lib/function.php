@@ -72,6 +72,8 @@
 	function get_invoice($year='last'){
 		if ($year=='last') {
 			$folder = './invoice/'.date('Y');
+		}elseif($year=='draft'){
+			$folder = './invoice/draft';
 		}else{
 			$folder = './invoice/'.$year;
 		}
@@ -86,6 +88,8 @@
 	function extract_invoice($file,$year='last') {
 		if ($year=='last') {
 			$folder = './invoice/'.date('Y');
+		}elseif($year=='draft'){
+			$folder = './invoice/draft';
 		}else{
 			$folder = './invoice/'.$year;
 		}
