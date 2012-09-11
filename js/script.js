@@ -315,12 +315,35 @@ $(function() {
 		jQuery('#invoice_modal_list').modal('show');
 	});
 	jQuery(document).on('click','.invoice-list td',function(e){
-		jQuery.get('invoice_data.php', {
+		jQuery.getJSON('invoice_data.php', {
 			'number':		jQuery('.invoice-list td').data('id')
 		}).success(function(data) {
-			/* TODO: parse json data */
+			init_invoice(data);
 			jQuery('#invoice_modal_list').modal('hide');
 		});
 		e.stopPropagation();
 	});
+
+	function init_invoice(json) {
+		jQuery('.invoice_n').html(json.number);
+		jQuery('.invoice_ticket').html(json.ticket);
+		jQuery('.invoice_note').html(json.note);
+		jQuery('.invoice_date').html(json.date);
+		jQuery('#value_tax').html(json.tax);
+		jQuery('#logo').attr('src',json.logo);
+
+		list_product = jQuery('table.inventory tbody tr');
+		$.each(json.product, function(i){
+			cells = jQuery(list_product[i]).find('td span');
+			jQuery(cells[0]).html(json.product[i].item);
+			jQuery(cells[2]).html(json.product[i].rate);
+			jQuery(cells[3]).html(json.product[i].quantity);
+		});
+
+		jQuery.get('client_info.php', {
+			'file':		json.client
+		}).success(function(data) {
+			jQuery('.client_info').html(data);
+		});
+	}
 });
