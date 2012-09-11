@@ -16,6 +16,8 @@
 			$folder = './invoice/'.date('Y');
 		} elseif($folder == "draft") {
 			$folder = './invoice/draft';
+		} elseif($folder == "note") {
+			$folder = './invoice/notes';
 		}
 		$files = scandir($folder, 1);
 		$files = array_diff($files, array("index.php",'..','.'));
@@ -95,5 +97,21 @@
 		}
 		$xml = xml2array($folder.'/'.$file.'.xml');
 		return $xml;
+	}
+
+	/* Get array of notes */
+	function notes_list() {
+		$client_list = Array();
+		if ($handle = opendir('./notes/')) {
+			while (false !== ($entry = readdir($handle))) {
+				if ($entry != "." && $entry != ".." && $entry != "index.php") {
+					$entry = str_replace('.xml','',$entry);
+					//TODO:support for notes
+					$notes_list[] = $entry;
+				}
+			}
+			closedir($handle);
+		}
+		return $notes_list;
 	}
 ?>

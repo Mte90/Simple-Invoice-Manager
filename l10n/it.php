@@ -35,8 +35,10 @@ $l10n['NEW_INVOICE'] = "Nuova Fattura";
 $l10n['CHOOSE_LOGO'] = "Scegli Logo";
 $l10n['CHOOSE_CLIENT'] = "Scegli Cliente";
 $l10n['NEW_CLIENT'] = "Nuova Cliente";
+$l10n['LIST_NOTES'] = "Lista Note";
 $l10n['CHOOSE_NOTES'] = "Scegli Note";
-$l10n['NEW_NOTE'] = "Nuova Nota";
+$l10n['ADD_NOTE'] = "Nuova Nota";
+$l10n['TEXT_NOTE'] = "Nuovo Testo";
 
 // Clienti
 $l10n['NAME'] = "Nome";

@@ -258,6 +258,17 @@ $(function() {
 				jQuery('#client_modal_add').modal('hide');
 			});
 	});
+	//On save Notes
+	jQuery(document).on('click','#save_note_okay',function() {
+		jQuery.get('save.php', {
+			'mode'		:'new_note',
+			'name'		:jQuery('#note_add_name').val(),
+			'text'		:jQuery('#note_add_note').val()
+		}).success(function() {
+			//jQuery('#note_add_form').each(function(){this.reset();});
+			jQuery('#note_modal_add').modal('hide');
+		});
+	});
 	//Search Client
 	jQuery('.clients_search').click(function() {
 		jQuery('body').append('<div id="clients_modal_list" class="modal hide" role="dialog"/>');
@@ -289,10 +300,41 @@ $(function() {
 		});
 		jQuery('#logos_modal_list').modal('show');
 	});
+	//Search Notes
+	jQuery('.notes_search').click(function() {
+		jQuery('body').append('<div id="notes_modal_list" class="modal hide" role="dialog"/>');
+		jQuery.get('list.php', {
+			'mode'		:'notes_list'
+		}).success(function(data) {
+			jQuery('#notes_modal_list').html(data);
+		});
+		jQuery('#notes_modal_list').modal('show');
+	});
+	//Add Note
+	jQuery('.notes_add').click(function() {
+		jQuery('body').append('<div id="note_modal_add" class="modal hide" role="dialog"/>');
+		jQuery.get('list.php', {
+			'mode'		:'notes_new'
+		}).success(function(data) {
+			jQuery('#note_modal_add').html(data);
+			jQuery('#note_modal_add').modal('show');
+		});
+	});
 	//Choose Logo
 	jQuery(document).on('click','.logos-list td',function(e){
 		jQuery('#logo').attr('src','logos/'+jQuery(this).data('logo'));
 		jQuery('#logos_modal_list').modal('hide');
+		e.stopPropagation();
+	});
+	//Choose Note
+	jQuery(document).on('click','.notes-list td',function(e){
+		/*choosen = this;
+		jQuery.getJSON('list.php', {
+			'mode':		jQuery(choosen).data('id')
+		}).success(function(data) {
+			jQuery('.invoice_note').html(json.text);
+			jQuery('#notes_modal_list').modal('hide');
+		});*/
 		e.stopPropagation();
 	});
 	//Select Client

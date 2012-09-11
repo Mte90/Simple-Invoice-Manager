@@ -123,24 +123,103 @@
 				<h3><? echo $l10n['LIST_INVOICE']; ?></h3>
 			</div>
 			<div class="modal-body">
-				<table class="invoice-list table table-bordered table-hover">
-					<tbody>
-					<?
-						$invoice = get_invoice();
-					foreach ($invoice as $key) {
-						$inv_info = extract_invoice($key);
-						$client_info = read_client_info($inv_info['client']);
-						echo '<tr><td data-id="'.$key.'">'.$key.' - '.$inv_info['date'].' - '.$client_info['name'].'</td></tr>'."\n";
-					}
-					?>
-					</tbody>
-				</table>
+			<ul class="nav nav-tabs tabs-invoice" data-tabs="tabs">
+				<li class="active"><a href="#invoice" data-toggle="tab"><? echo $l10n['LIST_INVOICE']; ?></a></li>
+				<li><a href="#draft" data-toggle="tab"><? echo $l10n['LIST_DRAFT']; ?></a></li>
+			</ul>
+
+			<div class="tab-content">
+				<div class="active tab-pane" id="invoice">
+					<table class="invoice-list table table-bordered table-hover">
+						<tbody>
+						<?
+							$invoice = get_invoice();
+							foreach ($invoice as $key) {
+								$inv_info = extract_invoice($key);
+								$client_info = read_client_info($inv_info['client']);
+								echo '<tr><td data-id="'.$key.'">'.$key.' - '.$inv_info['date'].' - '.$client_info['name'].'</td></tr>'."\n";
+							}
+						?>
+						</tbody>
+					</table>
+				</div>
+				<div class="tab-pane" id="draft">
+					<table class="draft-list table table-bordered table-hover">
+						<tbody>
+						<?
+							$draft = get_invoice('draft');
+							foreach ($draft as $key) {
+								$inv_info = extract_invoice($key,'draft');
+								$client_info = read_client_info($inv_info['client']);
+								echo '<tr><td data-id="'.$key.'">'.$key.' - '.$inv_info['date'].' - '.$client_info['name'].'</td></tr>'."\n";
+							}
+						?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
 				<a href="#" class="btn btn-primary" id="open_invoice"><? echo $l10n['OPEN']; ?></a>
 			</div>
 	<?
+}elseif($_GET['mode']=='notes_list') {
+
+?>
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3><? echo $l10n['LIST_NOTES']; ?></h3>
+	</div>
+	<div class="modal-body">
+		<table class="notes-list table table-bordered table-hover">
+			<tbody>
+				<?
+					$client = notes_list();
+					foreach ($notes as $key) {
+						echo '<tr><td data-id="'.$key[1].'">'.$key[0]['name'].'</td></tr>'."\n";
+					}
+				?>
+			</tbody>
+		</table>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
+	</div>
+<?
+
+}elseif($_GET['mode']=='notes_new') {
+
+?>
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3><? echo $l10n['ADD_NOTES']; ?></h3>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal" id="note_add_form">
+			<div class="control-group">
+				<label class="control-label" for="input-name-note"><? echo $l10n['NAME']; ?></label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="note_add_name" required>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input-note"><? echo $l10n['TEXT_NOTE']; ?></label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="note_add_note" required>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
+		<a href="#" class="btn btn-primary" id="save_note_okay"><? echo $l10n['SAVE']; ?></a>
+	</div>
+
+<?
+
 }
 
 ?>
