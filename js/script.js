@@ -258,6 +258,7 @@ $(function() {
 				jQuery('#client_modal_add').modal('hide');
 			});
 	});
+	//Search Client
 	jQuery('.clients_search').click(function() {
 		jQuery('body').append('<div id="clients_modal_list" class="modal hide" role="dialog"/>');
 		jQuery.get('list.php', {
@@ -267,6 +268,7 @@ $(function() {
 		});
 		jQuery('#clients_modal_list').modal('show');
 	});
+	//Add Client
 	jQuery('.client_add').click(function() {
 		jQuery('body').append('<div id="client_modal_add" class="modal hide" role="dialog"/>');
 		jQuery.get('list.php', {
@@ -277,6 +279,7 @@ $(function() {
 		jQuery('#client_modal_add').modal('show');
 		jQuery('#client_add_name').focus();
 	});
+	//Search Logo
 	jQuery('.logos_search').click(function() {
 		jQuery('body').append('<div id="logos_modal_list" class="modal hide" role="dialog"/>');
 		jQuery.get('list.php', {
@@ -286,11 +289,13 @@ $(function() {
 		});
 		jQuery('#logos_modal_list').modal('show');
 	});
+	//Choose Logo
 	jQuery(document).on('click','.logos-list td',function(e){
 		jQuery('#logo').attr('src','logos/'+jQuery(this).data('logo'));
 		jQuery('#logos_modal_list').modal('hide');
 		e.stopPropagation();
 	});
+	//Select Client
 	jQuery(document).on('click','.clients-list td',function(e){
 		var choose_client = jQuery(this);
 		jQuery.get('client_info.php', {
@@ -302,10 +307,12 @@ $(function() {
 		jQuery('body').data('client',jQuery('.clients-list td').data('id'));
 		e.stopPropagation();
 	});
-	jQuery(document).on('click','.new',function() {
+	//New Client
+	jQuery('.new').click(function() {
 		location.reload();
 	});
-	jQuery(document).on('click','.search',function() {
+	//Search Modal
+	jQuery('.search').click(function() {
 		jQuery('body').append('<div id="invoice_modal_list" class="modal hide" role="dialog"/>');
 		jQuery.get('list.php', {
 			'mode'		:'invoice_list'
@@ -315,6 +322,7 @@ $(function() {
 		});
 		jQuery('#invoice_modal_list').modal('show');
 	});
+	//Select Invoice
 	jQuery(document).on('click','.invoice-list td',function(e){
 		choosen = this;
 		jQuery.getJSON('invoice_data.php', {
@@ -325,6 +333,7 @@ $(function() {
 		});
 		e.stopPropagation();
 	});
+	//Select Draft
 	jQuery(document).on('click','.draft-list td',function(e){
 		choosen = this;
 		jQuery.getJSON('invoice_data.php', {
@@ -336,6 +345,7 @@ $(function() {
 		e.stopPropagation();
 	});
 
+	//Load Invoice/Draft
 	function init_invoice(json) {
 		jQuery('.invoice_n').html(json.number);
 		jQuery('.invoice_ticket').html(json.ticket);
