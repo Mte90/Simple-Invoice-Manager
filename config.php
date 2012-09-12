@@ -9,7 +9,7 @@
 					<p>101 E. Chapman Ave<br>Orange, CA 92866</p>
 					<p>(800) 555-1234</p>';
 	$config['invoice_logo'] =	true;
-	$config['login']['enable']=	false;
+	$config['login']['enable']=	true;
 	$config['login']['user']=	'admin';
 	$config['login']['pass']=	'pass';
 
@@ -17,17 +17,22 @@
 	include('./lib/function.php');
 	include('./l10n/'.$config['language'].'.php');
 
+	session_start();
+
 	if ($config['login']['enable']) {
-		session_start();
 		if(!(isset($_SESSION['logged']) && $_SESSION['logged'] == 'yes')) {
-	                echo $l10n['NEED_LOGIN'];
-	                echo '<form action="login.php" method="post">';
-	                echo '<input type="hidden" name="mode" value="login" />';
-	                echo $l10n['USER'].': <input type="text" name="user" /><br>';
-	                echo $l10n['PASSWORD'].': <input type="password" name="pass" />';
-	                echo '<input type="submit" value="Send it!">';
-	                echo '<form>';
-			exit;
+	                echo $l10n['NEED_LOGIN'].':'."\n";
+	                echo '<br><form action="login.php" method="post">'."\n";
+	                echo '<input type="hidden" name="mode" value="login" />'."\n";
+	                echo $l10n['USER'].': <input type="text" name="user" /><br>'."\n";
+	                echo $l10n['PASSWORD'].': <input type="password" name="pass" /><br>'."\n";
+	                echo '<input type="submit" value="'.$l10n['ENTER'].'">'."\n";
+	                echo '</form>';
+	                if ($login==false) {
+		                exit();
+		        }
 		}
 	}
+
+
 ?>
