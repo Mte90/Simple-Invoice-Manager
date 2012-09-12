@@ -44,6 +44,7 @@ $l10n['LOGOUT'] = "Logout";
 $l10n['USER'] = "User";
 $l10n['PASSWORD'] = "Password";
 $l10n['ENTER'] = "Enters";
+$l10n['NEED_LOGIN'] = "You must be logged";
 
 // Clienti
 $l10n['NAME'] = "Name";
