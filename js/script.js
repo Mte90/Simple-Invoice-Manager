@@ -191,6 +191,11 @@ window.addEventListener && document.addEventListener('DOMContentLoaded', onConte
 //Invoice Code
 
 $(function() {
+	/* Invoice */
+	//New Invoice
+	jQuery('.new').click(function() {
+			location.reload();
+		});
 	//On save Invoice
 	jQuery(document).on('click','.save',function() {
 		var txt = '';
@@ -216,6 +221,19 @@ $(function() {
 			}).success(function() {jQuery('#save_inv_modal').modal('hide');});
 		});
 	});
+	//Select Invoice
+	jQuery(document).on('click','.invoice-list td',function(e){
+		choosen = this;
+		jQuery.getJSON('invoice_data.php', {
+			'number':		jQuery(choosen).data('id')
+		}).success(function(data) {
+			init_invoice(data);
+			jQuery('#invoice_modal_list').modal('hide');
+		});
+		e.stopPropagation();
+	});
+
+	/* Draft */
 	//On save Draft Invoice
 	jQuery(document).on('click','.draft',function() {
 		var txt = '';
@@ -241,44 +259,19 @@ $(function() {
 			}).success(function() {jQuery('#save_draft_modal').modal('hide');});
 		});
 	});
-	//On save Clients
-	jQuery(document).on('click','#save_client_okay',function() {
-			jQuery.get('save.php', {
-				'mode'		:'new_client',
-				'name'		:jQuery('#client_add_name').val(),
-				'vat'		:jQuery('#client_add_vat').val(),
-				'address'	:jQuery('#client_add_address').val(),
-				'zipcode'	:jQuery('#client_add_zipcode').val(),
-				'city'		:jQuery('#client_add_city').val(),
-				'region'	:jQuery('#client_add_region').val(),
-				'phone'		:jQuery('#client_add_phone').val(),
-				'email'		:jQuery('#client_add_email').val()
-			}).success(function() {
-				//jQuery('#client_add_form').each(function(){this.reset();});
-				jQuery('#client_modal_add').modal('hide');
-			});
-	});
-	//On save Notes
-	jQuery(document).on('click','#save_note_okay',function() {
-		jQuery.get('save.php', {
-			'mode'		:'new_note',
-			'name'		:jQuery('#note_add_name').val(),
-			'text'		:jQuery('#note_add_note').val()
-		}).success(function() {
-			//jQuery('#note_add_form').each(function(){this.reset();});
-			jQuery('#note_modal_add').modal('hide');
-		});
-	});
-	//Search Client
-	jQuery('.clients_search').click(function() {
-		jQuery('body').append('<div id="clients_modal_list" class="modal hide" role="dialog"/>');
-		jQuery.get('list.php', {
-			'mode'		:'clients_list'
+	//Select Draft
+	jQuery(document).on('click','.draft-list td',function(e){
+		choosen = this;
+		jQuery.getJSON('invoice_data.php', {
+			'number':		jQuery(choosen).data('id')
 		}).success(function(data) {
-			jQuery('#clients_modal_list').html(data);
+			init_invoice(data);
+			jQuery('#invoice_modal_list').modal('hide');
 		});
-		jQuery('#clients_modal_list').modal('show');
+		e.stopPropagation();
 	});
+
+	/* Client */
 	//Add Client
 	jQuery('.client_add').click(function() {
 		jQuery('body').append('<div id="client_modal_add" class="modal hide" role="dialog"/>');
@@ -290,52 +283,32 @@ $(function() {
 		jQuery('#client_modal_add').modal('show');
 		jQuery('#client_add_name').focus();
 	});
-	//Search Logo
-	jQuery('.logos_search').click(function() {
-		jQuery('body').append('<div id="logos_modal_list" class="modal hide" role="dialog"/>');
-		jQuery.get('list.php', {
-			'mode'		:'logo_list'
-		}).success(function(data) {
-			jQuery('#logos_modal_list').html(data);
-		});
-		jQuery('#logos_modal_list').modal('show');
-	});
-	//Search Notes
-	jQuery('.notes_search').click(function() {
-		jQuery('body').append('<div id="notes_modal_list" class="modal hide" role="dialog"/>');
-		jQuery.get('list.php', {
-			'mode'		:'notes_list'
-		}).success(function(data) {
-			jQuery('#notes_modal_list').html(data);
-		});
-		jQuery('#notes_modal_list').modal('show');
-	});
-	//Add Note
-	jQuery('.notes_add').click(function() {
-		jQuery('body').append('<div id="note_modal_add" class="modal hide" role="dialog"/>');
-		jQuery.get('list.php', {
-			'mode'		:'notes_new'
-		}).success(function(data) {
-			jQuery('#note_modal_add').html(data);
-			jQuery('#note_modal_add').modal('show');
+	//On save Clients
+	jQuery(document).on('click','#save_client_okay',function() {
+		jQuery.get('save.php', {
+			'mode'		:'new_client',
+			'name'		:jQuery('#client_add_name').val(),
+			'vat'		:jQuery('#client_add_vat').val(),
+			'address'	:jQuery('#client_add_address').val(),
+			'zipcode'	:jQuery('#client_add_zipcode').val(),
+			'city'		:jQuery('#client_add_city').val(),
+			'region'	:jQuery('#client_add_region').val(),
+			'phone'		:jQuery('#client_add_phone').val(),
+			'email'		:jQuery('#client_add_email').val()
+		}).success(function() {
+			jQuery('#client_add_form').each(function(){this.reset();});
+			jQuery('#client_modal_add').modal('hide');
 		});
 	});
-	//Choose Logo
-	jQuery(document).on('click','.logos-list td',function(e){
-		jQuery('#logo').attr('src','logos/'+jQuery(this).data('logo'));
-		jQuery('#logos_modal_list').modal('hide');
-		e.stopPropagation();
-	});
-	//Choose Note
-	jQuery(document).on('click','.notes-list td',function(e){
-		/*choosen = this;
-		jQuery.getJSON('list.php', {
-			'mode':		jQuery(choosen).data('id')
+	//Search Client
+	jQuery('.clients_search').click(function() {
+		jQuery('body').append('<div id="clients_modal_list" class="modal hide" role="dialog"/>');
+		jQuery.get('list.php', {
+			'mode'		:'clients_list'
 		}).success(function(data) {
-			jQuery('.invoice_note').html(json.text);
-			jQuery('#notes_modal_list').modal('hide');
-		});*/
-		e.stopPropagation();
+			jQuery('#clients_modal_list').html(data);
+		});
+		jQuery('#clients_modal_list').modal('show');
 	});
 	//Select Client
 	jQuery(document).on('click','.clients-list td',function(e){
@@ -349,11 +322,70 @@ $(function() {
 		jQuery('body').data('client',jQuery('.clients-list td').data('id'));
 		e.stopPropagation();
 	});
-	//New Client
-	jQuery('.new').click(function() {
-		location.reload();
+
+	/* Note */
+	//Add Note
+	jQuery('.notes_add').click(function() {
+		jQuery('body').append('<div id="note_modal_add" class="modal hide" role="dialog"/>');
+		jQuery.get('list.php', {
+			'mode'		:'notes_new'
+		}).success(function(data) {
+			jQuery('#note_modal_add').html(data);
+			jQuery('#note_modal_add').modal('show');
+		});
 	});
-	//Search Modal
+	//On save Notes
+	jQuery(document).on('click','#save_note_okay',function() {
+		jQuery.get('save.php', {
+			'mode'		:'new_note',
+	     'name'		:jQuery('#note_add_name').val(),
+			    'text'		:jQuery('#note_add_note').val()
+		}).success(function() {
+			//jQuery('#note_add_form').each(function(){this.reset();});
+						jQuery('#note_modal_add').modal('hide');
+		});
+	});
+	//Search Notes
+	jQuery('.notes_search').click(function() {
+		jQuery('body').append('<div id="notes_modal_list" class="modal hide" role="dialog"/>');
+		jQuery.get('list.php', {
+			'mode'		:'notes_list'
+		}).success(function(data) {
+			jQuery('#notes_modal_list').html(data);
+		});
+		jQuery('#notes_modal_list').modal('show');
+	});
+	//Select Note
+	jQuery(document).on('click','.notes-list td',function(e){
+		choosen = this;
+		jQuery.getJSON('draft_data.php', {
+			'number':		jQuery(choosen).data('id')
+		}).success(function(data) {
+			jQuery('.invoice_note').html(data.text);
+			jQuery('#notes_modal_list').modal('hide');
+		});
+		e.stopPropagation();
+	});
+
+	/* Logo */
+	//Search Logo
+	jQuery('.logos_search').click(function() {
+		jQuery('body').append('<div id="logos_modal_list" class="modal hide" role="dialog"/>');
+		jQuery.get('list.php', {
+			'mode'		:'logo_list'
+		}).success(function(data) {
+			jQuery('#logos_modal_list').html(data);
+		});
+		jQuery('#logos_modal_list').modal('show');
+	});
+	//Select Logo
+	jQuery(document).on('click','.logos-list td',function(e){
+		jQuery('#logo').attr('src','logos/'+jQuery(this).data('logo'));
+		jQuery('#logos_modal_list').modal('hide');
+		e.stopPropagation();
+	});
+
+	//Search Draft/Invoice Modal
 	jQuery('.search').click(function() {
 		jQuery('body').append('<div id="invoice_modal_list" class="modal hide" role="dialog"/>');
 		jQuery.get('list.php', {
@@ -363,28 +395,6 @@ $(function() {
 			jQuery('.tabs-invoice').tabs('show');
 		});
 		jQuery('#invoice_modal_list').modal('show');
-	});
-	//Select Invoice
-	jQuery(document).on('click','.invoice-list td',function(e){
-		choosen = this;
-		jQuery.getJSON('invoice_data.php', {
-			'number':		jQuery(choosen).data('id')
-		}).success(function(data) {
-			init_invoice(data);
-			jQuery('#invoice_modal_list').modal('hide');
-		});
-		e.stopPropagation();
-	});
-	//Select Draft
-	jQuery(document).on('click','.draft-list td',function(e){
-		choosen = this;
-		jQuery.getJSON('invoice_data.php', {
-			'number':		jQuery(choosen).data('id')
-		}).success(function(data) {
-			init_invoice(data);
-			jQuery('#invoice_modal_list').modal('hide');
-		});
-		e.stopPropagation();
 	});
 
 	//Load Invoice/Draft

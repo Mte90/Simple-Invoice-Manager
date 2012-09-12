@@ -41,6 +41,12 @@
 		return $client;
 	}
 
+	/* Get note info */
+	function read_note_info($path) {
+		$note = xml2array('./notes/'.$path .'.xml');
+		return $note;
+	}
+
 	/* Get array of client */
 	function client_list() {
 		$client_list = Array();
@@ -106,8 +112,7 @@
 			while (false !== ($entry = readdir($handle))) {
 				if ($entry != "." && $entry != ".." && $entry != "index.php") {
 					$entry = str_replace('.xml','',$entry);
-					//TODO:support for notes
-					$notes_list[] = $entry;
+					$notes_list[] = array(read_note_info($entry),$entry);
 				}
 			}
 			closedir($handle);

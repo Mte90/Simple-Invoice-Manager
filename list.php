@@ -176,7 +176,7 @@
 		<table class="notes-list table table-bordered table-hover">
 			<tbody>
 				<?
-					$client = notes_list();
+					$notes = notes_list();
 					foreach ($notes as $key) {
 						echo '<tr><td data-id="'.$key[1].'">'.$key[0]['name'].'</td></tr>'."\n";
 					}
