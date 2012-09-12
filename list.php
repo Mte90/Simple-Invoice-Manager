@@ -204,12 +204,8 @@
 				<div class="controls">
 					<input type="text" class="input-xlarge" id="note_add_name" required>
 				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="input-note"><? echo $l10n['TEXT_NOTE']; ?></label>
-				<div class="controls">
-					<input type="text" class="input-xlarge" id="note_add_note" required>
-				</div>
+				<br>
+				<div class="note_preview well"></div>
 			</div>
 		</form>
 	</div>

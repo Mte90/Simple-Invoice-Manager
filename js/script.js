@@ -331,6 +331,7 @@ $(function() {
 			'mode'		:'notes_new'
 		}).success(function(data) {
 			jQuery('#note_modal_add').html(data);
+			jQuery('.note_preview').html(jQuery('.invoice_note').html());
 			jQuery('#note_modal_add').modal('show');
 		});
 	});
@@ -338,11 +339,10 @@ $(function() {
 	jQuery(document).on('click','#save_note_okay',function() {
 		jQuery.get('save.php', {
 			'mode'		:'new_note',
-	     'name'		:jQuery('#note_add_name').val(),
-			    'text'		:jQuery('#note_add_note').val()
+			'name'		:jQuery('#note_add_name').val(),
+			'text'		:jQuery('.invoice_note').val()
 		}).success(function() {
-			//jQuery('#note_add_form').each(function(){this.reset();});
-						jQuery('#note_modal_add').modal('hide');
+			jQuery('#note_modal_add').modal('hide');
 		});
 	});
 	//Search Notes
