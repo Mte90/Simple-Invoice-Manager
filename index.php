@@ -128,7 +128,10 @@
 			<img src="icons/save.png" class="save pointer" alt="" title="<? echo $l10n['SAVE_INVOICE']; ?>" /><br>
 			<img src="icons/comment.png" class="draft pointer" alt="" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
 			<img src="icons/page_blank_add.png" class="new pointer" alt="" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
-			<img src="icons/search.png" class="search pointer" alt="" title="<? echo $l10n['NEW_INVOICE']; ?>" />
+			<img src="icons/search.png" class="search pointer" alt="" title="<? echo $l10n['NEW_INVOICE']; ?>" /><br><br>
+			<? if($config['login']['enable']){ ?>
+			<img src="icons/user_close.png" class="logout pointer" alt="" title="<? echo $l10n['LOGOUT']; ?>" />
+			<? } ?>
 		</div>
 		<div class="modal hide" id="save_inv_modal" role="dialog">
 			<div class="modal-header">

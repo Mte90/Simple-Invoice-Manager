@@ -39,6 +39,11 @@ $l10n['LIST_NOTES'] = "List Notes";
 $l10n['CHOOSE_NOTES'] = "Choose Notes";
 $l10n['ADD_NOTES'] = "New Note";
 $l10n['TEXT_NOTE'] = "New Text";
+$l10n['LOGIN'] = "Login";
+$l10n['LOGOUT'] = "Logout";
+$l10n['USER'] = "User";
+$l10n['PASSWORD'] = "Password";
+$l10n['ENTER'] = "Enters";
 
 // Clienti
 $l10n['NAME'] = "Name";
