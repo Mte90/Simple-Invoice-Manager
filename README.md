@@ -5,12 +5,16 @@ Invoice-Manager
 
 A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 
+#Features
+- Draft Support
+- Notes Support
+- Login Support
+
 #Roadmap
 - Export in PDF
 - Sent PDF a client email
 - More check for insert data
 - More alert 
-- Login
 
 #Refer
 Based on GUI http://www.jonathantneal.com/examples/invoice/
