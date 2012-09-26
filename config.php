@@ -9,9 +9,12 @@
 					<p>101 E. Chapman Ave<br>Orange, CA 92866</p>
 					<p>(800) 555-1234</p>';
 	$config['invoice_logo'] =	true;
-	$config['login']['enable']=	true;
+	$config['login']['enable']=	false;
 	$config['login']['user']=	'admin';
 	$config['login']['pass']=	'pass';
+
+	$config['pdf']		=	true;
+	$config['pdf']['wp']	=	true;
 
 	/**** NOT EDIT THIS CODE!!!!! ****/
 	include('./lib/function.php');

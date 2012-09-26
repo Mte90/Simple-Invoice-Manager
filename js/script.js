@@ -397,6 +397,10 @@ $(function() {
 		jQuery('#invoice_modal_list').modal('show');
 	});
 
+	//PDF
+	jQuery('.pdf').click(function() {
+		window.open('./pdf.php?inv='+jQuery('.invoice_n').html(), '_blank');
+	});
 	//Load Invoice/Draft
 	function init_invoice(json) {
 		jQuery('.invoice_n').html(json.number);

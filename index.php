@@ -9,7 +9,7 @@
 		<link rel="license" href="http://www.opensource.org/licenses/mit-license/">
 		<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script src="js/script.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 	<body class="modal-open">
 		<header>
@@ -69,10 +69,10 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><a class="cut">-</a><span contenteditable>Front End Consultation</span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable>150.00</span></td>
-						<td><span contenteditable>4</span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span>600.00</span></td>
+						<td><a class="cut">-</a><span contenteditable></span></td>
+						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable></span></td>
+						<td><span contenteditable>0</span></td>
+						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
@@ -106,11 +106,11 @@
 				</tr>
 				<tr>
 					<th><span><? echo $l10n['ORIGINAL_IMPORT'] ?></span></th>
-					<td><span data-prefix><? echo $config['prefix']; ?></span><span>600.00</span></td>
+					<td><span data-prefix><? echo $config['prefix']; ?></span><span>0.00</span></td>
 				</tr>
 				<tr>
 					<th><span><? echo $l10n['TOTAL'] ?></span></th>
-					<td><span data-prefix><? echo $config['prefix']; ?></span><span>600.00</span></td>
+					<td><span data-prefix><? echo $config['prefix']; ?></span><span>0.00</span></td>
 				</tr>
 			</table>
 		</article>
@@ -121,14 +121,17 @@
 			</div>
 			<h1><span><? echo $l10n['NOTE'] ?></span></h1>
 			<div contenteditable class="invoice_note">
-				A finance charge of 1.5% will be made on unpaid balances after 30 days.
+
 			</div>
 		</aside>
 		<div class="toolbar">
 			<img src="icons/save.png" class="save pointer" alt="" title="<? echo $l10n['SAVE_INVOICE']; ?>" /><br>
 			<img src="icons/comment.png" class="draft pointer" alt="" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
 			<img src="icons/page_blank_add.png" class="new pointer" alt="" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
-			<img src="icons/search.png" class="search pointer" alt="" title="<? echo $l10n['NEW_INVOICE']; ?>" /><br><br>
+			<img src="icons/search.png" class="search pointer" alt="" title="<? echo $l10n['NEW_INVOICE']; ?>" /><br>
+			<? if($config['pdf']){ ?>
+			<img src="icons/pdf.png" class="pdf pointer" alt="" title="<? echo $l10n['NEW_INVOICE']; ?>" /><br><br>
+			<? } ?>
 			<? if($config['login']['enable']){ ?>
 			<img src="icons/user_close.png" class="logout pointer" alt="" title="<? echo $l10n['LOGOUT']; ?>" />
 			<? } ?>
