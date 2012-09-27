@@ -95,13 +95,15 @@
 	/* Return Invoice data */
 	function extract_invoice($file,$year='last') {
 		if ($year=='last') {
-			$folder = './invoice/'.date('Y');
+			$year = get_last_year();
+			$folder = './invoice/'.$year;
 		}elseif($year=='draft'){
 			$folder = './invoice/draft';
 		}else{
 			$folder = './invoice/'.$year;
 		}
 		$xml = xml2array($folder.'/'.$file.'.xml');
+		$xml['year']=$year;
 		return $xml;
 	}
 
@@ -118,5 +120,9 @@
 			closedir($handle);
 		}
 		return $notes_list;
+	}
+
+	function get_last_year(){
+		return date('Y');
 	}
 ?>

@@ -137,7 +137,7 @@
 							foreach ($invoice as $key) {
 								$inv_info = extract_invoice($key);
 								$client_info = read_client_info($inv_info['client']);
-								echo '<tr><td data-id="'.$key.'">'.$key.' - '.$inv_info['date'].' - '.$client_info['name'].'</td></tr>'."\n";
+								echo '<tr><td data-id="'.$key.'" data-year="'.$inv_info['year'].'">'.$key.' - '.$inv_info['date'].' - '.$client_info['name'].'</td></tr>'."\n";
 							}
 						?>
 						</tbody>

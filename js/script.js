@@ -225,7 +225,8 @@ $(function() {
 	jQuery(document).on('click','.invoice-list td',function(e){
 		choosen = this;
 		jQuery.getJSON('invoice_data.php', {
-			'number':		jQuery(choosen).data('id')
+			'number':	jQuery(choosen).data('id'),
+			'year'  :	jQuery(choosen).data('year')
 		}).success(function(data) {
 			init_invoice(data);
 			jQuery('#invoice_modal_list').modal('hide');
@@ -399,7 +400,7 @@ $(function() {
 
 	//PDF
 	jQuery('.pdf').click(function() {
-		window.open('./pdf.php?inv='+jQuery('.invoice_n').html(), '_blank');
+		window.open('./pdf.php?inv='+jQuery('.invoice_n').html()+'&year='+jQuery('body').data('year'), '_blank');
 	});
 	//Load Invoice/Draft
 	function init_invoice(json) {
@@ -409,6 +410,7 @@ $(function() {
 		jQuery('.invoice_date').html(json.date);
 		jQuery('#value_tax').html(json.tax);
 		jQuery('#logo').attr('src',json.logo);
+		jQuery('body').data('year',json.year);
 
 		list_product = jQuery('table.inventory tbody tr');
 		if (list_product.length<json.product.length) {
@@ -423,7 +425,6 @@ $(function() {
 			jQuery(cells[0]).html(json.product[i].item);
 			jQuery(cells[2]).html(json.product[i].rate);
 			jQuery(cells[3]).html(json.product[i].quantity);
-
 		});
 
 		jQuery.get('client_info.php', {
