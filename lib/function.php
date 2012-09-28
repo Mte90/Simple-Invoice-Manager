@@ -125,4 +125,9 @@
 	function get_last_year(){
 		return date('Y');
 	}
+
+	function percent($num_amount, $num_total) {
+		$count = ($num_amount*$num_total) / 100;
+		return $count;
+	}
 ?>
