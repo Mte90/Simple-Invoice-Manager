@@ -27,7 +27,18 @@
 		<article>
 			<h1><? echo $l10n['RECIPIENT'] ?></h1>
 			<address class="client_info">
-				<b><? echo $l10n['CHOOSE_CLIENT'] ?></b>
+				<?
+					$client_info = read_client_info($invoice_data['client']);
+					echo '<table><tr>';
+					echo '<th>'.$l10n['NAME'].'</th><td colspan="4">'.$client_info['name'].'</td></tr>';
+					echo '<th>'.$l10n['VAT'].'</th><td colspan="2">'.$client_info['vat'].'</td>';
+					echo '<th>'.$l10n['CITY'].'</th><td>'.$client_info['city'].'</td></tr>';
+					echo '<tr><th>'.$l10n['ADDRESS'].'</th><td colspan="2">'.$client_info['address'].'</td>';
+					echo '<th>'.$l10n['ZIP_CODE'].'</th><td>'.$client_info['zipcode'].'</td></tr>';
+					echo '<th>'.$l10n['REGION'].'</th><td>'.$client_info['region'].'</td>';
+					echo '<th>'.$l10n['PHONE_FAX'].'</th><td colspan="2">'.$client_info['phone'].'</td></tr>';
+					echo '</tr></table>';
+				?>
 			</address>
 			<table class="meta">
 				<tr>
