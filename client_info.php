@@ -5,7 +5,7 @@
 
 	echo '<table><tr>';
 	echo '<th>'.$l10n['NAME'].'</th><td colspan="4">'.$client_info['name'].'</td></tr>';
-	echo '<th>'.$l10n['VAT'].'</th><td colspan="2">'.$client_info['vat'].'</td>';
+	echo '<tr><th>'.$l10n['VAT'].'</th><td colspan="2">'.$client_info['vat'].'</td>';
 	echo '<th>'.$l10n['CITY'].'</th><td>'.$client_info['city'].'</td></tr>';
 	echo '<tr><th>'.$l10n['ADDRESS'].'</th><td colspan="2">'.$client_info['address'].'</td>';
 	echo '<th>'.$l10n['ZIP_CODE'].'</th><td>'.$client_info['zipcode'].'</td></tr>';
