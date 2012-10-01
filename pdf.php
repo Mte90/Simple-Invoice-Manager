@@ -14,15 +14,17 @@ $content = '
 	<head>
 		<meta charset="utf-8">
 		<title>'.$l10n['TITLE'].'</title>
-		<style>'.file_get_contents('./css/bootstrap.min.css').'
+		<style type="text/css">'
+		.file_get_contents('./css/bootstrap.min.css').'
 		</style>
-		<style>'.file_get_contents('./css/style.css').'
+		<style type="text/css">'
+		.file_get_contents('./css/style.css').'
 		</style>
 	</head>
 	<body>
 		<header>
 			<address>'.$config['invoice_info'].'</address>
-			<span><img alt="" src="'.$invoice_data['logo'].'" id="logo"></span>
+			<span><img alt="" src="../'.$invoice_data['logo'].'" id="logo"></span>
 		</header>
 		<article>
 			<h1>'.$l10n['RECIPIENT'].'</h1>
@@ -106,5 +108,6 @@ $content = '
 	</body>
 </html>';
 
-echo $content;
+file_put_contents('./tmp/pdf.htm',$content);
+exec('weasyprint ./tmp/pdf.htm ./tmp/invoice.pdf -s ./css/bootstrap.min.css -s ./css/style.css');
 ?>
