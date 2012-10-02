@@ -1,19 +1,21 @@
  Simple Invoice Manager
- 
+
  Requirement:
  PHP 5.x
  Nothing also requirement it's simple app :-P
- 
+
  Install:
  Because use xml file for store data you need to give permission 775 on this folder:
- 
+
  clients,invoice,notes
- 
+
  chmod -R 775 ./clients
  chmod -R 775 ./notes
  chmod -R 775 ./invoice
- 
+
  In logos folder you need to place the logo file that you need.
  In config file you set the info of your shop/agency/etc and other options.
- 
- 
+
+ Network print
+ Check that www-data user have the permission for access on the printer lese not working!
+
