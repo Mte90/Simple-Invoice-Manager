@@ -404,7 +404,7 @@ $(function() {
 	});
 	//Print
 	jQuery('.print').click(function() {
-		window.open('./print.php?inv='+jQuery('.invoice_n').html()+'&year='+jQuery('body').data('year'), '_blank');
+		window.open('./print.php?inv_='+jQuery('.invoice_n').html()+'&year_='+jQuery('body').data('year'), '_blank');
 	});
 
 	//Load Invoice/Draft

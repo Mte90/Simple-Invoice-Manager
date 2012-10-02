@@ -1,4 +1,6 @@
 <?
+require_once('./config.php');
+
 //WeasyPrint support
 
 $filename = 'invoice.pdf';
