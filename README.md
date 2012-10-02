@@ -10,12 +10,18 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 - Notes Support
 - Login Support
 - Export in PDF
+- Print Client (Browser with pdf reader) or Print by default printer on server
 
 #Roadmap
-- Networking Printing
+
 - Sent PDF a client email
 - More check for insert data
 - More alert
+- Better Documentation
+
+#PDF Rendering Support
+- Weasyprint (http://weasyprint.org/)
+- PDFCrowd ?
 
 #Refer
 Based on GUI http://www.jonathantneal.com/examples/invoice/
