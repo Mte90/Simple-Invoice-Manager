@@ -4,8 +4,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title><? echo $l10n['TITLE']; ?></title>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/style.css">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/style.css">
 		<link rel="license" href="http://www.opensource.org/licenses/mit-license/">
 		<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -130,8 +130,9 @@
 			<img src="icons/page_blank_add.png" class="new pointer" alt="" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
 			<img src="icons/search.png" class="search pointer" alt="" title="<? echo $l10n['NEW_INVOICE']; ?>" /><br>
 			<? if($config['pdf']){ ?>
-			<img src="icons/pdf.png" class="pdf pointer" alt="" title="<? echo $l10n['NEW_INVOICE']; ?>" /><br><br>
+			<img src="icons/pdf.png" class="pdf pointer" alt="" title="<? echo $l10n['EXPORT_PDF']; ?>" /><br>
 			<? } ?>
+			<img src="icons/newspaper.png" class="print pointer" alt="" title="<? echo $l10n['PRINT']; ?>" /><br><br>
 			<? if($config['login']['enable']){ ?>
 			<img src="icons/user_close.png" class="logout pointer" alt="" title="<? echo $l10n['LOGOUT']; ?>" />
 			<? } ?>

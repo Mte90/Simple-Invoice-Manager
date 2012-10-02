@@ -45,6 +45,8 @@ $l10n['USER'] = "User";
 $l10n['PASSWORD'] = "Password";
 $l10n['ENTER'] = "Enters";
 $l10n['NEED_LOGIN'] = "You must be logged";
+$l10n['EXPORT_PDF'] = "Export in PDF";
+$l10n['PRINT'] = "Print";
 
 // Clienti
 $l10n['NAME'] = "Name";
