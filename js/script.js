@@ -402,6 +402,11 @@ $(function() {
 	jQuery('.pdf').click(function() {
 		window.open('./pdf.php?inv='+jQuery('.invoice_n').html()+'&year='+jQuery('body').data('year'), '_blank');
 	});
+	//Print
+	jQuery('.print').click(function() {
+		window.open('./print.php?inv='+jQuery('.invoice_n').html()+'&year='+jQuery('body').data('year'), '_blank');
+	});
+
 	//Load Invoice/Draft
 	function init_invoice(json) {
 		jQuery('.invoice_n').html(json.number);
