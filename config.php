@@ -17,8 +17,8 @@
 	$config['pdf']['enable']	=	true;
 	$config['pdf']['wp']		=	true;
 
-	$config['print']['client']	=	true;
-	$config['print']['networking']	=	false;
+	$config['print']['client']	=	false;
+	$config['print']['network']	=	true;
 
 	/**** NOT EDIT THIS CODE!!!!! ****/
 	include('./lib/function.php');

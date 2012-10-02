@@ -9,12 +9,13 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 - Draft Support
 - Notes Support
 - Login Support
+- Export in PDF
 
 #Roadmap
-- Export in PDF
+- Networking Printing
 - Sent PDF a client email
 - More check for insert data
-- More alert 
+- More alert
 
 #Refer
 Based on GUI http://www.jonathantneal.com/examples/invoice/

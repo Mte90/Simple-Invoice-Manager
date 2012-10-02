@@ -16,7 +16,7 @@ if ($config['print']['client']==true) {
 </script>
 
 <?
-}elseif($config['print']['networking']) {
-
+}elseif($config['print']['network']==true) {
+	exec('lpr -o fit-to-page ./tmp/invoice.pdf');
 }
 ?>
