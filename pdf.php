@@ -109,5 +109,17 @@ $content = '
 </html>';
 
 file_put_contents('./tmp/pdf.htm',$content);
-exec('weasyprint ./tmp/pdf.htm ./tmp/invoice.pdf -s ./css/bootstrap.min.css -s ./css/style.css');
+
+if($config['pdf']['wp']==true) {
+	include('./lib/weasyprint.php');
+}
+
+header('Content-type: application/pdf');
+header('Content-Disposition: inline; filename="' . $filename . '"');
+header('Content-Transfer-Encoding: binary');
+header('Content-Length: ' . filesize('./tmp/'.$filename));
+header('Accept-Ranges: bytes');
+
+@readfile('./tmp/'.$filename);
+
 ?>

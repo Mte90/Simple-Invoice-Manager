@@ -13,7 +13,7 @@
 	$config['login']['user']=	'admin';
 	$config['login']['pass']=	'pass';
 
-	$config['pdf']		=	true;
+	$config['pdf']['enable']	=	true;
 	$config['pdf']['wp']	=	true;
 
 	/**** NOT EDIT THIS CODE!!!!! ****/
