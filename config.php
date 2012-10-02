@@ -15,7 +15,10 @@
 	$config['login']['pass']	=	'pass';
 
 	$config['pdf']['enable']	=	true;
-	$config['pdf']['wp']		=	true;
+	$config['pdf']['wp']		=	false;
+	$config['pdf']['pdfcrowd']	=	true;
+		$config['pdfcrowd']['user']=	'';
+		$config['pdfcrowd']['key']=	'';
 
 	$config['print']['client']	=	false;
 	$config['print']['network']	=	true;

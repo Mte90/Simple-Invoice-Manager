@@ -130,4 +130,15 @@
 		$count = ($num_amount*$num_total) / 100;
 		return $count;
 	}
+
+	function header_pdf($filename){
+		header('Content-type: application/pdf');
+		header('Content-Disposition: inline; filename="' . $filename . '"');
+		header('Content-Transfer-Encoding: binary');
+		header('Content-Length: ' . filesize('./tmp/'.$filename));
+		header('Accept-Ranges: bytes');
+		header("Cache-Control: no-cache");
+
+		@readfile('./tmp/'.$filename);
+	}
 ?>

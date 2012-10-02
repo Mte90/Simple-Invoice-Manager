@@ -12,12 +12,18 @@
 		$total += $item['rate'] * $item['quantity'];
 	}
 
+	if(!$config['pdf']['pdfcrowd']){
+		$logo_path='../';
+	}else {
+		$logo_path='./';
+	}
+
 $content = '
 <!doctype html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>'.$l10n['TITLE'].'</title>
+		<title>'.$l10n['TITLE'].' - '.$invoice_data['number'].'</title>
 		<style type="text/css">'
 		.file_get_contents('./css/bootstrap.min.css').'
 		</style>
@@ -28,7 +34,7 @@ $content = '
 	<body>
 		<header>
 			<address>'.$config['invoice_info'].'</address>
-			<span><img alt="" src="../'.$invoice_data['logo'].'" id="logo"></span>
+			<span><img alt="" src="'.$logo_path.$invoice_data['logo'].'" id="logo"></span>
 		</header>
 		<article>
 			<h1>'.$l10n['RECIPIENT'].'</h1>
@@ -114,16 +120,39 @@ $content = '
 
 file_put_contents('./tmp/pdf.htm',$content);
 
-if($config['pdf']['wp']==true) {
+if($config['pdf']['wp']) {
 	include('./lib/weasyprint.php');
+	if (!isset($invoice_n)) {
+		header_pdf('invoice.pdf');
+	}
+
+}elseif($config['pdf']['pdfcrowd']) {
+	include('./lib/pdfcrowd.php');
+
+	try
+	{
+	    $client = new Pdfcrowd($config['pdfcrowd']['user'], $config['pdfcrowd']['key']);
+
+	    $pdf = fopen("./tmp/invoice.pdf", "wb");
+	    $client->usePrintMedia(true);
+	    $client->setNoModify(true);
+	    $zip = new ZipArchive;
+
+		$res = $zip->open('./tmp/pdf.zip', ZipArchive::CREATE);
+		$zip->addFile('./tmp/pdf.htm', 'pdf.htm');
+		$zip->addFile('./'.$invoice_data['logo'], $invoice_data['logo']);
+		$zip->close();
+
+	    $client->convertFile('./tmp/pdf.htm',$pdf);
+	    fclose($pdf);
+
+	    header_pdf('invoice.pdf');
+
+	}
+	catch(PdfcrowdException $why)
+	{
+	    echo "Pdfcrowd Error: " . $why;
+	}
 }
-
-header('Content-type: application/pdf');
-header('Content-Disposition: inline; filename="' . $filename . '"');
-header('Content-Transfer-Encoding: binary');
-header('Content-Length: ' . filesize('./tmp/'.$filename));
-header('Accept-Ranges: bytes');
-
-@readfile('./tmp/'.$filename);
 
 ?>
