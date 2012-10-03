@@ -6,7 +6,7 @@ span[contenteditable] {display: inline-block;}
 
 /* heading */
 
-h1 {font: bold 18px sans-serif; letter-spacing: 0.5em; text-align: center; text-transform: uppercase;}
+h1 {font: bold 18px sans-serif; text-align: center; text-transform: uppercase;}
 
 /* table */
 
@@ -103,7 +103,7 @@ tr:hover .cut {opacity: 1;}
 .toolbar {
 	float:left;
 	position:fixed;
-	top:40%;
+	top:30%;
 	left:10px;
 }
 

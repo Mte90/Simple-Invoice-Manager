@@ -436,6 +436,12 @@ $(function() {
 			'file':		json.client
 		}).success(function(data) {
 			jQuery('.client_info').html(data);
+
+			if(jQuery('input[name=client_email]').val()!=''){
+				jQuery('.email').show();
+			}else {
+				jQuery('.email').hide();
+			}
 		});
 
 		updateNumber();

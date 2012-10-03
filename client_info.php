@@ -3,6 +3,7 @@
 
 	$client_info = read_client_info($_GET['file']);
 
+	echo '<input type="hidden" name="client_email" value="'.$client_info['email'].'"/>';
 	echo '<table><tr>';
 	echo '<th>'.$l10n['NAME'].'</th><td colspan="4">'.$client_info['name'].'</td></tr>';
 	echo '<tr><th>'.$l10n['VAT'].'</th><td colspan="2">'.$client_info['vat'].'</td>';

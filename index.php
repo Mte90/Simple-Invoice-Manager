@@ -27,7 +27,7 @@
 		<article>
 			<h1><? echo $l10n['RECIPIENT'] ?></h1>
 			<div class="toolbar_clients">
-				<img src="icons/address_book_search.png" class="clients_search pointer" title="<? echo $l10n['CHOOSE_CLIENT']; ?>" />
+				<img src="icons/address_book_search.png" class="clients_search pointer" title="<? echo $l10n['CHOOSE_CLIENT']; ?>" /><br>
 				<img src="icons/address_book_add.png" class="client_add pointer" title="<? echo $l10n['NEW_CLIENT']; ?>" />
 			</div>
 			<address class="client_info">
@@ -129,10 +129,11 @@
 			<img src="icons/comment.png" class="draft pointer" alt="" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
 			<img src="icons/page_blank_add.png" class="new pointer" alt="" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
 			<img src="icons/search.png" class="search pointer" alt="" title="<? echo $l10n['NEW_INVOICE']; ?>" /><br>
-			<? if($config['pdf']){ ?>
+			<? if($config['pdf']['enable']){ ?>
 			<img src="icons/pdf.png" class="pdf pointer" alt="" title="<? echo $l10n['EXPORT_PDF']; ?>" /><br>
 			<? } ?>
-			<img src="icons/newspaper.png" class="print pointer" alt="" title="<? echo $l10n['PRINT']; ?>" /><br><br>
+			<img src="icons/newspaper.png" class="print pointer" alt="" title="<? echo $l10n['PRINT']; ?>" /><br>
+			<img src="icons/email_forward.png" class="email pointer hide" alt="" title="<? echo $l10n['SENT_EMAIL']; ?>" /><br><br>
 			<? if($config['login']['enable']){ ?>
 			<img src="icons/user_close.png" class="logout pointer" alt="" title="<? echo $l10n['LOGOUT']; ?>" />
 			<? } ?>
