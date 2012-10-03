@@ -19,9 +19,10 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 - More alert
 - Better Documentation
 
-#PDF Rendering Support
+#PDF BackEnd Rendering Support
 - Weasyprint (http://weasyprint.org/)
-- PDFCrowd ?
+- PDFCrowd (https://pdfcrowd.com/)
+- WkHtmlToPdf (http://code.google.com/p/wkhtmltopdf/ with php backend http://mikehaertl.github.com/phpwkhtmltopdf/)
 
 #Refer
 Based on GUI http://www.jonathantneal.com/examples/invoice/
