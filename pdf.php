@@ -136,8 +136,8 @@ if($config['pdf']['wp']) {
 	    $pdf = fopen("./tmp/invoice.pdf", "wb");
 	    $client->usePrintMedia(true);
 	    $client->setNoModify(true);
-	    $zip = new ZipArchive;
-
+	    $client->setNoCopy(true);
+		$zip = new ZipArchive;
 		$res = $zip->open('./tmp/pdf.zip', ZipArchive::CREATE);
 		$zip->addFile('./tmp/pdf.htm', 'pdf.htm');
 		$zip->addFile('./'.$invoice_data['logo'], $invoice_data['logo']);
@@ -153,6 +153,15 @@ if($config['pdf']['wp']) {
 	{
 	    echo "Pdfcrowd Error: " . $why;
 	}
+}elseif($config['pdf']['wkhtmltopdf']) {
+	include('./lib/WkHtmlToPdf.php');
+
+	$pdf = new WkHtmlToPdf;
+	$pdf->addPage('./tmp/pdf.htm');
+
+	$pdf->saveAs('./tmp/invoice.pdf');
+	header_pdf('invoice.pdf');
+
 }
 
 ?>

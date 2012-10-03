@@ -16,9 +16,10 @@
 
 	$config['pdf']['enable']	=	true;
 	$config['pdf']['wp']		=	false;
-	$config['pdf']['pdfcrowd']	=	true;
+	$config['pdf']['pdfcrowd']	=	false;
 		$config['pdfcrowd']['user']=	'';
 		$config['pdfcrowd']['key']=	'';
+	$config['pdf']['wkhtmltopdf']	=	true;
 
 	$config['print']['client']	=	false;
 	$config['print']['network']	=	true;
