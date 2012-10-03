@@ -47,6 +47,7 @@ $l10n['ENTER'] = "Enters";
 $l10n['NEED_LOGIN'] = "You must be logged";
 $l10n['EXPORT_PDF'] = "Export in PDF";
 $l10n['PRINT'] = "Print";
+$l10n['SENT_EMAIL'] = "Sent Email";
 
 // Clienti
 $l10n['NAME'] = "Name";
