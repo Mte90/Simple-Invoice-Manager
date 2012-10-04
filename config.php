@@ -9,7 +9,7 @@
 						<p>101 E. Chapman Ave<br>Orange, CA 92866</p>
 						<p>(800) 555-1234</p>';
 	$config['invoice_logo'] 	=	true;
-	$config['email']		=	'test@test.it'
+	$config['email']		=	'test@test.it';
 
 	$config['login']['enable']	=	false;
 	$config['login']['user']	=	'admin';
@@ -19,7 +19,7 @@
 	$config['pdf']['wp']		=	false;
 	$config['pdf']['pdfcrowd']	=	false;
 		$config['pdfcrowd']['user']=	'';
-		$config['pdfcrowd']['key']=	'';
+		$config['pdfcrowd']['key'] =	'';
 	$config['pdf']['wkhtmltopdf']	=	true;
 
 	$config['print']['client']	=	false;

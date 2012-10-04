@@ -406,6 +406,16 @@ $(function() {
 	jQuery('.print').click(function() {
 		window.open('./print.php?inv_='+jQuery('.invoice_n').html()+'&year_='+jQuery('body').data('year'), '_blank');
 	});
+	//EMail
+	jQuery('.email').click(function() {
+		jQuery('body').append('<div id="email_modal" class="modal hide" role="dialog"/>');
+		jQuery.get('email_form.php', {
+			'mode'		:'notes_list'
+		}).success(function(data) {
+			jQuery('#email_modal').html(data);
+		});
+		jQuery('#email_modal').modal('show');
+	});
 
 	//Load Invoice/Draft
 	function init_invoice(json) {
