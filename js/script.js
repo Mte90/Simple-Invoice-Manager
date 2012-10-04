@@ -410,7 +410,7 @@ $(function() {
 	jQuery('.email').click(function() {
 		jQuery('body').append('<div id="email_modal" class="modal hide" role="dialog"/>');
 		jQuery.get('email_form.php', {
-			'mode'		:'notes_list'
+			'email'		:jQuery('input[name=client_email]').val()
 		}).success(function(data) {
 			jQuery('#email_modal').html(data);
 		});

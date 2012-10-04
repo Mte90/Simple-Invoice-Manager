@@ -12,7 +12,7 @@
 		<div class="control-group">
 		<label class="control-label">Email</label>
 		<div class="controls">
-		<input type="text" class="input-xlarge" id="user_email">
+		<input type="text" class="input-xlarge" id="user_email" value="<? echo $_GET['email']; ?>">
 		</div>
 		</div>
 
