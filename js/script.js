@@ -418,6 +418,18 @@ $(function() {
 		jQuery('#email_modal').modal('show');
 	});
 
+	jQuery(document).on('click','#sent_email_ok',function() {
+		jQuery.get('email.php', {
+			'mode'		:'send',
+			'user_email'	:jQuery('#user_email').val(),
+			'subject_email'	:jQuery('#subject_email').val(),
+			'content_email'	:jQuery('#content_email').val(),
+			'attach_email'	:jQuery('#attach_email').val(),
+			'inv_'		:jQuery('.invoice_n').html(),
+			'year_'		:jQuery('body').data('year')
+		}).success(function() {jQuery('#save_draft_modal').modal('hide');});
+	});
+
 	//Load Invoice/Draft
 	function init_invoice(json) {
 		jQuery('.invoice_n').html(json.number);

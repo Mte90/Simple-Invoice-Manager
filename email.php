@@ -8,7 +8,7 @@ if($_GET['mode']=='form'){
 		<h3><? echo $l10n['SENT_INV_EMAIL']; ?></h3>
 		</div>
 	<div class="modal-body">
-		<form class="form-horizontal" id="sent-email" method='post' action=''>
+		<form class="form-horizontal" id="sent-email">
 
 		<div class="control-group">
 		<label class="control-label">Email</label>
@@ -41,7 +41,7 @@ if($_GET['mode']=='form'){
 		<div class="control-group">
 		<label class="control-label"></label>
 		<div class="controls">
-		<button type="submit" class="btn btn-success" id="sent_email_ok" ><? echo $l10n['SENT_EMAIL']?></button>
+		<a class="btn btn-success" id="sent_email_ok" ><? echo $l10n['SENT_EMAIL']?></a>
 		</div>
 		</div>
 
@@ -49,6 +49,25 @@ if($_GET['mode']=='form'){
 	</div>
 <?
 } elseif($_GET['mode']=='send'){
+	require_once('./lib/sec.class.inc.php');
+
+	$sec = new sec('', $_GET['user_email'], '', $config['email']);
+
+	$sec->buildMessage($_GET['content_email'], $_GET['subject_email']);
+
+	if($_GET['attach_email']=='on'){
+		$invoice_n = $_GET['inv_'];
+		$year = $_GET['year_'];
+		include('pdf.php');
+
+		$sec->attachment('./tmp/invoice.pdf');
+	}
+
+	if($sec->sendmail()) {
+	    echo 'ok';
+	} else {
+	    echo 'error';
+	}
 
 }
 ?>

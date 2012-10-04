@@ -146,7 +146,9 @@ if($config['pdf']['wp']) {
 	    $client->convertFile('./tmp/pdf.htm',$pdf);
 	    fclose($pdf);
 
-	    header_pdf('invoice.pdf');
+	    if (!isset($invoice_n)) {
+		header_pdf('invoice.pdf');
+	}
 
 	}
 	catch(PdfcrowdException $why)
@@ -160,7 +162,9 @@ if($config['pdf']['wp']) {
 	$pdf->addPage('./tmp/pdf.htm');
 
 	$pdf->saveAs('./tmp/invoice.pdf');
-	header_pdf('invoice.pdf');
+	if (!isset($invoice_n)) {
+		header_pdf('invoice.pdf');
+	}
 
 }
 
