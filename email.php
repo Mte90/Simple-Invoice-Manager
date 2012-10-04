@@ -1,6 +1,7 @@
  <?
 	include('./config.php');
 
+if($_GET['mode']=='form'){
 ?>
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -46,3 +47,8 @@
 
 		</form>
 	</div>
+<?
+} elseif($_GET['mode']=='send'){
+
+}
+?>

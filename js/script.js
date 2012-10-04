@@ -409,7 +409,8 @@ $(function() {
 	//EMail
 	jQuery('.email').click(function() {
 		jQuery('body').append('<div id="email_modal" class="modal hide" role="dialog"/>');
-		jQuery.get('email_form.php', {
+		jQuery.get('email.php', {
+			'mode'		:'form',
 			'email'		:jQuery('input[name=client_email]').val()
 		}).success(function(data) {
 			jQuery('#email_modal').html(data);
