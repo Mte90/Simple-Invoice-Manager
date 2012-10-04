@@ -51,6 +51,7 @@ $l10n['SENT_EMAIL'] = "Invia Email";
 $l10n['SENT_INV_EMAIL'] = "Invia la fattura all'email";
 $l10n['SUBJECT_EMAIL'] = "Oggetto Email";
 $l10n['CONTENT_EMAIL'] = "Contenuto Email";
+$l10n['ATTACH_EMAIL'] = "Allega fattura";
 
 // Clienti
 $l10n['NAME'] = "Nome";

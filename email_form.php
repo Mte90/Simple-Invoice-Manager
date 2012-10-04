@@ -31,6 +31,13 @@
 		</div>
 
 		<div class="control-group">
+		<label class="control-label"><? echo $l10n['ATTACH_EMAIL']; ?></label>
+		<div class="controls">
+		<input type="checkbox" id="attach_email">
+		</div>
+		</div>
+
+		<div class="control-group">
 		<label class="control-label"></label>
 		<div class="controls">
 		<button type="submit" class="btn btn-success" id="sent_email_ok" ><? echo $l10n['SENT_EMAIL']?></button>

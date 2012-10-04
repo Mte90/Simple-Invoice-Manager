@@ -51,6 +51,7 @@ $l10n['SENT_EMAIL'] = "Sent Email";
 $l10n['SENT_INV_EMAIL'] = "Sent the invoice at the email";
 $l10n['SUBJECT_EMAIL'] = "Subject Email";
 $l10n['CONTENT_EMAIL'] = "Content of Email";
+$l10n['ATTACH_EMAIL'] = "Attach invoice";
 
 // Clienti
 $l10n['NAME'] = "Name";
