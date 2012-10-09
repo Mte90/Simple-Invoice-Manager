@@ -26,8 +26,8 @@
 	$config['print']['network']	=	true;
 
 	/**** NOT EDIT THIS CODE!!!!! ****/
-	include('./lib/function.php');
 	include('./l10n/'.$config['language'].'.php');
+	include('./lib/function.php');
 
 	session_start();
 

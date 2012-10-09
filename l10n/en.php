@@ -25,6 +25,7 @@ $l10n['SAVE'] = "Save";
 $l10n['NUMBER_TICKET'] = "N. Ticket";
 $l10n['LIST_CLIENTS'] = "List of Clients";
 $l10n['ADD_CLIENTS'] = "Add new Client";
+$l10n['CLIENT_NOT_DEFINED'] = "Client not defined";
 $l10n['LIST_LOGOS'] = "List of Logos";
 $l10n['SAVE_DRAFT'] = "Save Draft";
 $l10n['LIST_INVOICE'] = "Invoice List";

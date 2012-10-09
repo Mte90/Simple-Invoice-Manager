@@ -264,7 +264,8 @@ $(function() {
 	jQuery(document).on('click','.draft-list td',function(e){
 		choosen = this;
 		jQuery.getJSON('invoice_data.php', {
-			'number':		jQuery(choosen).data('id')
+			'number':		jQuery(choosen).data('id'),
+			'year'	:		'draft'
 		}).success(function(data) {
 			init_invoice(data);
 			jQuery('#invoice_modal_list').modal('hide');
@@ -419,7 +420,8 @@ $(function() {
 	});
 
 	jQuery(document).on('click','#sent_email_ok',function() {
-		jQuery.get('email.php', {
+		spin_show();
+		/*jQuery.get('email.php', {
 			'mode'		:'send',
 			'user_email'	:jQuery('#user_email').val(),
 			'subject_email'	:jQuery('#subject_email').val(),
@@ -427,8 +429,26 @@ $(function() {
 			'attach_email'	:jQuery('#attach_email').val(),
 			'inv_'		:jQuery('.invoice_n').html(),
 			'year_'		:jQuery('body').data('year')
-		}).success(function() {jQuery('#save_draft_modal').modal('hide');});
+		}).success(function(data) {
+
+			if(data!='error') {
+				jQuery('#email_modal').modal('hide');
+			} else {
+				alert('Error with email!');
+			}
+		});*/
 	});
+
+	function spin_show() {
+		var div = document.getElementById('spin');
+		var spinner = new Spinner().spin(div);
+
+		var opts = {
+			lines: 15,length: 13,width: 4,radius: 17,corners: 1,rotate: 49,color: '#000',speed: 1,trail: 46, shadow: true,hwaccel: true, className: 'spinner',zIndex: 2e9,top: 'auto',left: 'auto'
+		};
+		document.body.appendChild(div);
+		spinner.spin(div);
+	}
 
 	//Load Invoice/Draft
 	function init_invoice(json) {
@@ -458,16 +478,20 @@ $(function() {
 		jQuery.get('client_info.php', {
 			'file':		json.client
 		}).success(function(data) {
-			jQuery('.client_info').html(data);
+			if(data!=0){
+				jQuery('.client_info').html(data);
 
-			if(jQuery('input[name=client_email]').val()!=''){
-				jQuery('.email').show();
-			}else {
-				jQuery('.email').hide();
+				if(jQuery('input[name=client_email]').val()!=''){
+					jQuery('.email').show();
+				}else {
+					jQuery('.email').hide();
+				}
 			}
 		});
 
 		updateNumber();
 		updateInvoice();
 	}
+
+
 });

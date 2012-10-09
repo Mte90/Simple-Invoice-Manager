@@ -5,7 +5,11 @@
 	}
 
 	function xml2array($file){
-		return json_decode(json_encode((array) simplexml_load_file($file)), 1);
+		$array = json_decode(json_encode((array) simplexml_load_file($file)), 1);
+		foreach($array as $key => $value){
+		    if(is_Array($array[$key]) && count($array[$key]) == 0) $array[$key] = '';
+		}
+		return $array;
 	}
 
 	/* Get last element invoice or client */
@@ -37,7 +41,12 @@
 
 	/* Get client info */
 	function read_client_info($path) {
-		$client = xml2array('./clients/'.$path .'.xml');
+	global $l10n;
+		if(file_exists('./clients/'.$path .'.xml')) {
+			$client = xml2array('./clients/'.$path .'.xml');
+		} else {
+			$client['name'] = $l10n['CLIENT_NOT_DEFINED'];
+		}
 		return $client;
 	}
 

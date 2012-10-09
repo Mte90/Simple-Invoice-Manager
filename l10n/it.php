@@ -25,6 +25,7 @@ $l10n['SAVE'] = "Salva";
 $l10n['NUMBER_TICKET'] = "N. Scontrino";
 $l10n['LIST_CLIENTS'] = "Lista dei Clienti";
 $l10n['ADD_CLIENTS'] = "Aggiungi nuovo Cliente";
+$l10n['CLIENT_NOT_DEFINED'] = "Cliente non definito";
 $l10n['LIST_LOGOS'] = "Lista dei Loghi";
 $l10n['SAVE_DRAFT'] = "Salva Bozza";
 $l10n['LIST_INVOICE'] = "Lista Fatture";
