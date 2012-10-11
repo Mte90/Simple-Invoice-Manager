@@ -65,6 +65,20 @@
 		$content .= '</note>';
 
 		file_put_contents('./notes/'.$_GET['note'].'.xml',$content);
+	} elseif($_GET['mode']=='mod_client') {
+		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
+		$content .= '<client>'."\n\t";
+		$content .= '<name>'.clean($_GET['name']).'</name>'."\n\t";
+		$content .= '<vat>'.clean($_GET['vat']).'</vat>'."\n\t";
+		$content .= '<address>'.clean($_GET['address']).'</address>'."\n\t";
+		$content .= '<zipcode>'.clean($_GET['zipcode']).'</zipcode>'."\n\t";
+		$content .= '<city>'.clean($_GET['city']).'</city>'."\n\t";
+		$content .= '<region>'.clean($_GET['region']).'</region>'."\n\t";
+		$content .= '<phone>'.clean($_GET['phone']).'</phone>'."\n\t";
+		$content .= '<email>'.clean($_GET['email']).'</email>'."\n";
+		$content .= '</client>';
+
+		file_put_contents('./clients/'.$_GET['client'].'.xml',$content);
 	}
 
 ?>

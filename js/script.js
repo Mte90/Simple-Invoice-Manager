@@ -313,7 +313,7 @@ $(function() {
 		jQuery('#clients_modal_list').modal('show');
 	});
 	//Select Client
-	jQuery(document).on('click','.clients-list td',function(e){
+	jQuery(document).on('click','.clients-list .client_choosen',function(e){
 		var choose_client = jQuery(this);
 		jQuery.get('client_info.php', {
 			'file':		jQuery(this).parent().data('id')
@@ -323,6 +323,36 @@ $(function() {
 		});
 		jQuery('body').data('client',jQuery('.clients-list td').data('id'));
 		e.stopPropagation();
+	});
+	//Modify Client
+	jQuery(document).on('click','.clients-list .client_mod',function() {
+		jQuery('body').append('<div id="client_modal_mod" class="modal hide" role="dialog"/>');
+		jQuery.get('list.php', {
+			'mode'		:'client_mod',
+			'client'	:jQuery(this).parent().data('id')
+		}).success(function(data) {
+			jQuery('#clients_modal_list').modal('hide');
+			jQuery('#client_modal_mod').html(data);
+			jQuery('#client_modal_mod').modal('show');
+		});
+	});
+	//On save Modified Notes
+	jQuery(document).on('click','#mod_client_okay',function() {
+		jQuery.get('save.php', {
+			'mode'		:'mod_client',
+			'name'		:jQuery('#client_add_name').val(),
+			'vat'		:jQuery('#client_add_vat').val(),
+			'address'	:jQuery('#client_add_address').val(),
+			'zipcode'	:jQuery('#client_add_zipcode').val(),
+			'city'		:jQuery('#client_add_city').val(),
+			'region'	:jQuery('#client_add_region').val(),
+			'phone'		:jQuery('#client_add_phone').val(),
+			'email'		:jQuery('#client_add_email').val(),
+			'client'	:jQuery('input[name=client_number]').val()
+		}).success(function() {
+			jQuery('#client_add_form').each(function(){this.reset();});
+			jQuery('#client_modal_mod').modal('hide');
+		});
 	});
 
 	/* Note */

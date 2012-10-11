@@ -9,6 +9,7 @@
 		<link rel="license" href="http://www.opensource.org/licenses/mit-license/">
 		<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/spin.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 	<body class="modal-open">
@@ -25,7 +26,6 @@
 			<img alt="" src="logos/logo_default.png" id="logo"></span>
 		</header>
 		<article>
-			<h1><? echo $l10n['RECIPIENT'] ?></h1>
 			<div class="toolbar_clients">
 				<img src="icons/address_book_search.png" class="clients_search pointer" title="<? echo $l10n['CHOOSE_CLIENT']; ?>" /><br>
 				<img src="icons/address_book_add.png" class="client_add pointer" title="<? echo $l10n['NEW_CLIENT']; ?>" />
@@ -162,6 +162,19 @@
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
 				<a href="#" class="btn btn-primary" id="save_draft_okay"><? echo $l10n['SAVE']; ?></a>
+			</div>
+		</div>
+		<div class="modal hide" id="del_note_modal" role="dialog">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3><? echo $l10n['DELETE']; ?></h3>
+			</div>
+			<div class="modal-body">
+				<p><? echo $l10n['SURE_DEL_NOTE']; ?></p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
+				<a href="#" class="btn btn-primary" id="del_note_okay"><? echo $l10n['SAVE']; ?></a>
 			</div>
 		</div>
 

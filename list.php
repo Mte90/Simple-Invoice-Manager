@@ -37,7 +37,7 @@
 				<?
 					$client = client_list();
 					foreach ($client as $key) {
-						echo '<tr data-id="'.$key[1].'"><td>'.$key[0]['name'].'</td><td class="link-func client_del">'.$l10n['DELETE'].'</td><td class="link-func client_mod">'.$l10n['MODIFY'].'</td></tr>'."\n";
+						echo '<tr data-id="'.$key[1].'"><td class="client_choosen">'.$key[0]['name'].'</td><td class="link-func client_del">'.$l10n['DELETE'].'</td><td class="link-func client_mod">'.$l10n['MODIFY'].'</td></tr>'."\n";
 					}
 				?>
 			</tbody>
@@ -48,69 +48,84 @@
 	</div>
 <?
 
-}elseif($_GET['mode']=='clients_new') {
+}elseif($_GET['mode']=='clients_new'||$_GET['mode']=='client_mod') {
+
+	if($_GET['mode']=='client_mod'){
+		$client_info = read_client_info($_GET['client']);
+	}else {
+		$client_info['name']=$client_info['vat']=$client_info['address']=$client_info['zipcode']=$client_info['city']=$client_info['region']=$client_info['phone']=$client_info['email']='';
+	}
 
 ?>
 
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h3><? echo $l10n['ADD_CLIENTS']; ?></h3>
+		<h3>
+			<?
+			if($_GET['mode']=='client_mod'){
+				echo $l10n['MODIFY_CLIENT'];
+			}else {
+				echo $l10n['ADD_CLIENTS'];
+			}
+			?>
+		</h3>
 	</div>
 	<div class="modal-body">
 		<form class="form-horizontal" id="client_add_form">
+			<input type="hidden" name="client_number" value="<? echo $_GET['client']; ?>"/>
 			<div class="control-group">
 				<label class="control-label" for="input-name"><? echo $l10n['NAME']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="client_add_name" required>
+					<input type="text" class="input-xlarge" id="client_add_name" value="<? echo $client_info['name']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-vat"><? echo $l10n['VAT']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="client_add_vat" required>
+					<input type="text" class="input-xlarge" id="client_add_vat" value="<? echo $client_info['vat']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-address"><? echo $l10n['ADDRESS']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="client_add_address" required>
+					<input type="text" class="input-xlarge" id="client_add_address" value="<? echo $client_info['address']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-zipcode"><? echo $l10n['ZIP_CODE']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-small" id="client_add_zipcode" required>
+					<input type="text" class="input-small" id="client_add_zipcode" value="<? echo $client_info['zipcode']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-city"><? echo $l10n['CITY']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-small" id="client_add_city" required>
+					<input type="text" class="input-small" id="client_add_city" value="<? echo $client_info['city']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-region"><? echo $l10n['REGION']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-small" id="client_add_region" required>
+					<input type="text" class="input-small" id="client_add_region" value="<? echo $client_info['region']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-phone"><? echo $l10n['PHONE_FAX']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-small" id="client_add_phone" required>
+					<input type="text" class="input-large" id="client_add_phone" value="<? echo $client_info['phone']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-email"><? echo $l10n['EMAIL']; ?></label>
 				<div class="controls">
-					<input type="email" class="input-small" id="client_add_email">
+					<input type="email" class="input-large" id="client_add_email" value="<? echo $client_info['email']; ?>">
 				</div>
 			</div>
 		</form>
 	</div>
 	<div class="modal-footer">
 		<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
-		<a href="#" class="btn btn-primary" id="save_client_okay"><? echo $l10n['SAVE']; ?></a>
+		<a href="#" class="btn btn-primary" id="<? if($_GET['mode']=='client_mod'){echo 'mod_client_okay'; }else {echo 'save_client_okay'; }?>"><? echo $l10n['SAVE']; ?></a>
 	</div>
 
 <?
