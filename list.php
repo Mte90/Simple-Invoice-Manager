@@ -178,7 +178,7 @@
 				<?
 					$notes = notes_list();
 					foreach ($notes as $key) {
-						echo '<tr><td data-id="'.$key[1].'">'.$key[0]['name'].'</td></tr>'."\n";
+						echo '<tr><td class="note_choosen" data-id="'.$key[1].'">'.$key[0]['name'].'</td><td class="link-func" data-id="'.$key[1].'"><span class="note_del">'.$l10n['DELETE'].'</span>&nbsp;<span class="note_mod">'.$l10n['MODIFY'].'</span></td></tr>'."\n";
 					}
 				?>
 			</tbody>
@@ -189,7 +189,7 @@
 	</div>
 <?
 
-}elseif($_GET['mode']=='notes_new') {
+}elseif($_GET['mode']=='notes_new'||$_GET['mode']=='notes_mod') {
 
 ?>
 

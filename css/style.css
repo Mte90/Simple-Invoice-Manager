@@ -128,7 +128,18 @@ tr:hover .cut {opacity: 1;}
 .pointer,.table-hover tbody tr:hover td, .table-hover tbody tr:hover th,header input {
 	cursor: pointer;
 }
+
 .table-bordered {
 	border-spacing: 0;
 	border:none;
+}
+
+.link-func {
+	border-left:0px;
+	width: 90px;
+}
+
+.link-func span:hover {
+	text-decoration:underline;
+	height:20px;
 }
