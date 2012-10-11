@@ -316,7 +316,7 @@ $(function() {
 	jQuery(document).on('click','.clients-list td',function(e){
 		var choose_client = jQuery(this);
 		jQuery.get('client_info.php', {
-			'file':		jQuery('.clients-list td').data('id')
+			'file':		jQuery(this).parent().data('id')
 		}).success(function(data) {
 			jQuery('.client_info').html(data);
 			jQuery('#clients_modal_list').modal('hide');
@@ -389,6 +389,18 @@ $(function() {
 		}).success(function() {
 			jQuery('#note_modal_mod').modal('hide');
 		});
+	});
+	//Sure Delete Note
+	jQuery(document).on('click','.notes-list .note_del',function() {
+		jQuery('#notes_modal_list').modal('hide');
+		jQuery('#del_note_modal').modal('show');
+	});
+	//Delete Note
+	jQuery('#del_note_okay').click(function() {
+		jQuery.get('delete.php', {
+			'mode'		:'del_note',
+			'note'		:jQuery(this).parent().data('id')
+		}).success(function() {jQuery('#del_note_modal').modal('hide');});
 	});
 
 	/* Logo */
