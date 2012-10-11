@@ -42,6 +42,7 @@ $l10n['LIST_NOTES'] = "List Notes";
 $l10n['CHOOSE_NOTES'] = "Choose Notes";
 $l10n['ADD_NOTES'] = "New Note";
 $l10n['MODIFY_NOTE'] = "Modify Note";
+$l10n['SURE_DEL_NOTE'] = "You are sure to delete the note?";
 $l10n['TEXT_NOTE'] = "New Text";
 $l10n['LOGIN'] = "Login";
 $l10n['LOGOUT'] = "Logout";
