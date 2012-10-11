@@ -379,6 +379,17 @@ $(function() {
 			jQuery('#note_modal_mod').modal('show');
 		});
 	});
+	//On save Modified Notes
+	jQuery(document).on('click','#mod_note_okay',function() {
+		jQuery.get('save.php', {
+			'mode'		:'mod_note',
+			'name'		:jQuery('#note_mod_name').val(),
+			'text'		:jQuery('#note_text').val(),
+			'note'		:jQuery('input[name=note_number]').val()
+		}).success(function() {
+			jQuery('#note_modal_mod').modal('hide');
+		});
+	});
 
 	/* Logo */
 	//Search Logo

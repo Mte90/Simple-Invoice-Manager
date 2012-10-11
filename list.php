@@ -202,7 +202,7 @@
 			<div class="control-group">
 				<label class="control-label" for="input-name-note"><? echo $l10n['NAME']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="note_add_name" required>
+					<input type="text" class="input-xlarge" id="note_add_name" required />
 				</div>
 				<br>
 				<div class="note_preview well"></div>
@@ -218,6 +218,8 @@
 
 }elseif($_GET['mode']=='notes_mod') {
 
+	$note_data = read_note_info($_GET['note']);
+
 ?>
 
 	<div class="modal-header">
@@ -226,13 +228,14 @@
 	</div>
 	<div class="modal-body">
 		<form class="form-horizontal" id="note_mod_form">
+			<input type="hidden" name="note_number" value="<? echo $_GET['note'];?>">
 			<div class="control-group">
 				<label class="control-label" for="input-name-note"><? echo $l10n['NAME']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="note_mod_name" required>
+					<input type="text" class="input-xlarge" id="note_mod_name" required value="<? echo $note_data['name'];?>" />
 				</div>
 				<br>
-					<textarea id="note_text" class="input-xxlarge" rows="8" required></textarea>
+				<textarea id="note_text" class="input-xxlarge" rows="10" required><? echo $note_data['text'];?></textarea>
 			</div>
 		</form>
 	</div>
