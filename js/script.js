@@ -359,9 +359,8 @@ $(function() {
 	});
 	//Select Note
 	jQuery(document).on('click','.notes-list .note_choosen',function(e){
-		choosen = this;
 		jQuery.getJSON('note_data.php', {
-			'number':		jQuery(choosen).parent().data('id')
+			'number':		jQuery(this).parent().data('id')
 		}).success(function(data) {
 			jQuery('.invoice_note').html(data.text);
 			jQuery('#notes_modal_list').modal('hide');
@@ -369,15 +368,15 @@ $(function() {
 		e.stopPropagation();
 	});
 	//Modify Note
-	jQuery(document).on('click','.notes-list .notes_mod',function() {
+	jQuery(document).on('click','.notes-list .note_mod',function() {
 		jQuery('body').append('<div id="note_modal_mod" class="modal hide" role="dialog"/>');
 		jQuery.get('list.php', {
 			'mode'		:'notes_mod',
 			'note'		:jQuery(this).parent().data('id')
 		}).success(function(data) {
+			jQuery('#notes_modal_list').modal('hide');
 			jQuery('#note_modal_mod').html(data);
-			jQuery('.note_preview').html(jQuery('.invoice_note').html());
-			jQuery('#note_modal_add').modal('show');
+			jQuery('#note_modal_mod').modal('show');
 		});
 	});
 

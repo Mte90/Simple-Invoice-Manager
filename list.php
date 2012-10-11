@@ -189,7 +189,7 @@
 	</div>
 <?
 
-}elseif($_GET['mode']=='notes_new'||$_GET['mode']=='notes_mod') {
+}elseif($_GET['mode']=='notes_new') {
 
 ?>
 
@@ -212,6 +212,33 @@
 	<div class="modal-footer">
 		<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
 		<a href="#" class="btn btn-primary" id="save_note_okay"><? echo $l10n['SAVE']; ?></a>
+	</div>
+
+<?
+
+}elseif($_GET['mode']=='notes_mod') {
+
+?>
+
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3><? echo $l10n['MODIFY_NOTE']; ?></h3>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal" id="note_mod_form">
+			<div class="control-group">
+				<label class="control-label" for="input-name-note"><? echo $l10n['NAME']; ?></label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="note_mod_name" required>
+				</div>
+				<br>
+					<textarea id="note_text" class="input-xxlarge" rows="8" required></textarea>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
+		<a href="#" class="btn btn-primary" id="mod_note_okay"><? echo $l10n['SAVE']; ?></a>
 	</div>
 
 <?

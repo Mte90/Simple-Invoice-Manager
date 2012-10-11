@@ -143,3 +143,6 @@ tr:hover .cut {opacity: 1;}
 .link-func:hover {
 	text-decoration:underline;
 }
+.modal .input-xxlarge {
+	width:510px;
+}
