@@ -361,7 +361,7 @@ $(function() {
 	jQuery(document).on('click','.notes-list .note_choosen',function(e){
 		choosen = this;
 		jQuery.getJSON('note_data.php', {
-			'number':		jQuery(choosen).data('id')
+			'number':		jQuery(choosen).parent().data('id')
 		}).success(function(data) {
 			jQuery('.invoice_note').html(data.text);
 			jQuery('#notes_modal_list').modal('hide');

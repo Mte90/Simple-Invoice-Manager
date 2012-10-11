@@ -136,10 +136,10 @@ tr:hover .cut {opacity: 1;}
 
 .link-func {
 	border-left:0px;
-	width: 90px;
+	width: 40px;
+	text-align:center;
 }
 
-.link-func span:hover {
+.link-func:hover {
 	text-decoration:underline;
-	height:20px;
 }
