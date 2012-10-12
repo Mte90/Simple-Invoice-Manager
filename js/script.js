@@ -261,16 +261,27 @@ $(function() {
 		});
 	});
 	//Select Draft
-	jQuery(document).on('click','.draft-list td',function(e){
-		choosen = this;
+	jQuery(document).on('click','.draft-list .draft_choosen',function(e){
 		jQuery.getJSON('invoice_data.php', {
-			'number':		jQuery(choosen).data('id'),
+			'number':		jQuery(this).parent().data('id'),
 			'year'	:		'draft'
 		}).success(function(data) {
 			init_invoice(data);
 			jQuery('#invoice_modal_list').modal('hide');
 		});
 		e.stopPropagation();
+	});
+	//Sure Delete Draft
+	jQuery(document).on('click','.draft-list .draft_del',function() {
+		jQuery('#draft_modal_list').modal('hide');
+		jQuery('#del_draft_modal').modal('show');
+	});
+	//Delete Draft
+	jQuery('#del_draft_okay').click(function() {
+		jQuery.get('delete.php', {
+			'mode'		:'del_draft',
+			'draft'		:jQuery(this).parent().data('id')
+		}).success(function() {jQuery('#del_draft_modal').modal('hide');});
 	});
 
 	/* Client */

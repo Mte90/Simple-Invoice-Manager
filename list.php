@@ -166,7 +166,7 @@
 							foreach ($draft as $key) {
 								$inv_info = extract_invoice($key,'draft');
 								$client_info = read_client_info($inv_info['client']);
-								echo '<tr><td data-id="'.$key.'">'.$key.' - '.$inv_info['date'].' - '.$client_info['name'].'</td></tr>'."\n";
+								echo '<tr data-id="'.$key.'"><td class="draft_choosen">'.$key.' - '.$inv_info['date'].' - '.$client_info['name'].'</td><td class="link-func note_del">'.$l10n['DELETE'].'</td></tr>'."\n";
 							}
 						?>
 						</tbody>

@@ -16,14 +16,15 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 
 #Roadmap
 
-- Manage of Draft (modify/delete)
+- Manage of Draft (Delete)
+- Not remake the pdf for every use
 - More check for insert data
 - More alert
 - Modify XML with php function
 - Client Support (Hystory)
 - Better Code organization and pattern
+- Reorganize the order of translation string
 - Better Documentation
-- Not remake the pdf for every use
 - MySQL Support optionable ??
 
 #PDF BackEnd Rendering Support

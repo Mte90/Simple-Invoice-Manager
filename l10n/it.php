@@ -33,6 +33,7 @@ $l10n['LIST_LOGOS'] = "Lista dei Loghi";
 $l10n['SAVE_DRAFT'] = "Salva Bozza";
 $l10n['LIST_INVOICE'] = "Lista Fatture";
 $l10n['LIST_DRAFT'] = "Lista Bozze";
+$l10n['SURE_DEL_DRAFT'] = "Sei sicuro di voler eliminare la bozza";
 $l10n['OPEN'] = "Apri";
 $l10n['SEARCH'] = "Cerca";
 $l10n['NEW_INVOICE'] = "Nuova Fattura";

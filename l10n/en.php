@@ -33,6 +33,7 @@ $l10n['LIST_LOGOS'] = "List of Logos";
 $l10n['SAVE_DRAFT'] = "Save Draft";
 $l10n['LIST_INVOICE'] = "Invoice List";
 $l10n['LIST_DRAFT'] = "Draft List";
+$l10n['SURE_DEL_DRAFT'] = "You are sure to delete the draft";
 $l10n['OPEN'] = "Open";
 $l10n['SEARCH'] = "Search";
 $l10n['NEW_INVOICE'] = "New Invoice";
