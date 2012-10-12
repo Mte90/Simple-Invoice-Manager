@@ -118,7 +118,7 @@
 
 	/* Get array of notes */
 	function notes_list() {
-		$client_list = Array();
+		$client_list = $notes_list = Array();
 		if ($handle = opendir('./notes/')) {
 			while (false !== ($entry = readdir($handle))) {
 				if ($entry != "." && $entry != ".." && $entry != "index.php") {
@@ -128,6 +128,11 @@
 			}
 			closedir($handle);
 		}
+
+		if(!count($notes_list)>0){
+			$notes_list[0]='error';
+		}
+
 		return $notes_list;
 	}
 
