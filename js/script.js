@@ -383,7 +383,7 @@ $(function() {
 		jQuery.get('save.php', {
 			'mode'		:'new_note',
 			'name'		:jQuery('#note_add_name').val(),
-			'text'		:jQuery('.invoice_note').val()
+			'text'		:jQuery('.invoice_note').html()
 		}).success(function() {
 			jQuery('#note_modal_add').modal('hide');
 		});

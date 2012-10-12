@@ -21,7 +21,7 @@
 		} elseif($folder == "draft") {
 			$folder = './invoice/draft';
 		} elseif($folder == "note") {
-			$folder = './invoice/notes';
+			$folder = './notes';
 		}
 		$files = scandir($folder, 1);
 		$files = array_diff($files, array("index.php",'..','.'));

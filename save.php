@@ -48,8 +48,8 @@
 
 		file_put_contents('./clients/'.$number_clients.'.xml',$content);
 	} elseif($_GET['mode']=='new_note') {
-		$number_clients = get_last_element('note');
-		$number_clients++;
+		$number_notes = get_last_element('note');
+		$number_notes++;
 		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
 		$content .= '<note>'."\n\t";
 		$content .= '<name>'.clean($_GET['name']).'</name>'."\n\t";
