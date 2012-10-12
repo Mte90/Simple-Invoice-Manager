@@ -117,7 +117,7 @@
 		<aside>
 			<div class="toolbar_notes">
 				<img src="icons/web_layout_search.png" class="notes_search pointer" title="<? echo $l10n['CHOOSE_NOTES']; ?>" />
-				<img src="icons/web_layout_error_add.png" class="notes_add pointer" title="<? echo $l10n['NEW_NOTE']; ?>" />
+				<img src="icons/web_layout_error_add.png" class="notes_add pointer" title="<? echo $l10n['ADD_NOTES']; ?>" />
 			</div>
 			<h1><span><? echo $l10n['NOTE'] ?></span></h1>
 			<div contenteditable class="invoice_note">
@@ -170,11 +170,24 @@
 				<h3><? echo $l10n['DELETE']; ?></h3>
 			</div>
 			<div class="modal-body">
-				<p><? echo $l10n['SURE_DEL_NOTE']; ?></p>
+				<p><? echo $l10n['SURE_DEL_NOTE']; ?>?</p>
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
 				<a href="#" class="btn btn-primary" id="del_note_okay"><? echo $l10n['SAVE']; ?></a>
+			</div>
+		</div>
+		<div class="modal hide" id="del_draft_modal" role="dialog">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3><? echo $l10n['DELETE']; ?></h3>
+			</div>
+			<div class="modal-body">
+				<p><? echo $l10n['SURE_DEL_DRAFT']; ?>?</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
+				<a href="#" class="btn btn-primary" id="del_draft_okay"><? echo $l10n['SAVE']; ?></a>
 			</div>
 		</div>
 

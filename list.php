@@ -166,7 +166,7 @@
 							foreach ($draft as $key) {
 								$inv_info = extract_invoice($key,'draft');
 								$client_info = read_client_info($inv_info['client']);
-								echo '<tr data-id="'.$key.'"><td class="draft_choosen">'.$key.' - '.$inv_info['date'].' - '.$client_info['name'].'</td><td class="link-func note_del">'.$l10n['DELETE'].'</td></tr>'."\n";
+								echo '<tr data-id="'.$key.'"><td class="draft_choosen">'.$key.' - '.$inv_info['date'].' - '.$client_info['name'].'</td><td class="link-func draft_del">'.$l10n['DELETE'].'</td></tr>'."\n";
 							}
 						?>
 						</tbody>
@@ -192,8 +192,10 @@
 			<tbody>
 				<?
 					$notes = notes_list();
-					foreach ($notes as $key) {
-						echo '<tr data-id="'.$key[1].'"><td class="note_choosen">'.$key[0]['name'].'</td><td class="link-func note_del">'.$l10n['DELETE'].'</td><td class="link-func note_mod">'.$l10n['MODIFY'].'</td></tr>'."\n";
+					if($notes[0]!='error'){
+						foreach ($notes as $key) {
+							echo '<tr data-id="'.$key[1].'"><td class="note_choosen">'.$key[0]['name'].'</td><td class="link-func note_del">'.$l10n['DELETE'].'</td><td class="link-func note_mod">'.$l10n['MODIFY'].'</td></tr>'."\n";
+						}
 					}
 				?>
 			</tbody>

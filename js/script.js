@@ -273,14 +273,14 @@ $(function() {
 	});
 	//Sure Delete Draft
 	jQuery(document).on('click','.draft-list .draft_del',function() {
-		jQuery('#draft_modal_list').modal('hide');
-		jQuery('#del_draft_modal').modal('show');
+		jQuery('#invoice_modal_list').modal('hide');
+		jQuery('#del_draft_modal').data('id',jQuery(this).parent().data('id')).modal('show');
 	});
 	//Delete Draft
 	jQuery('#del_draft_okay').click(function() {
 		jQuery.get('delete.php', {
 			'mode'		:'del_draft',
-			'draft'		:jQuery(this).parent().data('id')
+			'draft'		:jQuery('#del_note_modal').data('id')
 		}).success(function() {jQuery('#del_draft_modal').modal('hide');});
 	});
 
@@ -434,13 +434,13 @@ $(function() {
 	//Sure Delete Note
 	jQuery(document).on('click','.notes-list .note_del',function() {
 		jQuery('#notes_modal_list').modal('hide');
-		jQuery('#del_note_modal').modal('show');
+		jQuery('#del_note_modal').data('id',jQuery(this).parent().data('id')).modal('show');
 	});
 	//Delete Note
 	jQuery('#del_note_okay').click(function() {
 		jQuery.get('delete.php', {
 			'mode'		:'del_note',
-			'note'		:jQuery(this).parent().data('id')
+			'note'		:jQuery('#del_note_modal').data('id')
 		}).success(function() {jQuery('#del_note_modal').modal('hide');});
 	});
 
