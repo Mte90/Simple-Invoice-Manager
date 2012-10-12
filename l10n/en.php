@@ -24,6 +24,7 @@ $l10n['REJECT'] = "Reject";
 $l10n['MODIFY'] = "Modify";
 $l10n['DELETE'] = "Delete";
 $l10n['SAVE'] = "Save";
+$l10n['HISTORY'] = "History";
 $l10n['NUMBER_TICKET'] = "N. Ticket";
 $l10n['LIST_CLIENTS'] = "List of Clients";
 $l10n['ADD_CLIENTS'] = "Add new Client";

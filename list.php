@@ -37,7 +37,7 @@
 				<?
 					$client = client_list();
 					foreach ($client as $key) {
-						echo '<tr data-id="'.$key[1].'"><td class="client_choosen">'.$key[0]['name'].'</td><td class="link-func client_del">'.$l10n['DELETE'].'</td><td class="link-func client_mod">'.$l10n['MODIFY'].'</td></tr>'."\n";
+						echo '<tr data-id="'.$key[1].'"><td class="client_choosen">'.$key[0]['name'].'</td><td class="link-func client_mod">'.$l10n['MODIFY'].'</td><td class="link-func client_his">'.$l10n['HISTORY'].'</td></tr>'."\n";
 					}
 				?>
 			</tbody>

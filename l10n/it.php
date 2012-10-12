@@ -24,6 +24,7 @@ $l10n['REJECT'] = "Annulla";
 $l10n['MODIFY'] = "Modifica";
 $l10n['DELETE'] = "Elimina";
 $l10n['SAVE'] = "Salva";
+$l10n['HISTORY'] = "Storia";
 $l10n['NUMBER_TICKET'] = "N. Scontrino";
 $l10n['LIST_CLIENTS'] = "Lista dei Clienti";
 $l10n['ADD_CLIENTS'] = "Aggiungi nuovo Cliente";
