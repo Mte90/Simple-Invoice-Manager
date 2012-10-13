@@ -332,7 +332,7 @@ $(function() {
 			jQuery('.client_info').html(data);
 			jQuery('#clients_modal_list').modal('hide');
 		});
-		jQuery('body').data('client',jQuery('.clients-list td').data('id'));
+		jQuery('body').data('client',jQuery('.clients-list .client_choosen').parent().data('id'));
 		e.stopPropagation();
 	});
 	//Modify Client
@@ -534,6 +534,7 @@ $(function() {
 		jQuery('#value_tax').html(json.tax);
 		jQuery('#logo').attr('src',json.logo);
 		jQuery('body').data('year',json.year);
+		jQuery('body').data('client',json.client);
 
 		list_product = jQuery('table.inventory tbody tr');
 		if (list_product.length<json.product.length) {
