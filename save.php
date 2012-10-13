@@ -11,7 +11,7 @@
 		$content .= '<tax>'.clean($_GET['tax']).'</tax>'."\n\t\t";
 		$content .= '<client>'.clean($_GET['client_number']).'</client>'."\n\t\t";
 		$content .= '<logo>'.clean($_GET['logo']).'</logo>'."\n\t\t";
-		$content .= '<last-mod>'.time().'</last-mod>'."\n";
+		$content .= '<last-mod>'.time().'</last-mod>';
 		$content .= "\n\t".$_GET['content'];
 		$content .= '</invoice>';
 		if (!file_exists('./invoice/'.date('Y'))) {
@@ -29,7 +29,7 @@
 		$content .= '<tax>'.clean($_GET['tax']).'</tax>'."\n\t\t";
 		$content .= '<client>'.clean($_GET['client_number']).'</client>'."\n\t\t";
 		$content .= '<logo>'.clean($_GET['logo']).'</logo>'."\n\t\t";
-		$content .= '<last-mod>'.time().'</last-mod>'."\n";
+		$content .= '<last-mod>'.time().'</last-mod>';
 		$content .= "\n\t".$_GET['content'];
 		$content .= '</invoice>';
 		file_put_contents('./invoice/draft/'.get_last_element('draft').'.xml',$content);

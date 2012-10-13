@@ -37,7 +37,6 @@ $content = '
 			<span><img alt="" src="'.$logo_path.$invoice_data['logo'].'" id="logo"></span>
 		</header>
 		<article>
-			<h1>'.$l10n['RECIPIENT'].'</h1>
 			<address class="client_info">';
 			$client_info = read_client_info($invoice_data['client']);
 			$content .= '<table><tr>';
@@ -120,10 +119,13 @@ $content = '
 
 file_put_contents('./tmp/pdf.htm',$content);
 
+$pdf_name='invoice-'.$invoice_data['number'].'-'.$invoice_data['last-mod'].'.pdf';
+$pdf_path='./tmp/'.$pdf_name;
+
 if($config['pdf']['wp']) {
 	include('./lib/weasyprint.php');
 	if (!isset($invoice_n)) {
-		header_pdf('invoice.pdf');
+		header_pdf($pdf_name);
 	}
 
 }elseif($config['pdf']['pdfcrowd']) {
@@ -133,7 +135,7 @@ if($config['pdf']['wp']) {
 	{
 	    $client = new Pdfcrowd($config['pdfcrowd']['user'], $config['pdfcrowd']['key']);
 
-	    $pdf = fopen("./tmp/invoice.pdf", "wb");
+	    $pdf = fopen($pdf_path, "wb");
 	    $client->usePrintMedia(true);
 	    $client->setNoModify(true);
 	    $client->setNoCopy(true);
@@ -147,7 +149,7 @@ if($config['pdf']['wp']) {
 	    fclose($pdf);
 
 	    if (!isset($invoice_n)) {
-		header_pdf('invoice.pdf');
+		header_pdf($pdf_name);
 	}
 
 	}
@@ -161,9 +163,9 @@ if($config['pdf']['wp']) {
 	$pdf = new WkHtmlToPdf;
 	$pdf->addPage('./tmp/pdf.htm');
 
-	$pdf->saveAs('./tmp/invoice.pdf');
+	$pdf->saveAs($pdf_path);
 	if (!isset($invoice_n)) {
-		header_pdf('invoice.pdf');
+		header_pdf($pdf_name);
 	}
 
 }
