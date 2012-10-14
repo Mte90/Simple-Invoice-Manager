@@ -559,6 +559,8 @@ $(function() {
 				}else {
 					jQuery('.email').hide();
 				}
+			}else {
+				jQuery('.client_info').html('<b>'+jQuery('body').data('choose-client')+'</b>');
 			}
 		});
 
