@@ -496,7 +496,7 @@ $(function() {
 
 	jQuery(document).on('click','#sent_email_ok',function() {
 		spin_show();
-		/*jQuery.get('email.php', {
+		jQuery.get('email.php', {
 			'mode'		:'send',
 			'user_email'	:jQuery('#user_email').val(),
 			'subject_email'	:jQuery('#subject_email').val(),
@@ -511,18 +511,11 @@ $(function() {
 			} else {
 				alert('Error with email!');
 			}
-		});*/
+		});
 	});
 
 	function spin_show() {
-		var div = document.getElementById('spin');
-		var spinner = new Spinner().spin(div);
 
-		var opts = {
-			lines: 15,length: 13,width: 4,radius: 17,corners: 1,rotate: 49,color: '#000',speed: 1,trail: 46, shadow: true,hwaccel: true, className: 'spinner',zIndex: 2e9,top: 'auto',left: 'auto'
-		};
-		document.body.appendChild(div);
-		spinner.spin(div);
 	}
 
 	//Load Invoice/Draft
