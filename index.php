@@ -9,7 +9,7 @@
 		<link rel="license" href="http://www.opensource.org/licenses/mit-license/">
 		<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/spin.min.js"></script>
+		<script type="text/javascript" src="js/activity-indicator.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 	<body class="modal-open">

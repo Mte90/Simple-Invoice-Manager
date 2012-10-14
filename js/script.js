@@ -505,7 +505,7 @@ $(function() {
 			'inv_'		:jQuery('.invoice_n').html(),
 			'year_'		:jQuery('body').data('year')
 		}).success(function(data) {
-
+			spin_hide();
 			if(data!='error') {
 				jQuery('#email_modal').modal('hide');
 			} else {
@@ -515,7 +515,11 @@ $(function() {
 	});
 
 	function spin_show() {
+		jQuery('<div class="modal-backdrop spin"/>').activity({color:'#08c'});
+	}
 
+	function spin_hide() {
+		jQuery('.modal-backdrop.spin').activity(false).remove();
 	}
 
 	//Load Invoice/Draft

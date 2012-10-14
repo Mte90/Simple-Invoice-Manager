@@ -1,6 +1,3 @@
-Invoice-Manager
-===============
-
 #Description
 
 A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
