@@ -16,7 +16,6 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 
 #Roadmap
 
-- Not remake the pdf for every use
 - More check for insert data
 - More alert
 - Modify XML with php function

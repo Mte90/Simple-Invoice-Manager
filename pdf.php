@@ -12,11 +12,16 @@
 		$total += $item['rate'] * $item['quantity'];
 	}
 
-	if(!$config['pdf']['pdfcrowd']){
-		$logo_path='../';
-	}else {
-		$logo_path='./';
-	}
+	$pdf_name='invoice-'.$invoice_data['number'].'-'.$invoice_data['last-mod'].'.pdf';
+	$pdf_path='./tmp/'.$pdf_name;
+
+	if (need_new_pdf($invoice_data['number'],$invoice_data['last-mod'])) {
+
+		if(!$config['pdf']['pdfcrowd']){
+			$logo_path='../';
+		}else {
+			$logo_path='./';
+		}
 
 $content = '
 <!doctype html>
@@ -117,57 +122,60 @@ $content = '
 	</body>
 </html>';
 
-file_put_contents('./tmp/pdf.htm',$content);
+	file_put_contents('./tmp/pdf.htm',$content);
 
-$pdf_name='invoice-'.$invoice_data['number'].'-'.$invoice_data['last-mod'].'.pdf';
-$pdf_path='./tmp/'.$pdf_name;
+	if($config['pdf']['wp']) {
+		include('./lib/weasyprint.php');
 
-if($config['pdf']['wp']) {
-	include('./lib/weasyprint.php');
-	if (!isset($invoice_n)) {
-		header_pdf($pdf_name);
+		if (!isset($invoice_n)) {
+			header_pdf($pdf_name);
+		}
+
+	}elseif($config['pdf']['pdfcrowd']) {
+		include('./lib/pdfcrowd.php');
+
+		try
+		{
+			$client = new Pdfcrowd($config['pdfcrowd']['user'], $config['pdfcrowd']['key']);
+			$pdf = fopen($pdf_path, "wb");
+			$client->usePrintMedia(true);
+			$client->setNoModify(true);
+			$client->setNoCopy(true);
+			$zip = new ZipArchive;
+			$res = $zip->open('./tmp/pdf.zip', ZipArchive::CREATE);
+			$zip->addFile('./tmp/pdf.htm', 'pdf.htm');
+			$zip->addFile('./'.$invoice_data['logo'], $invoice_data['logo']);
+			$zip->close();
+			$client->convertFile('./tmp/pdf.htm',$pdf);
+			fclose($pdf);
+
+			if (!isset($invoice_n)) {
+				header_pdf($pdf_name);
+			}
+
+		}
+		catch(PdfcrowdException $why)
+		{
+			echo "Pdfcrowd Error: " . $why;
+		}
+
+	}elseif($config['pdf']['wkhtmltopdf']) {
+		include('./lib/WkHtmlToPdf.php');
+
+		$pdf = new WkHtmlToPdf;
+		$pdf->addPage('./tmp/pdf.htm');
+		$pdf->saveAs($pdf_path);
+
+		if (!isset($invoice_n)) {
+			header_pdf($pdf_name);
+		}
+
 	}
 
-}elseif($config['pdf']['pdfcrowd']) {
-	include('./lib/pdfcrowd.php');
-
-	try
-	{
-	    $client = new Pdfcrowd($config['pdfcrowd']['user'], $config['pdfcrowd']['key']);
-
-	    $pdf = fopen($pdf_path, "wb");
-	    $client->usePrintMedia(true);
-	    $client->setNoModify(true);
-	    $client->setNoCopy(true);
-		$zip = new ZipArchive;
-		$res = $zip->open('./tmp/pdf.zip', ZipArchive::CREATE);
-		$zip->addFile('./tmp/pdf.htm', 'pdf.htm');
-		$zip->addFile('./'.$invoice_data['logo'], $invoice_data['logo']);
-		$zip->close();
-
-	    $client->convertFile('./tmp/pdf.htm',$pdf);
-	    fclose($pdf);
-
-	    if (!isset($invoice_n)) {
-		header_pdf($pdf_name);
-	}
+	}else {
+		if (!isset($invoice_n)) {
+			header_pdf($pdf_name);
+		}
 
 	}
-	catch(PdfcrowdException $why)
-	{
-	    echo "Pdfcrowd Error: " . $why;
-	}
-}elseif($config['pdf']['wkhtmltopdf']) {
-	include('./lib/WkHtmlToPdf.php');
-
-	$pdf = new WkHtmlToPdf;
-	$pdf->addPage('./tmp/pdf.htm');
-
-	$pdf->saveAs($pdf_path);
-	if (!isset($invoice_n)) {
-		header_pdf($pdf_name);
-	}
-
-}
-
 ?>

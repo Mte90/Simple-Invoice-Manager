@@ -155,4 +155,18 @@
 
 		@readfile('./tmp/'.$filename);
 	}
+
+	function need_new_pdf($invoice,$time) {
+		$pdf_name='invoice-'.$invoice.'-'.$time.'.pdf';
+		$pdf_path='./tmp/'.$pdf_name;
+
+		if (file_exists($pdf_path)) {
+			return false;
+		}else{
+			foreach (glob('./tmp/invoice-'.$invoice.'-*.pdf') as $filename) {
+				unlink($filename);
+			}
+			return true;
+		}
+	}
 ?>
