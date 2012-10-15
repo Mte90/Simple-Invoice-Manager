@@ -36,6 +36,7 @@ Icons WooFunction by WooThemes http://www.woothemes.com/2009/09/woofunction-178-
 - PHP WkHtmlToPdf: http://mikehaertl.github.com/phpwkhtmltopdf/ MIT License
 - PHP PdfCrowd: http://github.com/pdfcrowd/pdfcrowd-phpwkhtmltopdf
 - simpleEmailClass: Mark Davidson GPL License
+- jqBootstrapValidation: http://reactiveraven.github.com/jqBootstrapValidation/ (modded for modal support)
 
 #License
 
