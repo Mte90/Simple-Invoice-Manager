@@ -72,4 +72,16 @@ $l10n['PHONE_FAX'] = "Tel/Fax";
 $l10n['EMAIL'] = "Email";
 $l10n['CHOOSE_CLIENT'] = "Scegli il cliente";
 
+// Validator
+$l10n['pattern-message'] = "Formato sbagliato";
+$l10n['max-message'] = "Troppo grande: Massimo cifre";
+$l10n['min-message'] = "Troppo piccolo: Minimo cifre";
+$l10n['maxlength-message'] = "Troppo lungo: Massimo lettere";
+$l10n['minlength-message'] = "Troppo corto: Minimo lettere ";
+$l10n['validemail'] = "Indirizzo email non valido";
+$l10n['minchecked'] = "Poche opzioni impostate; Minimo ";
+$l10n['maxchecked'] = "Troppe opzioni impostate Massimo ";
+$l10n['number'] = "Deve essere un numero";
+$l10n['required'] = "&Egrave; obbligatorio";
+
 ?>
