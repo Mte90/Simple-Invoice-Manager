@@ -191,6 +191,14 @@ window.addEventListener && document.addEventListener('DOMContentLoaded', onConte
 //Invoice Code
 
 $(function() {
+	jQuery(document).on('change','input,select,textarea :not([type=submit])',function() {
+		jQuery(this).jqBootstrapValidation();
+	});
+	jQuery(document).on('click','.btn-primary',function(e) {
+		jQuery('input,select,textarea').jqBootstrapValidation();
+		jQuery(this).jqBootstrapValidation('init',{event:e});
+	});
+
 	/* Invoice */
 	//New Invoice
 	jQuery('.new').click(function() {

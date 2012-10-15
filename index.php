@@ -9,10 +9,11 @@
 		<link rel="license" href="http://www.opensource.org/licenses/mit-license/">
 		<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/activity-indicator.js"></script>
+		<script type="text/javascript" src="js/activity-indicator.min.js"></script>
+		<script type="text/javascript" src="js/jqbootstrapvalidation.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
-	<body class="modal-open">
+	<body class="modal-open" data-choose-client="<? echo $l10n['CHOOSE_CLIENT'] ?>">
 		<header>
 			<address>
 				<? echo $config['invoice_info']; ?>

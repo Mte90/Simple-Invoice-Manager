@@ -72,7 +72,7 @@
 	</div>
 	<div class="modal-body">
 		<form class="form-horizontal" id="client_add_form">
-			<input type="hidden" name="client_number" value="<? echo $_GET['client']; ?>"/>
+			<input type="hidden" name="client_number" value="<? if(isset($_GET['client'])){echo $_GET['client'];} ?>"/>
 			<div class="control-group">
 				<label class="control-label" for="input-name"><? echo $l10n['NAME']; ?></label>
 				<div class="controls">
@@ -82,7 +82,7 @@
 			<div class="control-group">
 				<label class="control-label" for="input-vat"><? echo $l10n['VAT']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="client_add_vat" value="<? echo $client_info['vat']; ?>" required>
+					<input type="number" class="input-xlarge" id="client_add_vat" value="<? echo $client_info['vat']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
@@ -94,7 +94,7 @@
 			<div class="control-group">
 				<label class="control-label" for="input-zipcode"><? echo $l10n['ZIP_CODE']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-small" id="client_add_zipcode" value="<? echo $client_info['zipcode']; ?>" required>
+					<input type="number" class="input-small" id="client_add_zipcode" value="<? echo $client_info['zipcode']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
@@ -112,7 +112,7 @@
 			<div class="control-group">
 				<label class="control-label" for="input-phone"><? echo $l10n['PHONE_FAX']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-large" id="client_add_phone" value="<? echo $client_info['phone']; ?>" required>
+					<input type="number" class="input-large" id="client_add_phone" value="<? echo $client_info['phone']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
@@ -123,9 +123,9 @@
 			</div>
 		</form>
 	</div>
-	<div class="modal-footer">
-		<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
-		<a href="#" class="btn btn-primary" id="<? if($_GET['mode']=='client_mod'){echo 'mod_client_okay'; }else {echo 'save_client_okay'; }?>"><? echo $l10n['SAVE']; ?></a>
+	<div class="modal-footer" data-id-form="client_add_form">
+		<button type="submit" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></button>
+		<button type="submit" class="btn btn-primary" id="<? if($_GET['mode']=='client_mod'){echo 'mod_client_okay'; }else {echo 'save_client_okay'; }?>"><? echo $l10n['SAVE']; ?></button>
 	</div>
 
 <?
@@ -177,7 +177,6 @@
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
-				<a href="#" class="btn btn-primary" id="open_invoice"><? echo $l10n['OPEN']; ?></a>
 			</div>
 	<?
 }elseif($_GET['mode']=='notes_list') {
@@ -226,7 +225,7 @@
 			</div>
 		</form>
 	</div>
-	<div class="modal-footer">
+	<div class="modal-footer" data-id-form="note_add_form">
 		<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
 		<a href="#" class="btn btn-primary" id="save_note_okay"><? echo $l10n['SAVE']; ?></a>
 	</div>
@@ -256,7 +255,7 @@
 			</div>
 		</form>
 	</div>
-	<div class="modal-footer">
+	<div class="modal-footer" data-id-form="note_mod_form">
 		<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
 		<a href="#" class="btn btn-primary" id="mod_note_okay"><? echo $l10n['SAVE']; ?></a>
 	</div>
