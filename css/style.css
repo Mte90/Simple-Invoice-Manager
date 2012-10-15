@@ -146,3 +146,11 @@ tr:hover .cut {opacity: 1;}
 .modal .input-xxlarge {
 	width:510px;
 }
+
+.help-block {
+	margin-top: 4px;
+}
+
+.help-block ul {
+	margin: 0 0 0 25px;
+}

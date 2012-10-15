@@ -10,7 +10,7 @@
 		<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/activity-indicator.min.js"></script>
-		<script type="text/javascript" src="js/jqbootstrapvalidation.js"></script>
+		<script type="text/javascript" src="js/jqbootstrapvalidation.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 	<body class="modal-open" data-choose-client="<? echo $l10n['CHOOSE_CLIENT'] ?>">
