@@ -20,6 +20,8 @@
 		}
 		file_put_contents('./invoice/'.date('Y').'/'.clean($_GET['invoice_number']).'.xml',$content);
 	}if($_GET['mode']=='save_draft_invoice') {
+		$number_drafts = get_last_element('draft');
+		$number_drafts++;
 		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n\t";
 		$content .= '<invoice>'."\n\t\t";
 		$content .= '<number>'.clean($_GET['invoice_number']).'</number>'."\n\t\t";
@@ -32,7 +34,7 @@
 		$content .= '<last-mod>'.time().'</last-mod>';
 		$content .= "\n\t".$_GET['content'];
 		$content .= '</invoice>';
-		file_put_contents('./invoice/draft/'.get_last_element('draft').'.xml',$content);
+		file_put_contents('./invoice/draft/'.$number_drafts.'.xml',$content);
 	} elseif($_GET['mode']=='new_client') {
 		$number_clients = get_last_element('client');
 		$number_clients++;
