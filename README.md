@@ -13,6 +13,8 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 
 #Roadmap
 
+- Clean invoice when loading
+- Verify bug on save a invoice after a draft
 - More check for insert data
 - More alert
 - Modify XML with php function
