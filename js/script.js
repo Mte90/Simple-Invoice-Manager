@@ -206,7 +206,8 @@ $(function() {
 		});
 	//On save Invoice
 	jQuery(document).on('click','.save',function() {
-		var txt = '';
+		var txt,mode_inv,old_text = '';
+
 		jQuery('table.inventory tbody tr').each(function(key, value) {
 			cells = jQuery(this).find('td span');
 			if(jQuery(cells[0]).html()!=""){
@@ -214,10 +215,20 @@ $(function() {
 				txt += "</rate>\n\t\t<quantity>"+jQuery(cells[3]).html()+"</quantity>\n\t</product>\n\t";
 			}
 		});
+
+		if (jQuery('body').data('client')=='' || jQuery('body').data('client')==null) {
+			old_text = jQuery('#save_inv_modal .modal-body').html();
+			jQuery('#save_inv_modal .modal-body').html(jQuery('#save_inv_modal .modal-body').data('message-option'));
+			mode_inv = 'save_draft_invoice';
+		} else {
+			mode_inv = 'save_invoice';
+		}
+
 		jQuery('#save_inv_modal').modal('show');
+
 		jQuery('#save_inv_okay').click(function() {
 			jQuery.get('save.php', {
-				'mode'		:'save_invoice',
+				'mode'		:mode_inv,
 				'invoice_number':jQuery('.invoice_n').html(),
 				'invoice_ticket':jQuery('.invoice_ticket').html(),
 				'content'	:txt,
@@ -226,7 +237,12 @@ $(function() {
 				'tax'		:jQuery('#value_tax').html(),
 				'client_number'	:jQuery('body').data('client'),
 				'logo'		:jQuery('#logo').attr('src')
-			}).success(function() {jQuery('#save_inv_modal').modal('hide');});
+			}).success(function() {
+				jQuery('#save_inv_modal').modal('hide');
+				if(mode_inv == 'save_draft_invoice'){
+					jQuery('#save_inv_modal .modal-body').html(old_text);
+				}
+			});
 		});
 	});
 	//Select Invoice

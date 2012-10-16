@@ -144,7 +144,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				<h3><? echo $l10n['SAVE_INVOICE']; ?></h3>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body" data-message-option="<? echo $l10n['CHECK_INVOICE_CLIENT']; ?>">
 				<p><? echo $l10n['SURE_SAVE_INVOICE']; ?></p>
 			</div>
 			<div class="modal-footer">
