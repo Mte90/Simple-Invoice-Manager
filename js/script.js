@@ -557,13 +557,12 @@ $(function() {
 		jQuery('body').data('year',json.year);
 		jQuery('body').data('client',json.client);
 
-		list_product = jQuery('table.inventory tbody tr');
-		if (list_product.length<json.product.length) {
-			for (i=list_product.length; i<json.product.length; i++) {
-				document.querySelector('table.inventory tbody').appendChild(generateTableRow());
-			}
-			list_product = jQuery('table.inventory tbody tr');
+		jQuery('table.inventory tbody tr').remove();
+
+		for (i=0; i<json.product.length; i++) {
+			document.querySelector('table.inventory tbody').appendChild(generateTableRow());
 		}
+		list_product = jQuery('table.inventory tbody tr');
 
 		$.each(json.product, function(i){
 			cells = jQuery(list_product[i]).find('td span');
