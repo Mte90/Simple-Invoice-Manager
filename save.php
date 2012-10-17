@@ -18,6 +18,7 @@
 			mkdir('./invoice/'.date('Y'));
 			file_put_contents('./invoice'.date('Y').'/index.php','');
 		}
+
 		file_put_contents('./invoice/'.date('Y').'/'.clean($_GET['invoice_number']).'.xml',$content);
 	} elseif($_GET['mode']=='save_draft_invoice') {
 		$number_drafts = get_last_element('draft');
@@ -34,6 +35,7 @@
 		$content .= '<last-mod>'.time().'</last-mod>';
 		$content .= "\n\t".$_GET['content'];
 		$content .= '</invoice>';
+
 		file_put_contents('./invoice/draft/'.$number_drafts.'.xml',$content);
 	} elseif($_GET['mode']=='new_client') {
 		$number_clients = get_last_element('client');

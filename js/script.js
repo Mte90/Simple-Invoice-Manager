@@ -206,7 +206,7 @@ $(function() {
 		});
 	//On save Invoice
 	jQuery(document).on('click','.save',function() {
-		var txt,mode_inv,old_text = '';
+		var txt=mode_inv=old_text = '';
 
 		jQuery('table.inventory tbody tr').each(function(key, value) {
 			cells = jQuery(this).find('td span');
@@ -224,8 +224,11 @@ $(function() {
 			mode_inv = 'save_invoice';
 		}
 
+		console.log(jQuery('body').data('client'))
+		console.log(mode_inv)
 		jQuery('#save_inv_modal').modal('show');
 
+		jQuery('#save_inv_okay').off('click');
 		jQuery('#save_inv_okay').click(function() {
 			jQuery.get('save.php', {
 				'mode'		:mode_inv,
@@ -243,7 +246,9 @@ $(function() {
 					jQuery('#save_inv_modal .modal-body').html(old_text);
 				}
 			});
+
 		});
+
 	});
 	//Select Invoice
 	jQuery(document).on('click','.invoice-list td',function(e){
