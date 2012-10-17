@@ -16,10 +16,10 @@
 		$content .= '</invoice>';
 		if (!file_exists('./invoice/'.date('Y'))) {
 			mkdir('./invoice/'.date('Y'));
-			file_put_contents('./invoice.index.php','');
+			file_put_contents('./invoice'.date('Y').'/index.php','');
 		}
 		file_put_contents('./invoice/'.date('Y').'/'.clean($_GET['invoice_number']).'.xml',$content);
-	}if($_GET['mode']=='save_draft_invoice') {
+	} elseif($_GET['mode']=='save_draft_invoice') {
 		$number_drafts = get_last_element('draft');
 		$number_drafts++;
 		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n\t";
