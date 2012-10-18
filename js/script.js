@@ -66,7 +66,7 @@ function generateTableRow() {
 
 	emptyColumn.innerHTML = '<td><a class="cut">-</a><span contenteditable></span></td>' +
 		'<td><span data-prefix>$</span><span contenteditable></span></td>' +
-		'<td><span contenteditable>0</span></td>' +
+		'<td><span contenteditable class="number-check">0</span></td>' +
 		'<td><span data-prefix>$</span><span>0.00</span></td>';
 
 	return emptyColumn;
@@ -195,14 +195,15 @@ $(function() {
 		jQuery(this).jqBootstrapValidation();
 	});
 
-	jQuery('.number-check [contenteditable=true]').keydown(function (e) {
-		e.preventDefault();
-	});
-
-
 	jQuery(document).on('click','.btn-primary',function(e) {
 		jQuery('input,select,textarea').jqBootstrapValidation();
 		jQuery(this).jqBootstrapValidation('init',{event:e});
+	});
+
+	jQuery('.number-check').keyup(function (e) {
+		var number = jQuery(this).html();
+		jQuery(this).html(number.replace(/[^0-9]+/g, ''));
+		placeCaretAtEnd(this);
 	});
 
 	/* Invoice */
@@ -600,6 +601,24 @@ $(function() {
 
 		updateNumber();
 		updateInvoice();
+	}
+
+	//http://stackoverflow.com/questions/4233265/contenteditable-set-caret-at-the-end-of-the-text-cross-browser?lq=1
+	function placeCaretAtEnd(el) {
+		el.focus();
+		if (typeof window.getSelection != "undefined" && typeof document.createRange != "undefined") {
+			var range = document.createRange();
+			range.selectNodeContents(el);
+			range.collapse(false);
+			var sel = window.getSelection();
+			sel.removeAllRanges();
+			sel.addRange(range);
+		} else if (typeof document.body.createTextRange != "undefined") {
+			var textRange = document.body.createTextRange();
+			textRange.moveToElementText(el);
+			textRange.collapse(false);
+			textRange.select();
+		}
 	}
 
 
