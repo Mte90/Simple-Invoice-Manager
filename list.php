@@ -118,7 +118,7 @@
 			<div class="control-group">
 				<label class="control-label" for="input-email"><? echo $l10n['EMAIL']; ?></label>
 				<div class="controls">
-					<input type="email" class="input-large" id="client_add_email" value="<? echo $client_info['email']; ?>">
+					<input type="email" class="input-large" id="client_add_email" value="<? echo $client_info['email']; ?>" data-validation-email-message="<? echo $l10n['validemail']; ?>">
 				</div>
 			</div>
 		</form>
@@ -138,13 +138,13 @@
 				<h3><? echo $l10n['LIST_INVOICE']; ?></h3>
 			</div>
 			<div class="modal-body">
-			<ul class="nav nav-tabs tabs-invoice" data-tabs="tabs">
+			<ul class="nav nav-tabs tabs-invoice">
 				<li class="active"><a href="#invoice" data-toggle="tab"><? echo $l10n['LIST_INVOICE']; ?></a></li>
 				<li><a href="#draft" data-toggle="tab"><? echo $l10n['LIST_DRAFT']; ?></a></li>
 			</ul>
 
 			<div class="tab-content">
-				<div class="active tab-pane" id="invoice">
+				<div class="tab-pane active" id="invoice">
 					<table class="invoice-list table table-bordered table-hover">
 						<tbody>
 						<?

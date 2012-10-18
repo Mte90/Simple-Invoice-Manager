@@ -194,6 +194,12 @@ $(function() {
 	jQuery(document).on('change','input,select,textarea :not([type=submit])',function() {
 		jQuery(this).jqBootstrapValidation();
 	});
+
+	jQuery('.number-check [contenteditable=true]').keydown(function (e) {
+		e.preventDefault();
+	});
+
+
 	jQuery(document).on('click','.btn-primary',function(e) {
 		jQuery('input,select,textarea').jqBootstrapValidation();
 		jQuery(this).jqBootstrapValidation('init',{event:e});
@@ -498,7 +504,7 @@ $(function() {
 			'mode'		:'invoice_list'
 		}).success(function(data) {
 			jQuery('#invoice_modal_list').html(data);
-			jQuery('.tabs-invoice').tabs('show');
+			jQuery('.tabs-invoice #invoice').tab('show');
 		});
 		jQuery('#invoice_modal_list').modal('show');
 	});
