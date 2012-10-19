@@ -139,8 +139,8 @@
 			</div>
 			<div class="modal-body">
 			<ul class="nav nav-tabs tabs-invoice">
-				<li class="active"><a href="#invoice"><? echo $l10n['LIST_INVOICE']; ?></a></li>
-				<li><a href="#draft"><? echo $l10n['LIST_DRAFT']; ?></a></li>
+				<li class="active" data-toggle="tab"><a href="#invoice"><? echo $l10n['LIST_INVOICE']; ?></a></li>
+				<li><a href="#draft" data-toggle="tab"><? echo $l10n['LIST_DRAFT']; ?></a></li>
 			</ul>
 
 			<div class="tab-content">

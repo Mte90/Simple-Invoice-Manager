@@ -231,9 +231,7 @@ $(function() {
 			jQuery('#save_inv_modal .modal-body').html(jQuery('#save_inv_modal .modal-body p').data('message-option')[0]);
 			mode_inv = 'save_draft_invoice';
 		}else if ((jQuery('body').data('old_number_invoice')!='' || jQuery('body').data('old_number_invoice')!=null
-			|| jQuery('body').data('old_date_invoice')!='' || jQuery('body').data('old_date_invoice')!=null)
-			&& jQuery('body').data('old_number_invoice')!=jQuery('.invoice_n').html()
-			&& jQuery('body').data('old_date_invoice')==jQuery('.invoice_date').html()) {
+			|| jQuery('body').data('old_date_invoice')!='' || jQuery('body').data('old_date_invoice')!=null) && jQuery('body').data('old_number_invoice')!=jQuery('.invoice_n').html() && jQuery('body').data('old_date_invoice')==jQuery('.invoice_date').html()) {
 			old_text = jQuery('#save_inv_modal .modal-body p').html();
 			jQuery('#save_inv_modal .modal-body p').html(jQuery('#save_inv_modal .modal-body').data('message-option')[1]);
 			mode_inv = 'save_invoice';
