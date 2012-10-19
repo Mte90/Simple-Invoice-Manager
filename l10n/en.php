@@ -60,7 +60,8 @@ $l10n['SENT_INV_EMAIL'] = "Sent the invoice at the email";
 $l10n['SUBJECT_EMAIL'] = "Subject Email";
 $l10n['CONTENT_EMAIL'] = "Content of Email";
 $l10n['ATTACH_EMAIL'] = "Attach invoice";
-$l10n['CHECK_INVOICE_CLIENT'] = "If the client it's not choosen the invoice are saved how a draft!";
+$l10n['CHECK_INVOICE_CLIENT'] = "If the client is not choosen the invoice will be saved as a draft!";
+$l10n['CHECK_INVOICE_NUMBER'] = "You are sure to change the number of the invoice leaving the same date? Will remove the old invoice!";
 
 // Clienti
 $l10n['NAME'] = "Name";

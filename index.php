@@ -55,7 +55,7 @@
 				<? if($config['number_ticket']){ ?>
 				<tr>
 					<th><span><? echo $l10n['NUMBER_TICKET'] ?></span></th>
-					<td><span contenteditable class="invoice_ticket"></span></td>
+					<td><span contenteditable class="number-check invoice_ticket"></span></td>
 				</tr>
 				<? } ?>
 			</table>
@@ -72,25 +72,25 @@
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable></span></td>
-						<td><span contenteditable>0</span></td>
+						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable></span></td>
-						<td><span contenteditable>0</span></td>
+						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable></span></td>
-						<td><span contenteditable>0</span></td>
+						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable></span></td>
-						<td><span contenteditable>0</span></td>
+						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 				</tbody>
@@ -144,7 +144,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				<h3><? echo $l10n['SAVE_INVOICE']; ?></h3>
 			</div>
-			<div class="modal-body" data-message-option="<? echo $l10n['CHECK_INVOICE_CLIENT']; ?>">
+			<div class="modal-body" data-message-option='["<? echo $l10n['CHECK_INVOICE_CLIENT']; ?>","<? echo $l10n['CHECK_INVOICE_NUMBER']; ?>"]'>
 				<p><? echo $l10n['SURE_SAVE_INVOICE']; ?></p>
 			</div>
 			<div class="modal-footer">

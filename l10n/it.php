@@ -61,6 +61,7 @@ $l10n['SUBJECT_EMAIL'] = "Oggetto Email";
 $l10n['CONTENT_EMAIL'] = "Contenuto Email";
 $l10n['ATTACH_EMAIL'] = "Allega fattura";
 $l10n['CHECK_INVOICE_CLIENT'] = "Se il cliente non viene selezionato la fattura sarà salvata come bozza!";
+$l10n['CHECK_INVOICE_NUMBER'] = "Sei sicuro di voler cambiare il numero della fattura lasciando la stessa data? Verrà rimossa la vecchia fattura!";
 
 // Clienti
 $l10n['NAME'] = "Nome";
@@ -84,6 +85,5 @@ $l10n['minchecked'] = "Poche opzioni impostate; Minimo ";
 $l10n['maxchecked'] = "Troppe opzioni impostate Massimo ";
 $l10n['number'] = "Deve essere un numero";
 $l10n['required'] = "&Egrave; obbligatorio";
-
 
 ?>

@@ -16,7 +16,11 @@
 		$content .= '</invoice>';
 		if (!file_exists('./invoice/'.date('Y'))) {
 			mkdir('./invoice/'.date('Y'));
-			file_put_contents('./invoice'.date('Y').'/index.php','');
+			file_put_contents('./invoice/'.date('Y').'/index.php','');
+		}
+
+		if($_GET['old_date']==clean($_GET['date']) && $_GET['old_number']!=clean($_GET['invoice_number'])){
+			unlink('./invoice/'.date('Y').'/'.$_GET['old_number'].'.xml');
 		}
 
 		file_put_contents('./invoice/'.date('Y').'/'.clean($_GET['invoice_number']).'.xml',$content);

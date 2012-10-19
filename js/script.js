@@ -191,15 +191,18 @@ window.addEventListener && document.addEventListener('DOMContentLoaded', onConte
 //Invoice Code
 
 $(function() {
+	//Enable validation on input field
 	jQuery(document).on('change','input,select,textarea :not([type=submit])',function() {
 		jQuery(this).jqBootstrapValidation();
 	});
 
+	//Start check validation on button
 	jQuery(document).on('click','.btn-primary',function(e) {
 		jQuery('input,select,textarea').jqBootstrapValidation();
 		jQuery(this).jqBootstrapValidation('init',{event:e});
 	});
 
+	//Remove non-number letter
 	jQuery('.number-check').keyup(function (e) {
 		var number = jQuery(this).html();
 		jQuery(this).html(number.replace(/[^0-9]+/g, ''));
@@ -225,14 +228,19 @@ $(function() {
 
 		if (jQuery('body').data('client')=='' || jQuery('body').data('client')==null) {
 			old_text = jQuery('#save_inv_modal .modal-body').html();
-			jQuery('#save_inv_modal .modal-body').html(jQuery('#save_inv_modal .modal-body').data('message-option'));
+			jQuery('#save_inv_modal .modal-body').html(jQuery('#save_inv_modal .modal-body p').data('message-option')[0]);
 			mode_inv = 'save_draft_invoice';
-		} else {
+		}else if ((jQuery('body').data('old_number_invoice')!='' || jQuery('body').data('old_number_invoice')!=null
+			|| jQuery('body').data('old_date_invoice')!='' || jQuery('body').data('old_date_invoice')!=null)
+			&& jQuery('body').data('old_number_invoice')!=jQuery('.invoice_n').html()
+			&& jQuery('body').data('old_date_invoice')==jQuery('.invoice_date').html()) {
+			old_text = jQuery('#save_inv_modal .modal-body p').html();
+			jQuery('#save_inv_modal .modal-body p').html(jQuery('#save_inv_modal .modal-body').data('message-option')[1]);
+			mode_inv = 'save_invoice';
+		}else {
 			mode_inv = 'save_invoice';
 		}
 
-		console.log(jQuery('body').data('client'))
-		console.log(mode_inv)
 		jQuery('#save_inv_modal').modal('show');
 
 		jQuery('#save_inv_okay').off('click');
@@ -246,11 +254,13 @@ $(function() {
 				'date'		:jQuery('.invoice_date').html(),
 				'tax'		:jQuery('#value_tax').html(),
 				'client_number'	:jQuery('body').data('client'),
-				'logo'		:jQuery('#logo').attr('src')
+				'logo'		:jQuery('#logo').attr('src'),
+				'old_date'	:jQuery('body').data('old_date_invoice'),
+				'old_number'	:jQuery('body').data('old_number_invoice')
 			}).success(function() {
 				jQuery('#save_inv_modal').modal('hide');
 				if(mode_inv == 'save_draft_invoice'){
-					jQuery('#save_inv_modal .modal-body').html(old_text);
+					jQuery('#save_inv_modal .modal-body p').html(old_text);
 				}
 			});
 
@@ -561,9 +571,11 @@ $(function() {
 	//Load Invoice/Draft
 	function init_invoice(json) {
 		jQuery('.invoice_n').html(json.number);
+		jQuery('body').data('old_number_invoice',json.number);
 		jQuery('.invoice_ticket').html(json.ticket);
 		jQuery('.invoice_note').html(json.note);
 		jQuery('.invoice_date').html(json.date);
+		jQuery('body').data('old_date_invoice',json.date);
 		jQuery('#value_tax').html(json.tax);
 		jQuery('#logo').attr('src',json.logo);
 		jQuery('body').data('year',json.year);
