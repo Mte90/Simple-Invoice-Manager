@@ -1,9 +1,10 @@
 <?
+	/* Remove break line and tab */
 	function clean($string){
-		$string = str_replace(array("\r\n", "\r", "\n", "\t", '  '), ' ',trim($string));
-		return $string;
+		return str_replace(array("\r\n", "\r", "\n", "\t", '  '), ' ',trim($string));
 	}
 
+	/* xml to array */
 	function xml2array($file){
 		$array = json_decode(json_encode((array) simplexml_load_file($file)), 1);
 		foreach($array as $key => $value){
@@ -12,22 +13,24 @@
 		return $array;
 	}
 
+	/* JSON to xml */
 	function json_to_xml($json){
 		return array_to_xml(json_decode($json));
 	}
 
-	// function defination to convert array to xml
+	/* Array to xml */
 	function array_to_xml($array,$depth = 0) {
 		$indent = $return = '';
 		for($i = 0; $i < 0; $i++)
 			$indent .= "\t";
-		foreach($array as $key => $item){
-			$return .= "{$indent}< {$key}>\n";
-			if(is_array($item))
-			$return .= ARRAYtoXML($item, $depth + 1);
-			else
-			$return .= "{$indent}\t\n";
-			$return .= "{$indent}\n";
+			foreach($array as $key => $item){
+				$return .= "{$indent}< {$key}>\n";
+				if(is_array($item)){
+					$return .= ARRAYtoXML($item, $depth + 1);
+				}else{
+					$return .= "{$indent}\t\n";
+					$return .= "{$indent}\n";
+				}
 			}
 		return $return;
 	}
@@ -156,15 +159,18 @@
 		return $notes_list;
 	}
 
+	/* Get actual year */
 	function get_last_year(){
 		return date('Y');
 	}
 
+	/* Calculate the percentage */
 	function percent($num_amount, $num_total) {
 		$count = ($num_amount*$num_total) / 100;
 		return $count;
 	}
 
+	/* Set the header for load pdf file */
 	function header_pdf($filename){
 		header('Content-type: application/pdf');
 		header('Content-Disposition: inline; filename="' . $filename . '"');
@@ -176,6 +182,7 @@
 		@readfile('./tmp/'.$filename);
 	}
 
+	/* Check exist last pdf version */
 	function need_new_pdf($invoice,$time) {
 		$pdf_name='invoice-'.$invoice.'-'.$time.'.pdf';
 		$pdf_path='./tmp/'.$pdf_name;

@@ -14,6 +14,7 @@
 		$content .= '<last-mod>'.time().'</last-mod>'."\n\t";
 		$content .= json_to_xml($_GET['content']);
 		$content .= '</invoice>';
+
 		if (!file_exists('./invoice/'.date('Y'))) {
 			mkdir('./invoice/'.date('Y'));
 			file_put_contents('./invoice/'.date('Y').'/index.php','');

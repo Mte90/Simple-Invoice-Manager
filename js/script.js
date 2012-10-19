@@ -1,25 +1,3 @@
-/* Shivving (IE8 is not supported, but at least it won't look as awful)
-/* ========================================================================== */
-
-(function (document) {
-	var
-	head = document.head = document.getElementsByTagName('head')[0] || document.documentElement,
-	elements = 'article aside bdi data datalist details figcaption figure footer header hgroup nav output picture progress section summary time x'.split(' '),
-	elementsLength = elements.length,
-	elementsIndex = 0,
-	element;
-
-	while (elementsIndex < elementsLength) {
-		element = document.createElement(elements[++elementsIndex]);
-	}
-
-	element.innerHTML = 'x<style>' +
-		'article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}' +
-	'</style>';
-
-	return head.insertBefore(element.lastChild, head.firstChild);
-})(document);
-
 /* Prototyping
 /* ========================================================================== */
 
@@ -232,7 +210,7 @@ $(function() {
 		txt += ']}';
 
 		if (jQuery('body').data('client')=='' || jQuery('body').data('client')==null) {
-			old_text = jQuery('#save_inv_modal .modal-body').html();
+			old_text = jQuery('#save_inv_modal .modal-body p').html();
 			jQuery('#save_inv_modal .modal-body').html(jQuery('#save_inv_modal .modal-body p').data('message-option')[0]);
 			mode_inv = 'save_draft_invoice';
 		}else if ((jQuery('body').data('old_number_invoice')!='' || jQuery('body').data('old_number_invoice')!=null
