@@ -216,15 +216,20 @@ $(function() {
 		});
 	//On save Invoice
 	jQuery(document).on('click','.save',function() {
-		var txt=mode_inv=old_text = '';
+		var mode_inv=old_text = '';
+		var txt = '{"product":[';
 
 		jQuery('table.inventory tbody tr').each(function(key, value) {
 			cells = jQuery(this).find('td span');
-			if(jQuery(cells[0]).html()!=""){
-				txt += "<product>\n\t\t<item>"+jQuery(cells[0]).html()+"</item>\n\t\t<rate>"+jQuery(cells[2]).html();
-				txt += "</rate>\n\t\t<quantity>"+jQuery(cells[3]).html()+"</quantity>\n\t</product>\n\t";
+			if(jQuery(cells[0]).html()!=''){
+				txt += '{"item":"'+jQuery(cells[0]).html()+'","rate":"'+jQuery(cells[2]).html()+'","quantity":"'+jQuery(cells[3]).html()+'"}';
+				if(key != (jQuery('table.inventory tbody tr').length-1)){
+					txt += ',';
+				}
 			}
 		});
+
+		txt += ']}';
 
 		if (jQuery('body').data('client')=='' || jQuery('body').data('client')==null) {
 			old_text = jQuery('#save_inv_modal .modal-body').html();
@@ -281,14 +286,19 @@ $(function() {
 	/* Draft */
 	//On save Draft Invoice
 	jQuery(document).on('click','.draft',function() {
-		var txt = '';
+		var txt = '{"product":[';
+
 		jQuery('table.inventory tbody tr').each(function(key, value) {
 			cells = jQuery(this).find('td span');
-			if(jQuery(cells[0]).html()!=""){
-				txt += "<product>\n\t\t<item>"+jQuery(cells[0]).html()+"</item>\n\t\t<rate>"+jQuery(cells[2]).html();
-				txt += "</rate>\n\t\t<quantity>"+jQuery(cells[3]).html()+"</quantity>\n\t</product>\n\t";
+			if(jQuery(cells[0]).html()!=''){
+				txt += '{"item":"'+jQuery(cells[0]).html()+'","rate":"'+jQuery(cells[2]).html()+'","quantity":"'+jQuery(cells[3]).html()+'"}';
+				if(key != (jQuery('table.inventory tbody tr').length-1)){
+					txt += ',';
+				}
 			}
 		});
+		txt += ']}';
+
 		jQuery('#save_draft_modal').modal('show');
 		jQuery('#save_draft_okay').click(function() {
 			jQuery.get('save.php', {

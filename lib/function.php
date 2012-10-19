@@ -12,6 +12,26 @@
 		return $array;
 	}
 
+	function json_to_xml($json){
+		return array_to_xml(json_decode($json));
+	}
+
+	// function defination to convert array to xml
+	function array_to_xml($array,$depth = 0) {
+		$indent = $return = '';
+		for($i = 0; $i < 0; $i++)
+			$indent .= "\t";
+		foreach($array as $key => $item){
+			$return .= "{$indent}< {$key}>\n";
+			if(is_array($item))
+			$return .= ARRAYtoXML($item, $depth + 1);
+			else
+			$return .= "{$indent}\t\n";
+			$return .= "{$indent}\n";
+			}
+		return $return;
+	}
+
 	/* Get last element invoice or client */
 	function get_last_element($folder,$ext=false){
 		if($folder == "client") {
