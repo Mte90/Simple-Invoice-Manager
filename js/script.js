@@ -513,7 +513,6 @@ $(function() {
 			'mode'		:'invoice_list'
 		}).success(function(data) {
 			jQuery('#invoice_modal_list').html(data);
-			jQuery('.tabs-invoice #invoice').tab('show');
 		});
 		jQuery('#invoice_modal_list').modal('show');
 	});
@@ -630,6 +629,5 @@ $(function() {
 			textRange.select();
 		}
 	}
-
 
 });
