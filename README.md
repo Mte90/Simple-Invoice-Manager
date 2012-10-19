@@ -13,8 +13,6 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 
 #Roadmap
 
-- More check for insert data
-- More alert
 - Modify XML with php function
 - Client Support (Hystory)
 - Better Code organization and pattern
