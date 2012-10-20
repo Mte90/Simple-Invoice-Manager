@@ -214,8 +214,7 @@ $(function() {
 			jQuery('#save_inv_modal .modal-body').html(jQuery('#save_inv_modal .modal-body').data('message-option')[0]);
 			mode_inv = 'save_draft_invoice';
 		}else if ((jQuery('body').data('old_number_invoice')!='' || jQuery('body').data('old_number_invoice')!=null || jQuery('body').data('old_date_invoice')!='' ||
-			jQuery('body').data('old_date_invoice')!=null) && jQuery('body').data('old_number_invoice')!=jQuery('.invoice_n').html()
-			&& jQuery('body').data('old_date_invoice')==jQuery('.invoice_date').html()) {
+			jQuery('body').data('old_date_invoice')!=null) && jQuery('body').data('old_number_invoice')!=jQuery('.invoice_n').html() && jQuery('body').data('old_date_invoice')==jQuery('.invoice_date').html()) {
 			old_text = jQuery('#save_inv_modal .modal-body p').html();
 			jQuery('#save_inv_modal .modal-body p').html(jQuery('#save_inv_modal .modal-body').data('message-option')[1]);
 			mode_inv = 'save_invoice';
@@ -576,16 +575,16 @@ $(function() {
 
 		jQuery('table.inventory tbody tr').remove();
 
-		for (i=0; i<json.product.length; i++) {
+		for (i=0; i<json.products.product.length; i++) {
 			document.querySelector('table.inventory tbody').appendChild(generateTableRow());
 		}
 		list_product = jQuery('table.inventory tbody tr');
 
-		$.each(json.product, function(i){
+		$.each(json.products.product, function(i){
 			cells = jQuery(list_product[i]).find('td span');
-			jQuery(cells[0]).html(json.product[i].item);
-			jQuery(cells[2]).html(json.product[i].rate);
-			jQuery(cells[3]).html(json.product[i].quantity);
+			jQuery(cells[0]).html(json.products.product[i].item);
+			jQuery(cells[2]).html(json.products.product[i].rate);
+			jQuery(cells[3]).html(json.products.product[i].quantity);
 		});
 
 		jQuery.get('client_info.php', {

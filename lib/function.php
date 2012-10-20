@@ -4,7 +4,7 @@
 		return str_replace(array("\r\n", "\r", "\n", "\t", '  '), ' ',trim($string));
 	}
 
-	/* xml to array */
+	/* Xml to array */
 	function xml2array($file){
 		$array = json_decode(json_encode((array) simplexml_load_file($file)), 1);
 		foreach($array as $key => $value){
@@ -14,25 +14,27 @@
 	}
 
 	/* JSON to xml */
-	function json_to_xml($json){
-		return array_to_xml(json_decode($json));
+	function json_to_array($json){
+		return json_decode($json,true);
 	}
 
-	/* Array to xml */
-	function array_to_xml($array,$depth = 0) {
-		$indent = $return = '';
-		for($i = 0; $i < 0; $i++)
-			$indent .= "\t";
-			foreach($array as $key => $item){
-				$return .= "{$indent}< {$key}>\n";
-				if(is_array($item)){
-					$return .= ARRAYtoXML($item, $depth + 1);
-				}else{
-					$return .= "{$indent}\t\n";
-					$return .= "{$indent}\n";
-				}
+	function array_to_xml($array,$root=null,SimpleXMLElement $xml = null){
+
+		if ($xml == null){
+			$xml = new SimpleXMLElement('<'.$root.'/>');
+		}
+
+		foreach ($array as $key => $value) {
+
+			$key = (is_numeric($key)) ? 'product' : $key;
+			if(is_array($value)){
+				array_to_xml($value,null, $xml->addChild($key));
+			} else {
+				$xml->addChild($key, $value);
 			}
-		return $return;
+
+		}
+		return $xml;
 	}
 
 	/* Get last element invoice or client */

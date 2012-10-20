@@ -1,19 +1,23 @@
 <?
 	include('./config.php');
 
+	$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n\t";
+
+	$data = array();
 	if($_GET['mode']=='save_invoice') {
-		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n\t";
-		$content .= '<invoice>'."\n\t\t";
-		$content .= '<number>'.clean($_GET['invoice_number']).'</number>'."\n\t\t";
-		$content .= '<ticket>'.clean($_GET['invoice_ticket']).'</ticket>'."\n\t\t";
-		$content .= '<note>'.clean($_GET['note']).'</note>'."\n\t\t";
-		$content .= '<date>'.clean($_GET['date']).'</date>'."\n\t\t";
-		$content .= '<tax>'.clean($_GET['tax']).'</tax>'."\n\t\t";
-		$content .= '<client>'.clean($_GET['client_number']).'</client>'."\n\t\t";
-		$content .= '<logo>'.clean($_GET['logo']).'</logo>'."\n\t\t";
-		$content .= '<last-mod>'.time().'</last-mod>'."\n\t";
-		$content .= json_to_xml($_GET['content']);
-		$content .= '</invoice>';
+
+		$data['number'] = clean($_GET['invoice_number']);
+		$data['ticket'] = clean($_GET['invoice_ticket']);
+		$data['note'] = clean($_GET['note']);
+		$data['date'] = clean($_GET['date']);
+		$data['tax'] = clean($_GET['tax']);
+		$data['client'] = clean($_GET['client_number']);
+		$data['logo'] = clean($_GET['logo']);
+		$data['last-mod'] = time();
+		$temp_arr = json_to_array($_GET['content']);
+		$data['products'] = $temp_arr['product'];
+
+		$content = array_to_xml($data, 'invoice')->asXML();
 
 		if (!file_exists('./invoice/'.date('Y'))) {
 			mkdir('./invoice/'.date('Y'));
@@ -28,24 +32,25 @@
 	} elseif($_GET['mode']=='save_draft_invoice') {
 		$number_drafts = get_last_element('draft');
 		$number_drafts++;
-		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n\t";
-		$content .= '<invoice>'."\n\t\t";
-		$content .= '<number>'.clean($_GET['invoice_number']).'</number>'."\n\t\t";
-		$content .= '<ticket>'.clean($_GET['invoice_ticket']).'</ticket>'."\n\t\t";
-		$content .= '<note>'.clean($_GET['note']).'</note>'."\n\t\t";
-		$content .= '<date>'.clean($_GET['date']).'</date>'."\n\t\t";
-		$content .= '<tax>'.clean($_GET['tax']).'</tax>'."\n\t\t";
-		$content .= '<client>'.clean($_GET['client_number']).'</client>'."\n\t\t";
-		$content .= '<logo>'.clean($_GET['logo']).'</logo>'."\n\t\t";
-		$content .= '<last-mod>'.time().'</last-mod>'."\n\t";
-		$content .= json_to_xml($_GET['content']);
-		$content .= '</invoice>';
+
+		$data['number'] = clean($_GET['invoice_number']);
+		$data['ticket'] = clean($_GET['invoice_ticket']);
+		$data['note'] = clean($_GET['note']);
+		$data['date'] = clean($_GET['date']);
+		$data['tax'] = clean($_GET['tax']);
+		$data['client'] = clean($_GET['client_number']);
+		$data['logo'] = clean($_GET['logo']);
+		$data['last-mod'] = time();
+		$temp_arr = json_to_array($_GET['content']);
+		$data['products'] = $temp_arr['product'];
+
+		$content = array_to_xml($data, 'invoice')->asXML();
 
 		file_put_contents('./invoice/draft/'.$number_drafts.'.xml',$content);
 	} elseif($_GET['mode']=='new_client') {
 		$number_clients = get_last_element('client');
 		$number_clients++;
-		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
+
 		$content .= '<client>'."\n\t";
 		$content .= '<name>'.clean($_GET['name']).'</name>'."\n\t";
 		$content .= '<vat>'.clean($_GET['vat']).'</vat>'."\n\t";
@@ -61,7 +66,7 @@
 	} elseif($_GET['mode']=='new_note') {
 		$number_notes = get_last_element('note');
 		$number_notes++;
-		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
+
 		$content .= '<note>'."\n\t";
 		$content .= '<name>'.clean($_GET['name']).'</name>'."\n\t";
 		$content .= '<text>'.clean($_GET['text']).'</text>'."\n";
@@ -69,7 +74,7 @@
 
 		file_put_contents('./notes/'.$number_clients.'.xml',$content);
 	}elseif($_GET['mode']=='mod_note') {
-		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
+
 		$content .= '<note>'."\n\t";
 		$content .= '<name>'.clean($_GET['name']).'</name>'."\n\t";
 		$content .= '<text>'.clean($_GET['text']).'</text>'."\n";
@@ -77,7 +82,7 @@
 
 		file_put_contents('./notes/'.$_GET['note'].'.xml',$content);
 	} elseif($_GET['mode']=='mod_client') {
-		$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
+
 		$content .= '<client>'."\n\t";
 		$content .= '<name>'.clean($_GET['name']).'</name>'."\n\t";
 		$content .= '<vat>'.clean($_GET['vat']).'</vat>'."\n\t";
