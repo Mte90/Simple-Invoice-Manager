@@ -1,8 +1,6 @@
 <?
 	include('./config.php');
 
-	$content = '<?xml version="1.0" encoding="UTF-8"?>'."\n\t";
-
 	$data = array();
 	if($_GET['mode']=='save_invoice') {
 
@@ -81,18 +79,18 @@
 		$number_notes = get_last_element('note');
 		$number_notes++;
 
-		$content .= '<note>'."\n\t";
-		$content .= '<name>'.clean($_GET['name']).'</name>'."\n\t";
-		$content .= '<text>'.clean($_GET['text']).'</text>'."\n";
-		$content .= '</note>';
+		$data['name'] = clean($_GET['name']);
+		$data['text'] = clean($_GET['text']);
 
-		file_put_contents('./notes/'.$number_clients.'.xml',$content);
+		$content = array_to_xml($data, 'note')->asXML();
+
+		file_put_contents('./notes/'.$number_notes.'.xml',$content);
 	} elseif($_GET['mode']=='mod_note') {
 
-		$content .= '<note>'."\n\t";
-		$content .= '<name>'.clean($_GET['name']).'</name>'."\n\t";
-		$content .= '<text>'.clean($_GET['text']).'</text>'."\n";
-		$content .= '</note>';
+		$data['name'] = clean($_GET['name']);
+		$data['text'] = clean($_GET['text']);
+
+		$content = array_to_xml($data, 'note')->asXML();
 
 		file_put_contents('./notes/'.$_GET['note'].'.xml',$content);
 	}
