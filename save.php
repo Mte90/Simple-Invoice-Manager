@@ -51,18 +51,32 @@
 		$number_clients = get_last_element('client');
 		$number_clients++;
 
-		$content .= '<client>'."\n\t";
-		$content .= '<name>'.clean($_GET['name']).'</name>'."\n\t";
-		$content .= '<vat>'.clean($_GET['vat']).'</vat>'."\n\t";
-		$content .= '<address>'.clean($_GET['address']).'</address>'."\n\t";
-		$content .= '<zipcode>'.clean($_GET['zipcode']).'</zipcode>'."\n\t";
-		$content .= '<city>'.clean($_GET['city']).'</city>'."\n\t";
-		$content .= '<region>'.clean($_GET['region']).'</region>'."\n\t";
-		$content .= '<phone>'.clean($_GET['phone']).'</phone>'."\n\t";
-		$content .= '<email>'.clean($_GET['email']).'</email>'."\n";
-		$content .= '</client>';
+		$data['name'] = clean($_GET['name']);
+		$data['vat'] = clean($_GET['vat']);
+		$data['address'] = clean($_GET['address']);
+		$data['zipcode'] = clean($_GET['zipcode']);
+		$data['city'] = clean($_GET['city']);
+		$data['region'] = clean($_GET['region']);
+		$data['phone'] = clean($_GET['phone']);
+		$data['email'] = clean($_GET['email']);
+
+		$content = array_to_xml($data, 'client')->asXML();
 
 		file_put_contents('./clients/'.$number_clients.'.xml',$content);
+	} elseif($_GET['mode']=='mod_client') {
+
+		$data['name'] = clean($_GET['name']);
+		$data['vat'] = clean($_GET['vat']);
+		$data['address'] = clean($_GET['address']);
+		$data['zipcode'] = clean($_GET['zipcode']);
+		$data['city'] = clean($_GET['city']);
+		$data['region'] = clean($_GET['region']);
+		$data['phone'] = clean($_GET['phone']);
+		$data['email'] = clean($_GET['email']);
+
+		$content = array_to_xml($data, 'client')->asXML();
+
+		file_put_contents('./clients/'.$_GET['client'].'.xml',$content);
 	} elseif($_GET['mode']=='new_note') {
 		$number_notes = get_last_element('note');
 		$number_notes++;
@@ -73,7 +87,7 @@
 		$content .= '</note>';
 
 		file_put_contents('./notes/'.$number_clients.'.xml',$content);
-	}elseif($_GET['mode']=='mod_note') {
+	} elseif($_GET['mode']=='mod_note') {
 
 		$content .= '<note>'."\n\t";
 		$content .= '<name>'.clean($_GET['name']).'</name>'."\n\t";
@@ -81,20 +95,6 @@
 		$content .= '</note>';
 
 		file_put_contents('./notes/'.$_GET['note'].'.xml',$content);
-	} elseif($_GET['mode']=='mod_client') {
-
-		$content .= '<client>'."\n\t";
-		$content .= '<name>'.clean($_GET['name']).'</name>'."\n\t";
-		$content .= '<vat>'.clean($_GET['vat']).'</vat>'."\n\t";
-		$content .= '<address>'.clean($_GET['address']).'</address>'."\n\t";
-		$content .= '<zipcode>'.clean($_GET['zipcode']).'</zipcode>'."\n\t";
-		$content .= '<city>'.clean($_GET['city']).'</city>'."\n\t";
-		$content .= '<region>'.clean($_GET['region']).'</region>'."\n\t";
-		$content .= '<phone>'.clean($_GET['phone']).'</phone>'."\n\t";
-		$content .= '<email>'.clean($_GET['email']).'</email>'."\n";
-		$content .= '</client>';
-
-		file_put_contents('./clients/'.$_GET['client'].'.xml',$content);
 	}
 
 ?>
