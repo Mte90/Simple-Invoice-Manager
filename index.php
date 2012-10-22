@@ -7,7 +7,7 @@
 		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
 		<link type="text/css" rel="stylesheet" href="css/style.css">
 		<link rel="license" href="http://www.opensource.org/licenses/mit-license/">
-		<script type="text/javascript" src="js/jquery-1.8.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/activity-indicator.min.js"></script>
 		<script type="text/javascript" src="js/jqbootstrapvalidation.min.js"></script>
@@ -122,7 +122,6 @@
 			</div>
 			<h1><span><? echo $l10n['NOTE'] ?></span></h1>
 			<div contenteditable class="invoice_note">
-
 			</div>
 		</aside>
 		<div class="toolbar">
@@ -148,7 +147,7 @@
 				<p><? echo $l10n['SURE_SAVE_INVOICE']; ?></p>
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
+				<a href="#" class="btn" data-dismiss="modal" id="reject_invoice"><? echo $l10n['REJECT']; ?></a>
 				<a href="#" class="btn btn-primary" id="save_inv_okay"><? echo $l10n['SAVE']; ?></a>
 			</div>
 		</div>
@@ -189,6 +188,19 @@
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
 				<a href="#" class="btn btn-primary" id="del_draft_okay"><? echo $l10n['SAVE']; ?></a>
+			</div>
+		</div>
+
+		<div class="modal hide" id="check_note_modal" role="dialog">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3><? echo $l10n['ADD_NOTE']; ?></h3>
+			</div>
+			<div class="modal-body">
+				<p><? echo $l10n['CHECK_EMPTY_NOTE']; ?></p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
 			</div>
 		</div>
 

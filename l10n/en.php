@@ -43,7 +43,7 @@ $l10n['NEW_CLIENT'] = "New Client";
 $l10n['MODIFY_CLIENT'] = "Modify Client";
 $l10n['LIST_NOTES'] = "List Notes";
 $l10n['CHOOSE_NOTES'] = "Choose Notes";
-$l10n['ADD_NOTES'] = "New Note";
+$l10n['ADD_NOTE'] = "New Note";
 $l10n['MODIFY_NOTE'] = "Modify Note";
 $l10n['SURE_DEL_NOTE'] = "You are sure to delete the note?";
 $l10n['TEXT_NOTE'] = "New Text";
@@ -62,6 +62,7 @@ $l10n['CONTENT_EMAIL'] = "Content of Email";
 $l10n['ATTACH_EMAIL'] = "Attach invoice";
 $l10n['CHECK_INVOICE_CLIENT'] = "If the client is not choosen the invoice will be saved as a draft!";
 $l10n['CHECK_INVOICE_NUMBER'] = "You are sure to change the number of the invoice leaving the same date? Will remove the old invoice!";
+$l10n['CHECK_EMPTY_NOTE'] = "You did not specify the text for the note!";
 
 // Clienti
 $l10n['NAME'] = "Name";

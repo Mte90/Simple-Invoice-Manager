@@ -406,14 +406,18 @@ $(function() {
 	/* Note */
 	//Add Note
 	jQuery('.notes_add').click(function() {
-		jQuery('body').append('<div id="note_modal_add" class="modal hide" role="dialog"/>');
-		jQuery.get('list.php', {
-			'mode'		:'notes_new'
-		}).success(function(data) {
-			jQuery('#note_modal_add').html(data);
-			jQuery('.note_preview').html(jQuery('.invoice_note').html());
-			jQuery('#note_modal_add').modal('show');
-		});
+		if(jQuery.trim(jQuery('.invoice_note').html())!=''){
+			jQuery('body').append('<div id="note_modal_add" class="modal hide" role="dialog"/>');
+			jQuery.get('list.php', {
+				'mode'		:'notes_new'
+			}).success(function(data) {
+				jQuery('#note_modal_add').html(data);
+				jQuery('.note_preview').html(jQuery('.invoice_note').html());
+				jQuery('#note_modal_add').modal('show');
+			});
+		}else {
+			jQuery('#check_note_modal').modal('show');
+		}
 	});
 	//On save Notes
 	jQuery(document).on('click','#save_note_okay',function() {
