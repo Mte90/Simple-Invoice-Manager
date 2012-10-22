@@ -20,6 +20,8 @@
 	$config['client']['phone']	=	'';
 	$config['client']['email']	=	'';
 
+	$config['debug']		=	true;
+
 	$config['login']['enable']	=	false;
 	$config['login']['user']	=	'admin';
 	$config['login']['pass']	=	'pass';

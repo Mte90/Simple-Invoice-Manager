@@ -16,6 +16,7 @@
 		$data['products'] = $temp_arr['product'];
 
 		$content = array_to_xml($data, 'invoice')->asXML();
+		$content = format_xml($content);
 
 		if (!file_exists('./invoice/'.date('Y'))) {
 			mkdir('./invoice/'.date('Y'));
@@ -43,6 +44,7 @@
 		$data['products'] = $temp_arr['product'];
 
 		$content = array_to_xml($data, 'invoice')->asXML();
+		$content = format_xml($content);
 
 		file_put_contents('./invoice/draft/'.$number_drafts.'.xml',$content);
 	} elseif($_GET['mode']=='new_client') {
@@ -59,6 +61,7 @@
 		$data['email'] = clean($_GET['email']);
 
 		$content = array_to_xml($data, 'client')->asXML();
+		$content = format_xml($content);
 
 		file_put_contents('./clients/'.$number_clients.'.xml',$content);
 	} elseif($_GET['mode']=='mod_client') {
@@ -73,6 +76,7 @@
 		$data['email'] = clean($_GET['email']);
 
 		$content = array_to_xml($data, 'client')->asXML();
+		$content = format_xml($content);
 
 		file_put_contents('./clients/'.$_GET['client'].'.xml',$content);
 	} elseif($_GET['mode']=='new_note') {
@@ -91,6 +95,7 @@
 		$data['text'] = clean($_GET['text']);
 
 		$content = array_to_xml($data, 'note')->asXML();
+		$content = format_xml($content);
 
 		file_put_contents('./notes/'.$_GET['note'].'.xml',$content);
 	}

@@ -198,4 +198,17 @@
 			return true;
 		}
 	}
+
+	/* Format xml file for debug */
+	function format_xml($xml){
+	global $config;
+		if($config['debug']){
+			$dom = new DOMDocument('1.0');
+			$dom->loadXML($xml);
+			$dom->preserveWhiteSpace = false;
+			$dom->formatOutput = true;
+			$xml = $dom->saveXML($dom);
+		}
+		return $xml;
+	}
 ?>
