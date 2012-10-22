@@ -1,7 +1,8 @@
 <?
 	require_once('./config.php');
 
-	if($_GET['mode']=='logo_list') {
+if($_GET['mode']=='logo_list') {
+
 ?>
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -53,7 +54,7 @@
 	if($_GET['mode']=='client_mod'){
 		$client_info = read_client_info($_GET['client']);
 	}else {
-		$client_info['name']=$client_info['vat']=$client_info['address']=$client_info['zipcode']=$client_info['city']=$client_info['region']=$client_info['phone']=$client_info['email']='';
+		$client_info['name']=$client_info['vat']='';
 	}
 
 ?>
@@ -66,6 +67,13 @@
 				echo $l10n['MODIFY_CLIENT'];
 			}else {
 				echo $l10n['ADD_CLIENTS'];
+				$client_info['region']	= $config['client']['region'];
+				$client_info['city']	= $config['client']['city'];
+				$client_info['vat']	= $config['client']['vat'];
+				$client_info['address']	= $config['client']['address'];
+				$client_info['zipcode']	= $config['client']['zipcode'];
+				$client_info['phone']	= $config['client']['phone'];
+				$client_info['email']	= $config['client']['email'];
 			}
 			?>
 		</h3>

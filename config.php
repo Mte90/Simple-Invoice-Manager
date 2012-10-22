@@ -11,6 +11,15 @@
 	$config['invoice_logo'] 	=	true;
 	$config['email']		=	'test@test.it';
 
+	//default content of the new client field
+	$config['client']['region']	=	'Italy';
+	$config['client']['city']	=	'';
+	$config['client']['vat']	=	'';
+	$config['client']['address']	=	'';
+	$config['client']['zipcode']	=	'';
+	$config['client']['phone']	=	'';
+	$config['client']['email']	=	'';
+
 	$config['login']['enable']	=	false;
 	$config['login']['user']	=	'admin';
 	$config['login']['pass']	=	'pass';
