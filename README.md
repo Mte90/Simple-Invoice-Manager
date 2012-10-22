@@ -3,7 +3,7 @@
 A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 
 #Features
-- Draft Support
+- Draft Support (Add/Modify/Delete)
 - Notes Support (Add/Modify/Delete)
 - Login Support
 - Client Support (Add/Modify/Delete)
@@ -13,7 +13,6 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 
 #Roadmap
 
-- Modify XML with php function
 - Client Support (Hystory)
 - Better Code organization and pattern
 - Reorganize the order of translation string
