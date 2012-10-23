@@ -107,6 +107,10 @@ tr:hover .cut {opacity: 1;}
 	left:10px;
 }
 
+.invoice_option{
+	margin-top:-14px;
+}
+
 .toolbar_clients {
 	float:left;
 }
@@ -120,7 +124,7 @@ tr:hover .cut {opacity: 1;}
 	html {background: none; padding: 0;}
 	body {box-shadow: none; margin: 0;}
 	span:empty,.toolbar {display: none;}
-	.add, .cut,.toolbar_logo,.toolbar_clients,.toolbar {display: none;}
+	.add, .cut,.toolbar_logo,.toolbar_clients,.toolbar,.invoice_option {display: none;}
 }
 
 @page {margin: 0.02cm;size: A4;}

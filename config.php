@@ -20,6 +20,8 @@
 	$config['client']['phone']	=	'';
 	$config['client']['email']	=	'';
 
+	$config['capture_payment']	= 	true;
+
 	$config['debug']		=	true;
 
 	$config['login']['enable']	=	false;

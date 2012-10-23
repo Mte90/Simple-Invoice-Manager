@@ -14,6 +14,15 @@
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 	<body class="modal-open" data-choose-client="<? echo $l10n['CHOOSE_CLIENT'] ?>">
+		<div class="invoice_option">
+		<? if($config['capture_payment']){ ?>
+			<div class="form-inline">
+				<label class="checkbox"><input type="checkbox" id="capture_payment" /><? echo $l10n['CAPTURE_PAYMENT'] ?></label>
+				<input type="text" id="capture_data" class="input-small" value="<? echo date($config['date_format']); ?>" placeholder="<? echo $l10n['DATE'] ?>" />
+				<button type="submit" class="btn"><? echo $l10n['SAVE']; ?></button>
+			</div>
+		<? } ?>
+		</div>
 		<header>
 			<address>
 				<? echo $config['invoice_info']; ?>
