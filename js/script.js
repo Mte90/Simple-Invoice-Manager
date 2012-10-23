@@ -534,6 +534,19 @@ $(function() {
 		jQuery('#email_modal').modal('show');
 	});
 
+	//Invoice option
+	jQuery('.invoice_option btn').click(function() {
+		jQuery.get('save.php', {
+			'mode'		:'invoice_option',
+			'invoice_number':jQuery('.invoice_n').html(),
+			'capture'	:jQuery('#capture_payment').attr('checked'),
+			'date'		:jQuery('#capture_data').html(),
+			'invoice'	:jQuery('body').data('is_invoice')
+		}).success(function() {
+
+		});
+	});
+
 	jQuery(document).on('click','#sent_email_ok',function() {
 		spin_show();
 		jQuery.get('email.php', {
@@ -570,7 +583,11 @@ $(function() {
 		jQuery('.invoice_note').html(json.note);
 		jQuery('.invoice_date').html(json.date);
 		if(type=='invoice'){
+			jQuery('body').data('is_invoice',true);
 			jQuery('body').data('old_date_invoice',json.date);
+		}else {
+			jQuery('body').data('is_invoice',false);
+			jQuery('body').data('old_date_invoice','');
 		}
 		jQuery('#value_tax').html(json.tax);
 		jQuery('#logo').attr('src',json.logo);
