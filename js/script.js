@@ -535,13 +535,13 @@ $(function() {
 	});
 
 	//Invoice option
-	jQuery('.invoice_option btn').click(function() {
+	jQuery('#invoice_option_okay').click(function() {
 		jQuery.get('save.php', {
 			'mode'		:'invoice_option',
 			'invoice_number':jQuery('.invoice_n').html(),
 			'capture'	:jQuery('#capture_payment').attr('checked'),
 			'date'		:jQuery('#capture_data').html(),
-			'invoice'	:jQuery('body').data('is_invoice')
+			'is_invoice'	:jQuery('body').data('is_invoice')
 		}).success(function() {
 
 		});
