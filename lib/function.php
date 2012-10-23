@@ -137,6 +137,9 @@
 			$folder = './invoice/'.$year;
 		}
 		$xml = xml2array($folder.'/'.$file.'.xml');
+		if(!isset($xml['client'])){
+			$xml['client'] = '';
+		}
 		$xml['year']=$year;
 		return $xml;
 	}
