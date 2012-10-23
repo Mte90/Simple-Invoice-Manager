@@ -540,7 +540,7 @@ $(function() {
 			'mode'		:'invoice_option',
 			'invoice_number':jQuery('.invoice_n').html(),
 			'capture'	:jQuery('#capture_payment').attr('checked'),
-			'date'		:jQuery('#capture_data').html(),
+			'date'		:jQuery('#capture_date').val(),
 			'is_invoice'	:jQuery('body').data('is_invoice')
 		}).success(function() {
 
@@ -588,6 +588,15 @@ $(function() {
 		}else {
 			jQuery('body').data('is_invoice',false);
 			jQuery('body').data('old_date_invoice','');
+		}
+		if(json.payment_capture !== undefined){
+			jQuery('#capture_payment').attr('checked',true);
+			jQuery('#capture_date').val(json.payment_date);
+
+		}else{
+			jQuery('#capture_payment').attr('checked',false);
+			jQuery('#capture_date').val('');
+
 		}
 		jQuery('#value_tax').html(json.tax);
 		jQuery('#logo').attr('src',json.logo);

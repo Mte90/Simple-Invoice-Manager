@@ -49,8 +49,8 @@
 		file_put_contents('./invoice/draft/'.$number_drafts.'.xml',$content);
 	} elseif($_GET['mode']=='invoice_option') {
 
-		$data['date'] 		= clean($_GET['date']);
-		$data['capture'] 	= clean($_GET['capture']);
+		$data['payment_date'] 		= clean($_GET['date']);
+		$data['payment_capture'] 	= clean($_GET['capture']);
 
 		$content = array_to_xml($data, 'invoice')->asXML();
 		$content = format_xml($content);
@@ -62,10 +62,12 @@
 		}
 
 		$file = new SimpleXMLElement(file_get_contents($path));
-		$file->addChild("capture",$data['capture']);
-		$file->addChild("date",$data['date']);
+		$file->addChild("payment_capture",$data['payment_capture']);
+		$file->addChild("payment_date",$data['payment_date']);
 
-		file_put_contents($path, format_xml($file->asXML()));
+		$content = format_xml($file->asXML());
+
+		file_put_contents($path,$content);
 
 	}  elseif($_GET['mode']=='new_client') {
 		$number_clients = get_last_element('client');
