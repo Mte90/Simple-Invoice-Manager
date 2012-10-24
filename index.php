@@ -18,12 +18,14 @@
 		<? if($config['capture_payment']){ ?>
 			<div class="form-inline">
 				<label class="checkbox"><input type="checkbox" id="capture_payment" /><? echo $l10n['CAPTURE_PAYMENT'] ?></label>
-				<input type="text" id="capture_data" class="input-small" value="<? echo date($config['date_format']); ?>" placeholder="<? echo $l10n['DATE'] ?>" />
-				<button type="submit" class="btn"><? echo $l10n['SAVE']; ?></button>
+				<input type="text" id="capture_date" class="input-small" value="<? echo date($config['date_format']); ?>" placeholder="<? echo $l10n['DATE'] ?>" />
+				<button type="submit" class="btn" id="invoice_option_okay"><? echo $l10n['SAVE']; ?></button>
 			</div>
 		<? } ?>
 		</div>
 		<header>
+			<h1 class="green paid" style="display:none"><? echo $l10n['PAID'] ?></h1>
+			<h1 class="red not-paid" style="display:none"><? echo $l10n['NOT_PAID'] ?></h1>
 			<address>
 				<? echo $config['invoice_info']; ?>
 			</address>

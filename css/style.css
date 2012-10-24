@@ -29,6 +29,9 @@ header address {float: left; font-size: 14px; margin: 0 1em 1em 0;}
 header span, header img {display: block; float: right;}
 header span {margin: 0 0 1em 1em; max-height: 25%; max-width: 60%; position: relative;}
 header img {max-height: 100%; max-width: 100%;}
+header h1 { background: #000; border-radius: 0.25em; color: #FFF; margin: 0 0 1em; padding: 0.5em 0; }
+.green {background: green; }
+.red {background: red; }
 
 /* article */
 
@@ -123,8 +126,8 @@ tr:hover .cut {opacity: 1;}
 	{-webkit-print-color-adjust: exact;}
 	html {background: none; padding: 0;}
 	body {box-shadow: none; margin: 0;}
-	span:empty,.toolbar {display: none;}
-	.add, .cut,.toolbar_logo,.toolbar_clients,.toolbar,.invoice_option {display: none;}
+	span:empty,.toolbar,.add, .cut,.toolbar_logo,.toolbar_clients,.toolbar,.invoice_option {display: none;}
+	.print {display:block !important;}
 }
 
 @page {margin: 0.02cm;size: A4;}

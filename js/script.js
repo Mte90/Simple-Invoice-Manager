@@ -591,10 +591,14 @@ $(function() {
 		}
 		if(json.payment_capture !== undefined){
 			jQuery('#capture_payment').attr('checked',true);
+			jQuery('.paid').addClass('print');
+			jQuery('.not-paid').removeClass('print');
 			jQuery('#capture_date').val(json.payment_date);
 
 		}else{
 			jQuery('#capture_payment').attr('checked',false);
+			jQuery('.not-paid').addClass('print');
+			jQuery('.paid').removeClass('print');
 			jQuery('#capture_date').val('');
 
 		}
