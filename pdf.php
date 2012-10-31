@@ -8,6 +8,7 @@
 	}
 
 	$total = 0;
+
 	foreach($invoice_data['product'] as $item){
 		$total += $item['rate'] * $item['quantity'];
 	}
@@ -37,8 +38,15 @@ $content = '
 		</style>
 	</head>
 	<body>
-		<header>
-			<address>'.$config['invoice_info'].'</address>
+		<header>';
+
+if($invoice_data['payment_capture']==='checked'){
+$content .= '			<h1 class="green">'.$l10n['PAID'].'</h1>';
+} else {
+$content .= '			<h1 class="red">'.$l10n['NOT_PAID'].'</h1>';
+}
+
+$content .= '		<address>'.$config['invoice_info'].'</address>
 			<span><img alt="" src="'.$logo_path.$invoice_data['logo'].'" id="logo"></span>
 		</header>
 		<article>

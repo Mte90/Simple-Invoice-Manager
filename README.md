@@ -13,7 +13,6 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 
 #Roadmap
 
-- Capture invoice payment (add text on pdf)
 - Client Support (Hystory)
 - Better Code organization and pattern
 - Reorganize the order of translation string

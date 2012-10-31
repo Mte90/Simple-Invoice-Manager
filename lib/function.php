@@ -7,8 +7,16 @@
 	/* Xml to array */
 	function xml2array($file){
 		$array = json_decode(json_encode((array) simplexml_load_file($file)), 1);
+
 		foreach($array as $key => $value){
-		    if(is_Array($array[$key]) && count($array[$key]) == 0) $array[$key] = '';
+			if(empty($array[$key])) $array[$key] = '';
+		}
+		if(!empty($array['products'])){
+			foreach($array['products']['product'] as $key => $value){
+				foreach($array['products']['product'][$key] as $keyz => $value){
+					if(empty($array['products']['product'][$key][$keyz])) $array['products']['product'][$key][$keyz] = '';
+				}
+			}
 		}
 		return $array;
 	}
@@ -18,6 +26,7 @@
 		return json_decode($json,true);
 	}
 
+	/* Array to xml */
 	function array_to_xml($array,$root=null,SimpleXMLElement $xml = null){
 
 		if ($xml == null){
@@ -141,6 +150,7 @@
 			$xml['client'] = '';
 		}
 		$xml['year']=$year;
+		$xml['product'] = $xml['products']['product'];
 		return $xml;
 	}
 
