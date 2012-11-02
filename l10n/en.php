@@ -64,6 +64,8 @@ $l10n['ATTACH_EMAIL'] = "Attach invoice";
 $l10n['CHECK_INVOICE_CLIENT'] = "If the client is not choosen the invoice will be saved as a draft!";
 $l10n['CHECK_INVOICE_NUMBER'] = "You are sure to change the number of the invoice leaving the same date? Will remove the old invoice!";
 $l10n['CHECK_EMPTY_NOTE'] = "You did not specify the text for the note!";
+$l10n['PAID'] = "Paid";
+$l10n['NOT_PAID'] = "Not Paid";
 
 // Clienti
 $l10n['NAME'] = "Name";

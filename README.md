@@ -13,7 +13,7 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 
 #Roadmap
 
-- Client Support (Hystory)
+- Client Support (History)
 - Better Code organization and pattern
 - Reorganize the order of translation string
 - Better Documentation
@@ -31,7 +31,7 @@ Icons WooFunction by WooThemes http://www.woothemes.com/2009/09/woofunction-178-
 
 #Library used
 - PHP WkHtmlToPdf: http://mikehaertl.github.com/phpwkhtmltopdf/ MIT License
-- PHP PdfCrowd: http://github.com/pdfcrowd/pdfcrowd-phpwkhtmltopdf
+- PHP PdfCrowd: http://github.com/pdfcrowd/pdfcrowd-php
 - simpleEmailClass: Mark Davidson GPL License
 - jqBootstrapValidation: http://reactiveraven.github.com/jqBootstrapValidation/ (modded for modal support https://github.com/ReactiveRaven/jqBootstrapValidation/issues/22)
 

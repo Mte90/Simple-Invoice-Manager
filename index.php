@@ -24,8 +24,8 @@
 		<? } ?>
 		</div>
 		<header>
-			<h1 class="green paid" style="display:none"><? echo $l10n['PAID'] ?></h1>
-			<h1 class="red not-paid" style="display:none"><? echo $l10n['NOT_PAID'] ?></h1>
+			<h1 class="green paid"><? echo $l10n['PAID'] ?></h1>
+			<h1 class="red not-paid"><? echo $l10n['NOT_PAID'] ?></h1>
 			<address>
 				<? echo $config['invoice_info']; ?>
 			</address>

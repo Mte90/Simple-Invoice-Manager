@@ -23,8 +23,38 @@
 			file_put_contents('./invoice/'.date('Y').'/index.php','');
 		}
 
+		$inv_info = extract_invoice(clean($_GET['invoice_number']));
+
 		if($_GET['old_date']==clean($_GET['date']) && $_GET['old_number']!=clean($_GET['invoice_number'])){
 			unlink('./invoice/'.date('Y').'/'.$_GET['old_number'].'.xml');
+			$inv_info = extract_invoice($_GET['old_number']);
+		}
+
+		if ($inv_info['client']!=$data['client']) {
+			//remove info of old client
+			$file_history = './clients/'.$data['client'].'_history.xml';
+			$add_history = true;
+			if(!file_exists($file_history)){
+				$add_history=true;
+			} else {
+				$check = xml2array($file_history);
+				foreach($check as $key => $value){
+					if($check[$key]['number']==$data['number'] && $check[$key]['year']== date('Y') ) {
+						$add_history = false;
+						break;
+					}
+				}
+			}
+
+			if($add_history){
+				$data_h['invoice']['number'] = $data['number'];
+				$data_h['invoice']['year'] = date('Y');
+				$history['history'] = $data_h['invoice'];
+
+				$content_h = array_to_xml($history, 'client-history')->asXML();
+				$content_h = format_xml($content_h);
+				file_put_contents($file_history,$content_h);
+			}
 		}
 
 		file_put_contents('./invoice/'.date('Y').'/'.clean($_GET['invoice_number']).'.xml',$content);

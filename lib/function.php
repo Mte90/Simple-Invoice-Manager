@@ -33,11 +33,17 @@
 			$xml = new SimpleXMLElement('<'.$root.'/>');
 		}
 
+		if ($root=='invoice') {
+			$ar_replace = 'product';
+		}else {
+			$ar_replace = 'history';
+		}
+
 		foreach ($array as $key => $value) {
 
 			$key = (is_numeric($key)) ? 'product' : $key;
 			if(is_array($value)){
-				array_to_xml($value,null, $xml->addChild($key));
+				array_to_xml($value,$root, $xml->addChild($key));
 			} else {
 				$xml->addChild($key, $value);
 			}
