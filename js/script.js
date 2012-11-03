@@ -369,7 +369,7 @@ $(function() {
 			jQuery('.client_info').html(data);
 			jQuery('#clients_modal_list').modal('hide');
 		});
-		jQuery('body').data('client',jQuery('.clients-list .client_choosen').parent().data('id'));
+		jQuery('body').data('client',jQuery(this).parent().data('id'));
 		e.stopPropagation();
 	});
 	//Modify Client

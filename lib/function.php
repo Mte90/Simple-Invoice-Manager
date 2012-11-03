@@ -162,7 +162,7 @@
 
 	/* Get array of notes */
 	function notes_list() {
-		$client_list = $notes_list = Array();
+		$notes_list = Array();
 		if ($handle = opendir('./notes/')) {
 			while (false !== ($entry = readdir($handle))) {
 				if ($entry != "." && $entry != ".." && $entry != "index.php") {
@@ -178,6 +178,18 @@
 		}
 
 		return $notes_list;
+	}
+
+	/* Get history of invoice by client */
+	function history_invoice($client,$entrymin,$entrymax){
+		$file = './client/'.$client.'_history.xml';
+		$history_list = Array();
+		if(file_exists($file)){
+			$xml = xml2array($file);
+			return $xml;
+		} else {
+			return '';
+		}
 	}
 
 	/* Get actual year */
