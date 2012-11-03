@@ -14,7 +14,6 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 #Roadmap
 
 - Better Code organization and pattern
-- Reorganize the order of translation string
 - Better Documentation
 - MySQL Support optionable ??
 
