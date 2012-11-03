@@ -6,14 +6,13 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 - Draft Support (Add/Modify/Delete)
 - Notes Support (Add/Modify/Delete)
 - Login Support
-- Client Support (Add/Modify/Delete)
+- Client Support (Add/Modify/Delete/History)
 - Export in PDF
 - Print Client (Browser with pdf reader) or Print by default printer on server
 - Sent PDF a client email
 
 #Roadmap
 
-- Client Support (History)
 - Better Code organization and pattern
 - Reorganize the order of translation string
 - Better Documentation

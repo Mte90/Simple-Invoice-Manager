@@ -424,6 +424,11 @@ $(function() {
 			jQuery('#client_modal_his').modal('hide');
 		});
 	});
+	//Show client list by history
+	jQuery(document).on('click','.client-list-back',function() {
+		jQuery('#client_modal_his').modal('hide');
+		jQuery('.clients_search').trigger('click');
+	});
 
 	/* Note */
 	//Add Note

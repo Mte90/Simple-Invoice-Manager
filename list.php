@@ -75,6 +75,7 @@ $history_list = history_invoice($_GET['client']);
 		<? } ?>
 	</div>
 	<div class="modal-footer">
+		<a href="#" class="btn client-list-back"><? echo $l10n['LIST_CLIENTS']; ?></a>
 		<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
 	</div>
 <?
