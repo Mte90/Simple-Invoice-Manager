@@ -101,7 +101,7 @@
 		$client_list = Array();
 		if ($handle = opendir('./clients/')) {
 			while (false !== ($entry = readdir($handle))) {
-				if ($entry != "." && $entry != ".." && $entry != "index.php") {
+				if ($entry != "." && $entry != ".." && $entry != "index.php" && strpos($entry,'_history.xml') === false) {
 					$entry = str_replace('.xml','',$entry);
 					$client_list[] = array(read_client_info($entry),$entry);
 				}
