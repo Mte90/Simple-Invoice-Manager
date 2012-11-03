@@ -65,9 +65,9 @@ $history_list = history_invoice($_GET['client'],0,20);
 		<table class="clients-his table table-bordered table-hover">
 			<tbody>
 				<?
-					$client = client_list();
-					foreach ($client as $key) {
-						echo '<tr data-id="'.$key[1].'"><td class="client_choosen">'.$key[0]['name'].'</td><td class="link-func client_mod">'.$l10n['MODIFY'].'</td><td class="link-func client_his">'.$l10n['HISTORY'].'</td></tr>'."\n";
+					foreach ($history_list as $key) {
+						$inv_info = extract_invoice($key['number'],$key['year']);
+						echo '<tr data-year="'.$key['year'].'" data-number="'.$key['number'].'"><td class="client_his__choosen">'.$key['number'].' - '.$inv_info['date'].'</td><td class="link-func client_his_inv">'.$l10n['OPEN'].'</td></tr>'."\n";
 					}
 				?>
 			</tbody>
