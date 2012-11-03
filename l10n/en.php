@@ -66,6 +66,7 @@ $l10n['CHECK_INVOICE_NUMBER'] = "You are sure to change the number of the invoic
 $l10n['CHECK_EMPTY_NOTE'] = "You did not specify the text for the note!";
 $l10n['PAID'] = "Paid";
 $l10n['NOT_PAID'] = "Not Paid";
+$l10n['NOTHING_INVOICE_CLIENT'] = "This client hasn't invoice";
 
 // Clienti
 $l10n['NAME'] = "Name";
