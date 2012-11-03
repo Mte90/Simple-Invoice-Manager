@@ -402,6 +402,18 @@ $(function() {
 			jQuery('#client_modal_mod').modal('hide');
 		});
 	});
+	//Show Client History
+	jQuery(document).on('click','.clients-list .client_his',function() {
+		jQuery('#clients_modal_list').modal('hide');
+		jQuery('body').append('<div id="client_modal_his" class="modal hide" role="dialog"/>');
+		jQuery.get('list.php', {
+			'mode'		:'clients_his',
+			'client'	:jQuery(this).parent().data('id')
+		}).success(function(data) {
+			jQuery('#client_modal_his').html(data);
+		});
+		jQuery('#client_modal_his').modal('show');
+	});
 
 	/* Note */
 	//Add Note

@@ -49,6 +49,32 @@ if($_GET['mode']=='logo_list') {
 	</div>
 <?
 
+}elseif($_GET['mode']=='clients_his') {
+$client_info = read_client_info($_GET['client']);
+
+?>
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3><? echo $l10n['LIST_INVOICE']; ?></h3>
+	</div>
+	<div class="modal-body">
+		<p><? echo $client_info['name']; ?>:</p>
+		<table class="clients-his table table-bordered table-hover">
+			<tbody>
+				<?
+					$client = client_list();
+					foreach ($client as $key) {
+						echo '<tr data-id="'.$key[1].'"><td class="client_choosen">'.$key[0]['name'].'</td><td class="link-func client_mod">'.$l10n['MODIFY'].'</td><td class="link-func client_his">'.$l10n['HISTORY'].'</td></tr>'."\n";
+					}
+				?>
+			</tbody>
+		</table>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
+	</div>
+<?
+
 }elseif($_GET['mode']=='clients_new'||$_GET['mode']=='client_mod') {
 
 	if($_GET['mode']=='client_mod'){
