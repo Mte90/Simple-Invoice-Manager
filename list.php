@@ -51,7 +51,7 @@ if($_GET['mode']=='logo_list') {
 
 }elseif($_GET['mode']=='clients_his') {
 $client_info = read_client_info($_GET['client']);
-$history_list = history_invoice($_GET['client'],0,20);
+$history_list = history_invoice($_GET['client']);
 ?>
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

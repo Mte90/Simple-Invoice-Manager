@@ -181,8 +181,8 @@
 	}
 
 	/* Get history of invoice by client */
-	function history_invoice($client,$entrymin,$entrymax){
-		$file = './client/'.$client.'_history.xml';
+	function history_invoice($client){
+		$file = './clients/'.$client.'_history.xml';
 		$history_list = Array();
 		if(file_exists($file)){
 			$xml = xml2array($file);
