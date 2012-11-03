@@ -414,6 +414,16 @@ $(function() {
 		});
 		jQuery('#client_modal_his').modal('show');
 	});
+	//open Invoice by client history
+	jQuery(document).on('click','.clients-his .client_his_inv',function() {
+		jQuery.getJSON('invoice_data.php', {
+			'number':	jQuery(this).parent().data('number'),
+			'year'  :	jQuery(this).parent().data('year')
+		}).success(function(data) {
+			init_invoice(data,'invoice');
+			jQuery('#client_modal_his').modal('hide');
+		});
+	});
 
 	/* Note */
 	//Add Note
