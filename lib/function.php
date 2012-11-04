@@ -1,16 +1,16 @@
 <?
 
-
 	/* Get last element invoice or customer */
 	function get_last_element($folder,$ext=false){
+	global $path;
 		if($folder == "customer") {
-			$folder = './customers';
+			$folder = $path['customers'];
 		} elseif($folder == "invoice") {
-			$folder = './invoice/'.get_last_year();
+			$folder = $path['invoice'].DIRECTORY_SEPARATOR.get_last_year();
 		} elseif($folder == "draft") {
-			$folder = './invoice/draft';
+			$folder = $path['draft'];
 		} elseif($folder == "note") {
-			$folder = './notes';
+			$folder = $path['notes'];
 		}
 		$files = scandir($folder, 1);
 		$files = array_diff($files, array("index.php",'..','.'));
@@ -29,10 +29,10 @@
 	}
 
 	/* Get customer info */
-	function read_customer_info($path) {
-	global $l10n;
-		if(file_exists('./customers/'.$path .'.xml')) {
-			$customer = xml2array('./customers/'.$path .'.xml');
+	function read_customer_info($id) {
+	global $l10n,$path;
+		if(file_exists($path['customers'].DIRECTORY_SEPARATOR.$id.'.xml')) {
+			$customer = xml2array($path['customers'].DIRECTORY_SEPARATOR.$id.'.xml');
 		} else {
 			$customer['name'] = $l10n['CUSTOMER_NOT_DEFINED'];
 		}
@@ -41,14 +41,16 @@
 
 	/* Get note info */
 	function read_note_info($path) {
-		$note = xml2array('./notes/'.$path .'.xml');
+	global $path;
+		$note = xml2array($path['notes'].DIRECTORY_SEPARATOR.$path .'.xml');
 		return $note;
 	}
 
 	/* Get array of customer */
 	function customer_list() {
+	global $path;
 		$customer_list = Array();
-		if ($handle = opendir('./customers/')) {
+		if ($handle = opendir($path['customers'].DIRECTORY_SEPARATOR)) {
 			while (false !== ($entry = readdir($handle))) {
 				if ($entry != "." && $entry != ".." && $entry != "index.php" && strpos($entry,'_history.xml') === false) {
 					$entry = str_replace('.xml','',$entry);
@@ -62,8 +64,9 @@
 
 	/* Get array of logo */
 	function logo_list() {
+	global $path;
 		$logo_list = Array();
-		if ($handle = opendir('./logos/')) {
+		if ($handle = opendir($path['logos'].DIRECTORY_SEPARATOR)) {
 			while (false !== ($entry = readdir($handle))) {
 				if ($entry != "." && $entry != ".." && $entry != "index.php") {
 					$logo_list[] = $entry;
@@ -76,12 +79,13 @@
 
 	/* Get Array of Invoice */
 	function get_invoice($year='last'){
+	global $path;
 		if ($year=='last') {
-			$folder = './invoice/'.get_last_year();
+			$folder = $path['invoice'].DIRECTORY_SEPARATOR.get_last_year();
 		}elseif($year=='draft'){
-			$folder = './invoice/draft';
+			$folder = $path['draft'];
 		}else{
-			$folder = './invoice/'.$year;
+			$folder = $path['invoice'].DIRECTORY_SEPARATOR.$year;
 		}
 		$files = scandir($folder, 1);
 		$files = array_diff($files, array("index.php",'..','.'));
@@ -92,15 +96,16 @@
 
 	/* Return Invoice data */
 	function extract_invoice($file,$year='last') {
+	global $path;
 		if ($year=='last') {
 			$year = get_last_year();
-			$folder = './invoice/'.$year;
+			$folder = $path['invoice'].DIRECTORY_SEPARATOR.$year;
 		}elseif($year=='draft'){
-			$folder = './invoice/draft';
+			$folder = $path['draft'];
 		}else{
-			$folder = './invoice/'.$year;
+			$folder = $path['invoice'].DIRECTORY_SEPARATOR.$year;
 		}
-		$xml = xml2array($folder.'/'.$file.'.xml');
+		$xml = xml2array($folder.DIRECTORY_SEPARATOR.$file.'.xml');
 		if(!isset($xml['customer'])){
 			$xml['customer'] = '';
 		}
@@ -112,9 +117,11 @@
 		return $xml;
 	}
 
+	/* get list of year invoice  */
 	function get_invoice_year() {
+	global $path;
 		$contents = array();
-		$dir = './invoice';
+		$dir = $path['invoice'];
 		# Foreach node in $dir
 		foreach (scandir($dir) as $node) {
 			# Skip link to current and parent folder
@@ -132,8 +139,9 @@
 
 	/* Get array of notes */
 	function notes_list() {
+	global $path;
 		$notes_list = Array();
-		if ($handle = opendir('./notes/')) {
+		if ($handle = opendir($path['notes'])) {
 			while (false !== ($entry = readdir($handle))) {
 				if ($entry != "." && $entry != ".." && $entry != "index.php") {
 					$entry = str_replace('.xml','',$entry);
@@ -152,7 +160,8 @@
 
 	/* Get history of invoice by customer */
 	function history_invoice($customer){
-		$file = './customers/'.$customer.'_history.xml';
+	global $path;
+		$file = $path['customers'].DIRECTORY_SEPARATOR.$customer.'_history.xml';
 		$history_list = Array();
 		if(file_exists($file)){
 			$xml = xml2array($file);
@@ -175,25 +184,27 @@
 
 	/* Set the header for load pdf file */
 	function header_pdf($filename){
+	global $path;
 		header('Content-type: application/pdf');
 		header('Content-Disposition: inline; filename="' . $filename . '"');
 		header('Content-Transfer-Encoding: binary');
-		header('Content-Length: ' . filesize('./tmp/'.$filename));
+		header('Content-Length: ' . filesize($path['tmp'].DIRECTORY_SEPARATOR.$filename));
 		header('Accept-Ranges: bytes');
 		header("Cache-Control: no-cache");
 
-		@readfile('./tmp/'.$filename);
+		@readfile($path['tmp'].DIRECTORY_SEPARATOR.$filename);
 	}
 
 	/* Check exist last pdf version */
 	function need_new_pdf($invoice,$time) {
+	global $path;
 		$pdf_name='invoice-'.$invoice.'-'.$time.'.pdf';
-		$pdf_path='./tmp/'.$pdf_name;
+		$pdf_path=$path['tmp'].DIRECTORY_SEPARATOR.$pdf_name;
 
 		if (file_exists($pdf_path)) {
 			return false;
 		}else{
-			foreach (glob('./tmp/invoice-'.$invoice.'-*.pdf') as $filename) {
+			foreach (glob($path['tmp'].DIRECTORY_SEPARATOR.'invoice-'.$invoice.'-*.pdf') as $filename) {
 				unlink($filename);
 			}
 			return true;

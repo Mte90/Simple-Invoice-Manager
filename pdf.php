@@ -14,7 +14,7 @@
 	}
 
 	$pdf_name='invoice-'.$invoice_data['number'].'-'.$invoice_data['last-mod'].'.pdf';
-	$pdf_path='./tmp/'.$pdf_name;
+	$pdf_path=$path['tmp'].DIRECTORY_SEPARATOR.$pdf_name;
 
 	if (need_new_pdf($invoice_data['number'],$invoice_data['last-mod'])) {
 
@@ -153,11 +153,11 @@ $content .= '		<address>'.$config['invoice_info'].'</address>
 			$customer->setNoModify(true);
 			$customer->setNoCopy(true);
 			$zip = new ZipArchive;
-			$res = $zip->open('./tmp/pdf.zip', ZipArchive::CREATE);
-			$zip->addFile('./tmp/pdf.htm', 'pdf.htm');
-			$zip->addFile('./'.$invoice_data['logo'], $invoice_data['logo']);
+			$res = $zip->open($path['tmp'].DIRECTORY_SEPARATOR.'pdf.zip', ZipArchive::CREATE);
+			$zip->addFile($path['tmp'].DIRECTORY_SEPARATOR.'pdf.htm', 'pdf.htm');
+			$zip->addFile($path['root'].$invoice_data['logo'], $invoice_data['logo']);
 			$zip->close();
-			$customer->convertFile('./tmp/pdf.htm',$pdf);
+			$customer->convertFile($path['tmp'].DIRECTORY_SEPARATOR.'pdf.htm',$pdf);
 			fclose($pdf);
 
 			if($config['pdf']['wait']!=''){
@@ -177,7 +177,7 @@ $content .= '		<address>'.$config['invoice_info'].'</address>
 		include('./lib/WkHtmlToPdf.php');
 
 		$pdf = new WkHtmlToPdf;
-		$pdf->addPage('./tmp/pdf.htm');
+		$pdf->addPage($path['tmp'].DIRECTORY_SEPARATOR.'pdf.htm');
 		$pdf->saveAs($pdf_path);
 
 		if($config['pdf']['wait']!=''){

@@ -18,9 +18,9 @@
 		$content = array_to_xml($data, 'invoice')->asXML();
 		$content = format_xml($content);
 
-		if (!file_exists('./invoice/'.get_last_year())) {
-			mkdir('./invoice/'.get_last_year());
-			file_put_contents('./invoice/'.get_last_year().'/index.php','');
+		if (!file_exists($path['invoice'].DIRECTORY_SEPARATOR.get_last_year())) {
+			mkdir($path['invoice'].DIRECTORY_SEPARATOR.get_last_year());
+			file_put_contents($path['invoice'].DIRECTORY_SEPARATOR.get_last_year().DIRECTORY_SEPARATOR.'index.php','');
 		}
 
 		if(isset($_GET['year'])){
@@ -33,12 +33,12 @@
 
 		if($_GET['old_date']==clean($_GET['date']) && $_GET['old_number']!=clean($_GET['invoice_number'])){
 			$inv_info = extract_invoice($_GET['old_number']);
-			unlink('./invoice/'.$year_invoice.'/'.$_GET['old_number'].'.xml');
+			unlink($path['invoice'].DIRECTORY_SEPARATOR.$year_invoice.DIRECTORY_SEPARATOR.$_GET['old_number'].'.xml');
 		}
 
 		if ($inv_info['customer']!=$data['customer']) {
 			//remove info of old customer
-			$file_history = './customers/'.$data['customer'].'_history.xml';
+			$file_history = $path['customers'].DIRECTORY_SEPARATOR.$data['customer'].'_history.xml';
 			$add_history = true;
 			if(!file_exists($file_history)){
 				$add_history=true;
@@ -63,7 +63,7 @@
 			}
 		}
 
-		file_put_contents('./invoice/'.$year_invoice.'/'.clean($_GET['invoice_number']).'.xml',$content);
+		file_put_contents($path['invoice'].$year_invoice.DIRECTORY_SEPARATOR.clean($_GET['invoice_number']).'.xml',$content);
 	} elseif($_GET['mode']=='save_draft_invoice') {
 		$number_drafts = get_last_element('draft');
 		$number_drafts++;
@@ -82,7 +82,7 @@
 		$content = array_to_xml($data, 'invoice')->asXML();
 		$content = format_xml($content);
 
-		file_put_contents('./invoice/draft/'.$number_drafts.'.xml',$content);
+		file_put_contents($path['draft'].DIRECTORY_SEPARATOR.$number_drafts.'.xml',$content);
 	} elseif($_GET['mode']=='invoice_option') {
 
 		$data['payment_date'] 		= clean($_GET['date']);
@@ -92,9 +92,9 @@
 		$content = format_xml($content);
 
 		if(isset($_GET['is_invoice'])&&$_GET['is_invoice']==true){
-			$path = './invoice/'.get_last_year().'/'.clean($_GET['invoice_number']).'.xml';
+			$path = $path['invoice'].DIRECTORY_SEPARATOR.get_last_year().DIRECTORY_SEPARATOR.clean($_GET['invoice_number']).'.xml';
 		} else {
-			$path = './invoice/draft/'.clean($_GET['invoice_number']).'.xml';
+			$path = $path['draft'].DIRECTORY_SEPARATOR.clean($_GET['invoice_number']).'.xml';
 		}
 
 		$file = new SimpleXMLElement(file_get_contents($path));
@@ -121,7 +121,7 @@
 		$content = array_to_xml($data, 'customer')->asXML();
 		$content = format_xml($content);
 
-		file_put_contents('./customers/'.$number_customers.'.xml',$content);
+		file_put_contents($path['customers'].DIRECTORY_SEPARATOR.$number_customers.'.xml',$content);
 	} elseif($_GET['mode']=='mod_customer') {
 
 		$data['name'] 		= clean($_GET['name']);
@@ -136,7 +136,7 @@
 		$content = array_to_xml($data, 'customer')->asXML();
 		$content = format_xml($content);
 
-		file_put_contents('./customers/'.$_GET['customer'].'.xml',$content);
+		file_put_contents($path['customers'].DIRECTORY_SEPARATOR.$_GET['customer'].'.xml',$content);
 	} elseif($_GET['mode']=='new_note') {
 		$number_notes = get_last_element('note');
 		$number_notes++;
@@ -146,7 +146,7 @@
 
 		$content = array_to_xml($data, 'note')->asXML();
 
-		file_put_contents('./notes/'.$number_notes.'.xml',$content);
+		file_put_contents($path['notes'].DIRECTORY_SEPARATOR.$number_notes.'.xml',$content);
 	} elseif($_GET['mode']=='mod_note') {
 
 		$data['name'] 		= clean($_GET['name']);
@@ -155,7 +155,7 @@
 		$content = array_to_xml($data, 'note')->asXML();
 		$content = format_xml($content);
 
-		file_put_contents('./notes/'.$_GET['note'].'.xml',$content);
+		file_put_contents($path['notes'].DIRECTORY_SEPARATOR.$_GET['note'].'.xml',$content);
 	}
 
 ?>
