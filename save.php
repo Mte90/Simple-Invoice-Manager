@@ -9,30 +9,31 @@
 		$data['note'] 		= clean($_GET['note']);
 		$data['date'] 		= clean($_GET['date']);
 		$data['tax'] 		= clean($_GET['tax']);
-		$data['client'] 	= clean($_GET['client_number']);
+		$data['customer'] 	= clean($_GET['customer_number']);
 		$data['logo'] 		= clean($_GET['logo']);
 		$data['last-mod'] 	= time();
 		$temp_arr = json_to_array($_GET['content']);
 		$data['products'] 	= $temp_arr['product'];
+		$extract_year 		= strtotime($data['date']);
 
 		$content = array_to_xml($data, 'invoice')->asXML();
 		$content = format_xml($content);
 
-		if (!file_exists('./invoice/'.date('Y'))) {
-			mkdir('./invoice/'.date('Y'));
-			file_put_contents('./invoice/'.date('Y').'/index.php','');
+		if (!file_exists('./invoice/'.get_last_year())) {
+			mkdir('./invoice/'.get_last_year());
+			file_put_contents('./invoice/'.get_last_year().'/index.php','');
 		}
 
 		$inv_info = extract_invoice(clean($_GET['invoice_number']));
 
 		if($_GET['old_date']==clean($_GET['date']) && $_GET['old_number']!=clean($_GET['invoice_number'])){
-			unlink('./invoice/'.date('Y').'/'.$_GET['old_number'].'.xml');
+			unlink('./invoice/'.get_last_year().'/'.$_GET['old_number'].'.xml');
 			$inv_info = extract_invoice($_GET['old_number']);
 		}
 
-		if ($inv_info['client']!=$data['client']) {
-			//remove info of old client
-			$file_history = './clients/'.$data['client'].'_history.xml';
+		if ($inv_info['customer']!=$data['customer']) {
+			//remove info of old customer
+			$file_history = './customers/'.$data['customer'].'_history.xml';
 			$add_history = true;
 			if(!file_exists($file_history)){
 				$add_history=true;
@@ -51,13 +52,13 @@
 				$data_h['invoice']['year'] = date('Y');
 				$history['history'] = $data_h['invoice'];
 
-				$content_h = array_to_xml($history, 'client-history')->asXML();
+				$content_h = array_to_xml($history, 'customer-history')->asXML();
 				$content_h = format_xml($content_h);
 				file_put_contents($file_history,$content_h);
 			}
 		}
 
-		file_put_contents('./invoice/'.date('Y').'/'.clean($_GET['invoice_number']).'.xml',$content);
+		file_put_contents('./invoice/'.get_last_year().'/'.clean($_GET['invoice_number']).'.xml',$content);
 	} elseif($_GET['mode']=='save_draft_invoice') {
 		$number_drafts = get_last_element('draft');
 		$number_drafts++;
@@ -67,7 +68,7 @@
 		$data['note'] 		= clean($_GET['note']);
 		$data['date'] 		= clean($_GET['date']);
 		$data['tax'] 		= clean($_GET['tax']);
-		$data['client'] 	= clean($_GET['client_number']);
+		$data['customer'] 	= clean($_GET['customer_number']);
 		$data['logo'] 		= clean($_GET['logo']);
 		$data['last-mod'] 	= time();
 		$temp_arr = json_to_array($_GET['content']);
@@ -86,7 +87,7 @@
 		$content = format_xml($content);
 
 		if(isset($_GET['is_invoice'])&&$_GET['is_invoice']==true){
-			$path = './invoice/'.date('Y').'/'.clean($_GET['invoice_number']).'.xml';
+			$path = './invoice/'.get_last_year().'/'.clean($_GET['invoice_number']).'.xml';
 		} else {
 			$path = './invoice/draft/'.clean($_GET['invoice_number']).'.xml';
 		}
@@ -99,9 +100,9 @@
 
 		file_put_contents($path,$content);
 
-	}  elseif($_GET['mode']=='new_client') {
-		$number_clients = get_last_element('client');
-		$number_clients++;
+	}  elseif($_GET['mode']=='new_customer') {
+		$number_customers = get_last_element('customer');
+		$number_customers++;
 
 		$data['name'] 		= clean($_GET['name']);
 		$data['vat'] 		= clean($_GET['vat']);
@@ -112,11 +113,11 @@
 		$data['phone'] 		= clean($_GET['phone']);
 		$data['email'] 		= clean($_GET['email']);
 
-		$content = array_to_xml($data, 'client')->asXML();
+		$content = array_to_xml($data, 'customer')->asXML();
 		$content = format_xml($content);
 
-		file_put_contents('./clients/'.$number_clients.'.xml',$content);
-	} elseif($_GET['mode']=='mod_client') {
+		file_put_contents('./customers/'.$number_customers.'.xml',$content);
+	} elseif($_GET['mode']=='mod_customer') {
 
 		$data['name'] 		= clean($_GET['name']);
 		$data['vat'] 		= clean($_GET['vat']);
@@ -127,10 +128,10 @@
 		$data['phone'] 		= clean($_GET['phone']);
 		$data['email'] 		= clean($_GET['email']);
 
-		$content = array_to_xml($data, 'client')->asXML();
+		$content = array_to_xml($data, 'customer')->asXML();
 		$content = format_xml($content);
 
-		file_put_contents('./clients/'.$_GET['client'].'.xml',$content);
+		file_put_contents('./customers/'.$_GET['customer'].'.xml',$content);
 	} elseif($_GET['mode']=='new_note') {
 		$number_notes = get_last_element('note');
 		$number_notes++;

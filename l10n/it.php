@@ -26,8 +26,8 @@ $l10n['ATTACH_EMAIL'] 		= "Allega fattura";
 
 // Question
 $l10n['NEED_LOGIN'] 		= "Devi loggarti";
-$l10n['CHECK_INVOICE_CLIENT'] 	= "Se il cliente non viene selezionato la fattura sarà salvata come bozza!";
-$l10n['CHECK_INVOICE_NUMBER'] 	= "Sei sicuro di voler cambiare il numero della fattura lasciando la stessa data? Verrà rimossa la vecchia fattura!";
+$l10n['CHECK_INVOICE_CUSTOMER'] = "Se il cliente non viene selezionato la fattura sarà salvata come bozza!";
+$l10n['CHECK_INVOICE_NUMBER'] 	= "Sei sicuro di voler cambiare il numero della fattura lasciando la stessa data? Verr&agrave; rimossa la vecchia fattura!";
 $l10n['CHECK_EMPTY_NOTE'] 	= "Non è stato specificato il testo per la nota!";
 $l10n['SURE_SAVE_INVOICE'] 	= "Sei sicuro di voler salvare la fattura?";
 $l10n['SURE_DEL_DRAFT'] 	= "Sei sicuro di voler eliminare la bozza";
@@ -35,9 +35,9 @@ $l10n['SURE_DEL_NOTE'] 		= "Sei sicuro di voler eliminare la nota?";
 $l10n['SENT_INV_EMAIL'] 	= "Invia la fattura all'email";
 $l10n['SAVE_INVOICE'] 		= "Salva la fattura";
 $l10n['SAVE_DRAFT'] 		= "Salva Bozza";
-$l10n['NOTHING_INVOICE_CLIENT'] = "Questo cliente non ha nessuna fattura";
-$l10n['CHOOSE_CLIENT'] 		= "Scegli il cliente";
-$l10n['CLIENT_NOT_DEFINED'] 	= "Cliente non definito";
+$l10n['NOTHING_INVOICE_CUSTOMER'] = "Questo cliente non ha nessuna fattura";
+$l10n['CHOOSE_CUSTOMER'] 	= "Scegli il cliente";
+$l10n['CUSTOMER_NOT_DEFINED'] 	= "Cliente non definito";
 
 // Invoice related
 $l10n['TITLE']			= "Fattura";
@@ -72,7 +72,7 @@ $l10n['TEXT_NOTE'] 		= "Nuovo Testo";
 $l10n['LIST_LOGOS'] 		= "Lista dei Loghi";
 $l10n['CHOOSE_LOGO'] 		= "Scegli il Logo";
 
-// Client
+// Customer
 $l10n['NAME'] 			= "Nome";
 $l10n['VAT'] 			= "P. IVA o Cod. Fisc.";
 $l10n['ADDRESS'] 		= "Indirizzo";
@@ -82,10 +82,10 @@ $l10n['REGION'] 		= "Provincia";
 $l10n['PHONE_FAX'] 		= "Tel/Fax";
 $l10n['EMAIL'] 			= "Email";
 $l10n['HISTORY'] 		= "Storia";
-$l10n['LIST_CLIENTS'] 		= "Lista dei Clienti";
-$l10n['ADD_CLIENTS'] 		= "Aggiungi nuovo Cliente";
-$l10n['NEW_CLIENT'] 		= "Nuovo Cliente";
-$l10n['MODIFY_CLIENT'] 		= "Modifica Cliente";
+$l10n['LIST_CUSTOMERS'] 	= "Lista dei Clienti";
+$l10n['ADD_CUSTOMERS'] 		= "Aggiungi nuovo Cliente";
+$l10n['NEW_CUSTOMER'] 		= "Nuovo Cliente";
+$l10n['MODIFY_CUSTOMER'] 	= "Modifica Cliente";
 
 // Validator
 $l10n['pattern-message'] 	= "Formato sbagliato";

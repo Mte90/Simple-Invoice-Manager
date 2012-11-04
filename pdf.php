@@ -50,16 +50,16 @@ $content .= '		<address>'.$config['invoice_info'].'</address>
 			<span><img alt="" src="'.$logo_path.$invoice_data['logo'].'" id="logo"></span>
 		</header>
 		<article>
-			<address class="client_info">';
-			$client_info = read_client_info($invoice_data['client']);
+			<address class="customer_info">';
+			$customer_info = read_customer_info($invoice_data['customer']);
 			$content .= '<table><tr>';
-			$content .= '<th>'.$l10n['NAME'].'</th><td colspan="4">'.$client_info['name'].'</td></tr>';
-			$content .= '<tr><th>'.$l10n['VAT'].'</th><td colspan="2">'.$client_info['vat'].'</td>';
-			$content .= '<th>'.$l10n['CITY'].'</th><td>'.$client_info['city'].'</td></tr>';
-			$content .= '<tr><th>'.$l10n['ADDRESS'].'</th><td colspan="2">'.$client_info['address'].'</td>';
-			$content .= '<th>'.$l10n['ZIP_CODE'].'</th><td>'.$client_info['zipcode'].'</td></tr>';
-			$content .= '<th>'.$l10n['REGION'].'</th><td>'.$client_info['region'].'</td>';
-			$content .= '<th>'.$l10n['PHONE_FAX'].'</th><td colspan="2">'.$client_info['phone'].'</td></tr>';
+			$content .= '<th>'.$l10n['NAME'].'</th><td colspan="4">'.$customer_info['name'].'</td></tr>';
+			$content .= '<tr><th>'.$l10n['VAT'].'</th><td colspan="2">'.$customer_info['vat'].'</td>';
+			$content .= '<th>'.$l10n['CITY'].'</th><td>'.$customer_info['city'].'</td></tr>';
+			$content .= '<tr><th>'.$l10n['ADDRESS'].'</th><td colspan="2">'.$customer_info['address'].'</td>';
+			$content .= '<th>'.$l10n['ZIP_CODE'].'</th><td>'.$customer_info['zipcode'].'</td></tr>';
+			$content .= '<th>'.$l10n['REGION'].'</th><td>'.$customer_info['region'].'</td>';
+			$content .= '<th>'.$l10n['PHONE_FAX'].'</th><td colspan="2">'.$customer_info['phone'].'</td></tr>';
 			$content .= '</tr></table>
 			</address>
 			<table class="meta">
@@ -144,17 +144,17 @@ $content .= '		<address>'.$config['invoice_info'].'</address>
 
 		try
 		{
-			$client = new Pdfcrowd($config['pdfcrowd']['user'], $config['pdfcrowd']['key']);
+			$customer = new Pdfcrowd($config['pdfcrowd']['user'], $config['pdfcrowd']['key']);
 			$pdf = fopen($pdf_path, "wb");
-			$client->usePrintMedia(true);
-			$client->setNoModify(true);
-			$client->setNoCopy(true);
+			$customer->usePrintMedia(true);
+			$customer->setNoModify(true);
+			$customer->setNoCopy(true);
 			$zip = new ZipArchive;
 			$res = $zip->open('./tmp/pdf.zip', ZipArchive::CREATE);
 			$zip->addFile('./tmp/pdf.htm', 'pdf.htm');
 			$zip->addFile('./'.$invoice_data['logo'], $invoice_data['logo']);
 			$zip->close();
-			$client->convertFile('./tmp/pdf.htm',$pdf);
+			$customer->convertFile('./tmp/pdf.htm',$pdf);
 			fclose($pdf);
 
 			if (!isset($invoice_n)) {

@@ -5,7 +5,7 @@ require_once('./config.php');
 	$year = $_GET['year_'];
 	include('pdf.php');
 
-if ($config['print']['client']==true) {
+if ($config['print']['customer']==true) {
 
 ?>
 

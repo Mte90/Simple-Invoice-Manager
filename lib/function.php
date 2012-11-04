@@ -1,63 +1,12 @@
 <?
-	/* Remove break line and tab */
-	function clean($string){
-		return str_replace(array("\r\n", "\r", "\n", "\t", '  '), ' ',trim($string));
-	}
 
-	/* Xml to array */
-	function xml2array($file){
-		$array = json_decode(json_encode((array) simplexml_load_file($file)), 1);
 
-		foreach($array as $key => $value){
-			if(empty($array[$key])) $array[$key] = '';
-		}
-		if(!empty($array['products'])){
-			foreach($array['products']['product'] as $key => $value){
-				foreach($array['products']['product'][$key] as $keyz => $value){
-					if(empty($array['products']['product'][$key][$keyz])) $array['products']['product'][$key][$keyz] = '';
-				}
-			}
-		}
-		return $array;
-	}
-
-	/* JSON to xml */
-	function json_to_array($json){
-		return json_decode($json,true);
-	}
-
-	/* Array to xml */
-	function array_to_xml($array,$root=null,SimpleXMLElement $xml = null){
-
-		if ($xml == null){
-			$xml = new SimpleXMLElement('<'.$root.'/>');
-		}
-
-		if ($root=='invoice') {
-			$ar_replace = 'product';
-		}else {
-			$ar_replace = 'history';
-		}
-
-		foreach ($array as $key => $value) {
-
-			$key = (is_numeric($key)) ? 'product' : $key;
-			if(is_array($value)){
-				array_to_xml($value,$root, $xml->addChild($key));
-			} else {
-				$xml->addChild($key, $value);
-			}
-
-		}
-		return $xml;
-	}
-
-	/* Get last element invoice or client */
+	/* Get last element invoice or customer */
 	function get_last_element($folder,$ext=false){
-		if($folder == "client") {
-			$folder = './clients';
+		if($folder == "customer") {
+			$folder = './customers';
 		} elseif($folder == "invoice") {
-			$folder = './invoice/'.date('Y');
+			$folder = './invoice/'.get_last_year();
 		} elseif($folder == "draft") {
 			$folder = './invoice/draft';
 		} elseif($folder == "note") {
@@ -79,15 +28,15 @@
 		return $last_file;
 	}
 
-	/* Get client info */
-	function read_client_info($path) {
+	/* Get customer info */
+	function read_customer_info($path) {
 	global $l10n;
-		if(file_exists('./clients/'.$path .'.xml')) {
-			$client = xml2array('./clients/'.$path .'.xml');
+		if(file_exists('./customers/'.$path .'.xml')) {
+			$customer = xml2array('./customers/'.$path .'.xml');
 		} else {
-			$client['name'] = $l10n['CLIENT_NOT_DEFINED'];
+			$customer['name'] = $l10n['CUSTOMER_NOT_DEFINED'];
 		}
-		return $client;
+		return $customer;
 	}
 
 	/* Get note info */
@@ -96,19 +45,19 @@
 		return $note;
 	}
 
-	/* Get array of client */
-	function client_list() {
-		$client_list = Array();
-		if ($handle = opendir('./clients/')) {
+	/* Get array of customer */
+	function customer_list() {
+		$customer_list = Array();
+		if ($handle = opendir('./customers/')) {
 			while (false !== ($entry = readdir($handle))) {
 				if ($entry != "." && $entry != ".." && $entry != "index.php" && strpos($entry,'_history.xml') === false) {
 					$entry = str_replace('.xml','',$entry);
-					$client_list[] = array(read_client_info($entry),$entry);
+					$customer_list[] = array(read_customer_info($entry),$entry);
 				}
 			}
 			closedir($handle);
 		}
-		return $client_list;
+		return $customer_list;
 	}
 
 	/* Get array of logo */
@@ -128,7 +77,7 @@
 	/* Get Array of Invoice */
 	function get_invoice($year='last'){
 		if ($year=='last') {
-			$folder = './invoice/'.date('Y');
+			$folder = './invoice/'.get_last_year();
 		}elseif($year=='draft'){
 			$folder = './invoice/draft';
 		}else{
@@ -152,8 +101,8 @@
 			$folder = './invoice/'.$year;
 		}
 		$xml = xml2array($folder.'/'.$file.'.xml');
-		if(!isset($xml['client'])){
-			$xml['client'] = '';
+		if(!isset($xml['customer'])){
+			$xml['customer'] = '';
 		}
 		$xml['year']=$year;
 		$xml['product'] = $xml['products']['product'];
@@ -180,9 +129,9 @@
 		return $notes_list;
 	}
 
-	/* Get history of invoice by client */
-	function history_invoice($client){
-		$file = './clients/'.$client.'_history.xml';
+	/* Get history of invoice by customer */
+	function history_invoice($customer){
+		$file = './customers/'.$customer.'_history.xml';
 		$history_list = Array();
 		if(file_exists($file)){
 			$xml = xml2array($file);
@@ -239,6 +188,59 @@
 			$dom->preserveWhiteSpace = false;
 			$dom->formatOutput = true;
 			$xml = $dom->saveXML($dom);
+		}
+		return $xml;
+	}
+
+	/* Remove break line and tab */
+	function clean($string){
+		return str_replace(array("\r\n", "\r", "\n", "\t", '  '), ' ',trim($string));
+	}
+
+	/* Xml to array */
+	function xml2array($file){
+		$array = json_decode(json_encode((array) simplexml_load_file($file)), 1);
+
+		foreach($array as $key => $value){
+			if(empty($array[$key])) $array[$key] = '';
+		}
+		if(!empty($array['products'])){
+			foreach($array['products']['product'] as $key => $value){
+				foreach($array['products']['product'][$key] as $keyz => $value){
+					if(empty($array['products']['product'][$key][$keyz])) $array['products']['product'][$key][$keyz] = '';
+				}
+			}
+		}
+		return $array;
+	}
+
+	/* JSON to xml */
+	function json_to_array($json){
+		return json_decode($json,true);
+	}
+
+	/* Array to xml */
+	function array_to_xml($array,$root=null,SimpleXMLElement $xml = null){
+
+		if ($xml == null){
+			$xml = new SimpleXMLElement('<'.$root.'/>');
+		}
+
+		if ($root=='invoice') {
+			$ar_replace = 'product';
+		}else {
+			$ar_replace = 'history';
+		}
+
+		foreach ($array as $key => $value) {
+
+			$key = (is_numeric($key)) ? 'product' : $key;
+			if(is_array($value)){
+				array_to_xml($value,$root, $xml->addChild($key));
+			} else {
+				$xml->addChild($key, $value);
+			}
+
 		}
 		return $xml;
 	}

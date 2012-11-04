@@ -13,7 +13,7 @@
 		<script type="text/javascript" src="js/jqbootstrapvalidation.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
-	<body class="modal-open" data-choose-client="<? echo $l10n['CHOOSE_CLIENT'] ?>">
+	<body class="modal-open" data-choose-customer="<? echo $l10n['CHOOSE_CUSTOMER'] ?>">
 		<div class="invoice_option">
 		<? /* Show Capture payment Option */
 		if($config['capture_payment']){ ?>
@@ -39,12 +39,12 @@
 			<img alt="" src="logos/logo_default.png" id="logo">
 		</header>
 		<article>
-			<div class="toolbar_clients">
-				<img src="icons/address_book_search.png" class="clients_search pointer" alt="<? echo $l10n['CHOOSE_CLIENT']; ?>" title="<? echo $l10n['CHOOSE_CLIENT']; ?>" /><br>
-				<img src="icons/address_book_add.png" class="client_add pointer" alt="<? echo $l10n['NEW_CLIENT']; ?>" title="<? echo $l10n['NEW_CLIENT']; ?>" />
+			<div class="toolbar_customers">
+				<img src="icons/address_book_search.png" class="customers_search pointer" alt="<? echo $l10n['CHOOSE_CUSTOMER']; ?>" title="<? echo $l10n['CHOOSE_CUSTOMER']; ?>" /><br>
+				<img src="icons/address_book_add.png" class="customer_add pointer" alt="<? echo $l10n['NEW_CUSTOMER']; ?>" title="<? echo $l10n['NEW_CUSTOMER']; ?>" />
 			</div>
-			<address class="client_info">
-				<b><? echo $l10n['CHOOSE_CLIENT'] ?></b>
+			<address class="customer_info">
+				<b><? echo $l10n['CHOOSE_CUSTOMER'] ?></b>
 			</address>
 			<table class="meta">
 				<tr>
@@ -158,7 +158,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				<h3><? echo $l10n['SAVE_INVOICE']; ?></h3>
 			</div>
-			<div class="modal-body" data-message-option='["<? echo $l10n['CHECK_INVOICE_CLIENT']; ?>","<? echo $l10n['CHECK_INVOICE_NUMBER']; ?>"]'>
+			<div class="modal-body" data-message-option='["<? echo $l10n['CHECK_INVOICE_CUSTOMER']; ?>","<? echo $l10n['CHECK_INVOICE_NUMBER']; ?>"]'>
 				<p><? echo $l10n['SURE_SAVE_INVOICE']; ?></p>
 			</div>
 			<div class="modal-footer">

@@ -209,7 +209,7 @@ $(function() {
 
 		txt += ']}';
 
-		if (jQuery('body').data('client')=='' || jQuery('body').data('client')==null) {
+		if (jQuery('body').data('customer')=='' || jQuery('body').data('customer')==null) {
 			old_text = jQuery('#save_inv_modal .modal-body p').html();
 			jQuery('#save_inv_modal .modal-body').html(jQuery('#save_inv_modal .modal-body').data('message-option')[0]);
 			mode_inv = 'save_draft_invoice';
@@ -234,7 +234,7 @@ $(function() {
 				'note'		:jQuery('.invoice_note').html(),
 				'date'		:jQuery('.invoice_date').html(),
 				'tax'		:jQuery('#value_tax').html(),
-				'client_number'	:jQuery('body').data('client'),
+				'customer_number'	:jQuery('body').data('customer'),
 				'logo'		:jQuery('#logo').attr('src'),
 				'old_date'	:jQuery('body').data('old_date_invoice'),
 				'old_number'	:jQuery('body').data('old_number_invoice')
@@ -292,7 +292,7 @@ $(function() {
 				'note'		:jQuery('.invoice_note').html(),
 				'date'		:jQuery('.invoice_date').html(),
 				'tax'		:jQuery('#value_tax').html(),
-				'client_number'	:jQuery('body').data('client'),
+				'customer_number'	:jQuery('body').data('customer'),
 				'logo'		:jQuery('#logo').attr('src')
 			}).success(function() {jQuery('#save_draft_modal').modal('hide');});
 		});
@@ -321,113 +321,113 @@ $(function() {
 		}).success(function() {jQuery('#del_draft_modal').modal('hide');});
 	});
 
-	/* Client */
-	//Add Client
-	jQuery('.client_add').click(function() {
-		jQuery('body').append('<div id="client_modal_add" class="modal hide" role="dialog"/>');
+	/* Customer */
+	//Add Customer
+	jQuery('.customer_add').click(function() {
+		jQuery('body').append('<div id="customer_modal_add" class="modal hide" role="dialog"/>');
 		jQuery.get('list.php', {
-			'mode'		:'clients_new'
+			'mode'		:'customers_new'
 		}).success(function(data) {
-			jQuery('#client_modal_add').html(data);
+			jQuery('#customer_modal_add').html(data);
 		});
-		jQuery('#client_modal_add').modal('show');
-		jQuery('#client_add_name').focus();
+		jQuery('#customer_modal_add').modal('show');
+		jQuery('#customer_add_name').focus();
 	});
-	//On save Clients
-	jQuery(document).on('click','#save_client_okay',function() {
+	//On save Customers
+	jQuery(document).on('click','#save_customer_okay',function() {
 		jQuery.get('save.php', {
-			'mode'		:'new_client',
-			'name'		:jQuery('#client_add_name').val(),
-			'vat'		:jQuery('#client_add_vat').val(),
-			'address'	:jQuery('#client_add_address').val(),
-			'zipcode'	:jQuery('#client_add_zipcode').val(),
-			'city'		:jQuery('#client_add_city').val(),
-			'region'	:jQuery('#client_add_region').val(),
-			'phone'		:jQuery('#client_add_phone').val(),
-			'email'		:jQuery('#client_add_email').val()
+			'mode'		:'new_customer',
+			'name'		:jQuery('#customer_add_name').val(),
+			'vat'		:jQuery('#customer_add_vat').val(),
+			'address'	:jQuery('#customer_add_address').val(),
+			'zipcode'	:jQuery('#customer_add_zipcode').val(),
+			'city'		:jQuery('#customer_add_city').val(),
+			'region'	:jQuery('#customer_add_region').val(),
+			'phone'		:jQuery('#customer_add_phone').val(),
+			'email'		:jQuery('#customer_add_email').val()
 		}).success(function() {
-			jQuery('#client_add_form').each(function(){this.reset();});
-			jQuery('#client_modal_add').modal('hide');
+			jQuery('#customer_add_form').each(function(){this.reset();});
+			jQuery('#customer_modal_add').modal('hide');
 		});
 	});
-	//Search Client
-	jQuery('.clients_search').click(function() {
-		jQuery('body').append('<div id="clients_modal_list" class="modal hide" role="dialog"/>');
+	//Search Customer
+	jQuery('.customers_search').click(function() {
+		jQuery('body').append('<div id="customers_modal_list" class="modal hide" role="dialog"/>');
 		jQuery.get('list.php', {
-			'mode'		:'clients_list'
+			'mode'		:'customers_list'
 		}).success(function(data) {
-			jQuery('#clients_modal_list').html(data);
+			jQuery('#customers_modal_list').html(data);
 		});
-		jQuery('#clients_modal_list').modal('show');
+		jQuery('#customers_modal_list').modal('show');
 	});
-	//Select Client
-	jQuery(document).on('click','.clients-list .client_choosen',function(e){
-		var choose_client = jQuery(this);
-		jQuery.get('client_info.php', {
+	//Select Customer
+	jQuery(document).on('click','.customers-list .customer_choosen',function(e){
+		var choose_customer = jQuery(this);
+		jQuery.get('customer_info.php', {
 			'file':		jQuery(this).parent().data('id')
 		}).success(function(data) {
-			jQuery('.client_info').html(data);
-			jQuery('#clients_modal_list').modal('hide');
+			jQuery('.customer_info').html(data);
+			jQuery('#customers_modal_list').modal('hide');
 		});
-		jQuery('body').data('client',jQuery(this).parent().data('id'));
+		jQuery('body').data('customer',jQuery(this).parent().data('id'));
 		e.stopPropagation();
 	});
-	//Modify Client
-	jQuery(document).on('click','.clients-list .client_mod',function() {
-		jQuery('body').append('<div id="client_modal_mod" class="modal hide" role="dialog"/>');
+	//Modify Customer
+	jQuery(document).on('click','.customers-list .customer_mod',function() {
+		jQuery('body').append('<div id="customer_modal_mod" class="modal hide" role="dialog"/>');
 		jQuery.get('list.php', {
-			'mode'		:'client_mod',
-			'client'	:jQuery(this).parent().data('id')
+			'mode'		:'customer_mod',
+			'customer'	:jQuery(this).parent().data('id')
 		}).success(function(data) {
-			jQuery('#clients_modal_list').modal('hide');
-			jQuery('#client_modal_mod').html(data);
-			jQuery('#client_modal_mod').modal('show');
+			jQuery('#customers_modal_list').modal('hide');
+			jQuery('#customer_modal_mod').html(data);
+			jQuery('#customer_modal_mod').modal('show');
 		});
 	});
 	//On save Modified Notes
-	jQuery(document).on('click','#mod_client_okay',function() {
+	jQuery(document).on('click','#mod_customer_okay',function() {
 		jQuery.get('save.php', {
-			'mode'		:'mod_client',
-			'name'		:jQuery('#client_add_name').val(),
-			'vat'		:jQuery('#client_add_vat').val(),
-			'address'	:jQuery('#client_add_address').val(),
-			'zipcode'	:jQuery('#client_add_zipcode').val(),
-			'city'		:jQuery('#client_add_city').val(),
-			'region'	:jQuery('#client_add_region').val(),
-			'phone'		:jQuery('#client_add_phone').val(),
-			'email'		:jQuery('#client_add_email').val(),
-			'client'	:jQuery('input[name=client_number]').val()
+			'mode'		:'mod_customer',
+			'name'		:jQuery('#customer_add_name').val(),
+			'vat'		:jQuery('#customer_add_vat').val(),
+			'address'	:jQuery('#customer_add_address').val(),
+			'zipcode'	:jQuery('#customer_add_zipcode').val(),
+			'city'		:jQuery('#customer_add_city').val(),
+			'region'	:jQuery('#customer_add_region').val(),
+			'phone'		:jQuery('#customer_add_phone').val(),
+			'email'		:jQuery('#customer_add_email').val(),
+			'customer'	:jQuery('input[name=customer_number]').val()
 		}).success(function() {
-			jQuery('#client_add_form').each(function(){this.reset();});
-			jQuery('#client_modal_mod').modal('hide');
+			jQuery('#customer_add_form').each(function(){this.reset();});
+			jQuery('#customer_modal_mod').modal('hide');
 		});
 	});
-	//Show Client History
-	jQuery(document).on('click','.clients-list .client_his',function() {
-		jQuery('#clients_modal_list').modal('hide');
-		jQuery('body').append('<div id="client_modal_his" class="modal hide" role="dialog"/>');
+	//Show Customer History
+	jQuery(document).on('click','.customers-list .customer_his',function() {
+		jQuery('#customers_modal_list').modal('hide');
+		jQuery('body').append('<div id="customer_modal_his" class="modal hide" role="dialog"/>');
 		jQuery.get('list.php', {
-			'mode'		:'clients_his',
-			'client'	:jQuery(this).parent().data('id')
+			'mode'		:'customers_his',
+			'customer'	:jQuery(this).parent().data('id')
 		}).success(function(data) {
-			jQuery('#client_modal_his').html(data);
+			jQuery('#customer_modal_his').html(data);
 		});
-		jQuery('#client_modal_his').modal('show');
+		jQuery('#customer_modal_his').modal('show');
 	});
-	//open Invoice by client history
-	jQuery(document).on('click','.clients-his .client_his_inv',function() {
+	//open Invoice by customer history
+	jQuery(document).on('click','.customers-his .customer_his_inv',function() {
 		jQuery.getJSON('invoice_data.php', {
 			'number':	jQuery(this).parent().data('number'),
 			'year'  :	jQuery(this).parent().data('year')
 		}).success(function(data) {
 			init_invoice(data,'invoice');
-			jQuery('#client_modal_his').modal('hide');
+			jQuery('#customer_modal_his').modal('hide');
 		});
 	});
-	//Show client list by history
-	jQuery(document).on('click','.client-list-back',function() {
-		jQuery('#client_modal_his').modal('hide');
-		jQuery('.clients_search').trigger('click');
+	//Show customer list by history
+	jQuery(document).on('click','.customer-list-back',function() {
+		jQuery('#customer_modal_his').modal('hide');
+		jQuery('.customers_search').trigger('click');
 	});
 
 	/* Note */
@@ -554,7 +554,7 @@ $(function() {
 		jQuery('body').append('<div id="email_modal" class="modal hide" role="dialog"/>');
 		jQuery.get('email.php', {
 			'mode'		:'form',
-			'email'		:jQuery('input[name=client_email]').val()
+			'email'		:jQuery('input[name=customer_email]').val()
 		}).success(function(data) {
 			jQuery('#email_modal').html(data);
 		});
@@ -632,7 +632,7 @@ $(function() {
 		jQuery('#value_tax').html(json.tax);
 		jQuery('#logo').attr('src',json.logo);
 		jQuery('body').data('year',json.year);
-		jQuery('body').data('client',json.client);
+		jQuery('body').data('customer',json.customer);
 
 		jQuery('table.inventory tbody tr').remove();
 
@@ -648,19 +648,19 @@ $(function() {
 			jQuery(cells[3]).html(json.products.product[i].quantity);
 		});
 
-		jQuery.get('client_info.php', {
-			'file':		json.client
+		jQuery.get('customer_info.php', {
+			'file':		json.customer
 		}).success(function(data) {
 			if(data!=0){
-				jQuery('.client_info').html(data);
+				jQuery('.customer_info').html(data);
 
-				if(jQuery('input[name=client_email]').val()!=''){
+				if(jQuery('input[name=customer_email]').val()!=''){
 					jQuery('.email').show();
 				}else {
 					jQuery('.email').hide();
 				}
 			}else {
-				jQuery('.client_info').html('<b>'+jQuery('body').data('choose-client')+'</b>');
+				jQuery('.customer_info').html('<b>'+jQuery('body').data('choose-customer')+'</b>');
 			}
 		});
 

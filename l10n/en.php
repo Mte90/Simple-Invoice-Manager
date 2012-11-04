@@ -26,7 +26,7 @@ $l10n['ATTACH_EMAIL'] 		= "Invoice Attached";
 
 // Question
 $l10n['NEED_LOGIN'] 		= "You must be logged";
-$l10n['CHECK_INVOICE_CLIENT'] 	= "If the client is not choosen the invoice will be saved as a draft!";
+$l10n['CHECK_INVOICE_CUSTOMER'] 	= "If the customer is not choosen the invoice will be saved as a draft!";
 $l10n['CHECK_INVOICE_NUMBER']	= "You are sure to change the number of the invoice leaving the same date? Will remove the old invoice!";
 $l10n['CHECK_EMPTY_NOTE'] 	= "You did not specify the text for the note!";
 $l10n['SURE_SAVE_INVOICE'] 	= "You are sure to save the invoice?";
@@ -35,9 +35,9 @@ $l10n['SURE_DEL_NOTE'] 		= "You are sure to delete the note?";
 $l10n['SENT_INV_EMAIL'] 	= "Sent the invoice at the email";
 $l10n['SAVE_INVOICE'] 		= "Save Invoice";
 $l10n['SAVE_DRAFT'] 		= "Save Draft";
-$l10n['NOTHING_INVOICE_CLIENT'] = "This client hasn't invoice";
-$l10n['CHOOSE_CLIENT'] 		= "Choose Client";
-$l10n['CLIENT_NOT_DEFINED'] 	= "Client not defined";
+$l10n['NOTHING_INVOICE_CUSTOMER'] = "This customer hasn't invoice";
+$l10n['CHOOSE_CUSTOMER'] 		= "Choose Customer";
+$l10n['CUSTOMER_NOT_DEFINED'] 	= "Customer not defined";
 
 // Invoice related
 $l10n['TITLE']			= "Invoice";
@@ -72,7 +72,7 @@ $l10n['TEXT_NOTE'] 		= "New Text";
 $l10n['LIST_LOGOS'] 		= "List of Logos";
 $l10n['CHOOSE_LOGO'] 		= "Choose Logo";
 
-// Client
+// Customer
 $l10n['NAME'] 			= "Name";
 $l10n['VAT'] 			= "VAT";
 $l10n['ADDRESS'] 		= "Address";
@@ -82,10 +82,10 @@ $l10n['REGION'] 		= "Region";
 $l10n['PHONE_FAX'] 		= "Phone/Fax";
 $l10n['EMAIL'] 			= "Email";
 $l10n['HISTORY'] 		= "History";
-$l10n['LIST_CLIENTS'] 		= "List of Clients";
-$l10n['ADD_CLIENTS'] 		= "Add new Client";
-$l10n['NEW_CLIENT'] 		= "New Client";
-$l10n['MODIFY_CLIENT'] 		= "Modify Client";
+$l10n['LIST_CUSTOMERS'] 		= "List of Customers";
+$l10n['ADD_CUSTOMERS'] 		= "Add new Customer";
+$l10n['NEW_CUSTOMER'] 		= "New Customer";
+$l10n['MODIFY_CUSTOMER'] 		= "Modify Customer";
 
 // Validator
 $l10n['pattern-message'] 	= "Not in the expected format";

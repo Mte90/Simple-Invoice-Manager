@@ -25,20 +25,20 @@ if($_GET['mode']=='logo_list') {
 	</div>
 <?
 
-}elseif($_GET['mode']=='clients_list') {
+}elseif($_GET['mode']=='customers_list') {
 
 ?>
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		<h3><? echo $l10n['LIST_CLIENTS']; ?></h3>
+		<h3><? echo $l10n['LIST_CUSTOMERS']; ?></h3>
 	</div>
 	<div class="modal-body">
-		<table class="clients-list table table-bordered table-hover">
+		<table class="customers-list table table-bordered table-hover">
 			<tbody>
 				<?
-					$client = client_list();
-					foreach ($client as $key) {
-						echo '<tr data-id="'.$key[1].'"><td class="client_choosen">'.$key[0]['name'].'</td><td class="link-func client_mod">'.$l10n['MODIFY'].'</td><td class="link-func client_his">'.$l10n['HISTORY'].'</td></tr>'."\n";
+					$customer = customer_list();
+					foreach ($customer as $key) {
+						echo '<tr data-id="'.$key[1].'"><td class="customer_choosen">'.$key[0]['name'].'</td><td class="link-func customer_mod">'.$l10n['MODIFY'].'</td><td class="link-func customer_his">'.$l10n['HISTORY'].'</td></tr>'."\n";
 					}
 				?>
 			</tbody>
@@ -49,25 +49,25 @@ if($_GET['mode']=='logo_list') {
 	</div>
 <?
 
-}elseif($_GET['mode']=='clients_his') {
-$client_info = read_client_info($_GET['client']);
-$history_list = history_invoice($_GET['client']);
+}elseif($_GET['mode']=='customers_his') {
+$customer_info = read_customer_info($_GET['customer']);
+$history_list = history_invoice($_GET['customer']);
 ?>
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 		<h3><? echo $l10n['LIST_INVOICE']; ?></h3>
 	</div>
 	<div class="modal-body">
-		<p><? echo $client_info['name']; ?>:</p>
+		<p><? echo $customer_info['name']; ?>:</p>
 		<? if($history_list == ''){
-			echo $l10n['NOTHING_INVOICE_CLIENT'];
+			echo $l10n['NOTHING_INVOICE_CUSTOMER'];
 		} else { ?>
-		<table class="clients-his table table-bordered table-hover">
+		<table class="customers-his table table-bordered table-hover">
 			<tbody>
 				<?
 					foreach ($history_list as $key) {
 						$inv_info = extract_invoice($key['number'],$key['year']);
-						echo '<tr data-year="'.$key['year'].'" data-number="'.$key['number'].'"><td class="client_his__choosen">'.$key['number'].' - '.$inv_info['date'].'</td><td class="link-func client_his_inv">'.$l10n['OPEN'].'</td></tr>'."\n";
+						echo '<tr data-year="'.$key['year'].'" data-number="'.$key['number'].'"><td class="customer_his__choosen">'.$key['number'].' - '.$inv_info['date'].'</td><td class="link-func customer_his_inv">'.$l10n['OPEN'].'</td></tr>'."\n";
 					}
 				?>
 			</tbody>
@@ -75,17 +75,17 @@ $history_list = history_invoice($_GET['client']);
 		<? } ?>
 	</div>
 	<div class="modal-footer">
-		<a href="#" class="btn client-list-back"><? echo $l10n['LIST_CLIENTS']; ?></a>
+		<a href="#" class="btn customer-list-back"><? echo $l10n['LIST_CUSTOMERS']; ?></a>
 		<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
 	</div>
 <?
 
-}elseif($_GET['mode']=='clients_new'||$_GET['mode']=='client_mod') {
+}elseif($_GET['mode']=='customers_new'||$_GET['mode']=='customer_mod') {
 
-	if($_GET['mode']=='client_mod'){
-		$client_info = read_client_info($_GET['client']);
+	if($_GET['mode']=='customer_mod'){
+		$customer_info = read_customer_info($_GET['customer']);
 	}else {
-		$client_info['name']=$client_info['vat']='';
+		$customer_info['name']=$customer_info['vat']='';
 	}
 
 ?>
@@ -94,77 +94,77 @@ $history_list = history_invoice($_GET['client']);
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 		<h3>
 			<?
-			if($_GET['mode']=='client_mod'){
-				echo $l10n['MODIFY_CLIENT'];
+			if($_GET['mode']=='customer_mod'){
+				echo $l10n['MODIFY_CUSTOMER'];
 			}else {
-				echo $l10n['ADD_CLIENTS'];
-				$client_info['region']	= $config['client']['region'];
-				$client_info['city']	= $config['client']['city'];
-				$client_info['vat']	= $config['client']['vat'];
-				$client_info['address']	= $config['client']['address'];
-				$client_info['zipcode']	= $config['client']['zipcode'];
-				$client_info['phone']	= $config['client']['phone'];
-				$client_info['email']	= $config['client']['email'];
+				echo $l10n['ADD_CUSTOMERS'];
+				$customer_info['region']	= $config['customer']['region'];
+				$customer_info['city']	= $config['customer']['city'];
+				$customer_info['vat']	= $config['customer']['vat'];
+				$customer_info['address']	= $config['customer']['address'];
+				$customer_info['zipcode']	= $config['customer']['zipcode'];
+				$customer_info['phone']	= $config['customer']['phone'];
+				$customer_info['email']	= $config['customer']['email'];
 			}
 			?>
 		</h3>
 	</div>
 	<div class="modal-body">
-		<form class="form-horizontal" id="client_add_form">
-			<input type="hidden" name="client_number" value="<? if(isset($_GET['client'])){echo $_GET['client'];} ?>"/>
+		<form class="form-horizontal" id="customer_add_form">
+			<input type="hidden" name="customer_number" value="<? if(isset($_GET['customer'])){echo $_GET['customer'];} ?>"/>
 			<div class="control-group">
 				<label class="control-label" for="input-name"><? echo $l10n['NAME']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="client_add_name" value="<? echo $client_info['name']; ?>" required>
+					<input type="text" class="input-xlarge" id="customer_add_name" value="<? echo $customer_info['name']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-vat"><? echo $l10n['VAT']; ?></label>
 				<div class="controls">
-					<input type="number" class="input-xlarge" id="client_add_vat" value="<? echo $client_info['vat']; ?>" required>
+					<input type="number" class="input-xlarge" id="customer_add_vat" value="<? echo $customer_info['vat']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-address"><? echo $l10n['ADDRESS']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="client_add_address" value="<? echo $client_info['address']; ?>" required>
+					<input type="text" class="input-xlarge" id="customer_add_address" value="<? echo $customer_info['address']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-zipcode"><? echo $l10n['ZIP_CODE']; ?></label>
 				<div class="controls">
-					<input type="number" class="input-small" id="client_add_zipcode" value="<? echo $client_info['zipcode']; ?>" required>
+					<input type="number" class="input-small" id="customer_add_zipcode" value="<? echo $customer_info['zipcode']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-city"><? echo $l10n['CITY']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-small" id="client_add_city" value="<? echo $client_info['city']; ?>" required>
+					<input type="text" class="input-small" id="customer_add_city" value="<? echo $customer_info['city']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-region"><? echo $l10n['REGION']; ?></label>
 				<div class="controls">
-					<input type="text" class="input-small" id="client_add_region" value="<? echo $client_info['region']; ?>" required>
+					<input type="text" class="input-small" id="customer_add_region" value="<? echo $customer_info['region']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-phone"><? echo $l10n['PHONE_FAX']; ?></label>
 				<div class="controls">
-					<input type="number" class="input-large" id="client_add_phone" value="<? echo $client_info['phone']; ?>" required>
+					<input type="number" class="input-large" id="customer_add_phone" value="<? echo $customer_info['phone']; ?>" required>
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="input-email"><? echo $l10n['EMAIL']; ?></label>
 				<div class="controls">
-					<input type="email" class="input-large" id="client_add_email" value="<? echo $client_info['email']; ?>" data-validation-email-message="<? echo $l10n['validemail']; ?>">
+					<input type="email" class="input-large" id="customer_add_email" value="<? echo $customer_info['email']; ?>" data-validation-email-message="<? echo $l10n['validemail']; ?>">
 				</div>
 			</div>
 		</form>
 	</div>
-	<div class="modal-footer" data-id-form="client_add_form">
+	<div class="modal-footer" data-id-form="customer_add_form">
 		<button type="submit" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></button>
-		<button type="submit" class="btn btn-primary" id="<? if($_GET['mode']=='client_mod'){echo 'mod_client_okay'; }else {echo 'save_client_okay'; }?>"><? echo $l10n['SAVE']; ?></button>
+		<button type="submit" class="btn btn-primary" id="<? if($_GET['mode']=='customer_mod'){echo 'mod_customer_okay'; }else {echo 'save_customer_okay'; }?>"><? echo $l10n['SAVE']; ?></button>
 	</div>
 
 <?
@@ -190,8 +190,8 @@ $history_list = history_invoice($_GET['client']);
 							$invoice = get_invoice();
 							foreach ($invoice as $key) {
 								$inv_info = extract_invoice($key);
-								$client_info = read_client_info($inv_info['client']);
-								echo '<tr><td data-id="'.$key.'" data-year="'.$inv_info['year'].'">'.$key.' - '.$inv_info['date'].' - '.$client_info['name'].'</td></tr>'."\n";
+								$customer_info = read_customer_info($inv_info['customer']);
+								echo '<tr><td data-id="'.$key.'" data-year="'.$inv_info['year'].'">'.$key.' - '.$inv_info['date'].' - '.$customer_info['name'].'</td></tr>'."\n";
 							}
 						?>
 						</tbody>
@@ -204,8 +204,8 @@ $history_list = history_invoice($_GET['client']);
 							$draft = get_invoice('draft');
 							foreach ($draft as $key) {
 								$inv_info = extract_invoice($key,'draft');
-								$client_info = read_client_info($inv_info['client']);
-								echo '<tr data-id="'.$key.'"><td class="draft_choosen">'.$key.' - '.$inv_info['date'].' - '.$client_info['name'].'</td><td class="link-func draft_del">'.$l10n['DELETE'].'</td></tr>'."\n";
+								$customer_info = read_customer_info($inv_info['customer']);
+								echo '<tr data-id="'.$key.'"><td class="draft_choosen">'.$key.' - '.$inv_info['date'].' - '.$customer_info['name'].'</td><td class="link-func draft_del">'.$l10n['DELETE'].'</td></tr>'."\n";
 							}
 						?>
 						</tbody>
