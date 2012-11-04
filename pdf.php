@@ -135,6 +135,9 @@ $content .= '		<address>'.$config['invoice_info'].'</address>
 	if($config['pdf']['wp']) {
 		include('./lib/weasyprint.php');
 
+		if($config['pdf']['wait']!=''){
+			sleep($config['pdf']['wait']);
+		}
 		if (!isset($invoice_n)) {
 			header_pdf($pdf_name);
 		}
@@ -157,6 +160,9 @@ $content .= '		<address>'.$config['invoice_info'].'</address>
 			$customer->convertFile('./tmp/pdf.htm',$pdf);
 			fclose($pdf);
 
+			if($config['pdf']['wait']!=''){
+			sleep($config['pdf']['wait']);
+			}
 			if (!isset($invoice_n)) {
 				header_pdf($pdf_name);
 			}
@@ -174,6 +180,9 @@ $content .= '		<address>'.$config['invoice_info'].'</address>
 		$pdf->addPage('./tmp/pdf.htm');
 		$pdf->saveAs($pdf_path);
 
+		if($config['pdf']['wait']!=''){
+			sleep($config['pdf']['wait']);
+		}
 		if (!isset($invoice_n)) {
 			header_pdf($pdf_name);
 		}

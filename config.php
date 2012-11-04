@@ -10,14 +10,14 @@
 						<p>(800) 555-1234</p>';
 	$config['email']		=	'test@test.it';
 
-	//Default content of the new client field
-	$config['client']['region']	=	'Italy';
-	$config['client']['city']	=	'';
-	$config['client']['vat']	=	'';
-	$config['client']['address']	=	'';
-	$config['client']['zipcode']	=	'';
-	$config['client']['phone']	=	'';
-	$config['client']['email']	=	'';
+	//Default content of the new customer field
+	$config['customer']['region']	=	'Italy';
+	$config['customer']['city']	=	'';
+	$config['customer']['vat']	=	'';
+	$config['customer']['address']	=	'';
+	$config['customer']['zipcode']	=	'';
+	$config['customer']['phone']	=	'';
+	$config['customer']['email']	=	'';
 
 	//General Option
 	$config['number_ticket']	=	true;
@@ -37,9 +37,10 @@
 		$config['pdfcrowd']['user']=	'';
 		$config['pdfcrowd']['key'] =	'';
 	$config['pdf']['wkhtmltopdf']	=	true;
+	$config['pdf']['wait']		= 	'2'; //seconds
 
 	//Option Print
-	$config['print']['client']	=	false;
+	$config['print']['customer']	=	false;
 	$config['print']['network']	=	true;
 
 	/**** NOT EDIT THIS CODE!!!!! ****/

@@ -240,6 +240,7 @@ $(function() {
 				'old_number'	:jQuery('body').data('old_number_invoice')
 			}).success(function() {
 				jQuery('#save_inv_modal').modal('hide');
+				jQuery('.pdf').show();
 				if(old_text!=''){
 					jQuery('#save_inv_modal .modal-body p').html(old_text);
 				}
@@ -663,7 +664,7 @@ $(function() {
 				jQuery('.customer_info').html('<b>'+jQuery('body').data('choose-customer')+'</b>');
 			}
 		});
-
+		jQuery('.pdf').show();
 		updateNumber();
 		updateInvoice();
 	}
