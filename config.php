@@ -1,17 +1,16 @@
 <?
 	date_default_timezone_set('UTC');
 
+	//Config Invoice
 	$config['language']		=	'en';
 	$config['prefix']		=	'€ ';
 	$config['date_format']		=	'd/m/Y';
-	$config['number_ticket']	=	true;
 	$config['invoice_info']		=	'<p>Jonathan Neal</p>
 						<p>101 E. Chapman Ave<br>Orange, CA 92866</p>
 						<p>(800) 555-1234</p>';
-	$config['invoice_logo'] 	=	true;
 	$config['email']		=	'test@test.it';
 
-	//default content of the new client field
+	//Default content of the new client field
 	$config['client']['region']	=	'Italy';
 	$config['client']['city']	=	'';
 	$config['client']['vat']	=	'';
@@ -20,14 +19,18 @@
 	$config['client']['phone']	=	'';
 	$config['client']['email']	=	'';
 
+	//General Option
+	$config['number_ticket']	=	true;
 	$config['capture_payment']	= 	true;
-
+	$config['invoice_logo'] 	=	true;
 	$config['debug']		=	true;
 
+	//Option Login
 	$config['login']['enable']	=	false;
 	$config['login']['user']	=	'admin';
 	$config['login']['pass']	=	'pass';
 
+	//Option PDF
 	$config['pdf']['enable']	=	true;
 	$config['pdf']['wp']		=	false;
 	$config['pdf']['pdfcrowd']	=	false;
@@ -35,6 +38,7 @@
 		$config['pdfcrowd']['key'] =	'';
 	$config['pdf']['wkhtmltopdf']	=	true;
 
+	//Option Print
 	$config['print']['client']	=	false;
 	$config['print']['network']	=	true;
 
@@ -46,8 +50,8 @@
 
 	if ($config['login']['enable']) {
 		if(!(isset($_SESSION['logged']) && $_SESSION['logged'] == 'yes')) {
-	                echo $l10n['NEED_LOGIN'].':'."\n";
-	                echo '<br><form action="login.php" method="post">'."\n";
+	                echo $l10n['NEED_LOGIN'].':'."<br>\n";
+	                echo '<form action="login.php" method="post">'."\n";
 	                echo '<input type="hidden" name="mode" value="login" />'."\n";
 	                echo $l10n['USER'].': <input type="text" name="user" /><br>'."\n";
 	                echo $l10n['PASSWORD'].': <input type="password" name="pass" /><br>'."\n";

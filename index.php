@@ -15,7 +15,8 @@
 	</head>
 	<body class="modal-open" data-choose-client="<? echo $l10n['CHOOSE_CLIENT'] ?>">
 		<div class="invoice_option">
-		<? if($config['capture_payment']){ ?>
+		<? /* Show Capture payment Option */
+		if($config['capture_payment']){ ?>
 			<div class="form-inline">
 				<label class="checkbox"><input type="checkbox" id="capture_payment" /><? echo $l10n['CAPTURE_PAYMENT'] ?></label>
 				<input type="text" id="capture_date" class="input-small" value="<? echo date($config['date_format']); ?>" placeholder="<? echo $l10n['DATE'] ?>" />
@@ -29,18 +30,18 @@
 			<address>
 				<? echo $config['invoice_info']; ?>
 			</address>
-			<span>
-			<? if($config['invoice_logo']){ ?>
+			<? /* Show Logo Chooser */
+			if($config['invoice_logo']){ ?>
 			<div class="toolbar_logo">
-				<img src="icons/folder_search.png" class="logos_search pointer" title="<? echo $l10n['CHOOSE_LOGO']; ?>" />
+				<img src="icons/folder_search.png" class="logos_search pointer" alt="<? echo $l10n['CHOOSE_LOGO']; ?>" title="<? echo $l10n['CHOOSE_LOGO']; ?>" />
 			</div>
 			<? } ?>
-			<img alt="" src="logos/logo_default.png" id="logo"></span>
+			<img alt="" src="logos/logo_default.png" id="logo">
 		</header>
 		<article>
 			<div class="toolbar_clients">
-				<img src="icons/address_book_search.png" class="clients_search pointer" title="<? echo $l10n['CHOOSE_CLIENT']; ?>" /><br>
-				<img src="icons/address_book_add.png" class="client_add pointer" title="<? echo $l10n['NEW_CLIENT']; ?>" />
+				<img src="icons/address_book_search.png" class="clients_search pointer" alt="<? echo $l10n['CHOOSE_CLIENT']; ?>" title="<? echo $l10n['CHOOSE_CLIENT']; ?>" /><br>
+				<img src="icons/address_book_add.png" class="client_add pointer" alt="<? echo $l10n['NEW_CLIENT']; ?>" title="<? echo $l10n['NEW_CLIENT']; ?>" />
 			</div>
 			<address class="client_info">
 				<b><? echo $l10n['CHOOSE_CLIENT'] ?></b>
@@ -63,7 +64,8 @@
 					<th><span><? echo $l10n['AMOUNT_DUE'] ?></span></th>
 					<td><span id="prefix"><? echo $config['prefix']; ?></span><span id="total">600.00</span></td>
 				</tr>
-				<? if($config['number_ticket']){ ?>
+				<? /* Number Ticket Option */
+				if($config['number_ticket']){ ?>
 				<tr>
 					<th><span><? echo $l10n['NUMBER_TICKET'] ?></span></th>
 					<td><span contenteditable class="number-check invoice_ticket"></span></td>
@@ -128,25 +130,27 @@
 		</article>
 		<aside>
 			<div class="toolbar_notes">
-				<img src="icons/web_layout_search.png" class="notes_search pointer" title="<? echo $l10n['CHOOSE_NOTES']; ?>" />
-				<img src="icons/web_layout_error_add.png" class="notes_add pointer" title="<? echo $l10n['ADD_NOTES']; ?>" />
+				<img src="icons/web_layout_search.png" class="notes_search pointer" alt="<? echo $l10n['CHOOSE_NOTES']; ?>" title="<? echo $l10n['CHOOSE_NOTES']; ?>" />
+				<img src="icons/web_layout_error_add.png" class="notes_add pointer" alt="<? echo $l10n['ADD_NOTES']; ?>" title="<? echo $l10n['ADD_NOTES']; ?>" />
 			</div>
 			<h1><span><? echo $l10n['NOTE'] ?></span></h1>
 			<div contenteditable class="invoice_note">
 			</div>
 		</aside>
 		<div class="toolbar">
-			<img src="icons/save.png" class="save pointer" alt="" title="<? echo $l10n['SAVE_INVOICE']; ?>" /><br>
-			<img src="icons/comment.png" class="draft pointer" alt="" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
-			<img src="icons/page_blank_add.png" class="new pointer" alt="" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
-			<img src="icons/search.png" class="search pointer" alt="" title="<? echo $l10n['NEW_INVOICE']; ?>" /><br>
-			<? if($config['pdf']['enable']){ ?>
-			<img src="icons/pdf.png" class="pdf pointer" alt="" title="<? echo $l10n['EXPORT_PDF']; ?>" /><br>
+			<img src="icons/save.png" class="save pointer" alt="<? echo $l10n['SAVE_INVOICE']; ?>" title="<? echo $l10n['SAVE_INVOICE']; ?>" /><br>
+			<img src="icons/comment.png" class="draft pointer" alt="<? echo $l10n['SAVE_DRAFT']; ?>" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
+			<img src="icons/page_blank_add.png" class="new pointer" alt="<? echo $l10n['SAVE_DRAFT']; ?>" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
+			<img src="icons/search.png" class="search pointer" alt="<? echo $l10n['NEW_INVOICE']; ?>" title="<? echo $l10n['NEW_INVOICE']; ?>" /><br>
+			<? /* PDF Option */
+			if($config['pdf']['enable']){ ?>
+			<img src="icons/pdf.png" class="pdf pointer" alt="<? echo $l10n['EXPORT_PDF']; ?>" title="<? echo $l10n['EXPORT_PDF']; ?>" /><br>
 			<? } ?>
-			<img src="icons/newspaper.png" class="print pointer" alt="" title="<? echo $l10n['PRINT']; ?>" /><br>
-			<img src="icons/email_forward.png" class="email pointer hide" alt="" title="<? echo $l10n['SENT_EMAIL']; ?>" /><br><br>
-			<? if($config['login']['enable']){ ?>
-			<img src="icons/user_close.png" class="logout pointer" alt="" title="<? echo $l10n['LOGOUT']; ?>" />
+			<img src="icons/newspaper.png" class="print pointer" alt="<? echo $l10n['PRINT']; ?>" title="<? echo $l10n['PRINT']; ?>" /><br>
+			<img src="icons/email_forward.png" class="email pointer hide" alt="<? echo $l10n['SENT_EMAIL']; ?>" title="<? echo $l10n['SENT_EMAIL']; ?>" /><br><br>
+			<? /* Show Logout Link */
+			if($config['login']['enable']){ ?>
+			<img src="icons/user_close.png" class="logout pointer" alt="<? echo $l10n['LOGOUT']; ?>" title="<? echo $l10n['LOGOUT']; ?>" />
 			<? } ?>
 		</div>
 		<div class="modal hide" id="save_inv_modal" role="dialog">
