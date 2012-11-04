@@ -43,6 +43,14 @@
 	$config['print']['customer']	=	false;
 	$config['print']['network']	=	true;
 
+	$path['root']			=	'.'.DIRECTORY_SEPARATOR;
+	$path['invoice']		=	$path['root'].'invoice';
+	$path['draftcustomers']		=	$path['invoice'].DIRECTORY_SEPARATOR.'draft';
+	$path['customers']		=	$path['root'].'customers';
+	$path['note']			=	$path['root'].'notes';
+	$path['logo']			=	$path['root'].'logos';
+	$path['tmp']			=	$path['root'].'tmp';
+
 	/**** NOT EDIT THIS CODE!!!!! ****/
 	include('./l10n/'.$config['language'].'.php');
 	include('./lib/function.php');
