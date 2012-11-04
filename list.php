@@ -207,7 +207,7 @@ $history_list = history_invoice($_GET['customer']);
 								<?
 									$invoice = get_invoice($year_invoice);
 									foreach ($invoice as $key) {
-										$inv_info = extract_invoice($key);
+										$inv_info = extract_invoice($key,$year_invoice);
 										$customer_info = read_customer_info($inv_info['customer']);
 										echo '<tr><td data-id="'.$key.'" data-year="'.$inv_info['year'].'">'.$key.' - '.$inv_info['date'].' - '.$customer_info['name'].'</td></tr>'."\n";
 									}

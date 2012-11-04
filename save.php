@@ -23,7 +23,7 @@
 			file_put_contents('./invoice/'.get_last_year().'/index.php','');
 		}
 
-		if(!sset($_GET['year'])){
+		if(isset($_GET['year'])){
 			$year_invoice = $_GET['year'];
 		} else {
 			$year_invoice = get_last_year();

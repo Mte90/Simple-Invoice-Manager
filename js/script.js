@@ -419,6 +419,7 @@ $(function() {
 	});
 	//open Invoice by customer history
 	jQuery(document).on('click','.customers-his .customer_his_inv',function() {
+		jQuery('body').data('year',jQuery(this).parent().data('year'));
 		jQuery.getJSON('invoice_data.php', {
 			'number':	jQuery(this).parent().data('number'),
 			'year'  :	jQuery(this).parent().data('year')
