@@ -144,7 +144,7 @@
 			<img src="icons/search.png" class="search pointer" alt="<? echo $l10n['NEW_INVOICE']; ?>" title="<? echo $l10n['NEW_INVOICE']; ?>" /><br>
 			<? /* PDF Option */
 			if($config['pdf']['enable']){ ?>
-			<img src="icons/pdf.png" class="pdf pointer" alt="<? echo $l10n['EXPORT_PDF']; ?>" title="<? echo $l10n['EXPORT_PDF']; ?>" /><br>
+			<img src="icons/pdf.png" class="pdf pointer hide" alt="<? echo $l10n['EXPORT_PDF']; ?>" title="<? echo $l10n['EXPORT_PDF']; ?>" /><br>
 			<? } ?>
 			<img src="icons/newspaper.png" class="print pointer" alt="<? echo $l10n['PRINT']; ?>" title="<? echo $l10n['PRINT']; ?>" /><br>
 			<img src="icons/email_forward.png" class="email pointer hide" alt="<? echo $l10n['SENT_EMAIL']; ?>" title="<? echo $l10n['SENT_EMAIL']; ?>" /><br><br>
