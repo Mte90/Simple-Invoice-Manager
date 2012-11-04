@@ -237,7 +237,8 @@ $(function() {
 				'customer_number'	:jQuery('body').data('customer'),
 				'logo'		:jQuery('#logo').attr('src'),
 				'old_date'	:jQuery('body').data('old_date_invoice'),
-				'old_number'	:jQuery('body').data('old_number_invoice')
+				'old_number'	:jQuery('body').data('old_number_invoice'),
+				'year'		:jQuery('body').data('year')
 			}).success(function() {
 				jQuery('#save_inv_modal').modal('hide');
 				jQuery('.pdf').show();
@@ -257,6 +258,7 @@ $(function() {
 	//Select Invoice
 	jQuery(document).on('click','.invoice-list td',function(e){
 		choosen = this;
+		jQuery('body').data('year',jQuery(choosen).data('year'));
 		jQuery.getJSON('invoice_data.php', {
 			'number':	jQuery(choosen).data('id'),
 			'year'  :	jQuery(choosen).data('year')
@@ -540,6 +542,7 @@ $(function() {
 			jQuery('#invoice_modal_list').html(data);
 		});
 		jQuery('#invoice_modal_list').modal('show');
+
 	});
 
 	//PDF

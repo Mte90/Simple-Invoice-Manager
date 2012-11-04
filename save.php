@@ -14,7 +14,6 @@
 		$data['last-mod'] 	= time();
 		$temp_arr = json_to_array($_GET['content']);
 		$data['products'] 	= $temp_arr['product'];
-		$extract_year 		= strtotime($data['date']);
 
 		$content = array_to_xml($data, 'invoice')->asXML();
 		$content = format_xml($content);
@@ -24,11 +23,17 @@
 			file_put_contents('./invoice/'.get_last_year().'/index.php','');
 		}
 
-		$inv_info = extract_invoice(clean($_GET['invoice_number']));
+		if(!sset($_GET['year'])){
+			$year_invoice = $_GET['year'];
+		} else {
+			$year_invoice = get_last_year();
+		}
+
+		$inv_info = extract_invoice(clean($_GET['invoice_number']),$year_invoice);
 
 		if($_GET['old_date']==clean($_GET['date']) && $_GET['old_number']!=clean($_GET['invoice_number'])){
-			unlink('./invoice/'.get_last_year().'/'.$_GET['old_number'].'.xml');
 			$inv_info = extract_invoice($_GET['old_number']);
+			unlink('./invoice/'.$year_invoice.'/'.$_GET['old_number'].'.xml');
 		}
 
 		if ($inv_info['customer']!=$data['customer']) {
@@ -40,7 +45,7 @@
 			} else {
 				$check = xml2array($file_history);
 				foreach($check as $key => $value){
-					if($check[$key]['number']==$data['number'] && $check[$key]['year']== date('Y') ) {
+					if($check[$key]['number']==$data['number'] && $check[$key]['year']== $year_invoice ) {
 						$add_history = false;
 						break;
 					}
@@ -49,7 +54,7 @@
 
 			if($add_history){
 				$data_h['invoice']['number'] = $data['number'];
-				$data_h['invoice']['year'] = date('Y');
+				$data_h['invoice']['year'] = $year_invoice;
 				$history['history'] = $data_h['invoice'];
 
 				$content_h = array_to_xml($history, 'customer-history')->asXML();
@@ -58,7 +63,7 @@
 			}
 		}
 
-		file_put_contents('./invoice/'.get_last_year().'/'.clean($_GET['invoice_number']).'.xml',$content);
+		file_put_contents('./invoice/'.$year_invoice.'/'.clean($_GET['invoice_number']).'.xml',$content);
 	} elseif($_GET['mode']=='save_draft_invoice') {
 		$number_drafts = get_last_element('draft');
 		$number_drafts++;

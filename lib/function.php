@@ -106,7 +106,28 @@
 		}
 		$xml['year']=$year;
 		$xml['product'] = $xml['products']['product'];
+		if(!isset($xml['payment_capture'])){
+			$xml['payment_capture'] = "";
+		}
 		return $xml;
+	}
+
+	function get_invoice_year() {
+		$contents = array();
+		$dir = './invoice';
+		# Foreach node in $dir
+		foreach (scandir($dir) as $node) {
+			# Skip link to current and parent folder
+			if ($node == '.')  continue;
+			if ($node == '..') continue;
+			if ($node == 'draft') continue;
+			# Check if it's a node or a folder
+			if (is_dir($dir . DIRECTORY_SEPARATOR . $node)) {
+				$contents[] = $node;
+			}
+		}
+		# done
+		return $contents;
 	}
 
 	/* Get array of notes */

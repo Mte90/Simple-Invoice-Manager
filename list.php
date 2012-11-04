@@ -184,18 +184,42 @@ $history_list = history_invoice($_GET['customer']);
 
 			<div class="tab-content">
 				<div class="tab-pane active" id="invoice">
-					<table class="invoice-list table table-bordered table-hover">
-						<tbody>
-						<?
-							$invoice = get_invoice();
-							foreach ($invoice as $key) {
-								$inv_info = extract_invoice($key);
-								$customer_info = read_customer_info($inv_info['customer']);
-								echo '<tr><td data-id="'.$key.'" data-year="'.$inv_info['year'].'">'.$key.' - '.$inv_info['date'].' - '.$customer_info['name'].'</td></tr>'."\n";
-							}
-						?>
-						</tbody>
-					</table>
+					<ul class="nav nav-tabs tabs-invoice-year">
+					<?
+						$folder = array_reverse(get_invoice_year());
+						$i = 0;
+						foreach($folder as $year_invoice){
+							if($i == 0){$class = ' class="active"';$i++;}
+							echo '<li'.$class.'><a href="#'.$year_invoice.'" data-toggle="tab">'.$year_invoice.'</a></li>';
+							$class = '';
+						}
+					?>
+					</ul>
+					<div class="tab-content">
+					<?
+						$i = 0;
+						foreach($folder as $year_invoice){
+							if($i == 0){$class = ' active';$i++;}
+					?>
+						<div class="tab-pane <? echo $class;?>" id="<? echo $year_invoice; ?>">
+							<table class="invoice-list table table-bordered table-hover">
+								<tbody>
+								<?
+									$invoice = get_invoice($year_invoice);
+									foreach ($invoice as $key) {
+										$inv_info = extract_invoice($key);
+										$customer_info = read_customer_info($inv_info['customer']);
+										echo '<tr><td data-id="'.$key.'" data-year="'.$inv_info['year'].'">'.$key.' - '.$inv_info['date'].' - '.$customer_info['name'].'</td></tr>'."\n";
+									}
+								?>
+								</tbody>
+							</table>
+						</div>
+					<?
+						$class = '';
+						}
+					?>
+					</div>
 				</div>
 				<div class="tab-pane" id="draft">
 					<table class="draft-list table table-bordered table-hover">
