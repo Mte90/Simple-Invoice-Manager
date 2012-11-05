@@ -1,7 +1,8 @@
 #Description
 
 A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
-For install read the fiel INSTALL
+For install read the file INSTALL
+Italian News: http://www.mte90.net/2012/11/simple-invoice-manager-e-tra-noi/
 
 #Features
 - Draft Support (Add/Modify/Delete)
@@ -15,7 +16,7 @@ For install read the fiel INSTALL
 
 #Roadmap
 
-- MySQL Support optionable ?? (for make it the file save.php,delete.php and lib/function need to be edit)
+- MySQL Support optionable ?? (for make it the file save.php,delete.php and lib/function.php need to be edit)
 
 #PDF BackEnd Rendering Support
 - Weasyprint (http://weasyprint.org/)
