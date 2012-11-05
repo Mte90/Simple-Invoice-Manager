@@ -47,8 +47,8 @@
 	$path['invoice']		=	$path['root'].'invoice';
 	$path['draft']			=	$path['invoice'].DIRECTORY_SEPARATOR.'draft';
 	$path['customers']		=	$path['root'].'customers';
-	$path['note']			=	$path['root'].'notes';
-	$path['logo']			=	$path['root'].'logos';
+	$path['notes']			=	$path['root'].'notes';
+	$path['logos']			=	$path['root'].'logos';
 	$path['tmp']			=	$path['root'].'tmp';
 
 	/**** NOT EDIT THIS CODE!!!!! ****/
