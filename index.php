@@ -112,7 +112,7 @@
 			<table class="balance">
 				<tr>
 					<th><span><? echo $l10n['TAX'] ?></span></th>
-					<td><span contenteditable id="value_tax">21</span>%</td>
+					<td><span contenteditable id="value_tax"><? echo $config['tax'] ?></span>%</td>
 				</tr>
 				<tr>
 					<th><span><? echo $l10n['TAXED_IMPORT'] ?></span></th>

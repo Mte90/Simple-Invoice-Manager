@@ -10,6 +10,7 @@
 						<p>101 E. Chapman Ave<br>Orange, CA 92866</p>
 						<p>(800) 555-1234</p>';
 	$config['email']		=	'test@test.it';
+	$config['tax']			=	21;
 
 	//Default content of the new customer field
 	$config['customer']['region']	=	'Italy';
@@ -38,7 +39,7 @@
 		$config['pdfcrowd']['user']=	'';
 		$config['pdfcrowd']['key'] =	'';
 	$config['pdf']['wkhtmltopdf']	=	true;
-	$config['pdf']['wait']		= 	'2'; //seconds
+	$config['pdf']['wait']		= 	2; //seconds
 
 	//Option Print
 	$config['print']['customer']	=	false;
