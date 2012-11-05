@@ -1,5 +1,6 @@
 <?
 	date_default_timezone_set('UTC');
+	$config['version']		=	'1.0 Alpha Dev';
 
 	//Config Invoice
 	$config['language']		=	'en';

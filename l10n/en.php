@@ -40,7 +40,7 @@ $l10n['CHOOSE_CUSTOMER'] 		= "Choose Customer";
 $l10n['CUSTOMER_NOT_DEFINED'] 	= "Customer not defined";
 
 // Invoice related
-$l10n['TITLE']			= "Invoice";
+$l10n['TITLE']			= "Simple Invoice Manager";
 $l10n['INVOICE']		= "Invoice #";
 $l10n['NUMBER_TICKET'] 		= "N. Ticket";
 $l10n['AMOUNT_DUE']		= "Total Import";

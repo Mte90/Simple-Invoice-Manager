@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title><? echo $l10n['TITLE']; ?></title>
+		<title><? echo $l10n['TITLE'].' - '.$config['version']; ?></title>
 		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
 		<link type="text/css" rel="stylesheet" href="css/style.css">
 		<link rel="license" href="http://opensource.org/licenses/GPL-3.0">
