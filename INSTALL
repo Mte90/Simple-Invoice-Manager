@@ -2,22 +2,32 @@
 
  Requirement:
  PHP 5.x
- Nothing also requirement it's simple app :-P
+ *nix system operative
+
+ The *nix so are required for the Print networking feature, WkHtmlToPdf and WeasyPrint because their code use bash command.
 
  Install:
- Because use xml file for store data you need to give permission 775 on this folder:
+ The app use the xml file for store data and the permission 775 on this folder:
 
- clients,invoice,notes
+ clients,invoice,notes,tmp
 
  chmod -R 775 ./clients
  chmod -R 775 ./notes
  chmod -R 775 ./invoice
+ chmod -R 775 ./tmp
 
- In logos folder you need to place the logo file that you need.
+ In logos folder you can place the logo files that you need.
  In config file you set the info of your shop/agency/etc and other options.
 
  Network print
- Check that www-data user have the permission for access on the printer lese not working!
+ Check that www-data user have the permission for access on the printer else not working!
 
  WkHtmlToPdf
  To work need xvfb for create a fake x server!
+
+ Backup
+ The backup zip file are saved in tmp directory after execute the backup.php.
+ This file can be executed with php-cli:
+	cd /var/of/app
+	php backup.php
+ Else in the browser this script write the link for download

@@ -16,6 +16,7 @@
 
 	$zip = new zip;
 	$date = str_replace('/','-',date($config['date_format']));
+	//For change the folder of backup change this line
 	$res = $zip->open($path['tmp'].DIRECTORY_SEPARATOR.'backup-'.$date.'.zip', ZipArchive::CREATE);
 	$zip->addDirectory($path['invoice']);
 	$zip->addDirectory($path['notes']);
@@ -24,6 +25,8 @@
 	$zip->addFile($path['root'].DIRECTORY_SEPARATOR.'config.php','config.php');
 	$zip->close();
 
-	//If you use a cron for execute this script comment the after line
-	echo '<a href="tmp/backup-'.$date.'.zip">Download Backup '.$date.'</a>'
+	if(PHP_SAPI != 'cli') {
+		echo '<a href="tmp/backup-'.$date.'.zip">Download Backup '.$date.'</a>';
+	}
+
 ?>

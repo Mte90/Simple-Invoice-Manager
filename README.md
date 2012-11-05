@@ -1,6 +1,7 @@
 #Description
 
 A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
+For install read the fiel INSTALL
 
 #Features
 - Draft Support (Add/Modify/Delete)
@@ -10,11 +11,11 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 - Export in PDF
 - Print Client (Browser with pdf reader) or Print by default printer on server
 - Sent PDF a client email
+- Backup zip (can be used with cron or browser)
 
 #Roadmap
 
-- Better Documentation
-- MySQL Support optionable ??
+- MySQL Support optionable ?? (for make it the file save.php,delete.php and lib/function need to be edit)
 
 #PDF BackEnd Rendering Support
 - Weasyprint (http://weasyprint.org/)
@@ -22,9 +23,8 @@ A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
 - WkHtmlToPdf (http://code.google.com/p/wkhtmltopdf/)
 
 #Refer
-Based on GUI http://www.jonathantneal.com/examples/invoice/
-
-Icons WooFunction by WooThemes http://www.woothemes.com/2009/09/woofunction-178-amazing-web-design-icons/
+ - Based on GUI http://www.jonathantneal.com/examples/invoice/
+ - Icons WooFunction by WooThemes http://www.woothemes.com/2009/09/woofunction-178-amazing-web-design-icons/
 
 #Library used
 - PHP WkHtmlToPdf: http://mikehaertl.github.com/phpwkhtmltopdf/ MIT License
