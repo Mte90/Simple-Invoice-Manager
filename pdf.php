@@ -2,9 +2,9 @@
 	require_once('./config.php');
 
 	if (isset($invoice_n)) {
-		$invoice_data = extract_invoice($invoice_n,$year);
+		$invoice_data = read_invoice_info($invoice_n,$year);
 	}else {
-		$invoice_data = extract_invoice($_GET['inv'],$_GET['year']);
+		$invoice_data = read_invoice_info($_GET['inv'],$_GET['year']);
 	}
 
 	$total = 0;

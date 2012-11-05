@@ -66,7 +66,7 @@ $history_list = history_invoice($_GET['customer']);
 			<tbody>
 				<?
 					foreach ($history_list as $key) {
-						$inv_info = extract_invoice($key['number'],$key['year']);
+						$inv_info = read_invoice_info($key['number'],$key['year']);
 						echo '<tr data-year="'.$key['year'].'" data-number="'.$key['number'].'"><td class="customer_his__choosen">'.$key['number'].' - '.$inv_info['date'].'</td><td class="link-func customer_his_inv">'.$l10n['OPEN'].'</td></tr>'."\n";
 					}
 				?>
@@ -186,7 +186,7 @@ $history_list = history_invoice($_GET['customer']);
 				<div class="tab-pane active" id="invoice">
 					<ul class="nav nav-tabs tabs-invoice-year">
 					<?
-						$folder = array_reverse(get_invoice_year());
+						$folder = array_reverse(get_annual_invoice());
 						$i = 0;
 						foreach($folder as $year_invoice){
 							if($i == 0){$class = ' class="active"';$i++;}
@@ -205,9 +205,9 @@ $history_list = history_invoice($_GET['customer']);
 							<table class="invoice-list table table-bordered table-hover">
 								<tbody>
 								<?
-									$invoice = get_invoice($year_invoice);
+									$invoice = invoice_list($year_invoice);
 									foreach ($invoice as $key) {
-										$inv_info = extract_invoice($key,$year_invoice);
+										$inv_info = read_invoice_info($key,$year_invoice);
 										$customer_info = read_customer_info($inv_info['customer']);
 										echo '<tr><td data-id="'.$key.'" data-year="'.$inv_info['year'].'">'.$key.' - '.$inv_info['date'].' - '.$customer_info['name'].'</td></tr>'."\n";
 									}
@@ -225,9 +225,9 @@ $history_list = history_invoice($_GET['customer']);
 					<table class="draft-list table table-bordered table-hover">
 						<tbody>
 						<?
-							$draft = get_invoice('draft');
+							$draft = invoice_list('draft');
 							foreach ($draft as $key) {
-								$inv_info = extract_invoice($key,'draft');
+								$inv_info = read_invoice_info($key,'draft');
 								$customer_info = read_customer_info($inv_info['customer']);
 								echo '<tr data-id="'.$key.'"><td class="draft_choosen">'.$key.' - '.$inv_info['date'].' - '.$customer_info['name'].'</td><td class="link-func draft_del">'.$l10n['DELETE'].'</td></tr>'."\n";
 							}

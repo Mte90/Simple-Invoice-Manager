@@ -12,7 +12,7 @@
 		$data['customer'] 	= clean($_GET['customer_number']);
 		$data['logo'] 		= clean($_GET['logo']);
 		$data['last-mod'] 	= time();
-		$temp_arr = json_to_array($_GET['content']);
+		$temp_arr 		= json_to_array($_GET['content']);
 		$data['products'] 	= $temp_arr['product'];
 
 		$content = array_to_xml($data, 'invoice')->asXML();
@@ -29,10 +29,10 @@
 			$year_invoice = get_last_year();
 		}
 
-		$inv_info = extract_invoice(clean($_GET['invoice_number']),$year_invoice);
+		$inv_info = read_invoice_info(clean($_GET['invoice_number']),$year_invoice);
 
 		if($_GET['old_date']==clean($_GET['date']) && $_GET['old_number']!=clean($_GET['invoice_number'])){
-			$inv_info = extract_invoice($_GET['old_number']);
+			$inv_info = read_invoice_info($_GET['old_number']);
 			unlink($path['invoice'].DIRECTORY_SEPARATOR.$year_invoice.DIRECTORY_SEPARATOR.$_GET['old_number'].'.xml');
 		}
 
