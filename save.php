@@ -18,26 +18,31 @@
 		$content = array_to_xml($data, 'invoice')->asXML();
 		$content = format_xml($content);
 
+		//if the folder not exist create it
 		if (!file_exists($path['invoice'].DIRECTORY_SEPARATOR.get_last_year())) {
 			mkdir($path['invoice'].DIRECTORY_SEPARATOR.get_last_year());
 			file_put_contents($path['invoice'].DIRECTORY_SEPARATOR.get_last_year().DIRECTORY_SEPARATOR.'index.php','');
 		}
 
+		//Check year of invoice
 		if(isset($_GET['year'])){
 			$year_invoice = $_GET['year'];
 		} else {
 			$year_invoice = get_last_year();
 		}
 
+		//Read the info of invoice for various check
 		$inv_info = read_invoice_info(clean($_GET['invoice_number']),$year_invoice);
 
+		//If changed the number of invoice remove the old number invoice
 		if($_GET['old_date']==clean($_GET['date']) && $_GET['old_number']!=clean($_GET['invoice_number'])){
 			$inv_info = read_invoice_info($_GET['old_number']);
 			unlink($path['invoice'].DIRECTORY_SEPARATOR.$year_invoice.DIRECTORY_SEPARATOR.$_GET['old_number'].'.xml');
 		}
 
+		//Check if invoice is in the history of customer
 		if ($inv_info['customer']!=$data['customer']) {
-			//remove info of old customer
+			//Remove info of old customer
 			$file_history = $path['customers'].DIRECTORY_SEPARATOR.$data['customer'].'_history.xml';
 			$add_history = true;
 			if(!file_exists($file_history)){
@@ -45,13 +50,15 @@
 			} else {
 				$check = xml2array($file_history);
 				foreach($check as $key => $value){
-					if($check[$key]['number']==$data['number'] && $check[$key]['year']== $year_invoice ) {
+					//if there is in the history not add
+					if($check[$key]['number']==$data['number'] && $check[$key]['year']== $year_invoice) {
 						$add_history = false;
 						break;
 					}
 				}
 			}
 
+			//Add to history
 			if($add_history){
 				$data_h['invoice']['number'] = $data['number'];
 				$data_h['invoice']['year'] = $year_invoice;
@@ -65,6 +72,7 @@
 
 		file_put_contents($path['invoice'].$year_invoice.DIRECTORY_SEPARATOR.clean($_GET['invoice_number']).'.xml',$content);
 	} elseif($_GET['mode']=='save_draft_invoice') {
+		//Save draft
 		$number_drafts = get_last_element('draft');
 		$number_drafts++;
 
@@ -84,6 +92,7 @@
 
 		file_put_contents($path['draft'].DIRECTORY_SEPARATOR.$number_drafts.'.xml',$content);
 	} elseif($_GET['mode']=='invoice_option') {
+		//Save invoice option in invoice or draft
 
 		$data['payment_date'] 		= clean($_GET['date']);
 		$data['payment_capture'] 	= clean($_GET['capture']);
@@ -106,6 +115,7 @@
 		file_put_contents($path,$content);
 
 	}  elseif($_GET['mode']=='new_customer') {
+		//Add new customer
 		$number_customers = get_last_element('customer');
 		$number_customers++;
 
@@ -123,7 +133,7 @@
 
 		file_put_contents($path['customers'].DIRECTORY_SEPARATOR.$number_customers.'.xml',$content);
 	} elseif($_GET['mode']=='mod_customer') {
-
+		//Edit the customer
 		$data['name'] 		= clean($_GET['name']);
 		$data['vat'] 		= clean($_GET['vat']);
 		$data['address'] 	= clean($_GET['address']);
@@ -138,6 +148,7 @@
 
 		file_put_contents($path['customers'].DIRECTORY_SEPARATOR.$_GET['customer'].'.xml',$content);
 	} elseif($_GET['mode']=='new_note') {
+		//Save note
 		$number_notes = get_last_element('note');
 		$number_notes++;
 
@@ -148,7 +159,7 @@
 
 		file_put_contents($path['notes'].DIRECTORY_SEPARATOR.$number_notes.'.xml',$content);
 	} elseif($_GET['mode']=='mod_note') {
-
+		//Edit the note
 		$data['name'] 		= clean($_GET['name']);
 		$data['text'] 		= clean($_GET['text']);
 
