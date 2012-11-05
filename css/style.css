@@ -126,7 +126,7 @@ tr:hover .cut {opacity: 1;}
 	* {-webkit-print-color-adjust: exact;print-color-adjust: exact;}
 	html {background: none; padding: 0;}
 	body {box-shadow: none; margin: 0;}
-	span:empty,.toolbar,.add, .cut,.toolbar_logo,.toolbar_customers,.toolbar,.invoice_option {display: none;}
+	span:empty,.toolbar,.add, .cut,.toolbar_logo,.toolbar_customers,.toolbar_notes,.toolbar,.invoice_option {display: none;}
 	.print {display:block !important;}
 }
 
