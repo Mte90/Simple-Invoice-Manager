@@ -11,7 +11,7 @@ if($_GET['mode']=='form'){
 		<form class="form-horizontal" id="sent-email">
 
 		<div class="control-group">
-		<label class="control-label">Email</label>
+		<label class="control-label"><? echo $l10n['RECIPIENT']; ?></label>
 		<div class="controls">
 		<input type="text" class="input-xlarge" id="user_email" value="<? echo $_GET['email']; ?>">
 		</div>
