@@ -1,0 +1,8 @@
+1.0 Beta
+- Fix to no show icon of note in print preview
+- Better english translation (thanks to @pappi_)
+- Fix missing use of a l10n string for email sender
+- Prepare for a future support for other backend for invoice data
+
+1.0 Alpha
+First release
