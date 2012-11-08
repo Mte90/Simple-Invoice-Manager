@@ -3,6 +3,7 @@
 - Better english translation (thanks to @pappi_)
 - Fix missing use of a l10n string for email sender
 - Fix for delete draft
+- Fix path on save invoice
 - Use of path var on delete file
 - Prepare for a future support for other backend for invoice data
 
