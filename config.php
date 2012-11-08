@@ -26,6 +26,7 @@
 	$config['capture_payment']	= 	true;
 	$config['invoice_logo'] 	=	true;
 	$config['debug']		=	true;
+	$config['backend']		=	'xml';// only xml for the moment
 
 	//Option Login
 	$config['login']['enable']	=	false;
@@ -56,6 +57,7 @@
 	/**** NOT EDIT THIS CODE!!!!! ****/
 	include('./l10n/'.$config['language'].'.php');
 	include('./lib/function.php');
+	include('./lib/'.$config['backend'].'/function.php');
 
 	session_start();
 

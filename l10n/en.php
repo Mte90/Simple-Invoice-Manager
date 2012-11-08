@@ -26,7 +26,7 @@ $l10n['ATTACH_EMAIL'] 		= "Invoice Attached";
 
 // Question
 $l10n['NEED_LOGIN'] 		= "You must be logged in";
-$l10n['CHECK_INVOICE_CUSTOMER'] 	= "If the customer is not chosen the invoice will be saved as a draft!";
+$l10n['CHECK_INVOICE_CUSTOMER'] = "If the customer is not chosen the invoice will be saved as a draft!";
 $l10n['CHECK_INVOICE_NUMBER']	= "Are you sure to change the number of the invoice leaving the same date? This will remove the old invoice!";
 $l10n['CHECK_EMPTY_NOTE'] 	= "You did not specify any text for the note!";
 $l10n['SURE_SAVE_INVOICE'] 	= "Are you sure you want to save the invoice?";
@@ -36,7 +36,7 @@ $l10n['SENT_INV_EMAIL'] 	= "Send the invoice at the email";
 $l10n['SAVE_INVOICE'] 		= "Save Invoice";
 $l10n['SAVE_DRAFT'] 		= "Save Draft";
 $l10n['NOTHING_INVOICE_CUSTOMER'] = "This customer has not any invoice";
-$l10n['CHOOSE_CUSTOMER'] 		= "Choose Customer";
+$l10n['CHOOSE_CUSTOMER'] 	= "Choose Customer";
 $l10n['CUSTOMER_NOT_DEFINED'] 	= "Customer not defined";
 
 // Invoice related
@@ -82,10 +82,10 @@ $l10n['REGION'] 		= "Region";
 $l10n['PHONE_FAX'] 		= "Phone/Fax";
 $l10n['EMAIL'] 			= "Email";
 $l10n['HISTORY'] 		= "History";
-$l10n['LIST_CUSTOMERS'] 		= "Customers List";
+$l10n['LIST_CUSTOMERS'] 	= "Customers List";
 $l10n['ADD_CUSTOMERS'] 		= "Add new Customer";
 $l10n['NEW_CUSTOMER'] 		= "New Customer";
-$l10n['MODIFY_CUSTOMER'] 		= "Edit Customer";
+$l10n['MODIFY_CUSTOMER'] 	= "Edit Customer";
 
 // Validator
 $l10n['pattern-message'] 	= "Not in the expected format";
