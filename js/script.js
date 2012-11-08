@@ -188,11 +188,11 @@ $(function() {
 	});
 
 	function spin_show() {
-		jQuery('<div class="modal-backdrop spin"/>').activity({color:'#08c'});
+		jQuery.blockUI({ baseZ: 2000,css: {border: 'none',padding: '15px',backgroundColor: '#000','border-radius': '10px',opacity: .5, color: '#fff'}});
 	}
 
 	function spin_hide() {
-		jQuery('.modal-backdrop.spin').activity(false).remove();
+		jQuery.unblockUI();
 	}
 
 	/* Invoice */
@@ -586,7 +586,6 @@ $(function() {
 			'inv_'		:jQuery('.invoice_n').html(),
 			'year_'		:jQuery('body').data('year')
 		}).success(function(data) {
-			console.log(data);
 			spin_hide();
 			if(data!='error') {
 				jQuery('#email_modal').modal('hide');

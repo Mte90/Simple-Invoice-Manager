@@ -16,7 +16,7 @@ Italian News: http://www.mte90.net/2012/11/simple-invoice-manager-e-tra-noi/
 - Backup zip (can be used with cron or browser)
 
 #Bug to be fixed
-- Fix activy indicator or find an alternative
+- Nothing for the moment
 
 #Roadmap
 - MySQL Support optionable ?? (for make it the file save.php,delete.php and lib/function.php need to be edit)
@@ -35,6 +35,7 @@ Italian News: http://www.mte90.net/2012/11/simple-invoice-manager-e-tra-noi/
 - PHP PdfCrowd: http://github.com/pdfcrowd/pdfcrowd-php
 - simpleEmailClass: Mark Davidson GPL License
 - jqBootstrapValidation: http://reactiveraven.github.com/jqBootstrapValidation/ (modded for modal support https://github.com/ReactiveRaven/jqBootstrapValidation/issues/22)
+- jQuery blockUI plugin: http://malsup.com/jquery/block/ MIT-GPl License
 
 #License
 

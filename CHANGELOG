@@ -5,6 +5,7 @@
 - Fix for delete draft
 - Fix path on save invoice
 - Fix for incorrect attach of pdf
+- Replaced Activity Indicator with BlockUI
 - Use of path var on delete file
 - Prepare for a future support for other backend for invoice data
 

@@ -9,7 +9,7 @@
 		<link rel="license" href="http://opensource.org/licenses/GPL-3.0">
 		<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/activity-indicator.min.js"></script>
+		<script type="text/javascript" src="js/jquery.blockUI.min.js"></script>
 		<script type="text/javascript" src="js/jqbootstrapvalidation.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
@@ -205,7 +205,6 @@
 				<a href="#" class="btn btn-primary" id="del_draft_okay"><? echo $l10n['SAVE']; ?></a>
 			</div>
 		</div>
-
 		<div class="modal hide" id="check_note_modal" role="dialog">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -218,6 +217,5 @@
 				<a href="#" class="btn" data-dismiss="modal"><? echo $l10n['REJECT']; ?></a>
 			</div>
 		</div>
-
 	</body>
 </html>
