@@ -314,13 +314,14 @@ $(function() {
 	//Sure Delete Draft
 	jQuery(document).on('click','.draft-list .draft_del',function() {
 		jQuery('#invoice_modal_list').modal('hide');
+		console.log(jQuery(this).parent().data('id'));
 		jQuery('#del_draft_modal').data('id',jQuery(this).parent().data('id')).modal('show');
 	});
 	//Delete Draft
 	jQuery('#del_draft_okay').click(function() {
 		jQuery.get('delete.php', {
 			'mode'		:'del_draft',
-			'draft'		:jQuery('#del_note_modal').data('id')
+			'draft'		:jQuery('#del_draft_modal').data('id')
 		}).success(function() {jQuery('#del_draft_modal').modal('hide');});
 	});
 
