@@ -60,7 +60,7 @@ if($_GET['mode']=='form'){
 		$year = $_GET['year_'];
 		include('pdf.php');
 
-		$sec->attachment('./tmp/invoice.pdf');
+		$sec->attachment($pdf_path);
 	}
 
 	if($sec->sendmail()) {

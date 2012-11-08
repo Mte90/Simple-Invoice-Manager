@@ -187,6 +187,14 @@ $(function() {
 		placeCaretAtEnd(this);
 	});
 
+	function spin_show() {
+		jQuery('<div class="modal-backdrop spin"/>').activity({color:'#08c'});
+	}
+
+	function spin_hide() {
+		jQuery('.modal-backdrop.spin').activity(false).remove();
+	}
+
 	/* Invoice */
 	//New Invoice
 	jQuery('.new').click(function() {
@@ -566,6 +574,27 @@ $(function() {
 		});
 		jQuery('#email_modal').modal('show');
 	});
+	//Sent Email
+	jQuery(document).on('click','#sent_email_ok',function() {
+		spin_show();
+		jQuery.get('email.php', {
+			'mode'		:'send',
+			'user_email'	:jQuery('#user_email').val(),
+			'subject_email'	:jQuery('#subject_email').val(),
+			'content_email'	:jQuery('#content_email').val(),
+			'attach_email'	:jQuery('#attach_email').val(),
+			'inv_'		:jQuery('.invoice_n').html(),
+			'year_'		:jQuery('body').data('year')
+		}).success(function(data) {
+			console.log(data);
+			spin_hide();
+			if(data!='error') {
+				jQuery('#email_modal').modal('hide');
+			} else {
+				alert('Error with email!');
+			}
+		});
+	});
 
 	//Invoice option
 	jQuery('#invoice_option_okay').click(function() {
@@ -579,34 +608,6 @@ $(function() {
 
 		});
 	});
-
-	jQuery(document).on('click','#sent_email_ok',function() {
-		spin_show();
-		jQuery.get('email.php', {
-			'mode'		:'send',
-			'user_email'	:jQuery('#user_email').val(),
-			'subject_email'	:jQuery('#subject_email').val(),
-			'content_email'	:jQuery('#content_email').val(),
-			'attach_email'	:jQuery('#attach_email').val(),
-			'inv_'		:jQuery('.invoice_n').html(),
-			'year_'		:jQuery('body').data('year')
-		}).success(function(data) {
-			spin_hide();
-			if(data!='error') {
-				jQuery('#email_modal').modal('hide');
-			} else {
-				alert('Error with email!');
-			}
-		});
-	});
-
-	function spin_show() {
-		jQuery('<div class="modal-backdrop spin"/>').activity({color:'#08c'});
-	}
-
-	function spin_hide() {
-		jQuery('.modal-backdrop.spin').activity(false).remove();
-	}
 
 	//Load Invoice/Draft
 	function init_invoice(json,type) {
