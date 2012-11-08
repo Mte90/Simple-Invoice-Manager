@@ -15,8 +15,10 @@ Italian News: http://www.mte90.net/2012/11/simple-invoice-manager-e-tra-noi/
 - Sent PDF a client email
 - Backup zip (can be used with cron or browser)
 
-#Roadmap
+#Bug to be fixed
+- Fix activy indicator or find an alternative
 
+#Roadmap
 - MySQL Support optionable ?? (for make it the file save.php,delete.php and lib/function.php need to be edit)
 
 #PDF BackEnd Rendering Support
