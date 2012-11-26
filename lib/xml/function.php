@@ -114,7 +114,11 @@
 			$xml['customer'] = '';
 		}
 		$xml['year']=$folder_choosen;
-		$xml['product'] = $xml['products']['product'];
+		if (isset($xml['products']['product'])) {
+			$xml['product'] = $xml['products']['product'];
+		}else {
+			$xml['product'] = $xml['products'];
+		}
 		if(!isset($xml['payment_capture'])){
 			$xml['payment_capture'] = "";
 		}

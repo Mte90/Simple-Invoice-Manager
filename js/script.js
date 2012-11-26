@@ -644,7 +644,6 @@ $(function() {
 			jQuery('.not-paid').addClass('print');
 			jQuery('.paid').removeClass('print');
 			jQuery('#capture_date').val('');
-
 		}
 		jQuery('#value_tax').html(json.tax);
 		jQuery('#logo').attr('src',json.logo);
@@ -653,17 +652,20 @@ $(function() {
 
 		jQuery('table.inventory tbody tr').remove();
 
-		for (i=0; i<json.products.product.length; i++) {
-			document.querySelector('table.inventory tbody').appendChild(generateTableRow());
-		}
-		list_product = jQuery('table.inventory tbody tr');
+		if(typeof json.products.product != 'undefined') {
+			for (i=0; i<json.products.product.length; i++) {
+				document.querySelector('table.inventory tbody').appendChild(generateTableRow());
+			}
 
-		$.each(json.products.product, function(i){
-			cells = jQuery(list_product[i]).find('td span');
-			jQuery(cells[0]).html(json.products.product[i].item);
-			jQuery(cells[2]).html(json.products.product[i].rate);
-			jQuery(cells[3]).html(json.products.product[i].quantity);
-		});
+			list_product = jQuery('table.inventory tbody tr');
+
+			jQuery.each(json.products.product, function(i){
+				cells = jQuery(list_product[i]).find('td span');
+				jQuery(cells[0]).html(json.products.product[i].item);
+				jQuery(cells[2]).html(json.products.product[i].rate);
+				jQuery(cells[3]).html(json.products.product[i].quantity);
+			});
+		}
 
 		jQuery.get('customer_info.php', {
 			'file':		json.customer

@@ -6,6 +6,7 @@
 - Fix path on save invoice
 - Fix for incorrect attach of pdf
 - Fix of save a blank invoice
+- Fix save and load invoice with no item
 - Fix for missing check letter on rate field
 - Replaced Activity Indicator with BlockUI
 - Use of path var on delete file
