@@ -36,7 +36,7 @@
 				<img src="icons/folder_search.png" class="logos_search pointer" alt="<? echo $l10n['CHOOSE_LOGO']; ?>" title="<? echo $l10n['CHOOSE_LOGO']; ?>" />
 			</div>
 			<? } ?>
-			<img alt="" src="logos/logo_default.png" id="logo">
+			<img alt="" src="<? echo $path['logos'].'/'.$config['logo_default']; ?>" id="logo">
 		</header>
 		<article>
 			<div class="toolbar_customers">

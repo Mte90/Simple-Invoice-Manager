@@ -120,6 +120,13 @@ tr:hover .cut {opacity: 1;}
 
 .toolbar_logo {
 	float:right;
+	right:-30px;
+	position:relative;
+}
+
+#logo {
+	right:-30px;
+	position:relative;
 }
 
 @media print {
