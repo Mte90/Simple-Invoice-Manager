@@ -36,7 +36,7 @@
 				<img src="icons/folder_search.png" class="logos_search pointer" alt="<? echo $l10n['CHOOSE_LOGO']; ?>" title="<? echo $l10n['CHOOSE_LOGO']; ?>" />
 			</div>
 			<? } ?>
-			<img alt="" src="<? echo $path['logos'].'/'.$config['logo_default']; ?>" id="logo">
+			<img alt="" src="<? echo $path['logos'].'/'.$config['logo_default']; ?>" <? if($config['invoice_logo']){ ?> id="logo" <? } ?>>
 		</header>
 		<article>
 			<div class="toolbar_customers">
@@ -84,25 +84,25 @@
 				<tbody>
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable></span></td>
+						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check"></span></td>
 						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable></span></td>
+						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check"></span></td>
 						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable></span></td>
+						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check"></span></td>
 						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable></span></td>
+						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check"></span></td>
 						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>

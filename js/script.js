@@ -43,7 +43,7 @@ function generateTableRow() {
 	var emptyColumn = document.createElement('tr');
 
 	emptyColumn.innerHTML = '<td><a class="cut">-</a><span contenteditable></span></td>' +
-		'<td><span data-prefix>$</span><span contenteditable></span></td>' +
+		'<td><span data-prefix>$</span><span contenteditable class="number-check"></span></td>' +
 		'<td><span contenteditable class="number-check">0</span></td>' +
 		'<td><span data-prefix>$</span><span>0.00</span></td>';
 
@@ -202,25 +202,36 @@ $(function() {
 		});
 	//On save Invoice
 	jQuery(document).on('click','.save',function() {
-		var mode_inv=old_text = '';
+		var mode_inv=old_text= '';
+		var total_item = -1;
 		var txt = '{"product":[';
+		var row_item = new Array();
 
+		//Check row empty
 		jQuery('table.inventory tbody tr').each(function(key, value) {
 			cells = jQuery(this).find('td span');
 			if(jQuery(cells[0]).html()!=''){
-				txt += '{"item":"'+jQuery(cells[0]).html()+'","rate":"'+jQuery(cells[2]).html()+'","quantity":"'+jQuery(cells[3]).html()+'"}';
-				if(key != (jQuery('table.inventory tbody tr').length-1)){
-					txt += ',';
-				}
+				row_item = row_item.concat(cells);
+				total_item++;
+			}
+		});
+
+		//Create json content with item
+		jQuery(row_item).each(function(key, value) {
+			txt += '{"item":"'+jQuery(row_item[key][0]).html()+'","rate":"'+jQuery(row_item[key][2]).html()+'","quantity":"'+jQuery(row_item[key][3]).html()+'"}';
+			if(key != total_item){
+				txt += ',';
 			}
 		});
 
 		txt += ']}';
 
+		//Check if customer are choosen
 		if (jQuery('body').data('customer')=='' || jQuery('body').data('customer')==null) {
 			old_text = jQuery('#save_inv_modal .modal-body p').html();
 			jQuery('#save_inv_modal .modal-body').html(jQuery('#save_inv_modal .modal-body').data('message-option')[0]);
 			mode_inv = 'save_draft_invoice';
+		//Check invoice number change
 		}else if ((jQuery('body').data('old_number_invoice')!='' || jQuery('body').data('old_number_invoice')!=null || jQuery('body').data('old_date_invoice')!='' ||
 			jQuery('body').data('old_date_invoice')!=null) && jQuery('body').data('old_number_invoice')!=jQuery('.invoice_n').html() && jQuery('body').data('old_date_invoice')==jQuery('.invoice_date').html()) {
 			old_text = jQuery('#save_inv_modal .modal-body p').html();

@@ -5,9 +5,13 @@
 - Fix for delete draft
 - Fix path on save invoice
 - Fix for incorrect attach of pdf
+- Fix of save a blank invoice
+- Fix for missing check letter on rate field
 - Replaced Activity Indicator with BlockUI
 - Use of path var on delete file
 - Prepare for a future support for other backend for invoice data
+- Moved to right the logo
+- Added default logo image config parameter
 
 1.0 Alpha
 First release
