@@ -29,13 +29,15 @@
 			$year_invoice = get_last_year();
 		}
 
-		//Read the info of invoice for various check
-		$inv_info = read_invoice_info(clean($_GET['invoice_number']),$year_invoice);
-
 		//If changed the number of invoice remove the old number invoice
-		if($_GET['old_date']==clean($_GET['date']) && $_GET['old_number']!=clean($_GET['invoice_number'])){
-			$inv_info = read_invoice_info($_GET['old_number']);
-			unlink($path['invoice'].DIRECTORY_SEPARATOR.$year_invoice.DIRECTORY_SEPARATOR.$_GET['old_number'].'.xml');
+		if(isset($_GET['old_date'])){
+			//Read the info of invoice for various check
+			$inv_info = read_invoice_info(clean($_GET['invoice_number']),$year_invoice);
+
+			if($_GET['old_date']==clean($_GET['date']) && $_GET['old_number']!=clean($_GET['invoice_number'])){
+				$inv_info = read_invoice_info($_GET['old_number']);
+				unlink($path['invoice'].DIRECTORY_SEPARATOR.$year_invoice.DIRECTORY_SEPARATOR.$_GET['old_number'].'.xml');
+			}
 		}
 
 		//Check if invoice is in the history of customer
