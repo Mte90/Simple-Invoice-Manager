@@ -11,6 +11,7 @@
 						<p>(800) 555-1234</p>';
 	$config['email']		=	'test@test.it';
 	$config['tax']			=	21;
+	$config['logo_default']		=	'logo_default.png';
 
 	//Default content of the new customer field
 	$config['customer']['region']	=	'Italy';

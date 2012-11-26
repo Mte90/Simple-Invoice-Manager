@@ -18,6 +18,7 @@
 
  In logos folder you can place the logo files that you need.
  In config file you set the info of your shop/agency/etc and other options.
+ Rename config-sample.php file in config.php and check the parameter in this file.
 
  Network print
  Check that www-data user have the permission for access on the printer else not working!
