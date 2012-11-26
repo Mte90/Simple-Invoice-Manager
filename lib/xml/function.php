@@ -206,10 +206,13 @@
 		foreach($array as $key => $value){
 			if(empty($array[$key])) $array[$key] = '';
 		}
-		if(!empty($array['products'])){
+
+		if(!empty($array['products']) && $array['products']['product']>1){
 			foreach($array['products']['product'] as $key => $value){
-				foreach($array['products']['product'][$key] as $keyz => $value){
-					if(empty($array['products']['product'][$key][$keyz])) $array['products']['product'][$key][$keyz] = '';
+				if(is_numeric($key)){
+					foreach($array['products']['product'][$key] as $keyz => $value){
+						if(empty($array['products']['product'][$key][$keyz])) $array['products']['product'][$key][$keyz] = '';
+					}
 				}
 			}
 		}

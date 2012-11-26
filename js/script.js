@@ -652,19 +652,31 @@ $(function() {
 
 		jQuery('table.inventory tbody tr').remove();
 
+
 		if(typeof json.products.product != 'undefined') {
-			for (i=0; i<json.products.product.length; i++) {
+			if(typeof json.products.product.length != 'undefined'){
+				for (i=0; i<json.products.product.length; i++) {
+					document.querySelector('table.inventory tbody').appendChild(generateTableRow());
+				}
+			} else {
 				document.querySelector('table.inventory tbody').appendChild(generateTableRow());
 			}
 
 			list_product = jQuery('table.inventory tbody tr');
 
-			jQuery.each(json.products.product, function(i){
-				cells = jQuery(list_product[i]).find('td span');
-				jQuery(cells[0]).html(json.products.product[i].item);
-				jQuery(cells[2]).html(json.products.product[i].rate);
-				jQuery(cells[3]).html(json.products.product[i].quantity);
-			});
+			if(typeof json.products.product.length != 'undefined'){
+				jQuery.each(json.products.product, function(i){
+					cells = jQuery(list_product[i]).find('td span');
+					jQuery(cells[0]).html(json.products.product[i].item);
+					jQuery(cells[2]).html(json.products.product[i].rate);
+					jQuery(cells[3]).html(json.products.product[i].quantity);
+				});
+			} else {
+				cells = jQuery(list_product).find('td span');
+				jQuery(cells[0]).html(json.products.product.item);
+				jQuery(cells[2]).html(json.products.product.rate);
+				jQuery(cells[3]).html(json.products.product.quantity);
+			}
 		}
 
 		jQuery.get('customer_info.php', {

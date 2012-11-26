@@ -9,8 +9,14 @@
 
 	$total = 0;
 
-	foreach($invoice_data['product'] as $item){
-		$total += $item['rate'] * $item['quantity'];
+	if(isset($invoice_data['product'])){
+		if(isset($invoice_data['product'][0])){
+			foreach($invoice_data['product'] as $item){
+				$total += $item['rate'] * $item['quantity'];
+			}
+		} else {
+			$total += $invoice_data['product']['rate'] * $invoice_data['product']['quantity'];
+		}
 	}
 
 	$pdf_name='invoice-'.$invoice_data['number'].'-'.$invoice_data['last-mod'].'.pdf';
@@ -20,7 +26,7 @@
 
 		if(!$config['pdf']['pdfcrowd']){
 			$logo_path='../';
-		}else {
+		} else {
 			$logo_path='./';
 		}
 
@@ -92,15 +98,26 @@ $content .= '		<address>'.$config['invoice_info'].'</address>
 					</tr>
 				</thead>
 				<tbody>';
-					foreach($invoice_data['product'] as $item) {
-						$price = $item['rate'] * $item['quantity'];
+					if(isset($invoice_data['product'][0])){
+						foreach($invoice_data['product'] as $item){
+							$price = $item['rate'] * $item['quantity'];
+							$content .= '<tr>
+							<td><span>'.$item['item'].'</span></td>
+							<td><span>'.$config['prefix'].'</span><span>'.$item['rate'].'</span></td>
+							<td><span>'.$item['quantity'].'</span></td>
+							<td><span>'.$config['prefix'].'</span><span>'.$price.'</span></td>
+							</tr>';
+						}
+					} else {
+						$price = $invoice_data['product']['rate'] * $invoice_data['product']['quantity'];
 						$content .= '<tr>
-						<td><span>'.$item['item'].'</span></td>
-						<td><span>'.$config['prefix'].'</span><span>'.$item['rate'].'</span></td>
-						<td><span>'.$item['quantity'].'</span></td>
-						<td><span>'.$config['prefix'].'</span><span>'.$price.'</span></td>
-						</tr>';
+							<td><span>'.$invoice_data['product']['item'].'</span></td>
+							<td><span>'.$config['prefix'].'</span><span>'.$invoice_data['product']['rate'].'</span></td>
+							<td><span>'.$invoice_data['product']['quantity'].'</span></td>
+							<td><span>'.$config['prefix'].'</span><span>'.$price.'</span></td>
+							</tr>';
 					}
+
 			$percent = percent($invoice_data['tax'],$total);
 			$content .= '</tbody>
 			</table>
@@ -183,6 +200,7 @@ $content .= '		<address>'.$config['invoice_info'].'</address>
 		if($config['pdf']['wait']!=''){
 			sleep($config['pdf']['wait']);
 		}
+
 		if (!isset($invoice_n)) {
 			header_pdf($pdf_name);
 		}
@@ -190,6 +208,7 @@ $content .= '		<address>'.$config['invoice_info'].'</address>
 	}
 
 	}else {
+
 		if (!isset($invoice_n)) {
 			header_pdf($pdf_name);
 		}
