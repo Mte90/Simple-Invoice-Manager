@@ -38,6 +38,7 @@
 
 /* Helper Functions
 /* ========================================================================== */
+var dot_or_comma;
 
 function generateTableRow() {
 	var emptyColumn = document.createElement('tr');
@@ -51,11 +52,27 @@ function generateTableRow() {
 }
 
 function parseFloatHTML(element) {
-	return Math.round(parseFloat(element.innerHTML.replace(/[^\d\.,\-]+/g, '')) || 0);
+	return parseFloat(commaToDot(element.innerHTML).replace(/[^\d\.\-]+/g, '')) || 0;
 }
 
 function parsePrice(number) {
-	return Math.round(number.toFixed(2).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,'));
+	return number.toFixed(2).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,');
+}
+
+function dotToComma(number) {
+	if(dot_or_comma){
+		return number;
+	} else {
+		return number.toString().replace(/\./g, ',');
+	}
+}
+
+function commaToDot(text){
+		return text.replace(/,/, '.');
+}
+
+function checkDotComma(){
+	dot_or_comma = jQuery('body').data('dotcomma');
 }
 
 /* Update Number
@@ -82,7 +99,7 @@ function updateNumber(e) {
 
 function updateInvoice() {
 	var total = 0;
-	var cells, price, total, a, i;
+	var cells, price, total, a, i, total_;
 
 	// update inventory cells
 	// ======================
@@ -98,7 +115,7 @@ function updateInvoice() {
 		total += price;
 
 		// set row total
-		cells[3].innerHTML = price;
+		cells[3].innerHTML = dotToComma(price);
 	}
 
 	// update balance cells
@@ -108,12 +125,13 @@ function updateInvoice() {
 	cells = document.querySelectorAll('table.balance td:last-child span:last-child');
 
 	// only import tax
-	cells[3].innerHTML = Math.round(total);
-	jQuery('#total').html(Math.round(total));
+	cells[3].innerHTML = dotToComma(total);
+	jQuery('#total').html(dotToComma(total));
 
 	// set total
-	cells[1].innerHTML = (total*jQuery('#value_tax').html())/100;
-	cells[2].innerHTML = total-cells[1].innerHTML;
+	total_ = ((total*jQuery('#value_tax').html())/100);
+	cells[1].innerHTML = dotToComma(total_);
+	cells[2].innerHTML = dotToComma(total-total_);
 
 	// update prefix formatting
 
@@ -169,6 +187,8 @@ window.addEventListener && document.addEventListener('DOMContentLoaded', onConte
 //Invoice Code
 
 $(function() {
+	checkDotComma();
+
 	//Enable validation on input field
 	jQuery(document).on('change','input,select,textarea :not([type=submit])',function() {
 		jQuery(this).jqBootstrapValidation();

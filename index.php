@@ -15,7 +15,7 @@
 		<script type="text/javascript" src="js/jquery.livefilter.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
-	<body class="modal-open" data-choose-customer="<? echo $l10n['CHOOSE_CUSTOMER'] ?>">
+	<body class="modal-open" data-choose-customer="<? echo $l10n['CHOOSE_CUSTOMER'] ?>" data-dotcomma="<? echo $config['dot_or_comma']; ?>">
 		<div class="invoice_option">
 		<? /* Show Capture payment Option */
 		if($config['capture_payment']){ ?>

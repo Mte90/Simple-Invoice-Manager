@@ -12,7 +12,7 @@
 	$config['email']		=	'test@test.it';
 	$config['tax']			=	21;
 	$config['logo_default']		=	'logo_default.png';
-	$config['info']			=	'Genereal Condition of Sale';
+	$config['info']			=	'General Condition of Sale';
 
 	//Default content of the new customer field
 	$config['customer']['region']	=	'Italy';
@@ -29,6 +29,7 @@
 	$config['invoice_logo'] 	=	true;
 	$config['debug']		=	true;
 	$config['backend']		=	'xml';// only xml for the moment
+	$config['dot_or_comma']		=	false; //true for dot or false for comma
 
 	//Option Login
 	$config['login']['enable']	=	false;
