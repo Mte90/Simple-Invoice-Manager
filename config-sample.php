@@ -12,6 +12,7 @@
 	$config['email']		=	'test@test.it';
 	$config['tax']			=	21;
 	$config['logo_default']		=	'logo_default.png';
+	$config['info']			=	'Genereal Condition of Sale';
 
 	//Default content of the new customer field
 	$config['customer']['region']	=	'Italy';
