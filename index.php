@@ -109,6 +109,9 @@
 				</tbody>
 			</table>
 			<a class="add">+</a>
+			<div class="box-info">
+				<? echo $config['info'] ?>
+			</div>
 			<table class="balance">
 				<tr>
 					<th><span><? echo $l10n['TAX'] ?></span></th>

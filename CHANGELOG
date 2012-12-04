@@ -13,6 +13,7 @@
 - Prepare for a future support for other backend for invoice data
 - Moved to right the logo
 - Added default logo image config parameter
+- Added info box and config parameter
 
 1.0 Alpha
 First release

@@ -171,3 +171,9 @@ tr:hover .cut {opacity: 1;}
 }
 
 .paid, .not-paid, .print {display:none;}
+
+.box-info {
+	margin-top: 4px;
+	position: absolute;
+	width: 600px;
+}
