@@ -58,7 +58,7 @@
  */
 class WkHtmlToPdf
 {
-    protected $bin='xvfb-run /usr/bin/wkhtmltopdf';
+    protected $bin='xvfb-run /usr/bin/wkhtmltopdf --page-size A4 --print-media-type --dpi 100 --zoom 1.4';
 
     protected $options=array();
     protected $pageOptions=array();

@@ -8,6 +8,7 @@
 - Fix of save a blank invoice
 - Fix save and load invoice with no item
 - Fix for missing check letter on rate field
+- Fix pdf rendering with wkhtmltopdf for small page
 - Replaced Activity Indicator with BlockUI
 - Use of path var on delete file
 - Prepare for a future support for other backend for invoice data

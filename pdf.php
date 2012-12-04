@@ -121,6 +121,9 @@ $content .= '		<address>'.$config['invoice_info'].'</address>
 			$percent = percent($invoice_data['tax'],$total);
 			$content .= '</tbody>
 			</table>
+			<div class="box-info">
+				'.$config['info'].'
+			</div>
 			<table class="balance">
 				<tr>
 					<th><span>'.$l10n['TAX'].'</span></th>

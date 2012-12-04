@@ -16,7 +16,7 @@
  chmod -R 775 ./invoice
  chmod -R 775 ./tmp
 
- In logos folder you can place the logo files that you need.
+ In logos folder you can place the logo files that you need (width of 450px it's better).
  In config file you set the info of your shop/agency/etc and other options.
  Rename config-sample.php file in config.php and check the parameter in this file.
 
