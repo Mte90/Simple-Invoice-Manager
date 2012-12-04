@@ -11,6 +11,8 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/jquery.blockUI.min.js"></script>
 		<script type="text/javascript" src="js/jqbootstrapvalidation.min.js"></script>
+		<script type="text/javascript" src="js/jquery.livequery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.livefilter.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</head>
 	<body class="modal-open" data-choose-customer="<? echo $l10n['CHOOSE_CUSTOMER'] ?>">

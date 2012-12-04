@@ -35,7 +35,9 @@ Italian News: http://www.mte90.net/2012/11/simple-invoice-manager-e-tra-noi/
 - PHP PdfCrowd: http://github.com/pdfcrowd/pdfcrowd-php
 - simpleEmailClass: Mark Davidson GPL License
 - jqBootstrapValidation: http://reactiveraven.github.com/jqBootstrapValidation/ (modded for modal support https://github.com/ReactiveRaven/jqBootstrapValidation/issues/22)
-- jQuery blockUI plugin: http://malsup.com/jquery/block/ MIT-GPl License
+- jQuery blockUI plugin: http://malsup.com/jquery/block/ MIT-GPL License
+- jQuery LiveFilter: https://github.com/straps/jquery-livefilter MIT License
+- LiveQuery: https://github.com/hazzik/livequery MIT-GPL License
 
 #License
 

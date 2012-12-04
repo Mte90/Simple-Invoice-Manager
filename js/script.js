@@ -195,6 +195,10 @@ $(function() {
 		jQuery.unblockUI();
 	}
 
+	jQuery('#customer_search').livequery(function(){
+		jQuery(this).livefilter({selector:'.customers-list tbody tr',debounce:100});
+	});
+
 	/* Invoice */
 	//New Invoice
 	jQuery('.new').click(function() {

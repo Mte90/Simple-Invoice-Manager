@@ -33,6 +33,7 @@ if($_GET['mode']=='logo_list') {
 		<h3><? echo $l10n['LIST_CUSTOMERS']; ?></h3>
 	</div>
 	<div class="modal-body">
+		<? echo $l10n['SEARCH']; ?>: <input type="text" id="customer_search" />
 		<table class="customers-list table table-bordered table-hover">
 			<tbody>
 				<?
