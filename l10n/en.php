@@ -23,6 +23,7 @@ $l10n['RECIPIENT'] 		= "Recipient";
 $l10n['SUBJECT_EMAIL'] 		= "Email Subject";
 $l10n['CONTENT_EMAIL'] 		= "Email Content";
 $l10n['ATTACH_EMAIL'] 		= "Invoice Attached";
+$l10n['SEARCH'] 		= "Search";
 
 // Question
 $l10n['NEED_LOGIN'] 		= "You must be logged in";

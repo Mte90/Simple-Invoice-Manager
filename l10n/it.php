@@ -23,6 +23,7 @@ $l10n['RECIPIENT'] 		= "Destinatario";
 $l10n['SUBJECT_EMAIL'] 		= "Oggetto Email";
 $l10n['CONTENT_EMAIL'] 		= "Contenuto Email";
 $l10n['ATTACH_EMAIL'] 		= "Allega fattura";
+$l10n['SEARCH'] 		= "Cerca";
 
 // Question
 $l10n['NEED_LOGIN'] 		= "Devi loggarti";
