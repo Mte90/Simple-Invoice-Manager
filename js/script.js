@@ -51,11 +51,11 @@ function generateTableRow() {
 }
 
 function parseFloatHTML(element) {
-	return parseFloat(element.innerHTML.replace(/[^\d\.\-]+/g, '')) || 0;
+	return Math.round(parseFloat(element.innerHTML.replace(/[^\d\.,\-]+/g, '')) || 0);
 }
 
 function parsePrice(number) {
-	return number.toFixed(2).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,');
+	return Math.round(number.toFixed(2).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1,'));
 }
 
 /* Update Number
@@ -108,8 +108,8 @@ function updateInvoice() {
 	cells = document.querySelectorAll('table.balance td:last-child span:last-child');
 
 	// only import tax
-	cells[3].innerHTML = total;
-	jQuery('#total').html(total);
+	cells[3].innerHTML = Math.round(total);
+	jQuery('#total').html(Math.round(total));
 
 	// set total
 	cells[1].innerHTML = (total*jQuery('#value_tax').html())/100;
@@ -183,7 +183,7 @@ $(function() {
 	//Remove non-number letter
 	jQuery('.number-check').keyup(function (e) {
 		var number = jQuery(this).html();
-		jQuery(this).html(number.replace(/[^0-9]+/g, ''));
+		jQuery(this).html(number.replace(/[^0-9.,]+/g, ''));
 		placeCaretAtEnd(this);
 	});
 
