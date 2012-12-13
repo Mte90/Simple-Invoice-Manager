@@ -68,11 +68,19 @@ function dotToComma(number) {
 }
 
 function commaToDot(text){
-		return text.replace(/,/, '.');
+	return text.toString().replace(/,/, '.');
 }
 
 function checkDotComma(){
 	dot_or_comma = jQuery('body').data('dotcomma');
+}
+
+function addDecimal(num){
+	if (num != '' || num != '0'){
+		return dotToComma(parseFloat(commaToDot(num)).toFixed(2));
+	} else {
+		return num;
+	}
 }
 
 /* Update Number
@@ -115,7 +123,7 @@ function updateInvoice() {
 		total += price;
 
 		// set row total
-		cells[3].innerHTML = dotToComma(price);
+		cells[3].innerHTML = addDecimal(dotToComma(price));
 	}
 
 	// update balance cells
@@ -125,13 +133,13 @@ function updateInvoice() {
 	cells = document.querySelectorAll('table.balance td:last-child span:last-child');
 
 	// only import tax
-	cells[3].innerHTML = dotToComma(total);
-	jQuery('#total').html(dotToComma(total));
+	cells[3].innerHTML = addDecimal(dotToComma(total));
+	jQuery('#total').html(addDecimal(dotToComma(total)));
 
 	// set total
 	total_ = ((total*jQuery('#value_tax').html())/100);
-	cells[1].innerHTML = dotToComma(total_);
-	cells[2].innerHTML = dotToComma(total-total_);
+	cells[1].innerHTML = addDecimal(dotToComma(total_));
+	cells[2].innerHTML = addDecimal(dotToComma(total-total_));
 
 	// update prefix formatting
 
@@ -203,7 +211,14 @@ $(function() {
 	//Remove non-number letter
 	jQuery('.number-check').keyup(function (e) {
 		var number = jQuery(this).html();
-		jQuery(this).html(number.replace(/^[0]+/g,'').replace(/[^0-9.,]+/g, ''));
+		if(number != '0') { number = number.replace(/^[0]+/g,''); }
+		jQuery(this).html(dotToComma(number.replace(/[^0-9.,]+/g, '')));
+		placeCaretAtEnd(this);
+	});
+
+	jQuery('.decimal').focusout(function (e) {
+		var number = jQuery(this).html();
+		jQuery(this).html(addDecimal(number));
 		placeCaretAtEnd(this);
 	});
 
