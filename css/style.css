@@ -177,3 +177,7 @@ tr:hover .cut {opacity: 1;}
 	position: absolute;
 	width: 600px;
 }
+
+.box-info,.invoice_note {
+	line-height: 20px;
+}
