@@ -190,7 +190,7 @@ $(function() {
 	checkDotComma();
 
 	//Enable validation on input field
-	jQuery(document).on('change','input,select,textarea :not([type=submit])',function() {
+	jQuery('input,select,textarea :not([type=submit])').livequery(function(){
 		jQuery(this).jqBootstrapValidation();
 	});
 
