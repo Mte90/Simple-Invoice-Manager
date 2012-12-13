@@ -534,7 +534,7 @@ $(function() {
 		jQuery.getJSON('note_data.php', {
 			'number':		jQuery(this).parent().data('id')
 		}).success(function(data) {
-			jQuery('.invoice_note').html(data.text);
+			jQuery('.invoice_note').html(jQuery('.invoice_note').html()+data.text+'</br>');
 			jQuery('#notes_modal_list').modal('hide');
 		});
 		e.stopPropagation();

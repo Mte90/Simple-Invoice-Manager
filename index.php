@@ -86,25 +86,25 @@
 				<tbody>
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check"></span></td>
+						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal"></span></td>
 						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check"></span></td>
+						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal"></span></td>
 						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check"></span></td>
+						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal"></span></td>
 						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a><span contenteditable></span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check"></span></td>
+						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal"></span></td>
 						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
