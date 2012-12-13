@@ -203,7 +203,7 @@ $(function() {
 	//Remove non-number letter
 	jQuery('.number-check').keyup(function (e) {
 		var number = jQuery(this).html();
-		jQuery(this).html(number.replace(/[^0-9.,]+/g, ''));
+		jQuery(this).html(number.replace(/^[0]+/g,'').replace(/[^0-9.,]+/g, ''));
 		placeCaretAtEnd(this);
 	});
 
