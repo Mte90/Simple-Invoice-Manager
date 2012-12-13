@@ -42,7 +42,7 @@ $l10n['CUSTOMER_NOT_DEFINED'] 	= "Cliente non definito";
 
 // Invoice related
 $l10n['TITLE']			= "Simple Invoice Manager";
-$l10n['INVOICE']		= "Fattura #";
+$l10n['INVOICE']		= "Fattura N";
 $l10n['NUMBER_TICKET'] 		= "N. Scontrino";
 $l10n['AMOUNT_DUE']		= "Importo Totale";
 $l10n['ITEM']			= "Oggetto";
