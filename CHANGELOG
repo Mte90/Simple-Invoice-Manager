@@ -1,6 +1,7 @@
 1.0 Beta
 - Fix to no show icon of note in print preview
 - Better english translation (thanks to @pappi_)
+- Moved Quantity column at the first column
 - Fix missing use of a l10n string for email sender
 - Fix for delete draft
 - Fix path on save invoice

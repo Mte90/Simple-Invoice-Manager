@@ -80,35 +80,39 @@
 			<table class="inventory">
 				<thead>
 					<tr>
+						<th><span><? echo $l10n['QUANTITY'] ?></span></th>
 						<th><span><? echo $l10n['ITEM'] ?></span></th>
 						<th><span><? echo $l10n['RATE'] ?></span></th>
-						<th><span><? echo $l10n['QUANTITY'] ?></span></th>
 						<th><span><? echo $l10n['TOTAL'] ?></span></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td><a class="cut">-</a><span contenteditable></span></td>
+						<td><a class="cut">-</a>
+						<span contenteditable class="number-check">0</span></td>
+						<td><span contenteditable></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal"></span></td>
-						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
-						<td><a class="cut">-</a><span contenteditable></span></td>
+						<td><a class="cut">-</a>
+						<span contenteditable class="number-check">0</span></td>
+						<td><span contenteditable></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal"></span></td>
-						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
-						<td><a class="cut">-</a><span contenteditable></span></td>
+						<td><a class="cut">-</a>
+						<span contenteditable class="number-check">0</span></td>
+						<td><span contenteditable></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal"></span></td>
-						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 					<tr>
-						<td><a class="cut">-</a><span contenteditable></span></td>
+						<td><a class="cut">-</a>
+						<span contenteditable class="number-check">0</span></td>
+						<td><span contenteditable></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal"></span></td>
-						<td><span contenteditable class="number-check">0</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span></span></td>
 					</tr>
 				</tbody>

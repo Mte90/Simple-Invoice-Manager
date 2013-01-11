@@ -43,10 +43,11 @@ var dot_or_comma;
 function generateTableRow() {
 	var emptyColumn = document.createElement('tr');
 
-	emptyColumn.innerHTML = '<td><a class="cut">-</a><span contenteditable></span></td>' +
-		'<td><span data-prefix>$</span><span contenteditable class="number-check"></span></td>' +
-		'<td><span contenteditable class="number-check">0</span></td>' +
-		'<td><span data-prefix>$</span><span>0.00</span></td>';
+	emptyColumn.innerHTML = '<td><a class="cut">-</a>' +
+	'<span contenteditable class="number-check">0</span></td>' +
+	'<td><span contenteditable></span></td>' +
+	'<td><span data-prefix>$</span><span contenteditable class="number-check decimal"></span></td>' +
+	'<td><span data-prefix>$</span><span></span></td>';
 
 	return emptyColumn;
 }
@@ -116,8 +117,8 @@ function updateInvoice() {
 		// get inventory row cells
 		cells = a[i].querySelectorAll('span:last-child');
 
-		// set price as cell[2] * cell[3]
-		price = parseFloatHTML(cells[1]) * parseFloatHTML(cells[2]);
+		// set price as cell[0] * cell[2]
+		price = parseFloatHTML(cells[0]) * parseFloatHTML(cells[2]);
 
 		// add price to total
 		total += price;
@@ -257,7 +258,7 @@ $(function() {
 
 		//Create json content with item
 		jQuery(row_item).each(function(key, value) {
-			txt += '{"item":"'+jQuery(row_item[key][0]).html()+'","rate":"'+jQuery(row_item[key][2]).html()+'","quantity":"'+jQuery(row_item[key][3]).html()+'"}';
+			txt += '{"item":"'+jQuery(row_item[key][1]).html()+'","rate":"'+jQuery(row_item[key][3]).html()+'","quantity":"'+jQuery(row_item[key][0]).html()+'"}';
 			if(key != total_item){
 				txt += ',';
 			}
@@ -335,7 +336,7 @@ $(function() {
 		jQuery('table.inventory tbody tr').each(function(key, value) {
 			cells = jQuery(this).find('td span');
 			if(jQuery(cells[0]).html()!=''){
-				txt += '{"item":"'+jQuery(cells[0]).html()+'","rate":"'+jQuery(cells[2]).html()+'","quantity":"'+jQuery(cells[3]).html()+'"}';
+				txt += '{"item":"'+jQuery(cells[1]).html()+'","rate":"'+jQuery(cells[3]).html()+'","quantity":"'+jQuery(cells[0]).html()+'"}';
 				if(key != (jQuery('table.inventory tbody tr').length-1)){
 					txt += ',';
 				}
@@ -706,15 +707,17 @@ $(function() {
 			if(typeof json.products.product.length != 'undefined'){
 				jQuery.each(json.products.product, function(i){
 					cells = jQuery(list_product[i]).find('td span');
-					jQuery(cells[0]).html(json.products.product[i].item);
-					jQuery(cells[2]).html(json.products.product[i].rate);
-					jQuery(cells[3]).html(json.products.product[i].quantity);
+					jQuery(cells[0]).html(json.products.product[i].quantity);
+					jQuery(cells[1]).html(json.products.product[i].item);
+					jQuery(cells[3]).html(json.products.product[i].rate);
+
 				});
 			} else {
 				cells = jQuery(list_product).find('td span');
-				jQuery(cells[0]).html(json.products.product.item);
-				jQuery(cells[2]).html(json.products.product.rate);
-				jQuery(cells[3]).html(json.products.product.quantity);
+				jQuery(cells[0]).html(json.products.product.quantity);
+				jQuery(cells[1]).html(json.products.product.item);
+				console.log(jQuery(cells[3]))
+				jQuery(cells[3]).html(json.products.product.rate);
 			}
 		}
 
