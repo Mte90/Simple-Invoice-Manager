@@ -117,7 +117,7 @@
 		if (isset($xml['products']['product'])) {
 			$xml['product'] = $xml['products']['product'];
 		}else {
-			$xml['product'] = $xml['products'];
+			$xml['product'] = '';
 		}
 		if(!isset($xml['payment_capture'])){
 			$xml['payment_capture'] = "";
@@ -198,10 +198,12 @@
 		}else {
 			$last_file = pathinfo($files[0]);
 			$last_file = $last_file['filename'];
+
+			if ($config['date_number_invoice'] && ($folder == 'draft' || $folder = 'invoice')) {
+				$last_file = substr($last_file, 0, -5);
+			}
 		}
-		if ($config['date_number_invoice'] && ($folder == 'draft' || $folder = 'invoice')) {
-			$last_file = substr($last_file, 0, -5);
-		}
+
 		return $last_file;
 	}
 

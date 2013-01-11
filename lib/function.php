@@ -36,8 +36,11 @@
 	/* General Function */
 
 	/* Remove break line and tab */
-	function clean($string){
-		return str_replace('/','-',str_replace(array("\r\n", "\r", "\n", "\t", '  '), ' ',trim($string)));
+	function clean($string,$slash=false){
+		if ($slash) {
+			$string = str_replace('/','-',$string);
+		}
+		return str_replace(array("\r\n", "\r", "\n", "\t", '  '), ' ',trim($string));
 	}
 
 	/* JSON to xml */
