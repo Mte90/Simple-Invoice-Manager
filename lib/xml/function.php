@@ -182,6 +182,9 @@
 			$folder = $path['customers'];
 		} elseif($folder == "invoice") {
 			$folder = $path['invoice'].DIRECTORY_SEPARATOR.get_last_year();
+			if(!file_exists($folder)) {
+				mkdir($folder);
+			}
 		} elseif($folder == "draft") {
 			$folder = $path['draft'];
 		} elseif($folder == "note") {
