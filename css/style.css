@@ -124,6 +124,11 @@ tr:hover .cut {opacity: 1;}
 	position:relative;
 }
 
+.toolbar_notes {
+	position: relative;
+    	top: 26px;
+}
+
 #logo {
 	right:-30px;
 	position:relative;
@@ -151,7 +156,7 @@ tr:hover .cut {opacity: 1;}
 
 .link-func {
 	border-left:0px;
-	width: 40px;
+	width: 50px;
 	text-align:center;
 }
 
@@ -179,5 +184,5 @@ tr:hover .cut {opacity: 1;}
 }
 
 .box-info,.invoice_note {
-	line-height: 20px;
+	line-height: 18px;
 }
