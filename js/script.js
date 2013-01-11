@@ -660,7 +660,7 @@ $(function() {
 
 	//Load Invoice/Draft
 	function init_invoice(json,type) {
-		jQuery('.invoice_n').html(json.number);
+		jQuery('.invoice_n').html(json.number.replace(/-/,'/'));
 		jQuery('body').data('old_number_invoice',json.number);
 		jQuery('.invoice_ticket').html(json.ticket);
 		jQuery('.invoice_note').html(json.note);

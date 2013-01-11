@@ -55,6 +55,9 @@
 					<?
 					$number_invoice = get_last_element('invoice');
 					$number_invoice++;
+					if ($config['date_number_invoice']){
+						$number_invoice .= '/'.get_last_year();
+					}
 					echo $number_invoice;
 					?></span></td>
 				</tr>
@@ -80,7 +83,7 @@
 						<th><span><? echo $l10n['ITEM'] ?></span></th>
 						<th><span><? echo $l10n['RATE'] ?></span></th>
 						<th><span><? echo $l10n['QUANTITY'] ?></span></th>
-						<th><span><? echo $l10n['PRICE'] ?></span></th>
+						<th><span><? echo $l10n['TOTAL'] ?></span></th>
 					</tr>
 				</thead>
 				<tbody>

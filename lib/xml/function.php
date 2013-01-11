@@ -177,7 +177,7 @@
 	* @param string $folder the folder
 	*/
 	function get_last_element($folder){
-	global $path;
+	global $path,$config;
 		if($folder == "customer") {
 			$folder = $path['customers'];
 		} elseif($folder == "invoice") {
@@ -198,6 +198,9 @@
 		}else {
 			$last_file = pathinfo($files[0]);
 			$last_file = $last_file['filename'];
+		}
+		if ($config['date_number_invoice'] && ($folder == 'draft' || $folder = 'invoice')) {
+			$last_file = substr($last_file, 0, -5);
 		}
 		return $last_file;
 	}

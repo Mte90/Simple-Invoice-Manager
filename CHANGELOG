@@ -16,6 +16,7 @@
 - Added default logo image config parameter
 - Added info box and config parameter
 - Added option for choose dot or comma for decimal number
+- Added option for add the year in invoice number (italy required)
 - Add auto the two decimal number
 - The notes now are multiple on a invoice by adding other
 - Live search on customer list

@@ -37,7 +37,7 @@
 
 	/* Remove break line and tab */
 	function clean($string){
-		return str_replace(array("\r\n", "\r", "\n", "\t", '  '), ' ',trim($string));
+		return str_replace('/','-',str_replace(array("\r\n", "\r", "\n", "\t", '  '), ' ',trim($string)));
 	}
 
 	/* JSON to xml */
