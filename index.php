@@ -123,11 +123,11 @@
 					<td><span contenteditable id="value_tax"><? echo $config['tax'] ?></span>%</td>
 				</tr>
 				<tr>
-					<th><span><? echo $l10n['TAXED_IMPORT'] ?></span></th>
+					<th><span><? echo $l10n['TAXABLE_AMOUNT'] ?></span></th>
 					<td><span data-prefix><? echo $config['prefix']; ?></span><span>0.00</span></td>
 				</tr>
 				<tr>
-					<th><span><? echo $l10n['ORIGINAL_IMPORT'] ?></span></th>
+					<th><span><? echo $l10n['TAX_AMOUNT'] ?></span></th>
 					<td><span data-prefix><? echo $config['prefix']; ?></span><span>0.00</span></td>
 				</tr>
 				<tr>
