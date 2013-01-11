@@ -57,17 +57,17 @@
 						}
 					}
 				}
-			}
 
-			//Add to history
-			if($add_history){
-				$data_h['invoice']['number'] = $data['number'];
-				$data_h['invoice']['year'] = $year_invoice;
-				$history['history'] = $data_h['invoice'];
+				//Add to history
+				if($add_history){
+					$data_h['invoice']['number'] = $data['number'];
+					$data_h['invoice']['year'] = $year_invoice;
+					$history['history'] = $data_h['invoice'];
 
-				$content_h = array_to_xml($history, 'customer-history')->asXML();
-				$content_h = format_xml($content_h);
-				file_put_contents($file_history,$content_h);
+					$content_h = array_to_xml($history, 'customer-history')->asXML();
+					$content_h = format_xml($content_h);
+					file_put_contents($file_history,$content_h);
+				}
 			}
 		}
 
