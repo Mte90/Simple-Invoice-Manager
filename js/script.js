@@ -137,7 +137,7 @@ function updateInvoice() {
 	jQuery('#total').html(addDecimal(dotToComma(total)));
 
 	// set total
-	total_ = ((total*jQuery('#value_tax').html())/100);
+	total_ = total/((100+parseInt(jQuery('#value_tax').html()))/100);
 	cells[1].innerHTML = addDecimal(dotToComma(total_));
 	cells[2].innerHTML = addDecimal(dotToComma(total-total_));
 
