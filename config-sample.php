@@ -30,6 +30,7 @@
 	$config['debug']		=	true;
 	$config['backend']		=	'xml';// only xml for the moment
 	$config['dot_or_comma']		=	false; //true for dot or false for comma
+	$config['date_number_invoice']	=	true;
 
 	//Option Login
 	$config['login']['enable']	=	false;
