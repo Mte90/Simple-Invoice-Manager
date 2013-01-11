@@ -31,29 +31,30 @@
 
 		//If changed the number of invoice remove the old number invoice
 		if(isset($_GET['old_date'])){
-			//Read the info of invoice for various check
-			$inv_info = read_invoice_info(clean($_GET['invoice_number']),$year_invoice);
+
+		//Read the info of invoice for various check
+		$inv_info = read_invoice_info(clean($_GET['invoice_number'],true),$year_invoice);
 
 			if($_GET['old_date']==clean($_GET['date']) && $_GET['old_number']!=clean($_GET['invoice_number'])){
 				$inv_info = read_invoice_info($_GET['old_number']);
 				unlink($path['invoice'].DIRECTORY_SEPARATOR.$year_invoice.DIRECTORY_SEPARATOR.$_GET['old_number'].'.xml');
 			}
-		}
 
-		//Check if invoice is in the history of customer
-		if ($inv_info['customer']!=$data['customer']) {
-			//Remove info of old customer
-			$file_history = $path['customers'].DIRECTORY_SEPARATOR.$data['customer'].'_history.xml';
-			$add_history = true;
-			if(!file_exists($file_history)){
-				$add_history=true;
-			} else {
-				$check = xml2array($file_history);
-				foreach($check as $key => $value){
-					//if there is in the history not add
-					if($check[$key]['number']==$data['number'] && $check[$key]['year']== $year_invoice) {
-						$add_history = false;
-						break;
+			//Check if invoice is in the history of customer
+			if ($inv_info['customer']!=$data['customer']) {
+				//Remove info of old customer
+				$file_history = $path['customers'].DIRECTORY_SEPARATOR.$data['customer'].'_history.xml';
+				$add_history = true;
+				if(!file_exists($file_history)){
+					$add_history=true;
+				} else {
+					$check = xml2array($file_history);
+					foreach($check as $key => $value){
+						//if there is in the history not add
+						if($check[$key]['number']==$data['number'] && $check[$key]['year']== $year_invoice) {
+							$add_history = false;
+							break;
+						}
 					}
 				}
 			}
@@ -70,7 +71,7 @@
 			}
 		}
 
-		file_put_contents($path['invoice'].DIRECTORY_SEPARATOR.$year_invoice.DIRECTORY_SEPARATOR.clean($_GET['invoice_number']).'.xml',$content);
+		file_put_contents($path['invoice'].DIRECTORY_SEPARATOR.$year_invoice.DIRECTORY_SEPARATOR.clean($_GET['invoice_number'],true).'.xml',$content);
 	} elseif($_GET['mode']=='save_draft_invoice') {
 		//Save draft
 		$number_drafts = get_last_element('draft');
@@ -101,9 +102,9 @@
 		$content = format_xml($content);
 
 		if(isset($_GET['is_invoice'])&&$_GET['is_invoice']==true){
-			$path = $path['invoice'].DIRECTORY_SEPARATOR.get_last_year().DIRECTORY_SEPARATOR.clean($_GET['invoice_number']).'.xml';
+			$path = $path['invoice'].DIRECTORY_SEPARATOR.get_last_year().DIRECTORY_SEPARATOR.clean($_GET['invoice_number'],true).'.xml';
 		} else {
-			$path = $path['draft'].DIRECTORY_SEPARATOR.clean($_GET['invoice_number']).'.xml';
+			$path = $path['draft'].DIRECTORY_SEPARATOR.clean($_GET['invoice_number'],true).'.xml';
 		}
 
 		$file = new SimpleXMLElement(file_get_contents($path));
