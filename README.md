@@ -19,6 +19,7 @@ Italian News: http://www.mte90.net/2012/11/simple-invoice-manager-e-tra-noi/
 - Nothing for the moment
 
 #Roadmap
+- Sale Column
 - MySQL Support optionable ?? (for make it the file save.php,delete.php and lib/function.php need to be edit)
 
 #PDF BackEnd Rendering Support
