@@ -199,7 +199,7 @@
 			$last_file = pathinfo($files[0]);
 			$last_file = $last_file['filename'];
 
-			if ($config['date_number_invoice'] && ($folder == 'draft' || $folder = 'invoice')) {
+			if ($config['invoice_date_number'] && ($folder == 'draft' || $folder = 'invoice')) {
 				$last_file = substr($last_file, 0, -5);
 			}
 		}

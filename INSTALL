@@ -1,34 +1,30 @@
- Simple Invoice Manager
+Simple Invoice Manager
 
- Requirement:
- PHP 5.x
- *nix system operative
+#Requirement
+PHP 5.x
+*nix system operative
 
- The *nix so are required for the Print networking feature, WkHtmlToPdf and WeasyPrint because their code use bash command.
+The *nix so are required for the Print networking feature, WkHtmlToPdf and WeasyPrint because their code use bash command.
 
- Install:
- The app use the xml file for store data and the permission 775 on this folder:
+#Install
+The app use the xml file for store data and the permission 775 on this folder:
+customers,invoice,notes,tmp
+chmod -R 775 ./customers
+chmod -R 775 ./notes
+chmod -R 775 ./invoice
+chmod -R 775 ./tmp
+In logos folder you can place the logo files that you need (width of 450px it's better).
+In config file you set the info of your shop/agency/etc and other options.
+Rename config-sample.php file in config.php and check the parameter in this file.
+#Network print
+Check that www-data user have the permission for access on the printer else not working!
 
- clients,invoice,notes,tmp
+#WkHtmlToPdf
+To work need xvfb for create a fake x server!
 
- chmod -R 775 ./clients
- chmod -R 775 ./notes
- chmod -R 775 ./invoice
- chmod -R 775 ./tmp
-
- In logos folder you can place the logo files that you need (width of 450px it's better).
- In config file you set the info of your shop/agency/etc and other options.
- Rename config-sample.php file in config.php and check the parameter in this file.
-
- Network print
- Check that www-data user have the permission for access on the printer else not working!
-
- WkHtmlToPdf
- To work need xvfb for create a fake x server!
-
- Backup
- The backup zip file are saved in tmp directory after execute the backup.php.
- This file can be executed with php-cli:
+Backup
+The backup zip file are saved in tmp directory after execute the backup.php.
+This file can be executed with php-cli:
 	cd /var/of/app
 	php backup.php
- Else in the browser this script write the link for download
+Else in the browser this script write the link for download it
