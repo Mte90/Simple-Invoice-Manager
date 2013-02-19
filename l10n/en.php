@@ -60,6 +60,8 @@ $l10n['CAPTURE_PAYMENT'] 	= "Payment Done";
 $l10n['PAID'] 			= "Paid";
 $l10n['NOT_PAID'] 		= "Not Paid";
 $l10n['LIST_DRAFT'] 		= "Draft List";
+$l10n['TAX_INCLUDED']		= "Tax Inc.";
+$l10n['TAX_NOT_INCLUDED']	= "Tax Not Inc";
 
 // Note
 $l10n['NOTE']			= "Additional Notes";
