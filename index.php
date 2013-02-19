@@ -55,7 +55,7 @@
 					<?
 					$number_invoice = get_last_element('invoice');
 					$number_invoice++;
-					if ($config['date_number_invoice']){
+					if ($config['invoice_date_number']){
 						$number_invoice .= '/'.get_last_year();
 					}
 					echo $number_invoice;
