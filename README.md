@@ -1,6 +1,6 @@
 #Description
 
-A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.
+A Simple Flat Web App for Invoice with PHP, jQuery, Bootstrap and XML.  
 For install read the file INSTALL
 
 Italian News: http://www.mte90.net/2012/11/simple-invoice-manager-e-tra-noi/
