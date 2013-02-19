@@ -69,8 +69,8 @@
 					<th><span><? echo $l10n['AMOUNT_DUE'] ?></span></th>
 					<td><span id="prefix"><? echo $config['prefix']; ?></span><span id="total">600.00</span></td>
 				</tr>
-				<? /* Number Ticket Option */
-				if($config['number_ticket']){ ?>
+				<? /* Ticket Number Option */
+				if($config['ticket_number']){ ?>
 				<tr>
 					<th><span><? echo $l10n['NUMBER_TICKET'] ?></span></th>
 					<td><span contenteditable class="number-check invoice_ticket"></span></td>

@@ -24,7 +24,7 @@
 	$config['customer']['email']	=	'';
 
 	//General Option
-	$config['number_ticket']	=	true;
+	$config['ticket_number']	=	true;
 	$config['capture_payment']	= 	true;
 	$config['invoice_logo'] 	=	true;
 	$config['debug']		=	true;

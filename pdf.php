@@ -81,7 +81,7 @@ $content .= '		<address>'.$config['invoice_info'].'</address>
 					<th><span>'.$l10n['AMOUNT_DUE'].'</span></th>
 					<td><span id="prefix">'.$config['prefix'].'</span><span id="total">'.$total.'</span></td>
 				</tr>';
-				if($config['number_ticket']){
+				if($config['ticket_number']){
 				$content .= '<tr>
 					<th><span>'.$l10n['NUMBER_TICKET'].'</span></th>
 					<td><span class="invoice_ticket">'.$invoice_data['ticket'].'</span></td>
