@@ -11,7 +11,7 @@
 						<p>(800) 555-1234</p>';
 	$config['email']		=	'test@test.it';
 	$config['tax']			=	21;
-	$config['logo_default']		=	'logo_default.png';
+	$config['default_logo']		=	'logo_default.png';
 	$config['info']			=	'General Condition of Sale';
 
 	//Default content of the new customer field
