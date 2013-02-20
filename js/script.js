@@ -45,7 +45,7 @@ function generateTableRow() {
 
 	emptyColumn.innerHTML = '<td><a class="cut">-</a>' +
 	'<span contenteditable class="number-check quantity">0</span></td>' +
-	'<td><span contenteditable></span></td>' +
+	'<td><span contenteditable class="desc"></span></td>' +
 	'<td><span data-prefix>$</span><span contenteditable class="number-check decimal price"></span></td>' +
 	'<td><span data-prefix>$</span><span class="total"></span></td>';
 
@@ -701,17 +701,16 @@ $(function() {
 			if(typeof json.products.product.length != 'undefined'){
 				jQuery.each(json.products.product, function(i){
 					cells = jQuery(list_product[i]).find('td span');
-					jQuery(cells[0]).html(json.products.product[i].quantity);
-					jQuery(cells[1]).html(json.products.product[i].item);
-					jQuery(cells[3]).html(json.products.product[i].rate);
+					jQuery(cells).find('span.quantity').html(json.products.product[i].quantity);
+					jQuery(cells).find('span.desc').html(json.products.product[i].item);
+					jQuery(cells).find('span.price').html(json.products.product[i].rate);
 
 				});
 			} else {
 				cells = jQuery(list_product).find('td span');
-				jQuery(cells[0]).html(json.products.product.quantity);
-				jQuery(cells[1]).html(json.products.product.item);
-				console.log(jQuery(cells[3]))
-				jQuery(cells[3]).html(json.products.product.rate);
+				jQuery(cells).find('span.quantity').html(json.products.product.quantity);
+				jQuery(cells).find('span.desc').html(json.products.product.item);
+				jQuery(cells).find('span.price').html(json.products.product.rate);
 			}
 		}
 
