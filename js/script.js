@@ -44,16 +44,17 @@ function generateTableRow() {
 	var emptyColumn = document.createElement('tr');
 
 	emptyColumn.innerHTML = '<td><a class="cut">-</a>' +
-	'<span contenteditable class="number-check">0</span></td>' +
+	'<span contenteditable class="number-check quantity">0</span></td>' +
 	'<td><span contenteditable></span></td>' +
-	'<td><span data-prefix>$</span><span contenteditable class="number-check decimal"></span></td>' +
-	'<td><span data-prefix>$</span><span></span></td>';
+	'<td><span data-prefix>$</span><span contenteditable class="number-check decimal price"></span></td>' +
+	'<td><span data-prefix>$</span><span class="total"></span></td>';
 
 	return emptyColumn;
 }
 
 function parseFloatHTML(element) {
-	return parseFloat(commaToDot(element.innerHTML).replace(/[^\d\.\-]+/g, '')) || 0;
+	//console.log(element)
+	return parseFloat(commaToDot(element).replace(/[^\d\.\-]+/g, '')) || 0;
 }
 
 function parsePrice(number) {
@@ -107,47 +108,40 @@ function updateNumber(e) {
 /* ========================================================================== */
 
 function updateInvoice() {
-	var total = 0;
-	var cells, price, total, a, i, total_;
+	var total_amount = 0;
+	var price_, a, i, total_;
 
-	// update inventory cells
+	// update inventory
 	// ======================
-
-	for (var a = document.querySelectorAll('table.inventory tbody tr'), i = 0; a[i]; ++i) {
-		// get inventory row cells
-		cells = a[i].querySelectorAll('span:last-child');
-
+	quantity = jQuery('span.quantity');
+	price = jQuery('span.price');
+	total = jQuery('span.total');
+	for (var a = jQuery('table.inventory tbody tr'), i = 0; a[i]; ++i) {
 		// set price as cell[0] * cell[2]
-		price = parseFloatHTML(cells[0]) * parseFloatHTML(cells[2]);
-
+		price_ = parseFloatHTML(parseFloat(jQuery(quantity[i]).text()) * parseFloat(jQuery(price[i]).text()));
 		// add price to total
-		total += price;
+		total_amount += price_;
 
 		// set row total
-		cells[3].innerHTML = addDecimal(dotToComma(price));
+		jQuery(total[i]).text(addDecimal(dotToComma(price_)));
 	}
 
-	// update balance cells
+	// update balance
 	// ====================
 
-	// get balance cells
-	cells = document.querySelectorAll('table.balance td:last-child span:last-child');
-
 	// only import tax
-	cells[3].innerHTML = addDecimal(dotToComma(total));
-	jQuery('#total').html(addDecimal(dotToComma(total)));
+	jQuery('#total_invoice').text(addDecimal(dotToComma(total_amount)));
+	jQuery('#total').html(jQuery('#total_invoice').text());
 
 	// set total
-	total_ = total/((100+parseInt(jQuery('#value_tax').html()))/100);
-	cells[1].innerHTML = addDecimal(dotToComma(total_));
-	cells[2].innerHTML = addDecimal(dotToComma(total-total_));
+	total_ = total_amount/((100+parseInt(jQuery('#value_tax').html()))/100);
+	jQuery('#taxable_amount').text(addDecimal(dotToComma(total_)));
+	jQuery('#tax_amount').text(addDecimal(dotToComma(total_amount-total_)));
 
 	// update prefix formatting
 
 	var prefix = document.querySelector('#prefix').innerHTML;
-	for (a = document.querySelectorAll('[data-prefix]'), i = 0; a[i]; ++i) a[i].innerHTML = prefix;
-
-	// update price formatting
+	for (a = jQuery('[data-prefix]'), i = 0; a[i]; ++i) a[i].innerHTML = prefix;
 
 }
 
