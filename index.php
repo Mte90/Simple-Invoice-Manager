@@ -92,38 +92,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td><a class="cut">-</a>
-						<span contenteditable class="number-check quantity">0</span></td>
-						<td><span contenteditable class="desc"></span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal price"></span></td>
-						<td><span contenteditable class="sale"></span><span>%</span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span class="total"></span></td>
-					</tr>
-					<tr>
-						<td><a class="cut">-</a>
-						<span contenteditable class="number-check quantity">0</span></td>
-						<td><span contenteditable class="desc"></span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal price"></span></td>
-						<td><span contenteditable class="sale"></span><span>%</span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span class="total"></span></td>
-					</tr>
-					<tr>
-						<td><a class="cut">-</a>
-						<span contenteditable class="number-check quantity">0</span></td>
-						<td><span contenteditable class="desc"></span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal price"></span></td>
-						<td><span contenteditable class="sale"></span><span>%</span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span class="total"></span></td>
-					</tr>
-					<tr>
-						<td><a class="cut">-</a>
-						<span contenteditable class="number-check quantity">0</span></td>
-						<td><span contenteditable class="desc"></span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal price"></span></td>
-						<td><span contenteditable class="sale"></span><span>%</span></td>
-						<td><span data-prefix><? echo $config['prefix']; ?></span><span class="total"></span></td>
-					</tr>
+
 				</tbody>
 			</table>
 			<a class="add">+</a>

@@ -47,7 +47,7 @@ function generateTableRow() {
 	'<span contenteditable class="number-check quantity">0</span></td>' +
 	'<td><span contenteditable class="desc"></span></td>' +
 	'<td><span data-prefix>$</span><span contenteditable class="number-check decimal price"></span></td>' +
-	'<td><span contenteditable class="sale"></span><span>%</span></td>' +
+	'<td><span contenteditable class="sale">0</span><span>%</span></td>' +
 	'<td><span data-prefix>$</span><span class="total"></span></td>';
 
 	return emptyColumn;
@@ -150,8 +150,12 @@ function updateInvoice() {
 /* ========================================================================== */
 
 function onContentLoad() {
+	//Insert blank row
+	document.querySelector('table.inventory tbody').appendChild(generateTableRow());
+	document.querySelector('table.inventory tbody').appendChild(generateTableRow());
+	document.querySelector('table.inventory tbody').appendChild(generateTableRow());
+	document.querySelector('table.inventory tbody').appendChild(generateTableRow());
 	updateInvoice();
-	var image = document.querySelector('img');
 
 	function onClick(e) {
 		var element = e.target.querySelector('[contenteditable]'), row;
@@ -165,16 +169,6 @@ function onContentLoad() {
 		}
 
 		updateInvoice();
-	}
-
-	function onEnterCancel(e) {
-		e.preventDefault();
-		image.classList.add('hover');
-	}
-
-	function onLeaveCancel(e) {
-		e.preventDefault();
-		image.classList.remove('hover');
 	}
 
 	if (window.addEventListener) {
