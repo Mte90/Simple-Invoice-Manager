@@ -31,6 +31,7 @@
 	$config['backend']		=	'xml';// only xml for the moment
 	$config['dot_or_comma']		=	false;//true for dot or false for comma
 	$config['invoice_date_number']	=	true;
+	$config['tax_included']		=	false;
 	$config['show_all_info']	=	true;// in the info.php show the permission on folder and their path
 
 	//Option Login

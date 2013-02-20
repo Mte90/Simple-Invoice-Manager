@@ -87,7 +87,7 @@
 							echo '<br><small>'.$l10n['TAX_INCLUDED'].'</small>';
 						}
 						?></span></th>
-						<th><span><? echo $l10n['SALE'] ?></span></th>
+						<th><span><? echo $l10n['SALE'] ?><br><small><? echo $l10n['APPLIED']; ?></small></span></th>
 						<th><span><? echo $l10n['TOTAL'] ?></span></th>
 					</tr>
 				</thead>

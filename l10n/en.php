@@ -63,6 +63,7 @@ $l10n['LIST_DRAFT'] 		= "Draft List";
 $l10n['TAX_INCLUDED']		= "Tax Inc.";
 $l10n['TAX_NOT_INCLUDED']	= "Tax Not Inc";
 $l10n['SALE']			= "Sale";
+$l10n['APPLIED']		= "Applied";
 
 // Note
 $l10n['NOTE']			= "Additional Notes";

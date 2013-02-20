@@ -63,6 +63,7 @@ $l10n['LIST_DRAFT'] 		= "Lista Bozze";
 $l10n['TAX_INCLUDED']		= "Tasse Inc";
 $l10n['TAX_NOT_INCLUDED']	= "Tasse Esc";
 $l10n['SALE']			= "Sconto";
+$l10n['APPLIED']		= "Applicato";
 
 // Note
 $l10n['NOTE']			= "Note Aggiuntive";
