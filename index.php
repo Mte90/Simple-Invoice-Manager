@@ -87,6 +87,7 @@
 							echo '<br><small>'.$l10n['TAX_INCLUDED'].'</small>';
 						}
 						?></span></th>
+						<th><span><? echo $l10n['SALE'] ?></span></th>
 						<th><span><? echo $l10n['TOTAL'] ?></span></th>
 					</tr>
 				</thead>
@@ -96,6 +97,7 @@
 						<span contenteditable class="number-check quantity">0</span></td>
 						<td><span contenteditable class="desc"></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal price"></span></td>
+						<td><span contenteditable class="sale"></span><span>%</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span class="total"></span></td>
 					</tr>
 					<tr>
@@ -103,6 +105,7 @@
 						<span contenteditable class="number-check quantity">0</span></td>
 						<td><span contenteditable class="desc"></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal price"></span></td>
+						<td><span contenteditable class="sale"></span><span>%</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span class="total"></span></td>
 					</tr>
 					<tr>
@@ -110,6 +113,7 @@
 						<span contenteditable class="number-check quantity">0</span></td>
 						<td><span contenteditable class="desc"></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal price"></span></td>
+						<td><span contenteditable class="sale"></span><span>%</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span class="total"></span></td>
 					</tr>
 					<tr>
@@ -117,6 +121,7 @@
 						<span contenteditable class="number-check quantity">0</span></td>
 						<td><span contenteditable class="desc"></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal price"></span></td>
+						<td><span contenteditable class="sale"></span><span>%</span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span class="total"></span></td>
 					</tr>
 				</tbody>

@@ -47,6 +47,7 @@ function generateTableRow() {
 	'<span contenteditable class="number-check quantity">0</span></td>' +
 	'<td><span contenteditable class="desc"></span></td>' +
 	'<td><span data-prefix>$</span><span contenteditable class="number-check decimal price"></span></td>' +
+	'<td><span contenteditable class="sale"></span><span>%</span></td>' +
 	'<td><span data-prefix>$</span><span class="total"></span></td>';
 
 	return emptyColumn;
