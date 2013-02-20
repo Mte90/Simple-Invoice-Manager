@@ -1,7 +1,7 @@
 <? 	require_once('./config.php');
 
 	function check_permission($folder) {
-		if (is_writable($filename)) {
+		if (is_writable($folder)) {
 			echo '<b>OK</b>';
 		} else {
 			echo '<b>Error</b>';
