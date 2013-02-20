@@ -94,28 +94,28 @@
 					<tr>
 						<td><a class="cut">-</a>
 						<span contenteditable class="number-check quantity">0</span></td>
-						<td><span contenteditable></span></td>
+						<td><span contenteditable class="desc"></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal price"></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span class="total"></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a>
 						<span contenteditable class="number-check quantity">0</span></td>
-						<td><span contenteditable></span></td>
+						<td><span contenteditable class="desc"></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal price"></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span class="total"></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a>
 						<span contenteditable class="number-check quantity">0</span></td>
-						<td><span contenteditable></span></td>
+						<td><span contenteditable class="desc"></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal price"></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span class="total"></span></td>
 					</tr>
 					<tr>
 						<td><a class="cut">-</a>
 						<span contenteditable class="number-check quantity">0</span></td>
-						<td><span contenteditable></span></td>
+						<td><span contenteditable class="desc"></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span contenteditable class="number-check decimal price"></span></td>
 						<td><span data-prefix><? echo $config['prefix']; ?></span><span class="total"></span></td>
 					</tr>
@@ -156,8 +156,8 @@
 		<div class="toolbar">
 			<img src="icons/save.png" class="save pointer" alt="<? echo $l10n['SAVE_INVOICE']; ?>" title="<? echo $l10n['SAVE_INVOICE']; ?>" /><br>
 			<img src="icons/comment.png" class="draft pointer" alt="<? echo $l10n['SAVE_DRAFT']; ?>" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
-			<img src="icons/page_blank_add.png" class="new pointer" alt="<? echo $l10n['SAVE_DRAFT']; ?>" title="<? echo $l10n['SAVE_DRAFT']; ?>" /><br>
-			<img src="icons/search.png" class="search pointer" alt="<? echo $l10n['NEW_INVOICE']; ?>" title="<? echo $l10n['NEW_INVOICE']; ?>" /><br>
+			<img src="icons/page_blank_add.png" class="new pointer" alt="<? echo $l10n['NEW_INVOICE']; ?>" title="<? echo $l10n['NEW_INVOICE']; ?>" /><br>
+			<img src="icons/search.png" class="search pointer" alt="<? echo $l10n['LIST_INVOICE']; ?>" title="<? echo $l10n['LIST_INVOICE']; ?>" /><br>
 			<? /* PDF Option */
 			if($config['pdf']['enable']){ ?>
 			<img src="icons/pdf.png" class="pdf pointer hide" alt="<? echo $l10n['EXPORT_PDF']; ?>" title="<? echo $l10n['EXPORT_PDF']; ?>" /><br>
